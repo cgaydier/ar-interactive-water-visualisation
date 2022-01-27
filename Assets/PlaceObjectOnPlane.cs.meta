@@ -3,7 +3,10 @@ guid: 6df40ff4a451a834cad60f9236430387
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_RaycastManager: {instanceID: 0}
+  - m_ObjectToPlace: {fileID: 2162724875021420352, guid: c0bc28f8d3b75ac41ad7d4ff1961bd3d,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
