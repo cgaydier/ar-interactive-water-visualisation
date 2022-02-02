@@ -348,6 +348,7 @@ GameObject:
   - component: {fileID: 107093223}
   - component: {fileID: 107093227}
   - component: {fileID: 107093226}
+  - component: {fileID: 107093228}
   - component: {fileID: 107093225}
   m_Layer: 0
   m_Name: AR Session Origin
@@ -427,6 +428,18 @@ MonoBehaviour:
   m_PlanePrefab: {fileID: 4851409161548274528, guid: 5016f3c93cfbf1e4485e6d3c221fb261,
     type: 3}
   m_DetectionMode: -1
+--- !u!114 &107093228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107093222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa850fbd5b8aded44846f96e35f1a9f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &225922392
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +573,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319252844}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1128366, y: 0.07487059, z: 0.060431957}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
