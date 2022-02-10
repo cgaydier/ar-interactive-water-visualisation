@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Buttons_functions : MonoBehaviour
+public class ButtonsFunctions : MonoBehaviour
 {
     public GameObject objectToShow;
+    public EnumState enumState;
 
     void Start()
     {
@@ -16,10 +17,12 @@ public class Buttons_functions : MonoBehaviour
     {
         if (objectToShow.activeSelf)
         {
+            enumState.setMainScene();
             objectToShow.SetActive(false);
         }
         else
         {
+            enumState.setDisplayCube();
             objectToShow.SetActive(true);
         }
 
