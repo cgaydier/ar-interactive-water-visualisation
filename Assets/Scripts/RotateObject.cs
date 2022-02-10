@@ -9,14 +9,14 @@ public class RotateObject : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount > 0)
+        // Touch controls for rotation
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
         {
-            Debug.Log("La");
-        }
-        float rotX = Input.GetAxis("Mouse X") * rotateSpeed * Mathf.Deg2Rad;
-        float rotY = Input.GetAxis("Mouse Y") * rotateSpeed * Mathf.Deg2Rad;
+            Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+            // Rotate Player.  Could change Rotate to Translate to move the player.
 
-        transform.Rotate(Vector3.up, -rotX);
-        transform.Rotate(Vector3.right, rotY);
+            Vector3 newRotation = new Vector3(touchDeltaPosition.y * rotateSpeed, -touchDeltaPosition.x * rotateSpeed, 0);
+            transform.Rotate(newRotation);
+        }
     }
 }
