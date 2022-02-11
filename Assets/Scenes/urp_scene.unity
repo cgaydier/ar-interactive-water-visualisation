@@ -391,7 +391,7 @@ Transform:
   m_GameObject: {fileID: 873725934}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 1471520473}
   m_RootOrder: 0
@@ -504,7 +504,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RaycastManager: {fileID: 1471520476}
-  m_ObjectToPlace: {fileID: 34943112274217417, guid: f365ef4be0c342349afe6372b5476dfd, type: 3}
+  m_ObjectToPlace: {fileID: 7222759312059337119, guid: dd7f91ccdc4e56a4c84d70e9c08c7e40, type: 3}
+  mesh_mat: {fileID: 2100000, guid: 0ffaa0b7117ba8c47a9d05ae701d4b4d, type: 2}
 --- !u!114 &1471520476
 MonoBehaviour:
   m_ObjectHideFlags: 0
