@@ -32,10 +32,12 @@ public class PlaceObjectOnPlane : MonoBehaviour
         rend.material = mesh_mat;
         
     }
+    public EnumState enumState;
+
+    // Update is called once per frame
     void Update()
     {
-        
-        if(Input.touchCount > 0)
+        if(Input.touchCount > 0 && enumState.GetState() == EnumState.State.MainView)
         {
             Touch touch = Input.GetTouch(0);
             
