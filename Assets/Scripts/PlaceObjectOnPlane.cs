@@ -26,8 +26,6 @@ public class PlaceObjectOnPlane : MonoBehaviour
     {
         mesh = new Mesh();
         go = new GameObject("Mesh", typeof(MeshFilter), typeof(MeshRenderer));
-        go.AddComponent<MeshFilter>();
-        go.AddComponent<MeshRenderer>();
         Renderer rend = go.GetComponent<Renderer>();
         rend.material = mesh_mat;
         
