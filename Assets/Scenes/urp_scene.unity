@@ -1119,9 +1119,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_RaycastManager: {fileID: 1471520476}
-  enumState: {fileID: 144765961}
+  m_ObjectToPlace: {fileID: 7222759312059337119, guid: dd7f91ccdc4e56a4c84d70e9c08c7e40, type: 3}
   mesh_mat: {fileID: 2100000, guid: 0ffaa0b7117ba8c47a9d05ae701d4b4d, type: 2}
-  m_ObjectToPlace: {fileID: 34943112274217417, guid: f365ef4be0c342349afe6372b5476dfd, type: 3}
+  enumState: {fileID: 144765961}
 --- !u!114 &1471520476
 MonoBehaviour:
   m_ObjectHideFlags: 0
