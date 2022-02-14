@@ -22,13 +22,11 @@ public class PlaceObjectOnPlane : MonoBehaviour
     GameObject go;
     int cpt = 0;
     bool mesh_created = false;
+
     void Start()
     {
         mesh = new Mesh();
         go = new GameObject("Mesh", typeof(MeshFilter), typeof(MeshRenderer));
-        Renderer rend = go.GetComponent<Renderer>();
-        rend.material = mesh_mat;
-        
     }
     public EnumState enumState;
 
@@ -58,18 +56,16 @@ public class PlaceObjectOnPlane : MonoBehaviour
         if(cpt > 3 && !mesh_created){
             CreateMesh();
             mesh_created = true;
-            print("mesh creating...\n");
+            mesh.vertices = vertices;
+            mesh.triangles = triangles;
+            go.GetComponent<MeshRenderer>().material = mesh_mat;
+            go.GetComponent<MeshFilter>().mesh = mesh;
+            go.transform.position = new Vector3(go.transform.position.x, vertices[0].y, go.transform.position.z);
         }
 
         if(mesh_created){
-            mesh.vertices = vertices;
-            mesh.triangles = triangles;
             mesh.RecalculateNormals();
-            go.transform.position = new Vector3(0f,0f,0f);
-            go.GetComponent<MeshFilter>().mesh = mesh;
-            //Renderer rend = go.GetComponent<Renderer>();
-            //rend.material = mesh_mat;
-            
+            mesh.RecalculateBounds();
         }
     }
     void CreateMesh()
