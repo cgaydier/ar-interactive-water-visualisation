@@ -37,6 +37,21 @@ public class CreateMesh : MonoBehaviour
 
     void CreateTriangles()
     {
+        // Bottom
+        // for(int i,j = 0; i < (placePoints.nb_vertices/2) + 2; i++,j+=2)
+        // {
+        //     triangles.Add(0);
+        //     triangles.Add(j+2);
+        //     triangles.Add(j+4);
+        // }
+
+        // // Top
+        // for(int i,j = 0; i <= (placePoints.nb_vertices/2) + 2; i++,j+=2)
+        // {
+        //     triangles.Add(1);
+        //     triangles.Add(j+3);
+        //     triangles.Add(j+5);
+        // }
         for(int i = 2; i < placePoints.nb_vertices; i++)
         {
             triangles.Add(0);
