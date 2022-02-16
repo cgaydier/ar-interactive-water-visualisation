@@ -12,6 +12,7 @@ public class PlacePoints : MonoBehaviour
     [SerializeField]
     GameObject m_PointToPlace;
     public EnumState enumState;
+    public List<GameObject> points = new List<GameObject>();
     public List<Vector3> vertices = new List<Vector3>();
     public int nb_vertices = 0;
     // Update is called once per frame
@@ -27,7 +28,7 @@ public class PlacePoints : MonoBehaviour
                 {
                     Pose hitPose = s_Hits[0].pose;
                 
-                    Instantiate(m_PointToPlace, hitPose.position, hitPose.rotation);
+                    points.Add(Instantiate(m_PointToPlace, hitPose.position, hitPose.rotation));
                     vertices.Add(hitPose.position);
                     nb_vertices++;
                 }

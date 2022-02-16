@@ -58,6 +58,10 @@ public class CreateMesh : MonoBehaviour
             go.GetComponent<MeshRenderer>().material = mesh_mat;
             go.GetComponent<MeshFilter>().mesh = mesh;
             go.transform.position = new Vector3(go.transform.position.x, mesh.vertices[0].y, go.transform.position.z);
+            for(int i = 0; i < placePoints.nb_vertices; i++)
+            {
+                Destroy(placePoints.points[i]);
+            }
             mesh_created = true;
         }
 
