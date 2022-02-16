@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EnumState : MonoBehaviour
 {
-    public enum State {MainView, DisplayCube, SetScene}
+    public enum State {MainView, DisplayCube, ParamScene, PlacePoints}
 
     public State currentState;
 
     private void Start()
     {
-        setMainScene();
+        SetMainScene();
     }
 
     public State GetState()
@@ -18,25 +18,38 @@ public class EnumState : MonoBehaviour
         return currentState;
     }
 
-    public void setDisplayCube()
+    public void SetDisplayCube()
     {
         currentState = State.DisplayCube;
     }
 
-    public void changeParamScene()
+    public void ChangeParamScene()
     {
-        if (currentState == State.SetScene)
+        if (currentState != State.PlacePoints)
         {
-            currentState = State.MainView;
-        }
-        else
-        {
-            currentState = State.SetScene;
+            if (currentState == State.MainView)
+            {
+                currentState = State.ParamScene;
+            }
+            else
+            {
+                currentState = State.MainView;
+            }
         }
     }
 
-    public void setMainScene()
+    public void SetParamScene()
+    {
+        currentState = State.ParamScene;
+    }
+
+    public void SetMainScene()
     {
         currentState = State.MainView;
+    }
+
+    public void SetPlacePoints()
+    {
+        currentState = State.PlacePoints;
     }
 }

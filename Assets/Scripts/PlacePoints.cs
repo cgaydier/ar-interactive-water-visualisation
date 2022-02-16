@@ -17,7 +17,7 @@ public class PlacePoints : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.touchCount > 0 && enumState.GetState() == EnumState.State.MainView)
+        if(Input.touchCount > 0 && enumState.GetState() == EnumState.State.PlacePoints)
         {
             Touch touch = Input.GetTouch(0);
             

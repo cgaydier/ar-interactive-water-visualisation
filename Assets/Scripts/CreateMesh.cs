@@ -12,6 +12,7 @@ public class CreateMesh : MonoBehaviour
     List<int> triangles = new List<int>();
     Material mesh_mat;
     public PlacePoints placePoints;
+    bool pointsPlaced = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,11 @@ public class CreateMesh : MonoBehaviour
     void Update()
     {
         MeshHandler();
+    }
+
+    public void SetPointsPlaced(bool tmp)
+    {
+        pointsPlaced = tmp;
     }
 
     void CreateTriangles()
@@ -44,7 +50,7 @@ public class CreateMesh : MonoBehaviour
 
     void MeshHandler()
     {
-        if(Checkpoints() && !mesh_created)
+        if(Checkpoints() && !mesh_created && pointsPlaced)
         {
             mesh.vertices = placePoints.vertices.ToArray();
             CreateTriangles();
@@ -61,7 +67,8 @@ public class CreateMesh : MonoBehaviour
             mesh.RecalculateTangents();
             mesh.RecalculateBounds();
         }
-        else
+
+        else if(pointsPlaced)
         {
             print("Not enough points (3 min) or too much (10 max).\n Current : " + placePoints.nb_vertices + "\n");
         }

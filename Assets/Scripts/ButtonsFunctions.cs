@@ -17,12 +17,12 @@ public class ButtonsFunctions : MonoBehaviour
     {
         if (objectToShow.activeSelf)
         {
-            enumState.setMainScene();
+            enumState.SetMainScene();
             objectToShow.SetActive(false);
         }
         else
         {
-            enumState.setDisplayCube();
+            enumState.SetDisplayCube();
             objectToShow.SetActive(true);
         }
 
