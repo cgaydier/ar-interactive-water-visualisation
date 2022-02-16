@@ -16,6 +16,26 @@ public class PlacePoints : MonoBehaviour
     public List<Vector3> vertices = new List<Vector3>();
     public int nb_vertices = 0;
     // Update is called once per frame
+
+    //private void Start()
+    //{
+    //    Vector3 pos = new Vector3(0, 0, 0);
+    //    Quaternion rot = Quaternion.identity;
+    //    points.Add(Instantiate(m_PointToPlace, pos, rot));
+    //    points.Add(Instantiate(m_PointToPlace, pos, rot));
+    //    points.Add(Instantiate(m_PointToPlace, pos, rot));
+    //    points.Add(Instantiate(m_PointToPlace, pos, rot));
+    //    points.Add(Instantiate(m_PointToPlace, pos, rot));
+    //    points.Add(Instantiate(m_PointToPlace, pos, rot));
+    //    vertices.Add(pos);
+    //    vertices.Add(pos);
+    //    vertices.Add(pos);
+    //    vertices.Add(pos);
+    //    vertices.Add(pos);
+    //    vertices.Add(pos);
+    //    nb_vertices = 6;
+    //}
+
     void Update()
     {
         if(Input.touchCount > 0 && enumState.GetState() == EnumState.State.PlacePoints)

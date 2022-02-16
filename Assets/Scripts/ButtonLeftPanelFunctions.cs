@@ -6,11 +6,13 @@ public class ButtonLeftPanelFunctions : MonoBehaviour
 {
     public PlacePoints placePoints;
     public CreateMesh createMesh;
+    public ClearMesh clearMesh;
 
     // Start is called before the first frame update
     public void CreatePointsMesh()
     {
         placePoints.enumState.SetPlacePoints();
+        createMesh.SetPointsPlaced(false);
     }
 
     public void ValidatePointsMesh()
@@ -23,5 +25,7 @@ public class ButtonLeftPanelFunctions : MonoBehaviour
     {
         placePoints.enumState.SetParamScene();
         createMesh.SetPointsPlaced(false);
+        createMesh.SetMeshCreated(false);
+        clearMesh.ClearM();
     }
 }
