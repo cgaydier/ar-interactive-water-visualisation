@@ -1507,6 +1507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f29b62c73add74582354d1ab7ff9a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  placePoints: {fileID: 1516527981}
 --- !u!1 &1566581963
 GameObject:
   m_ObjectHideFlags: 0
