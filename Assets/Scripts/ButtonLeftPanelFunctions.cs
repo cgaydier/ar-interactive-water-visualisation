@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ButtonLeftPanelFunctions : MonoBehaviour
@@ -7,10 +5,9 @@ public class ButtonLeftPanelFunctions : MonoBehaviour
     public PlacePoints placePoints;
     public CreateMesh createMesh;
 
-    // Start is called before the first frame update
     public void CreatePointsMesh()
     {
-        placePoints.enumState.SetPlacePoints();
+        placePoints.enumState.SetPlacePointsBefore();
         createMesh.SetPointsPlaced(false);
     }
 

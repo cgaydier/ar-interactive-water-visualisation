@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-
-public class RotateObject : MonoBehaviour
+class RotateObject : MonoBehaviour
 {
     private float rotateSpeed = 0.09f;
 

@@ -1,8 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.EventSystems;
 
 public class PlacePoints : MonoBehaviour
 {
@@ -14,9 +14,7 @@ public class PlacePoints : MonoBehaviour
     public EnumState enumState;
     public List<GameObject> points = new List<GameObject>();
     public List<Vector3> vertices = new List<Vector3>();
-    //public int nb_vertices = 0;
     float offset = 0.2f;
-    // Update is called once per frame
 
     //private void Start()
     //{
@@ -50,7 +48,6 @@ public class PlacePoints : MonoBehaviour
             Destroy(points[i]);
         }
         print("nb vertices avant clear : " + vertices.Count + "\n");
-        //nb_vertices = 0;
         vertices.Clear();
         print("nb vertices après clear : " + vertices.Count + "\n");
         points.Clear();
@@ -58,7 +55,7 @@ public class PlacePoints : MonoBehaviour
 
     void Update()
     {
-        if(Input.touchCount > 0 && enumState.GetState() == EnumState.State.PlacePoints)
+        if (Input.touchCount > 0 && enumState.GetState() == EnumState.State.PlacePoints)
         {
             Touch touch = Input.GetTouch(0);
             
@@ -66,12 +63,12 @@ public class PlacePoints : MonoBehaviour
             {
                 if(m_RaycastManager.Raycast(touch.position, s_Hits, TrackableType.PlaneWithinPolygon))
                 {
+
                     Pose hitPose = s_Hits[0].pose;
                 
                     points.Add(Instantiate(m_PointToPlace, hitPose.position, hitPose.rotation));
                     vertices.Add(hitPose.position);
                     vertices.Add(new Vector3(hitPose.position.x, hitPose.position.y + offset, hitPose.position.z));
-                    //nb_vertices++;
                 }
             }
         }

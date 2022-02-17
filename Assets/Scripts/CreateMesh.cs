@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
 
 public class CreateMesh : MonoBehaviour
 {   
@@ -118,7 +115,7 @@ public class CreateMesh : MonoBehaviour
 
         else if (pointsPlaced)
         {
-            print("Not enough points (3 min) or too much (10 max).\n Current : " + placePoints.vertices.Count + "\n");
+            print("Not enough points (3 min) or too much (10 max).\n Current : " + (placePoints.vertices.Count / 2)+ "\n");
         }
     }
 }

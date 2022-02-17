@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnumState : MonoBehaviour
@@ -59,5 +57,10 @@ public class EnumState : MonoBehaviour
     public void SetPlacePoints()
     {
         currentState = State.PlacePoints;
+    }
+
+    public void SetPlacePointsBefore()
+    {
+        currentState = State.PlacePointsBefore;
     }
 }
