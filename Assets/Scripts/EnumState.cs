@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnumState : MonoBehaviour
 {
-    public enum State {MainView, DisplayCube, ParamScene, PlacePoints}
+    public enum State {MainView, DisplayCube, ParamScene, PlacePoints, PlacePointsBefore}
 
     public State currentState;
 
@@ -25,7 +25,7 @@ public class EnumState : MonoBehaviour
 
     public void ChangeParamScene()
     {
-        if (currentState != State.PlacePoints)
+        if (currentState != State.PlacePoints && currentState != State.PlacePointsBefore)
         {
             if (currentState == State.MainView)
             {
@@ -35,6 +35,14 @@ public class EnumState : MonoBehaviour
             {
                 currentState = State.MainView;
             }
+        }
+        else if (currentState == State.PlacePoints)
+        {
+            currentState = State.PlacePointsBefore;
+        }
+        else
+        {
+            currentState = State.PlacePoints;
         }
     }
 

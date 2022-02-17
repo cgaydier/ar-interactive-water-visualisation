@@ -15,26 +15,43 @@ public class PlacePoints : MonoBehaviour
     public List<GameObject> points = new List<GameObject>();
     public List<Vector3> vertices = new List<Vector3>();
     public int nb_vertices = 0;
+    float offset = 0.2f;
     // Update is called once per frame
 
     //private void Start()
     //{
-    //    Vector3 pos = new Vector3(0, 0, 0);
     //    Quaternion rot = Quaternion.identity;
-    //    points.Add(Instantiate(m_PointToPlace, pos, rot));
-    //    points.Add(Instantiate(m_PointToPlace, pos, rot));
-    //    points.Add(Instantiate(m_PointToPlace, pos, rot));
-    //    points.Add(Instantiate(m_PointToPlace, pos, rot));
-    //    points.Add(Instantiate(m_PointToPlace, pos, rot));
-    //    points.Add(Instantiate(m_PointToPlace, pos, rot));
-    //    vertices.Add(pos);
-    //    vertices.Add(pos);
-    //    vertices.Add(pos);
-    //    vertices.Add(pos);
-    //    vertices.Add(pos);
-    //    vertices.Add(pos);
-    //    nb_vertices = 6;
+    //    points.Add(Instantiate(m_PointToPlace, new Vector3(0, 0, 0), rot));
+    //    points.Add(Instantiate(m_PointToPlace, new Vector3(1, 0, 0), rot));
+    //    points.Add(Instantiate(m_PointToPlace, new Vector3(1, 0, 1), rot));
+    //    points.Add(Instantiate(m_PointToPlace, new Vector3(0, 0, 1), rot));
+    //    points.Add(Instantiate(m_PointToPlace, new Vector3(0, 0, 0), rot));
+    //    points.Add(Instantiate(m_PointToPlace, new Vector3(1, 0, 0), rot));
+    //    points.Add(Instantiate(m_PointToPlace, new Vector3(1, 0, 1), rot));
+    //    points.Add(Instantiate(m_PointToPlace, new Vector3(0, 0, 1), rot));
+
+    //    vertices.Add(new Vector3(0, 0, 0));
+    //    vertices.Add(new Vector3(0, 0 + offset, 0));
+    //    vertices.Add(new Vector3(1, 0, 0));
+    //    vertices.Add(new Vector3(1, 0 + offset, 0));
+    //    vertices.Add(new Vector3(1, 0, 1));
+    //    vertices.Add(new Vector3(1, 0 + offset, 1));
+    //    vertices.Add(new Vector3(0, 0, 1));
+    //    vertices.Add(new Vector3(0, 0 + offset, 1));
+
+    //    nb_vertices = 8;
     //}
+
+    public void clearAll()
+    {
+        for (int i = 0; i < nb_vertices; i++)
+        {
+            Destroy(points[i]);
+        }
+        nb_vertices = 0;
+        vertices.Clear();
+        points.Clear();
+    }
 
     void Update()
     {
@@ -50,6 +67,7 @@ public class PlacePoints : MonoBehaviour
                 
                     points.Add(Instantiate(m_PointToPlace, hitPose.position, hitPose.rotation));
                     vertices.Add(hitPose.position);
+                    //vertices.Add(new Vector3(hitPose.position.x, hitPose.position.y + offset, hitPose.position.z));
                     nb_vertices++;
                 }
             }

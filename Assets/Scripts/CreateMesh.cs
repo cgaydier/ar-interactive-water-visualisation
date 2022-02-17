@@ -34,51 +34,49 @@ public class CreateMesh : MonoBehaviour
     {
         meshCreated = tmp;
     }
+    public void ClearAll()
+    {
+        pointsPlaced = false;
+        meshCreated = false;
+        triangles.Clear();
+        mesh.Clear();
+    }
 
     void CreateTriangles()
     {
         // nb_faces global : (placePoints.nb_vertices/2) + 2
-        // Bottom
-        for(int i = 0, j = 0; i < (placePoints.nb_vertices - 4) / 2; i++,j+=2)
+
+        // Horizontal
+        //for(int i = 0, j = 0; i < (placePoints.nb_vertices - 4) / 2; i++,j+=2)
+        //{
+        //    // Bottom
+        //    triangles.Add(0);
+        //    triangles.Add(j+2);
+        //    triangles.Add(j+4);
+
+        //    // Top
+        //    triangles.Add(1);
+        //    triangles.Add(j+5);
+        //    triangles.Add(j+3);
+        //}
+
+        //// Vertical
+        //for(int i = 1, j = 0; i < placePoints.nb_vertices/2; i++, j+=2)
+        //{
+        //    triangles.Add(j % placePoints.nb_vertices);
+        //    triangles.Add((j+1) % placePoints.nb_vertices);
+        //    triangles.Add((j+2) % placePoints.nb_vertices);
+        //    triangles.Add((j+2) % placePoints.nb_vertices);
+        //    triangles.Add((j+1) % placePoints.nb_vertices);
+        //    triangles.Add((j+3) % placePoints.nb_vertices);
+        //}
+
+        for (int i = 2; i < placePoints.nb_vertices; i++)
         {
             triangles.Add(0);
-            triangles.Add(j+4);
-            triangles.Add(j+2);
+            triangles.Add(i - 1);
+            triangles.Add(i);
         }
-
-        // Top
-        for(int i = 0, j = 0; i < (placePoints.nb_vertices - 4) / 2; i++,j+=2)
-        {
-            triangles.Add(1);
-            triangles.Add(j+5);
-            triangles.Add(j+3);
-        }
-
-        // Vertical
-        // first face
-        triangles.Add(0);
-        triangles.Add(1);
-        triangles.Add(2);
-        triangles.Add(2);
-        triangles.Add(1);
-        triangles.Add(3);
-
-        for(int i = 1, j = 2; i < placePoints.nb_vertices/2; i++, j+=2)
-        {
-            triangles.Add(j);
-            triangles.Add(j+1);
-            triangles.Add(j+2);
-            triangles.Add(j+2);
-            triangles.Add(j+1);
-            triangles.Add(j+3);
-        }
-
-        // for(int i = 2; i < placePoints.nb_vertices; i++)
-        // {
-        //     triangles.Add(0);
-        //     triangles.Add(i-1);
-        //     triangles.Add(i);
-        // }
     }
 
     bool Checkpoints()
@@ -95,16 +93,17 @@ public class CreateMesh : MonoBehaviour
             mesh.vertices = placePoints.vertices.ToArray();
             CreateTriangles();
             mesh.triangles = triangles.ToArray();
+            mesh.MarkDynamic();
+            mesh.Optimize();
+            mesh.OptimizeIndexBuffers();
+            mesh.OptimizeReorderVertexBuffer();
 
             go = new GameObject("Mesh", typeof(MeshFilter), typeof(MeshRenderer));
             go.GetComponent<MeshRenderer>().material = mesh_mat;
             go.GetComponent<MeshFilter>().mesh = mesh;
-            go.transform.position = new Vector3(go.transform.position.x, mesh.vertices[0].y, go.transform.position.z);
+            //go.transform.position = new Vector3(go.transform.position.x, mesh.vertices[0].y, go.transform.position.z);
 
-            for(int i = 0; i < placePoints.nb_vertices; i++)
-            {
-                Destroy(placePoints.points[i]);
-            }
+            placePoints.clearAll();
 
             meshCreated = true;
         }
