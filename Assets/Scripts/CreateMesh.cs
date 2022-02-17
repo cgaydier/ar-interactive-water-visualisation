@@ -37,27 +37,48 @@ public class CreateMesh : MonoBehaviour
 
     void CreateTriangles()
     {
+        // nb_faces global : (placePoints.nb_vertices/2) + 2
         // Bottom
-        // for(int i,j = 0; i < (placePoints.nb_vertices/2) + 2; i++,j+=2)
-        // {
-        //     triangles.Add(0);
-        //     triangles.Add(j+2);
-        //     triangles.Add(j+4);
-        // }
-
-        // // Top
-        // for(int i,j = 0; i <= (placePoints.nb_vertices/2) + 2; i++,j+=2)
-        // {
-        //     triangles.Add(1);
-        //     triangles.Add(j+3);
-        //     triangles.Add(j+5);
-        // }
-        for(int i = 2; i < placePoints.nb_vertices; i++)
+        for(int i = 0, j = 0; i < (placePoints.nb_vertices - 4) / 2; i++,j+=2)
         {
             triangles.Add(0);
-            triangles.Add(i-1);
-            triangles.Add(i);
+            triangles.Add(j+4);
+            triangles.Add(j+2);
         }
+
+        // Top
+        for(int i = 0, j = 0; i < (placePoints.nb_vertices - 4) / 2; i++,j+=2)
+        {
+            triangles.Add(1);
+            triangles.Add(j+5);
+            triangles.Add(j+3);
+        }
+
+        // Vertical
+        // first face
+        triangles.Add(0);
+        triangles.Add(1);
+        triangles.Add(2);
+        triangles.Add(2);
+        triangles.Add(1);
+        triangles.Add(3);
+
+        for(int i = 1, j = 2; i < placePoints.nb_vertices/2; i++, j+=2)
+        {
+            triangles.Add(j);
+            triangles.Add(j+1);
+            triangles.Add(j+2);
+            triangles.Add(j+2);
+            triangles.Add(j+1);
+            triangles.Add(j+3);
+        }
+
+        // for(int i = 2; i < placePoints.nb_vertices; i++)
+        // {
+        //     triangles.Add(0);
+        //     triangles.Add(i-1);
+        //     triangles.Add(i);
+        // }
     }
 
     bool Checkpoints()
