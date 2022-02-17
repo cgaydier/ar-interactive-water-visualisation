@@ -51,8 +51,8 @@ public class CreateMesh : MonoBehaviour
         {
             // Bottom
             triangles.Add(0);
-            triangles.Add(j + 2);
             triangles.Add(j + 4);
+            triangles.Add(j + 2);
 
             // Top
             triangles.Add(1);
@@ -61,7 +61,7 @@ public class CreateMesh : MonoBehaviour
         }
 
         // Vertical
-        for (int i = 1, j = 0; i < nb_total / 2; i++, j += 2)
+        for (int i = 0, j = 0; i < nb_total / 2; i++, j += 2)
         {
             triangles.Add(j % nb_total);
             triangles.Add((j + 1) % nb_total);
@@ -81,7 +81,7 @@ public class CreateMesh : MonoBehaviour
 
     bool Checkpoints()
     {
-        int nb_total = placePoints.vertices.Count;
+        int nb_total = (placePoints.vertices.Count)/2;
         if (nb_total < 3 || nb_total > 10)
             return false;
         return true;

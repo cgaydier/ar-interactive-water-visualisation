@@ -44,12 +44,15 @@ public class PlacePoints : MonoBehaviour
 
     public void clearAll()
     {
-        for (int i = 0; i < vertices.Count; i++)
+        for (int i = 0; i < vertices.Count/2; i++)
         {
+            print("destroy point : " + i + "\n");
             Destroy(points[i]);
         }
+        print("nb vertices avant clear : " + vertices.Count + "\n");
         //nb_vertices = 0;
         vertices.Clear();
+        print("nb vertices après clear : " + vertices.Count + "\n");
         points.Clear();
     }
 
