@@ -8,6 +8,7 @@ public class CreateMesh : MonoBehaviour
     List<int> triangles = new List<int>();
     public Material mesh_mat;
     public PlacePoints placePoints;
+    float surface = 0f;
     bool meshCreated = false;
     bool pointsPlaced = false;
     // Start is called before the first frame update
@@ -35,11 +36,13 @@ public class CreateMesh : MonoBehaviour
     {
         pointsPlaced = false;
         meshCreated = false;
+        surface = 0f;
+        GameObject.Find("SurfaceM2").GetComponent<UnityEngine.UI.Text>().text = "Surface : 0 m2";
         triangles.Clear();
         mesh.Clear();
     }
 
-    void CreateTriangles()
+    float CreateTriangles()
     {
         // nb_faces global : (placePoints.nb_vertices/2) + 2
         int nb_total = placePoints.vertices.Count;
@@ -50,6 +53,7 @@ public class CreateMesh : MonoBehaviour
             triangles.Add(0);
             triangles.Add(j + 4);
             triangles.Add(j + 2);
+            surface = surface + ((Vector3.Distance(placePoints.vertices[0], placePoints.vertices[j+2]) * Vector3.Distance(placePoints.vertices[j+2], placePoints.vertices[j+4])) / 2);
 
             // Top
             triangles.Add(1);
@@ -67,13 +71,7 @@ public class CreateMesh : MonoBehaviour
             triangles.Add((j + 1) % nb_total);
             triangles.Add((j + 3) % nb_total);
         }
-
-        //for (int i = 2; i < placePoints.nb_vertices; i++)
-        //{
-        //    triangles.Add(0);
-        //    triangles.Add(i - 1);
-        //    triangles.Add(i);
-        //}
+        return surface;
     }
 
     bool Checkpoints()
@@ -89,7 +87,9 @@ public class CreateMesh : MonoBehaviour
         if(Checkpoints() && !meshCreated && pointsPlaced)
         {
             mesh.vertices = placePoints.vertices.ToArray();
-            CreateTriangles();
+            // convert to meter
+            surface = CreateTriangles();
+            GameObject.Find("SurfaceM2").GetComponent<UnityEngine.UI.Text>().text = "Surface : " + surface.ToString("F2") + " m2";
             mesh.triangles = triangles.ToArray();
             mesh.MarkDynamic();
             mesh.Optimize();
@@ -113,9 +113,9 @@ public class CreateMesh : MonoBehaviour
             mesh.RecalculateBounds();
         }
 
-        else if (pointsPlaced)
-        {
-            print("Not enough points (3 min) or too much (10 max).\n Current : " + (placePoints.vertices.Count / 2)+ "\n");
-        }
+        // else if (pointsPlaced)
+        // {
+        //     print("Not enough points (3 min) or too much (10 max).\n Current : " + (placePoints.vertices.Count / 2)+ "\n");
+        // }
     }
 }
