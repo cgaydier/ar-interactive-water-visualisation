@@ -16,7 +16,6 @@ public class PlacePoints : MonoBehaviour
     public List<GameObject> points = new List<GameObject>();
     public List<Vector3> vertices = new List<Vector3>();
     public GraphicRaycaster GR;
-    float offset = 0.2f;
 
     private void Start()
     {
@@ -81,7 +80,7 @@ public class PlacePoints : MonoBehaviour
 
                         points.Add(Instantiate(m_PointToPlace, hitPose.position, hitPose.rotation));
                         vertices.Add(hitPose.position);
-                        vertices.Add(new Vector3(hitPose.position.x, hitPose.position.y + offset, hitPose.position.z));
+                        vertices.Add(hitPose.position);
                     }
                 }
             }

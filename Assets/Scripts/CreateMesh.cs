@@ -11,6 +11,8 @@ public class CreateMesh : MonoBehaviour
     float surface = 0f;
     bool meshCreated = false;
     bool pointsPlaced = false;
+    private float offset = 0.2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +33,29 @@ public class CreateMesh : MonoBehaviour
     public void SetMeshCreated(bool tmp)
     {
         meshCreated = tmp;
+    }
+
+    public void AddWater()
+    {
+        SetWater(offset + 0.01f);
+    }
+
+    public void RemoveWater()
+    {
+        SetWater(offset - 0.01f >= 0.00f ? offset - 0.01f : 0.00f);
+    }
+
+    public void SetWater(float tmp)
+    {
+        offset = tmp;
+        RefreshMesh();
+    }
+
+    void RefreshMesh()
+    {
+        triangles.Clear();
+        mesh.Clear();
+        meshCreated = false;
     }
     public void ClearAll()
     {
@@ -86,8 +111,24 @@ public class CreateMesh : MonoBehaviour
     {
         if(Checkpoints() && !meshCreated && pointsPlaced)
         {
-            mesh.vertices = placePoints.vertices.ToArray();
-            // convert to meter
+            List<Vector3> tmp = new List<Vector3>();
+            for (int i = 0; i < placePoints.vertices.Count; i ++)
+            {
+                if (i%2 == 0)
+                {
+                    tmp.Add(new Vector3(placePoints.vertices[i].x,
+                                        placePoints.vertices[i].y,
+                                        placePoints.vertices[i].z));
+                }
+                else
+                {
+                    tmp.Add(new Vector3(placePoints.vertices[i].x,
+                                        placePoints.vertices[i].y + offset,
+                                        placePoints.vertices[i].z));
+                }
+            }
+
+            mesh.vertices = tmp.ToArray();
             surface = CreateTriangles();
             GameObject.Find("SurfaceM2").GetComponent<UnityEngine.UI.Text>().text = "Surface : " + surface.ToString("F2") + " m2";
             mesh.triangles = triangles.ToArray();
@@ -99,9 +140,6 @@ public class CreateMesh : MonoBehaviour
             go = new GameObject("Mesh", typeof(MeshFilter), typeof(MeshRenderer));
             go.GetComponent<MeshRenderer>().material = mesh_mat;
             go.GetComponent<MeshFilter>().mesh = mesh;
-            //go.transform.position = new Vector3(go.transform.position.x, mesh.vertices[0].y, go.transform.position.z);
-
-            placePoints.clearAll();
 
             meshCreated = true;
         }
