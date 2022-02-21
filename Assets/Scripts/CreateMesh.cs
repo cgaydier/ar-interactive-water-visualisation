@@ -63,7 +63,7 @@ public class CreateMesh : MonoBehaviour
         pointsPlaced = false;
         meshCreated = false;
         surface = 0f;
-        GameObject.Find("SurfaceM2").GetComponent<UnityEngine.UI.Text>().text = "Surface : 0 m2";
+        GameObject.Find("SurfaceM2").GetComponent<UnityEngine.UI.Text>().text = "Volume : 0 m3";
         triangles.Clear();
         mesh.Clear();
     }
@@ -97,7 +97,7 @@ public class CreateMesh : MonoBehaviour
             triangles.Add((j + 1) % nb_total);
             triangles.Add((j + 3) % nb_total);
         }
-        return surface;
+        return surface * offset;
     }
 
     bool Checkpoints()
@@ -130,8 +130,8 @@ public class CreateMesh : MonoBehaviour
             }
 
             mesh.vertices = tmp.ToArray();
-            surface = CreateTriangles(tmp);
-            GameObject.Find("SurfaceM2").GetComponent<UnityEngine.UI.Text>().text = "Surface : " + surface.ToString("F2") + " m2";
+            surface = CreateTriangles(tmp); // volume (m3)
+            GameObject.Find("SurfaceM2").GetComponent<UnityEngine.UI.Text>().text = "Volume : " + surface.ToString("F2") + " m3";
             mesh.triangles = triangles.ToArray();
             mesh.MarkDynamic();
             mesh.Optimize();
