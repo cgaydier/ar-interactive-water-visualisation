@@ -53,6 +53,7 @@ public class CreateMesh : MonoBehaviour
 
     void RefreshMesh()
     {
+        surface = 0f;
         triangles.Clear();
         mesh.Clear();
         meshCreated = false;
@@ -67,10 +68,10 @@ public class CreateMesh : MonoBehaviour
         mesh.Clear();
     }
 
-    float CreateTriangles()
+    float CreateTriangles(List<Vector3> vertices)
     {
         // nb_faces global : (placePoints.nb_vertices/2) + 2
-        int nb_total = placePoints.vertices.Count;
+        int nb_total = vertices.Count;
         //Horizontal
         for (int i = 0, j = 0; i < (nb_total - 4) / 2; i++, j += 2)
         {
@@ -78,7 +79,7 @@ public class CreateMesh : MonoBehaviour
             triangles.Add(0);
             triangles.Add(j + 4);
             triangles.Add(j + 2);
-            surface = surface + ((Vector3.Distance(placePoints.vertices[0], placePoints.vertices[j+2]) * Vector3.Distance(placePoints.vertices[j+2], placePoints.vertices[j+4])) / 2);
+            surface = surface + ((Vector3.Distance(vertices[0], vertices[j+2]) * Vector3.Distance(vertices[j+2], vertices[j+4])) / 2f);
 
             // Top
             triangles.Add(1);
@@ -129,7 +130,7 @@ public class CreateMesh : MonoBehaviour
             }
 
             mesh.vertices = tmp.ToArray();
-            surface = CreateTriangles();
+            surface = CreateTriangles(tmp);
             GameObject.Find("SurfaceM2").GetComponent<UnityEngine.UI.Text>().text = "Surface : " + surface.ToString("F2") + " m2";
             mesh.triangles = triangles.ToArray();
             mesh.MarkDynamic();
