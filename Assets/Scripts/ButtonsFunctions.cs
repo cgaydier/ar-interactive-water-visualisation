@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ButtonsFunctions : MonoBehaviour
 {
@@ -17,12 +14,12 @@ public class ButtonsFunctions : MonoBehaviour
     {
         if (objectToShow.activeSelf)
         {
-            enumState.setMainScene();
+            enumState.SetMainScene();
             objectToShow.SetActive(false);
         }
         else
         {
-            enumState.setDisplayCube();
+            enumState.SetDisplayCube();
             objectToShow.SetActive(true);
         }
 

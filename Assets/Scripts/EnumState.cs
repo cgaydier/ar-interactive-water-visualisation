@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnumState : MonoBehaviour
 {
-    public enum State {MainView, DisplayCube, SetScene}
+    public enum State {MainView, DisplayCube, ParamScene, PlacePoints, PlacePointsBefore}
 
     public State currentState;
 
     private void Start()
     {
-        setMainScene();
+        SetMainScene();
     }
 
     public State GetState()
@@ -18,25 +16,51 @@ public class EnumState : MonoBehaviour
         return currentState;
     }
 
-    public void setDisplayCube()
+    public void SetDisplayCube()
     {
         currentState = State.DisplayCube;
     }
 
-    public void changeParamScene()
+    public void ChangeParamScene()
     {
-        if (currentState == State.SetScene)
+        if (currentState != State.PlacePoints && currentState != State.PlacePointsBefore)
         {
-            currentState = State.MainView;
+            if (currentState == State.MainView)
+            {
+                currentState = State.ParamScene;
+            }
+            else
+            {
+                currentState = State.MainView;
+            }
+        }
+        else if (currentState == State.PlacePoints)
+        {
+            currentState = State.PlacePointsBefore;
         }
         else
         {
-            currentState = State.SetScene;
+            currentState = State.PlacePoints;
         }
     }
 
-    public void setMainScene()
+    public void SetParamScene()
+    {
+        currentState = State.ParamScene;
+    }
+
+    public void SetMainScene()
     {
         currentState = State.MainView;
+    }
+
+    public void SetPlacePoints()
+    {
+        currentState = State.PlacePoints;
+    }
+
+    public void SetPlacePointsBefore()
+    {
+        currentState = State.PlacePointsBefore;
     }
 }
