@@ -37,7 +37,7 @@ public class CreateMesh : MonoBehaviour
         pointsPlaced = false;
         meshCreated = false;
         surface = 0f;
-        GameObject.Find("SurfaceM2").GetComponent<UnityEngine.UI.Text>().text = "Surface : " + surface.ToString("F2") + "m2";
+        GameObject.Find("SurfaceM2").GetComponent<UnityEngine.UI.Text>().text = "Surface : 0 m2";
         triangles.Clear();
         mesh.Clear();
     }
@@ -53,8 +53,6 @@ public class CreateMesh : MonoBehaviour
             triangles.Add(0);
             triangles.Add(j + 4);
             triangles.Add(j + 2);
-            print("longueur 0 et " + (j+2) + " : " + (Vector3.Distance(placePoints.vertices[0], placePoints.vertices[j+2])).ToString("F2"));
-            print("longueur " + (j+2) + " et " + (j+4) + " : " + (Vector3.Distance(placePoints.vertices[j+2], placePoints.vertices[j+4])).ToString("F2"));
             surface = surface + ((Vector3.Distance(placePoints.vertices[0], placePoints.vertices[j+2]) * Vector3.Distance(placePoints.vertices[j+2], placePoints.vertices[j+4])) / 2);
 
             // Top
@@ -115,9 +113,9 @@ public class CreateMesh : MonoBehaviour
             mesh.RecalculateBounds();
         }
 
-        else if (pointsPlaced)
-        {
-            print("Not enough points (3 min) or too much (10 max).\n Current : " + (placePoints.vertices.Count / 2)+ "\n");
-        }
+        // else if (pointsPlaced)
+        // {
+        //     print("Not enough points (3 min) or too much (10 max).\n Current : " + (placePoints.vertices.Count / 2)+ "\n");
+        // }
     }
 }
