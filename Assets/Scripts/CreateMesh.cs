@@ -11,6 +11,8 @@ public class CreateMesh : MonoBehaviour
     float surface = 0f;
     bool meshCreated = false;
     bool pointsPlaced = false;
+    private float offset = 0.2f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,20 +34,44 @@ public class CreateMesh : MonoBehaviour
     {
         meshCreated = tmp;
     }
+
+    public void AddWater()
+    {
+        SetWater(offset + 0.01f);
+    }
+
+    public void RemoveWater()
+    {
+        SetWater(offset - 0.01f >= 0.00f ? offset - 0.01f : 0.00f);
+    }
+
+    public void SetWater(float tmp)
+    {
+        offset = tmp;
+        RefreshMesh();
+    }
+
+    void RefreshMesh()
+    {
+        surface = 0f;
+        triangles.Clear();
+        mesh.Clear();
+        meshCreated = false;
+    }
     public void ClearAll()
     {
         pointsPlaced = false;
         meshCreated = false;
         surface = 0f;
-        GameObject.Find("SurfaceM2").GetComponent<UnityEngine.UI.Text>().text = "Surface : 0 m2";
+        GameObject.Find("SurfaceM2").GetComponent<UnityEngine.UI.Text>().text = "Volume : 0 m3";
         triangles.Clear();
         mesh.Clear();
     }
 
-    float CreateTriangles()
+    float CreateTriangles(List<Vector3> vertices)
     {
         // nb_faces global : (placePoints.nb_vertices/2) + 2
-        int nb_total = placePoints.vertices.Count;
+        int nb_total = vertices.Count;
         //Horizontal
         for (int i = 0, j = 0; i < (nb_total - 4) / 2; i++, j += 2)
         {
@@ -53,7 +79,7 @@ public class CreateMesh : MonoBehaviour
             triangles.Add(0);
             triangles.Add(j + 4);
             triangles.Add(j + 2);
-            surface = surface + ((Vector3.Distance(placePoints.vertices[0], placePoints.vertices[j+2]) * Vector3.Distance(placePoints.vertices[j+2], placePoints.vertices[j+4])) / 2);
+            surface = surface + ((Vector3.Distance(vertices[0], vertices[j+2]) * Vector3.Distance(vertices[j+2], vertices[j+4])) / 2f);
 
             // Top
             triangles.Add(1);
@@ -71,7 +97,7 @@ public class CreateMesh : MonoBehaviour
             triangles.Add((j + 1) % nb_total);
             triangles.Add((j + 3) % nb_total);
         }
-        return surface;
+        return surface * offset;
     }
 
     bool Checkpoints()
@@ -86,10 +112,26 @@ public class CreateMesh : MonoBehaviour
     {
         if(Checkpoints() && !meshCreated && pointsPlaced)
         {
-            mesh.vertices = placePoints.vertices.ToArray();
-            // convert to meter
-            surface = CreateTriangles();
-            GameObject.Find("SurfaceM2").GetComponent<UnityEngine.UI.Text>().text = "Surface : " + surface.ToString("F2") + " m2";
+            List<Vector3> tmp = new List<Vector3>();
+            for (int i = 0; i < placePoints.vertices.Count; i ++)
+            {
+                if (i%2 == 0)
+                {
+                    tmp.Add(new Vector3(placePoints.vertices[i].x,
+                                        placePoints.vertices[i].y,
+                                        placePoints.vertices[i].z));
+                }
+                else
+                {
+                    tmp.Add(new Vector3(placePoints.vertices[i].x,
+                                        placePoints.vertices[i].y + offset,
+                                        placePoints.vertices[i].z));
+                }
+            }
+
+            mesh.vertices = tmp.ToArray();
+            surface = CreateTriangles(tmp); // volume (m3)
+            GameObject.Find("SurfaceM2").GetComponent<UnityEngine.UI.Text>().text = "Volume : " + surface.ToString("F2") + " m3";
             mesh.triangles = triangles.ToArray();
             mesh.MarkDynamic();
             mesh.Optimize();
@@ -99,9 +141,6 @@ public class CreateMesh : MonoBehaviour
             go = new GameObject("Mesh", typeof(MeshFilter), typeof(MeshRenderer));
             go.GetComponent<MeshRenderer>().material = mesh_mat;
             go.GetComponent<MeshFilter>().mesh = mesh;
-            //go.transform.position = new Vector3(go.transform.position.x, mesh.vertices[0].y, go.transform.position.z);
-
-            placePoints.clearAll();
 
             meshCreated = true;
         }
