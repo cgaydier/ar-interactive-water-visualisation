@@ -511,26 +511,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &609834167 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3758404372574763924, guid: 01dc252f8ab1be949bf67978f8092cfd, type: 3}
-  m_PrefabInstance: {fileID: 1851503911}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &609834168
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 609834167}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 165f8888e9ad62b4daac92ba2e7f12bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxWobble: 0.03
-  WobbleSpeed: 1
-  Recovery: 1
 --- !u!1 &751020396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,7 +1932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6411d9e5c4c43b48992ebbd9de43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh_mat: {fileID: 2100000, guid: 2c93fab3ed73a36408c35f55d12ccf35, type: 2}
+  mesh_mat: {fileID: 2100000, guid: c48a844ce3478274994736372bc4790b, type: 2}
   placePoints: {fileID: 1516527981}
 --- !u!114 &1516527981
 MonoBehaviour:
@@ -2499,6 +2479,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2297454036291324869, guid: 01dc252f8ab1be949bf67978f8092cfd, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2297454036291324869, guid: 01dc252f8ab1be949bf67978f8092cfd, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2619706295289420678, guid: 01dc252f8ab1be949bf67978f8092cfd, type: 3}
       propertyPath: m_Layer
       value: 5
@@ -2507,14 +2495,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3762245594215234447, guid: 01dc252f8ab1be949bf67978f8092cfd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c48a844ce3478274994736372bc4790b, type: 2}
     - target: {fileID: 6998339919600318189, guid: 01dc252f8ab1be949bf67978f8092cfd, type: 3}
       propertyPath: m_Name
-      value: CubeWaterPhysics
+      value: CubeWater
       objectReference: {fileID: 0}
     - target: {fileID: 6998339919600318189, guid: 01dc252f8ab1be949bf67978f8092cfd, type: 3}
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8380836919080672098, guid: 01dc252f8ab1be949bf67978f8092cfd, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01dc252f8ab1be949bf67978f8092cfd, type: 3}
 --- !u!1 &1873146085
