@@ -15,7 +15,7 @@ public class PlacePoints : MonoBehaviour
     public EnumState enumState;
     public List<GameObject> points = new List<GameObject>();
     public List<Vector3> vertices = new List<Vector3>();
-    public GraphicRaycaster GR;
+    GraphicRaycaster GR;
 
     private void Start()
     {
