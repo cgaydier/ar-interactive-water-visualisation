@@ -39,10 +39,19 @@ public class CreateMesh : MonoBehaviour
     {
         SetWater(offset + 0.01f);
     }
+    public void AddWater(float volume)
+    {
+        SetWater(offset + volume);
+    }
 
     public void RemoveWater()
     {
         SetWater(offset - 0.01f >= 0.00f ? offset - 0.01f : 0.00f);
+    }
+
+    public void RemoveWater(float volume)
+    {
+        SetWater(offset - volume >= 0.00f ? offset - volume : 0.00f);
     }
 
     public void SetWater(float tmp)
