@@ -41,7 +41,7 @@ public class CreateMesh : MonoBehaviour
     }
     public void AddWater(float volume)
     {
-        SetWater(offset + (volume/surfaceMesh));
+        SetWater(offset + ((volume/surfaceMesh) / 20f));
     }
 
     public void RemoveWater()
