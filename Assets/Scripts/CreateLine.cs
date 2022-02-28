@@ -73,11 +73,11 @@ public class CreateLine : MonoBehaviour
         
         meshList.Add(tmp_mesh);
 
-        GameObject tmp_go = new GameObject("Mesh", typeof(MeshFilter), typeof(MeshRenderer));
+        GameObject tmp_go = new GameObject("Line", typeof(MeshFilter), typeof(MeshRenderer));
         tmp_go.GetComponent<MeshRenderer>().material = mesh_mat;
         tmp_go.GetComponent<MeshFilter>().mesh = tmp_mesh;
 
-        //tmp_go.transform.localScale += new Vector3(0.05f, 0, 0.05f);
+        //tmp_go.transform.localScale += new Vector3(0.2f, 0, 0.2f);
 
         goList.Add(tmp_go);
     }
