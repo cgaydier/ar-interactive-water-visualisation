@@ -89,7 +89,7 @@ public class CreateMesh : MonoBehaviour
         offset = 0.001f;
         currentOffset = 0.001f;
         pointsPlaced = false;
-        GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume : 0 m3";
+        GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume :\n0 m3";
     }
 
     float CreateTriangles(List<Vector3> vertices)
@@ -155,7 +155,7 @@ public class CreateMesh : MonoBehaviour
 
             mesh.vertices = tmp.ToArray();
             volumeMesh = CreateTriangles(tmp) * currentOffset; // volume (m3)
-            GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume : " + volumeMesh.ToString("F2") + " m3";
+            GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume :\n" + volumeMesh.ToString("F2") + " m3";
             mesh.triangles = triangles.ToArray();
             mesh.MarkDynamic();
             mesh.Optimize();
