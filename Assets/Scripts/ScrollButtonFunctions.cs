@@ -16,14 +16,4 @@ public class ScrollButtonFunctions : MonoBehaviour
             enumState.ChangeModalScene();
         }
     }
-
-    public void AddWater()
-    {
-        GameObject.Find("MeshHandler").GetComponent<CreateMesh>().AddWater();
-    }
-
-    public void RemoveWater()
-    {
-        GameObject.Find("MeshHandler").GetComponent<CreateMesh>().RemoveWater();
-    }
 }

@@ -51,9 +51,12 @@ public class SettingsFunctions : MonoBehaviour
 
     public void RemoveConsumption()
     {
-        GameObject.Find("MeshHandler").GetComponent<CreateMesh>().RemoveWater(waterCpt);
-        counter = ((counter - 1) > 0) ? counter - 1 : 0;
-        RefreshText();
+        if (counter > 0)
+        {
+            GameObject.Find("MeshHandler").GetComponent<CreateMesh>().RemoveWater(waterCpt);
+            counter --;
+            RefreshText();
+        }        
     }
 
     private void RefreshText()

@@ -79,6 +79,7 @@ public class CreateMesh : MonoBehaviour
     public void ClearAll()
     {
         RefreshMesh();
+        offset = 0.001f;
         pointsPlaced = false;
         GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume : 0 m3";
     }
