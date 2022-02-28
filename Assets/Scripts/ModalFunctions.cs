@@ -5,76 +5,57 @@ using UnityEngine.UI;
 
 public class ModalFunctions : MonoBehaviour
 {
-    public Text scoreText;
+    float waterCpt;
     int counter = 0;
-    // Start is called before the first frame update
+    
+    Text scoreText;
+
     void Start()
     {
-        scoreText.text = "0";
+        switch (gameObject.name)
+        {
+            case "Shower":
+                scoreText = GameObject.Find("Shower/Score").GetComponent<Text>();
+                waterCpt = 0.3f;
+                break;
+            case "Bath":
+                scoreText = GameObject.Find("Bath/Score").GetComponent<Text>();
+                waterCpt = 0.5f;
+                break;
+            case "HandDish":
+                scoreText = GameObject.Find("HandDish/Score").GetComponent<Text>();
+                waterCpt = 0.25f;
+                break;
+            case "DishWasher":
+                scoreText = GameObject.Find("DishWasher/Score").GetComponent<Text>();
+                waterCpt = 0.15f;
+                break;
+            case "Washing":
+                scoreText = GameObject.Find("Washing/Score").GetComponent<Text>();
+                waterCpt = 0.4f;
+                break;
+            default:
+                Debug.Log("Type not known for increment consumption !");
+                break;
+        }
     }
 
-    void Update()
+    public void AddConsumption()
+    {
+        GameObject.Find("MenuHandler").GetComponent<CreateMesh>().AddWater(waterCpt);
+        counter++;
+        RefreshText();
+    }
+
+    public void RemoveConsumption()
+    {
+        GameObject.Find("MenuHandler").GetComponent<CreateMesh>().RemoveWater(waterCpt);
+        counter = ((counter - 1) > 0) ? counter - 1 : 0;
+        RefreshText();
+    }
+
+    private void RefreshText()
     {
         scoreText.text = counter.ToString();
-    }
-
-    public void AddBath()
-    {
-        GameObject.Find("MenuHandler").GetComponent<CreateMesh>().AddWater(0.5f);
-        counter++;
-    }
-
-    public void RemoveBath()
-    {
-        GameObject.Find("MenuHandler").GetComponent<CreateMesh>().RemoveWater(0.5f);
-        counter = ((counter - 1) > 0) ? counter - 1 : 0;
-    }
-
-    public void AddShower()
-    {
-        GameObject.Find("MenuHandler").GetComponent<CreateMesh>().AddWater(0.3f);
-        counter++;
-    }
-
-    public void RemoveShower()
-    {
-        GameObject.Find("MenuHandler").GetComponent<CreateMesh>().RemoveWater(0.3f);
-        counter = ((counter - 1) > 0) ? counter - 1 : 0;
-    }
-
-    public void AddHandWashingDishes()
-    {
-        GameObject.Find("MenuHandler").GetComponent<CreateMesh>().AddWater(0.25f);
-        counter++;
-    }
-
-    public void RemoveHandWashingDishes()
-    {
-        GameObject.Find("MenuHandler").GetComponent<CreateMesh>().RemoveWater(0.25f);
-        counter = ((counter - 1) > 0) ? counter - 1 : 0;
-    }
-
-    public void AddDishWasher()
-    {
-        GameObject.Find("MenuHandler").GetComponent<CreateMesh>().AddWater(0.15f);
-        counter++;
-    }
-
-    public void RemoveDishWasher()
-    {
-        GameObject.Find("MenuHandler").GetComponent<CreateMesh>().RemoveWater(0.15f);
-        counter = ((counter - 1) > 0) ? counter - 1 : 0;
-    }
-
-    public void AddWashingMachine()
-    {
-        GameObject.Find("MenuHandler").GetComponent<CreateMesh>().AddWater(0.4f);
-        counter++;
-    }
-
-    public void RemoveWashingMachine()
-    {
-        GameObject.Find("MenuHandler").GetComponent<CreateMesh>().RemoveWater(0.4f);
-        counter = ((counter - 1) > 0) ? counter - 1 : 0;
     }
 }

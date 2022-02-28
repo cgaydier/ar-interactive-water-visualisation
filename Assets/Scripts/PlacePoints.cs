@@ -46,12 +46,9 @@ public class PlacePoints : MonoBehaviour
     {
         for (int i = 0; i < vertices.Count/2; i++)
         {
-            print("destroy point : " + i + "\n");
             Destroy(points[i]);
         }
-        print("nb vertices avant clear : " + vertices.Count + "\n");
         vertices.Clear();
-        print("nb vertices après clear : " + vertices.Count + "\n");
         points.Clear();
     }
 
@@ -74,7 +71,7 @@ public class PlacePoints : MonoBehaviour
 
                     Debug.Log(results);
                     print(results.Count);
-                    if (results.Count == 1)
+                    if (results.Count == 0)
                     {
                         Pose hitPose = s_Hits[0].pose;
 

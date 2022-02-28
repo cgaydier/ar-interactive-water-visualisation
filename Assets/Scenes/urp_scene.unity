@@ -250,11 +250,11 @@ RectTransform:
   m_Father: {fileID: 1888778010}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -481, y: 226}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 30, y: 0}
   m_SizeDelta: {x: 962, y: 200}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &45667650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,9 +340,9 @@ RectTransform:
   m_Father: {fileID: 1683650217}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 75, y: -75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &47012004
@@ -389,8 +389,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1327940033}
-        m_TargetAssemblyTypeName: ButtonsFunctions, Assembly-CSharp
+      - m_Target: {fileID: 1683650220}
+        m_TargetAssemblyTypeName: ScrollButtonFunctions, Assembly-CSharp
         m_MethodName: AddWater
         m_Mode: 1
         m_Arguments:
@@ -451,7 +451,6 @@ GameObject:
   - component: {fileID: 48139850}
   - component: {fileID: 48139849}
   - component: {fileID: 48139848}
-  - component: {fileID: 48139851}
   m_Layer: 5
   m_Name: Open Btn
   m_TagString: Untagged
@@ -474,9 +473,9 @@ RectTransform:
   m_Father: {fileID: 1683650217}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 550, y: -75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 400, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &48139848
@@ -523,8 +522,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 48139851}
-        m_TargetAssemblyTypeName: ModalOpener, Assembly-CSharp
+      - m_Target: {fileID: 1683650220}
+        m_TargetAssemblyTypeName: ScrollButtonFunctions, Assembly-CSharp
         m_MethodName: OpenModal
         m_Mode: 1
         m_Arguments:
@@ -573,19 +572,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48139846}
   m_CullTransparentMesh: 1
---- !u!114 &48139851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 48139846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14943183d86ae7645a34885256aebda6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Modal: {fileID: 1367310947}
 --- !u!1 &58404965
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,7 +624,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
 --- !u!114 &58404968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -683,9 +668,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1442646095}
+      - m_Target: {fileID: 636818239}
         m_TargetAssemblyTypeName: ModalFunctions, Assembly-CSharp
-        m_MethodName: RemoveDishWasher
+        m_MethodName: RemoveConsumption
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -785,7 +770,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
 --- !u!114 &128838977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -830,9 +814,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1442646095}
+      - m_Target: {fileID: 636818239}
         m_TargetAssemblyTypeName: ModalFunctions, Assembly-CSharp
-        m_MethodName: AddDishWasher
+        m_MethodName: AddConsumption
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -896,7 +880,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &129367348
 RectTransform:
   m_ObjectHideFlags: 0
@@ -958,6 +942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe0e6d1f280c4641ac8e96abfaabca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Modal: {fileID: 1367310947}
   currentState: 0
 --- !u!4 &144765962
 Transform:
@@ -971,7 +956,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &217299909 stripped
 GameObject:
@@ -1042,7 +1027,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 45
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -1115,7 +1100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
 --- !u!114 &232298641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1160,9 +1144,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1855918133}
+      - m_Target: {fileID: 1995004303}
         m_TargetAssemblyTypeName: ModalFunctions, Assembly-CSharp
-        m_MethodName: AddShower
+        m_MethodName: AddConsumption
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1222,7 +1206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
 --- !u!1 &277227058
 GameObject:
   m_ObjectHideFlags: 0
@@ -1275,7 +1258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
 --- !u!114 &277227061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1320,9 +1302,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 726394411}
+      - m_Target: {fileID: 1024366582}
         m_TargetAssemblyTypeName: ModalFunctions, Assembly-CSharp
-        m_MethodName: RemoveBath
+        m_MethodName: RemoveConsumption
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1427,7 +1409,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &292240801
 GameObject:
@@ -1488,7 +1470,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 45
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -1646,7 +1628,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 45
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -1725,7 +1707,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 45
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -1745,6 +1727,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394953341}
   m_CullTransparentMesh: 1
+--- !u!1 &438462928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 438462929}
+  m_Layer: 0
+  m_Name: -----------------------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &438462929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438462928}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.48373222, y: 0.55759096, z: 10.145436}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &526385172
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,7 +1816,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 45
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -1835,8 +1847,9 @@ GameObject:
   - component: {fileID: 636818236}
   - component: {fileID: 636818238}
   - component: {fileID: 636818237}
+  - component: {fileID: 636818239}
   m_Layer: 5
-  m_Name: Lave Vaisselle
+  m_Name: DishWasher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1872,7 +1885,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636818235}
-  m_Text: Lave Vaisselle
+  m_Text: Dish Washer
   m_OffsetZ: 0
   m_CharacterSize: 24
   m_LineSpacing: 1
@@ -1927,6 +1940,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &636818239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636818235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &647569863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,7 +2004,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
 --- !u!114 &647569866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2024,9 +2048,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1511683302}
+      - m_Target: {fileID: 1152708513}
         m_TargetAssemblyTypeName: ModalFunctions, Assembly-CSharp
-        m_MethodName: AddHandWashingDishes
+        m_MethodName: AddConsumption
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2085,7 +2109,6 @@ GameObject:
   - component: {fileID: 726394414}
   - component: {fileID: 726394413}
   - component: {fileID: 726394412}
-  - component: {fileID: 726394411}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -2093,19 +2116,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &726394411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726394410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 726394412}
 --- !u!114 &726394412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2346,7 +2356,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 45
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -2377,8 +2387,9 @@ GameObject:
   - component: {fileID: 764785146}
   - component: {fileID: 764785148}
   - component: {fileID: 764785147}
+  - component: {fileID: 764785149}
   m_Layer: 5
-  m_Name: Lave Linge
+  m_Name: Washing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2414,7 +2425,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764785145}
-  m_Text: Lave Linge
+  m_Text: Washing machine
   m_OffsetZ: 0
   m_CharacterSize: 24
   m_LineSpacing: 1
@@ -2469,6 +2480,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &764785149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764785145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &797352520
 GameObject:
   m_ObjectHideFlags: 0
@@ -2584,7 +2607,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &873725934
 GameObject:
@@ -2831,7 +2854,6 @@ GameObject:
   - component: {fileID: 904671244}
   - component: {fileID: 904671243}
   - component: {fileID: 904671242}
-  - component: {fileID: 904671241}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -2839,19 +2861,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &904671241
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 904671240}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 904671242}
 --- !u!114 &904671242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3007,9 +3016,9 @@ RectTransform:
   - {fileID: 2050411102}
   - {fileID: 1932573668}
   - {fileID: 1327940030}
-  - {fileID: 1622979274}
   - {fileID: 1888778010}
   - {fileID: 1367310948}
+  - {fileID: 1622979274}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3070,7 +3079,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
 --- !u!114 &971047605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3115,9 +3123,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 904671241}
+      - m_Target: {fileID: 764785149}
         m_TargetAssemblyTypeName: ModalFunctions, Assembly-CSharp
-        m_MethodName: RemoveWashingMachine
+        m_MethodName: RemoveConsumption
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3217,7 +3225,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
 --- !u!114 &985028595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3262,9 +3269,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1511683302}
+      - m_Target: {fileID: 1152708513}
         m_TargetAssemblyTypeName: ModalFunctions, Assembly-CSharp
-        m_MethodName: RemoveHandWashingDishes
+        m_MethodName: RemoveConsumption
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3323,8 +3330,9 @@ GameObject:
   - component: {fileID: 1024366579}
   - component: {fileID: 1024366581}
   - component: {fileID: 1024366580}
+  - component: {fileID: 1024366582}
   m_Layer: 5
-  m_Name: Bain
+  m_Name: Bath
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3360,7 +3368,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1024366578}
-  m_Text: Nombre de bain
+  m_Text: Bath
   m_OffsetZ: 0
   m_CharacterSize: 24
   m_LineSpacing: 1
@@ -3415,6 +3423,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1024366582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024366578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1062181891
 GameObject:
   m_ObjectHideFlags: 0
@@ -3467,7 +3487,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
 --- !u!114 &1062181894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3512,9 +3531,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 726394411}
+      - m_Target: {fileID: 1024366582}
         m_TargetAssemblyTypeName: ModalFunctions, Assembly-CSharp
-        m_MethodName: AddBath
+        m_MethodName: AddConsumption
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4013,7 +4032,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
 --- !u!114 &1134165036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4058,9 +4076,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 904671241}
+      - m_Target: {fileID: 764785149}
         m_TargetAssemblyTypeName: ModalFunctions, Assembly-CSharp
-        m_MethodName: AddWashingMachine
+        m_MethodName: AddConsumption
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4119,8 +4137,9 @@ GameObject:
   - component: {fileID: 1152708510}
   - component: {fileID: 1152708512}
   - component: {fileID: 1152708511}
+  - component: {fileID: 1152708513}
   m_Layer: 5
-  m_Name: "Vaissele fait \xE0 la main"
+  m_Name: HandDish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4156,7 +4175,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152708509}
-  m_Text: "Vaissele fait \xE0 la main"
+  m_Text: Hand dishes
   m_OffsetZ: 0
   m_CharacterSize: 24
   m_LineSpacing: 1
@@ -4211,6 +4230,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1152708513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152708509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1204149426
 GameObject:
   m_ObjectHideFlags: 0
@@ -4349,7 +4380,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 45
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -4387,7 +4418,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1327940030
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4497,7 +4528,7 @@ RectTransform:
   - {fileID: 636818236}
   - {fileID: 764785146}
   m_Father: {fileID: 956106882}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.20215902, y: 0.3115}
   m_AnchorMax: {x: 0.8924373, y: 0.757}
@@ -4517,7 +4548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.31383473, b: 0, a: 0.392}
+  m_Color: {r: 0.21960784, g: 0.21960784, b: 0.21960784, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4594,7 +4625,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 1855918134}
 --- !u!114 &1394007885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4639,9 +4669,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1855918133}
+      - m_Target: {fileID: 1995004303}
         m_TargetAssemblyTypeName: ModalFunctions, Assembly-CSharp
-        m_MethodName: RemoveShower
+        m_MethodName: RemoveConsumption
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4700,7 +4730,6 @@ GameObject:
   - component: {fileID: 1442646098}
   - component: {fileID: 1442646097}
   - component: {fileID: 1442646096}
-  - component: {fileID: 1442646095}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -4708,19 +4737,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1442646095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1442646094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 1442646096}
 --- !u!114 &1442646096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4828,7 +4844,7 @@ Transform:
   m_Children:
   - {fileID: 873725939}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1471520474
 MonoBehaviour:
@@ -4914,7 +4930,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1480109106}
-  m_Text: Consommation d'eau par semaine
+  m_Text: Water consumption /week
   m_OffsetZ: 0
   m_CharacterSize: 24
   m_LineSpacing: 1
@@ -5028,7 +5044,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 45
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -5138,7 +5154,6 @@ GameObject:
   - component: {fileID: 1511683305}
   - component: {fileID: 1511683304}
   - component: {fileID: 1511683303}
-  - component: {fileID: 1511683302}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -5146,19 +5161,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1511683302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1511683301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 1511683303}
 --- !u!114 &1511683303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5361,7 +5363,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1601316924
 GameObject:
@@ -5422,7 +5424,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 45
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -5475,7 +5477,7 @@ RectTransform:
   - {fileID: 751020397}
   - {fileID: 1809434748}
   m_Father: {fileID: 956106882}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -5546,7 +5548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.21960784, g: 0.21960784, b: 0.21960784, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5582,6 +5584,7 @@ GameObject:
   - component: {fileID: 1683650217}
   - component: {fileID: 1683650218}
   - component: {fileID: 1683650219}
+  - component: {fileID: 1683650220}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -5608,9 +5611,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100.00011}
+  m_AnchoredPosition: {x: 0, y: -100.00001}
   m_SizeDelta: {x: 0, y: 150}
-  m_Pivot: {x: 0, y: 1}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1683650218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5651,6 +5654,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!114 &1683650220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683650216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14943183d86ae7645a34885256aebda6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Modal: {fileID: 1367310947}
+  enumState: {fileID: 144765961}
 --- !u!1 &1714909796
 GameObject:
   m_ObjectHideFlags: 0
@@ -5730,101 +5747,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714909796}
   m_CullTransparentMesh: 1
---- !u!1 &1746682956
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1746682960}
-  - component: {fileID: 1746682959}
-  - component: {fileID: 1746682958}
-  - component: {fileID: 1746682957}
-  m_Layer: 0
-  m_Name: CubeTEST
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!65 &1746682957
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1746682956}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1746682958
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1746682956}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 839160b47583b20489ba9b851c20d235, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1746682959
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1746682956}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1746682960
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1746682956}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 10}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1809434747
 GameObject:
   m_ObjectHideFlags: 0
@@ -6065,7 +5987,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1851503911
 PrefabInstance:
@@ -6175,7 +6097,6 @@ GameObject:
   - component: {fileID: 1855918132}
   - component: {fileID: 1855918135}
   - component: {fileID: 1855918134}
-  - component: {fileID: 1855918133}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -6202,19 +6123,6 @@ RectTransform:
   m_AnchoredPosition: {x: 493, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1855918133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855918131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 1855918134}
 --- !u!114 &1855918134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6316,7 +6224,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 45
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 3
@@ -6354,7 +6262,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1873146086
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6501,13 +6409,13 @@ RectTransform:
   m_Children:
   - {fileID: 45667649}
   m_Father: {fileID: 956106882}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 481, y: 144}
+  m_AnchoredPosition: {x: 50, y: 0}
   m_SizeDelta: {x: 962, y: 300}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1888778011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6551,7 +6459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.7882353, b: 1, a: 0.92156863}
+  m_Color: {r: 0.21960784, g: 0.21960784, b: 0.21960784, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6627,7 +6535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6663,8 +6571,9 @@ GameObject:
   - component: {fileID: 1995004300}
   - component: {fileID: 1995004302}
   - component: {fileID: 1995004301}
+  - component: {fileID: 1995004303}
   m_Layer: 5
-  m_Name: Douche
+  m_Name: Shower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6700,7 +6609,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1995004299}
-  m_Text: Nombre de douche
+  m_Text: Shower
   m_OffsetZ: 0
   m_CharacterSize: 24
   m_LineSpacing: 1
@@ -6755,6 +6664,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1995004303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995004299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2050411101
 GameObject:
   m_ObjectHideFlags: 0
@@ -6791,7 +6712,7 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &2050411103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6943,9 +6864,9 @@ RectTransform:
   m_Father: {fileID: 1683650217}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2128261760
@@ -6992,9 +6913,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1888778009}
-        m_TargetAssemblyTypeName: ButtonsFunctions, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 1683650220}
+        m_TargetAssemblyTypeName: ScrollButtonFunctions, Assembly-CSharp
+        m_MethodName: RemoveWater
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class EnumState : MonoBehaviour
 {
-    public enum State {MainView, DisplayCube, ParamScene, PlacePoints, PlacePointsBefore}
+    public GameObject Modal;
+    public enum State {MainView, DisplayCube, ParamScene, PlacePoints, PlacePointsBefore, ConsumptionScene}
 
     public State currentState;
 
@@ -23,24 +24,37 @@ public class EnumState : MonoBehaviour
 
     public void ChangeParamScene()
     {
-        if (currentState != State.PlacePoints && currentState != State.PlacePointsBefore)
+        if (Modal.activeSelf)
         {
-            if (currentState == State.MainView)
-            {
-                currentState = State.ParamScene;
-            }
-            else
-            {
-                currentState = State.MainView;
-            }
+            Modal.SetActive(false);
+        }
+        if (currentState != State.ParamScene && currentState != State.PlacePointsBefore && currentState != State.PlacePoints)
+        {
+            currentState = State.ParamScene;
         }
         else if (currentState == State.PlacePoints)
         {
             currentState = State.PlacePointsBefore;
         }
-        else
+        else if (currentState == State.PlacePointsBefore)
         {
             currentState = State.PlacePoints;
+        }
+        else
+        {
+            currentState = State.MainView;
+        }
+    }
+
+    public void ChangeModalScene()
+    {
+        if (currentState != State.MainView && currentState != State.PlacePoints)
+        {
+            SetMainScene();
+        }
+        else
+        {
+            SetConsumptionScene();
         }
     }
 
@@ -62,5 +76,10 @@ public class EnumState : MonoBehaviour
     public void SetPlacePointsBefore()
     {
         currentState = State.PlacePointsBefore;
+    }
+
+    public void SetConsumptionScene()
+    {
+        currentState = State.ConsumptionScene;
     }
 }

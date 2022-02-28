@@ -24,14 +24,4 @@ public class ButtonsFunctions : MonoBehaviour
         }
 
     }
-
-    public void AddWater()
-    {
-        GameObject.Find("MenuHandler").GetComponent<CreateMesh>().AddWater();
-    }
-
-    public void RemoveWater()
-    {
-        GameObject.Find("MenuHandler").GetComponent<CreateMesh>().RemoveWater();
-    }
 }
