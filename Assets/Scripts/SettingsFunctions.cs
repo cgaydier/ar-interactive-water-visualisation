@@ -44,6 +44,7 @@ public class SettingsFunctions : MonoBehaviour
                 break;
             case "Scale":
                 counter = 1;
+                scoreText = GameObject.Find("Scale/Score").GetComponent<Text>();
                 break;
             default:
                 Debug.Log("Type not known for increment consumption !");
