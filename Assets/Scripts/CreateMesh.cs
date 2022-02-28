@@ -14,6 +14,8 @@ public class CreateMesh : MonoBehaviour
     bool meshCreated = false;
     bool pointsPlaced = false;
     private float offset = 0.001f;
+    private float currentOffset = 0.001f;
+    public float scale = 1f;
 
     void Start()
     {
@@ -35,28 +37,33 @@ public class CreateMesh : MonoBehaviour
         meshCreated = tmp;
     }
 
-    public void AddWater()
+    public void AddScale()
     {
-        SetWater(offset + 0.01f);
-    }
-    public void AddWater(float volume)
-    {
-        SetWater(offset + ((volume/surfaceMesh) / 20f));
+        scale ++;
+        SetWater(offset / scale);
     }
 
-    public void RemoveWater()
+    public void RemoveScale()
     {
-        SetWater(offset - 0.01f >= 0.00f ? offset - 0.01f : 0.00f);
+        scale = scale - 1f > 1f ? scale - 1f : 1f;
+        SetWater(offset / scale);
+    }
+
+    public void AddWater(float volume)
+    {
+        offset += volume / surfaceMesh;
+        SetWater(offset / scale);
     }
 
     public void RemoveWater(float volume)
     {
-        SetWater(offset - ((volume/surfaceMesh) / 20f) >= 0.00f ? offset - ((volume/surfaceMesh) / 20f) : 0.00f);
+        offset = offset - (volume / surfaceMesh) >= 0.00f ? offset - (volume / surfaceMesh) : 0.00f;
+        SetWater(offset / scale);
     }
 
     public void SetWater(float tmp)
     {
-        offset = tmp;
+        currentOffset = tmp;
         RefreshMesh();
     }
 
@@ -80,6 +87,7 @@ public class CreateMesh : MonoBehaviour
     {
         RefreshMesh();
         offset = 0.001f;
+        currentOffset = 0.001f;
         pointsPlaced = false;
         GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume : 0 m3";
     }
@@ -140,13 +148,13 @@ public class CreateMesh : MonoBehaviour
                 else
                 {
                     tmp.Add(new Vector3(placePoints.vertices[i].x,
-                                        placePoints.vertices[i].y + offset,
+                                        placePoints.vertices[i].y + currentOffset,
                                         placePoints.vertices[i].z));
                 }
             }
 
             mesh.vertices = tmp.ToArray();
-            volumeMesh = CreateTriangles(tmp) * offset; // volume (m3)
+            volumeMesh = CreateTriangles(tmp) * currentOffset; // volume (m3)
             GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume : " + volumeMesh.ToString("F2") + " m3";
             mesh.triangles = triangles.ToArray();
             mesh.MarkDynamic();

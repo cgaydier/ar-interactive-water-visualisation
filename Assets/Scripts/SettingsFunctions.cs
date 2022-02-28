@@ -7,12 +7,14 @@ public class SettingsFunctions : MonoBehaviour
 {
     float waterCpt;
     int counter = 0;
+    CreateMesh createMesh;
     WaterConsumption waterConsumption;
     
     Text scoreText;
 
     void Start()
     {
+        createMesh = GameObject.Find("MeshHandler").GetComponent<CreateMesh>();
         waterConsumption = GameObject.Find("WaterConsumptionDatas").GetComponent<WaterConsumption>();
         switch (gameObject.name)
         {
@@ -36,6 +38,13 @@ public class SettingsFunctions : MonoBehaviour
                 scoreText = GameObject.Find("WashingMachine/Score").GetComponent<Text>();
                 waterCpt = waterConsumption.washingMachine;
                 break;
+            case "Bathroom":
+                scoreText = GameObject.Find("Bathroom/Score").GetComponent<Text>();
+                waterCpt = waterConsumption.bathroom;
+                break;
+            case "Scale":
+                counter = 1;
+                break;
             default:
                 Debug.Log("Type not known for increment consumption !");
                 break;
@@ -44,7 +53,7 @@ public class SettingsFunctions : MonoBehaviour
 
     public void AddConsumption()
     {
-        GameObject.Find("MeshHandler").GetComponent<CreateMesh>().AddWater(waterCpt);
+        createMesh.AddWater(waterCpt);
         counter++;
         RefreshText();
     }
@@ -53,10 +62,27 @@ public class SettingsFunctions : MonoBehaviour
     {
         if (counter > 0)
         {
-            GameObject.Find("MeshHandler").GetComponent<CreateMesh>().RemoveWater(waterCpt);
+            createMesh.RemoveWater(waterCpt);
             counter --;
             RefreshText();
         }        
+    }
+
+    public void AddScale()
+    {
+        createMesh.AddScale();
+        counter++;
+        RefreshText();
+    }
+
+    public void RemoveScale()
+    {
+        if (counter > 1)
+        {
+            createMesh.RemoveScale();
+            counter--;
+            RefreshText();
+        }
     }
 
     private void RefreshText()
