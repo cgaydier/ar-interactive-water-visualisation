@@ -7,13 +7,13 @@ public class SettingsFunctions : MonoBehaviour
 {
     float waterCpt;
     int counter = 0;
-
     WaterConsumption waterConsumption;
     
     Text scoreText;
 
     void Start()
     {
+        waterConsumption = GameObject.Find("WaterConsumptionDatas").GetComponent<WaterConsumption>();
         switch (gameObject.name)
         {
             case "Shower":
