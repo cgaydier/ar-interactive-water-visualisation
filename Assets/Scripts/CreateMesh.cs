@@ -6,13 +6,14 @@ public class CreateMesh : MonoBehaviour
     Mesh mesh;
     GameObject go;
     List<int> triangles = new List<int>();
-    public Material mesh_mat;
+    public Material meshMat;
     public PlacePoints placePoints;
+    float surfaceMesh = 0f;
+    float volumeMesh = 0f;
     public CreateLine createLine;
-    float surface = 0f;
     bool meshCreated = false;
     bool pointsPlaced = false;
-    private float offset = 0.2f;
+    private float offset = 0.001f;
 
     void Start()
     {
@@ -40,7 +41,7 @@ public class CreateMesh : MonoBehaviour
     }
     public void AddWater(float volume)
     {
-        SetWater(offset + volume);
+        SetWater(offset + (volume/surfaceMesh));
     }
 
     public void RemoveWater()
@@ -61,7 +62,8 @@ public class CreateMesh : MonoBehaviour
 
     void RefreshMesh()
     {
-        surface = 0f;
+        surfaceMesh = 0f;
+        volumeMesh = 0f;
         triangles.Clear();
         mesh.Clear();
         meshCreated = false;
@@ -84,15 +86,15 @@ public class CreateMesh : MonoBehaviour
     float CreateTriangles(List<Vector3> vertices)
     {
         // nb_faces global : (placePoints.nb_vertices/2) + 2
-        int nb_total = vertices.Count;
+        int nbTotal = vertices.Count;
         //Horizontal
-        for (int i = 0, j = 0; i < (nb_total - 4) / 2; i++, j += 2)
+        for (int i = 0, j = 0; i < (nbTotal - 4) / 2; i++, j += 2)
         {
             // Bottom
             triangles.Add(0);
             triangles.Add(j + 4);
             triangles.Add(j + 2);
-            surface = surface + ((Vector3.Distance(vertices[0], vertices[j+2]) * Vector3.Distance(vertices[j+2], vertices[j+4])) / 2f);
+            surfaceMesh = surfaceMesh + ((Vector3.Distance(vertices[0], vertices[j+2]) * Vector3.Distance(vertices[j+2], vertices[j+4])) / 2f);
 
             // Top
             triangles.Add(1);
@@ -101,16 +103,16 @@ public class CreateMesh : MonoBehaviour
         }
 
         // Vertical
-        for (int i = 0, j = 0; i < nb_total / 2; i++, j += 2)
+        for (int i = 0, j = 0; i < nbTotal / 2; i++, j += 2)
         {
-            triangles.Add(j % nb_total);
-            triangles.Add((j + 1) % nb_total);
-            triangles.Add((j + 2) % nb_total);
-            triangles.Add((j + 2) % nb_total);
-            triangles.Add((j + 1) % nb_total);
-            triangles.Add((j + 3) % nb_total);
+            triangles.Add(j % nbTotal);
+            triangles.Add((j + 1) % nbTotal);
+            triangles.Add((j + 2) % nbTotal);
+            triangles.Add((j + 2) % nbTotal);
+            triangles.Add((j + 1) % nbTotal);
+            triangles.Add((j + 3) % nbTotal);
         }
-        return surface * offset;
+        return surfaceMesh;
     }
 
     bool Checkpoints()
@@ -143,8 +145,8 @@ public class CreateMesh : MonoBehaviour
             }
 
             mesh.vertices = tmp.ToArray();
-            surface = CreateTriangles(tmp); // volume (m3)
-            GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume : " + surface.ToString("F2") + " m3";
+            volumeMesh = CreateTriangles(tmp) * offset; // volume (m3)
+            GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume : " + volumeMesh.ToString("F2") + " m3";
             mesh.triangles = triangles.ToArray();
             mesh.MarkDynamic();
             mesh.Optimize();
@@ -152,7 +154,7 @@ public class CreateMesh : MonoBehaviour
             mesh.OptimizeReorderVertexBuffer();
 
             go = new GameObject("Mesh", typeof(MeshFilter), typeof(MeshRenderer));
-            go.GetComponent<MeshRenderer>().material = mesh_mat;
+            go.GetComponent<MeshRenderer>().material = meshMat;
             go.GetComponent<MeshFilter>().mesh = mesh;
 
             meshCreated = true;

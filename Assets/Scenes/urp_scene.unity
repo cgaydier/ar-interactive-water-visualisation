@@ -4777,7 +4777,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1480109106}
-  m_Text: Water consumption /week
+  m_Text: Water consumption / week
   m_OffsetZ: 0
   m_CharacterSize: 24
   m_LineSpacing: 1
@@ -5099,9 +5099,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6411d9e5c4c43b48992ebbd9de43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mesh_mat: {fileID: 2100000, guid: c48a844ce3478274994736372bc4790b, type: 2}
+  meshMat: {fileID: 2100000, guid: 839160b47583b20489ba9b851c20d235, type: 2}
   placePoints: {fileID: 1516527981}
-  createLine: {fileID: 453460231}
+  createLine: {fileID: 0}
 --- !u!114 &1516527981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5119,7 +5119,6 @@ MonoBehaviour:
   enumState: {fileID: 144765961}
   points: []
   vertices: []
-  GR: {fileID: 0}
 --- !u!4 &1516527982
 Transform:
   m_ObjectHideFlags: 0
