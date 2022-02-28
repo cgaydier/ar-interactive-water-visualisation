@@ -7,6 +7,8 @@ public class ModalFunctions : MonoBehaviour
 {
     float waterCpt;
     int counter = 0;
+
+    WaterConsumption waterConsumption;
     
     Text scoreText;
 
@@ -16,23 +18,23 @@ public class ModalFunctions : MonoBehaviour
         {
             case "Shower":
                 scoreText = GameObject.Find("Shower/Score").GetComponent<Text>();
-                waterCpt = 0.3f;
+                waterCpt = waterConsumption.shower;
                 break;
             case "Bath":
                 scoreText = GameObject.Find("Bath/Score").GetComponent<Text>();
-                waterCpt = 0.5f;
+                waterCpt = waterConsumption.bath;
                 break;
             case "HandDish":
                 scoreText = GameObject.Find("HandDish/Score").GetComponent<Text>();
-                waterCpt = 0.25f;
+                waterCpt = waterConsumption.handDish;
                 break;
             case "DishWasher":
                 scoreText = GameObject.Find("DishWasher/Score").GetComponent<Text>();
-                waterCpt = 0.15f;
+                waterCpt = waterConsumption.dishwasher;
                 break;
-            case "Washing":
-                scoreText = GameObject.Find("Washing/Score").GetComponent<Text>();
-                waterCpt = 0.4f;
+            case "WashingMachine":
+                scoreText = GameObject.Find("WashingMachine/Score").GetComponent<Text>();
+                waterCpt = waterConsumption.washingMachine;
                 break;
             default:
                 Debug.Log("Type not known for increment consumption !");

@@ -2389,7 +2389,7 @@ GameObject:
   - component: {fileID: 764785147}
   - component: {fileID: 764785149}
   m_Layer: 5
-  m_Name: Washing
+  m_Name: WashingMachine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
