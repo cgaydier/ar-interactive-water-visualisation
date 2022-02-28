@@ -13,13 +13,11 @@ public class CreateMesh : MonoBehaviour
     bool pointsPlaced = false;
     private float offset = 0.2f;
 
-    // Start is called before the first frame update
     void Start()
     {
         mesh = new Mesh();
     }
 
-    // Update is called once per frame
     void Update()
     {
         MeshHandler();
@@ -72,7 +70,7 @@ public class CreateMesh : MonoBehaviour
         pointsPlaced = false;
         meshCreated = false;
         surface = 0f;
-        GameObject.Find("SurfaceM2").GetComponent<UnityEngine.UI.Text>().text = "Volume : 0 m3";
+        GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume : 0 m3";
         triangles.Clear();
         mesh.Clear();
     }
@@ -140,7 +138,7 @@ public class CreateMesh : MonoBehaviour
 
             mesh.vertices = tmp.ToArray();
             surface = CreateTriangles(tmp); // volume (m3)
-            GameObject.Find("SurfaceM2").GetComponent<UnityEngine.UI.Text>().text = "Volume : " + surface.ToString("F2") + " m3";
+            GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume : " + surface.ToString("F2") + " m3";
             mesh.triangles = triangles.ToArray();
             mesh.MarkDynamic();
             mesh.Optimize();
@@ -160,10 +158,5 @@ public class CreateMesh : MonoBehaviour
             mesh.RecalculateTangents();
             mesh.RecalculateBounds();
         }
-
-        // else if (pointsPlaced)
-        // {
-        //     print("Not enough points (3 min) or too much (10 max).\n Current : " + (placePoints.vertices.Count / 2)+ "\n");
-        // }
     }
 }

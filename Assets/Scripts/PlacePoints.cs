@@ -19,27 +19,7 @@ public class PlacePoints : MonoBehaviour
 
     private void Start()
     {
-        GR = GameObject.Find("Canvas").GetComponent<GraphicRaycaster>();
-        //Quaternion rot = Quaternion.identity;
-        //points.Add(Instantiate(m_PointToPlace, new Vector3(0, 0, 0), rot));
-        //points.Add(Instantiate(m_PointToPlace, new Vector3(1, 0, 0), rot));
-        //points.Add(Instantiate(m_PointToPlace, new Vector3(1, 0, 1), rot));
-        //points.Add(Instantiate(m_PointToPlace, new Vector3(0, 0, 1), rot));
-        //points.Add(Instantiate(m_PointToPlace, new Vector3(0, 0, 0), rot));
-        //points.Add(Instantiate(m_PointToPlace, new Vector3(1, 0, 0), rot));
-        //points.Add(Instantiate(m_PointToPlace, new Vector3(1, 0, 1), rot));
-        //points.Add(Instantiate(m_PointToPlace, new Vector3(0, 0, 1), rot));
-
-        //vertices.Add(new Vector3(0, 0, 0));
-        //vertices.Add(new Vector3(0, 0 + offset, 0));
-        //vertices.Add(new Vector3(1, 0, 0));
-        //vertices.Add(new Vector3(1, 0 + offset, 0));
-        //vertices.Add(new Vector3(1, 0, 1));
-        //vertices.Add(new Vector3(1, 0 + offset, 1));
-        //vertices.Add(new Vector3(0, 0, 1));
-        //vertices.Add(new Vector3(0, 0 + offset, 1));
-
-        //nb_vertices = 8;
+        GR = GameObject.Find("UICanva").GetComponent<GraphicRaycaster>();
     }
 
     public void clearAll()

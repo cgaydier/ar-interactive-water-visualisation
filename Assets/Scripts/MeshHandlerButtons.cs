@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ButtonLeftPanelFunctions : MonoBehaviour
+public class MeshHandlerButtons : MonoBehaviour
 {
     public PlacePoints placePoints;
     public CreateMesh createMesh;

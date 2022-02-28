@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class EnumState : MonoBehaviour
 {
-    public GameObject Modal;
-    public enum State {MainView, DisplayCube, ParamScene, PlacePoints, PlacePointsBefore, ConsumptionScene}
+    public GameObject Settings;
+    public enum State {MainView, ParamScene, PlacePoints, PlacePointsBefore, ConsumptionScene}
 
     public State currentState;
 
@@ -17,16 +17,11 @@ public class EnumState : MonoBehaviour
         return currentState;
     }
 
-    public void SetDisplayCube()
-    {
-        currentState = State.DisplayCube;
-    }
-
     public void ChangeParamScene()
     {
-        if (Modal.activeSelf)
+        if (Settings.activeSelf)
         {
-            Modal.SetActive(false);
+            Settings.SetActive(false);
         }
         if (currentState != State.ParamScene && currentState != State.PlacePointsBefore && currentState != State.PlacePoints)
         {
