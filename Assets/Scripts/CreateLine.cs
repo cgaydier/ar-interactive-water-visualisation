@@ -6,7 +6,7 @@ public class CreateLine : MonoBehaviour
 {
     List<Mesh> meshList = new List<Mesh>();
     List<GameObject> goList = new List<GameObject>();
-    public Material mesh_mat;
+    public Material meshMat;
 
     float thickness = 0.005f;
 
@@ -29,23 +29,23 @@ public class CreateLine : MonoBehaviour
         }
     }
 
-    List<int> CreateTriangles(int nb_total)
+    List<int> CreateTriangles(int nbTotal)
     {
         List<int> triangles = new List<int>();
-        for (int i = 0, j = 0; i < nb_total / 2; i++, j += 2)
+        for (int i = 0, j = 0; i < nbTotal / 2; i++, j += 2)
         {
-            triangles.Add(j % nb_total);
-            triangles.Add((j + 1) % nb_total);
-            triangles.Add((j + 2) % nb_total);
-            triangles.Add((j + 2) % nb_total);
-            triangles.Add((j + 1) % nb_total);
-            triangles.Add((j + 3) % nb_total);
+            triangles.Add(j % nbTotal);
+            triangles.Add((j + 1) % nbTotal);
+            triangles.Add((j + 2) % nbTotal);
+            triangles.Add((j + 2) % nbTotal);
+            triangles.Add((j + 1) % nbTotal);
+            triangles.Add((j + 3) % nbTotal);
         }
         return triangles;
     }
     public void AddLine(float height, List<Vector3> vertices)
     {
-        Mesh tmp_mesh = new Mesh();
+        Mesh tmpMesh = new Mesh();
 
         height -= thickness / 2f;
         List<Vector3> tmp = new List<Vector3>();
@@ -64,21 +64,21 @@ public class CreateLine : MonoBehaviour
                                     vertices[i].z));
             }
         }
-        tmp_mesh.vertices = tmp.ToArray();
-        tmp_mesh.triangles = CreateTriangles(vertices.Count).ToArray();
-        tmp_mesh.MarkDynamic();
-        tmp_mesh.Optimize();
-        tmp_mesh.OptimizeIndexBuffers();
-        tmp_mesh.OptimizeReorderVertexBuffer();
+        tmpMesh.vertices = tmp.ToArray();
+        tmpMesh.triangles = CreateTriangles(vertices.Count).ToArray();
+        tmpMesh.MarkDynamic();
+        tmpMesh.Optimize();
+        tmpMesh.OptimizeIndexBuffers();
+        tmpMesh.OptimizeReorderVertexBuffer();
         
-        meshList.Add(tmp_mesh);
+        meshList.Add(tmpMesh);
 
-        GameObject tmp_go = new GameObject("Line", typeof(MeshFilter), typeof(MeshRenderer));
-        tmp_go.GetComponent<MeshRenderer>().material = mesh_mat;
-        tmp_go.GetComponent<MeshFilter>().mesh = tmp_mesh;
+        GameObject tmpGo = new GameObject("Line", typeof(MeshFilter), typeof(MeshRenderer));
+        tmpGo.GetComponent<MeshRenderer>().material = meshMat;
+        tmpGo.GetComponent<MeshFilter>().mesh = tmpMesh;
 
         //tmp_go.transform.localScale += new Vector3(0.2f, 0, 0.2f);
 
-        goList.Add(tmp_go);
+        goList.Add(tmpGo);
     }
 }
