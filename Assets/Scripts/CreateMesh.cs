@@ -8,6 +8,7 @@ public class CreateMesh : MonoBehaviour
     List<int> triangles = new List<int>();
     public Material mesh_mat;
     public PlacePoints placePoints;
+    public CreateLine createLine;
     float surface = 0f;
     bool meshCreated = false;
     bool pointsPlaced = false;
@@ -64,15 +65,20 @@ public class CreateMesh : MonoBehaviour
         triangles.Clear();
         mesh.Clear();
         meshCreated = false;
+        Destroy(go);
+        createLine.ClearAll();
     }
+
+    public void AddLine()
+    {
+        createLine.AddLine(offset / 2, placePoints.vertices);
+    }
+
     public void ClearAll()
     {
+        RefreshMesh();
         pointsPlaced = false;
-        meshCreated = false;
-        surface = 0f;
         GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume : 0 m3";
-        triangles.Clear();
-        mesh.Clear();
     }
 
     float CreateTriangles(List<Vector3> vertices)
@@ -150,6 +156,8 @@ public class CreateMesh : MonoBehaviour
             go.GetComponent<MeshFilter>().mesh = mesh;
 
             meshCreated = true;
+
+            AddLine();
         }
 
         else if(Checkpoints() && meshCreated)

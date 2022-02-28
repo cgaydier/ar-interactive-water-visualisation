@@ -5101,6 +5101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mesh_mat: {fileID: 2100000, guid: c48a844ce3478274994736372bc4790b, type: 2}
   placePoints: {fileID: 1516527981}
+  createLine: {fileID: 453460231}
 --- !u!114 &1516527981
 MonoBehaviour:
   m_ObjectHideFlags: 0
