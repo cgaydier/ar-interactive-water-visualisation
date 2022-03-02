@@ -18,15 +18,15 @@ public class CreateMesh : MonoBehaviour
     {
         mesh = new Mesh();
         sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
-        sceneDatas.vertices.Add(new Vector3(0, 0, 0));
-        sceneDatas.vertices.Add(new Vector3(0, 0, 0));
-        sceneDatas.vertices.Add(new Vector3(1, 0, 0));
-        sceneDatas.vertices.Add(new Vector3(1, 0, 0));
-        sceneDatas.vertices.Add(new Vector3(1, 0, 1));
-        sceneDatas.vertices.Add(new Vector3(1, 0, 1));
-        sceneDatas.vertices.Add(new Vector3(0, 0, 1));
-        sceneDatas.vertices.Add(new Vector3(0, 0, 1));
-        sceneDatas.pointsPlaced = true;
+        //sceneDatas.vertices.Add(new Vector3(0, 0, 0));
+        //sceneDatas.vertices.Add(new Vector3(0, 0, 0));
+        //sceneDatas.vertices.Add(new Vector3(1, 0, 0));
+        //sceneDatas.vertices.Add(new Vector3(1, 0, 0));
+        //sceneDatas.vertices.Add(new Vector3(1, 0, 1));
+        //sceneDatas.vertices.Add(new Vector3(1, 0, 1));
+        //sceneDatas.vertices.Add(new Vector3(0, 0, 1));
+        //sceneDatas.vertices.Add(new Vector3(0, 0, 1));
+        //sceneDatas.pointsPlaced = true;
     }
 
     void Update()
