@@ -15,19 +15,26 @@ public class PlacePoints : MonoBehaviour
     public EnumState enumState;
     public List<GameObject> points = new List<GameObject>();
     public List<Vector3> vertices = new List<Vector3>();
+    private List<Vector3> lines = new List<Vector3>();
     GraphicRaycaster GR;
+    private LineRenderer LR;
+    private bool first;
+    
 
     private void Start()
     {
-        GR = GameObject.Find("UICanvas").GetComponent<GraphicRaycaster>();
+        GR = GameObject.Find("UICanva").GetComponent<GraphicRaycaster>();
+        first = true;
     }
 
-    public void clearAll()
+    public void ClearAll()
     {
-        for (int i = 0; i < vertices.Count/2; i++)
+        for (int i = 0; i < points.Count; i++)
         {
             Destroy(points[i]);
         }
+        first = true;
+        lines.Clear();
         vertices.Clear();
         points.Clear();
     }
@@ -56,8 +63,21 @@ public class PlacePoints : MonoBehaviour
                         Pose hitPose = s_Hits[0].pose;
 
                         points.Add(Instantiate(m_PointToPlace, hitPose.position, hitPose.rotation));
+                        if(first){
+                            LR = points[0].AddComponent<LineRenderer>();
+                            Material lineMat = Resources.Load("Line", typeof(Material)) as Material;
+                            LR.material = lineMat;
+                            LR.widthMultiplier = 0.008f;
+                            LR.positionCount = 0;
+                            first = false;
+                        }
+                        LR.positionCount = points.Count;
                         vertices.Add(hitPose.position);
+                        lines.Add(hitPose.position);
                         vertices.Add(hitPose.position);
+                        
+                        LR.SetPositions(lines.ToArray());
+                        LR.loop = true;
                     }
                 }
             }

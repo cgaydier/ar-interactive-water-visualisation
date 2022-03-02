@@ -20,7 +20,7 @@ public class MeshHandlerButtons : MonoBehaviour
     public void ClearPointsMesh()
     {
         placePoints.enumState.SetParamScene();
-        placePoints.clearAll();
+        placePoints.ClearAll();
         createMesh.ClearAll();
         Destroy(GameObject.Find("Mesh"));
     }
