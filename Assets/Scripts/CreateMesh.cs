@@ -14,7 +14,7 @@ public class CreateMesh : MonoBehaviour
     bool meshCreated = false;
     bool pointsPlaced = false;
     private float offset = 0.001f;
-    private float currentOffset = 0.001f;
+    private float currentOffset = 0.1f;
     public float scale = 1f;
 
     void Start()
@@ -85,11 +85,6 @@ public class CreateMesh : MonoBehaviour
         meshCreated = false;
         Destroy(go);
         createLine.ClearAll();
-    }
-
-    public void AddLine()
-    {
-        createLine.AddLine(currentOffset / 2, placePoints.vertices);
     }
 
     public void ClearAll()
@@ -177,7 +172,7 @@ public class CreateMesh : MonoBehaviour
 
             meshCreated = true;
 
-            AddLine();
+            //createLine.AddLine(currentOffset / 2, placePoints.vertices);
         }
 
         else if(Checkpoints() && meshCreated)
