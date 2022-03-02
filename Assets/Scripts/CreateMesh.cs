@@ -20,6 +20,15 @@ public class CreateMesh : MonoBehaviour
     void Start()
     {
         mesh = new Mesh();
+        //placePoints.vertices.Add(new Vector3(0, 0, 0));
+        //placePoints.vertices.Add(new Vector3(0, 0, 0));
+        //placePoints.vertices.Add(new Vector3(1, 0, 0));
+        //placePoints.vertices.Add(new Vector3(1, 0, 0));
+        //placePoints.vertices.Add(new Vector3(1, 0, 1));
+        //placePoints.vertices.Add(new Vector3(1, 0, 1));
+        //placePoints.vertices.Add(new Vector3(0, 0, 1));
+        //placePoints.vertices.Add(new Vector3(0, 0, 1));
+        //pointsPlaced = true;
     }
 
     void Update()
@@ -80,7 +89,7 @@ public class CreateMesh : MonoBehaviour
 
     public void AddLine()
     {
-        createLine.AddLine(offset / 2, placePoints.vertices);
+        createLine.AddLine(currentOffset / 2, placePoints.vertices);
     }
 
     public void ClearAll()
@@ -134,7 +143,7 @@ public class CreateMesh : MonoBehaviour
 
     void MeshHandler()
     {
-        if(Checkpoints() && !meshCreated && pointsPlaced)
+        if (Checkpoints() && !meshCreated && pointsPlaced)
         {
             List<Vector3> tmp = new List<Vector3>();
             for (int i = 0; i < placePoints.vertices.Count; i ++)

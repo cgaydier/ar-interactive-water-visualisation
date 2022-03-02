@@ -4,81 +4,50 @@ using UnityEngine;
 
 public class CreateLine : MonoBehaviour
 {
-    List<Mesh> meshList = new List<Mesh>();
     List<GameObject> goList = new List<GameObject>();
     public Material meshMat;
-
-    float thickness = 0.005f;
-
-    private void Update()
-    {
-        for (int i = 0; i < meshList.Count; i++)
-        {
-            meshList[i].RecalculateNormals();
-            meshList[i].RecalculateTangents();
-            meshList[i].RecalculateBounds();
-        }
-    }
+    private float offset = 0.2f;
 
     public void ClearAll()
     {
-        for (int i = 0; i < meshList.Count; i++)
+        for (int i = 0; i < goList.Count; i++)
         {
-            meshList[i].Clear();
             Destroy(goList[i]);
         }
     }
 
-    List<int> CreateTriangles(int nbTotal)
+    private Vector3 GetMiddle(List<Vector3> vertices)
     {
-        List<int> triangles = new List<int>();
-        for (int i = 0, j = 0; i < nbTotal / 2; i++, j += 2)
+        Vector3 middlePoint = new Vector3(0, 0, 0);
+
+        for (int i = 0; i < vertices.Count; i+=2)
         {
-            triangles.Add(j % nbTotal);
-            triangles.Add((j + 1) % nbTotal);
-            triangles.Add((j + 2) % nbTotal);
-            triangles.Add((j + 2) % nbTotal);
-            triangles.Add((j + 1) % nbTotal);
-            triangles.Add((j + 3) % nbTotal);
+            middlePoint += vertices[i];
         }
-        return triangles;
+        middlePoint /= vertices.Count / 2;
+
+        return middlePoint;
     }
     public void AddLine(float height, List<Vector3> vertices)
     {
-        Mesh tmpMesh = new Mesh();
+        Vector3 middlePoint = GetMiddle(vertices);
 
-        height -= thickness / 2f;
-        List<Vector3> tmp = new List<Vector3>();
-        for (int i = 0; i < vertices.Count; i++)
+        GameObject tmpGo = new GameObject("Line");
+        tmpGo.transform.position = vertices[0];
+        tmpGo.AddComponent<LineRenderer>();
+
+        LineRenderer lr = tmpGo.GetComponent<LineRenderer>();
+        lr.material = meshMat;
+        lr.positionCount = vertices.Count / 2;
+        lr.loop = true;
+        lr.startWidth = 0.005f;
+        for (int i = 0, j = 0; i < vertices.Count; i+=2, j++)
         {
-            if (i % 2 == 0)
-            {
-                tmp.Add(new Vector3(vertices[i].x,
-                                    vertices[i].y + height,
-                                    vertices[i].z));
-            }
-            else
-            {
-                tmp.Add(new Vector3(vertices[i].x,
-                                    vertices[i].y + height + thickness,
-                                    vertices[i].z));
-            }
+            Vector3 tmp = vertices[i] - middlePoint;
+            lr.SetPosition(j, new Vector3(vertices[i].x + offset * tmp.x, 
+                                         (vertices[i].y + offset * tmp.y) + height,
+                                          vertices[i].z + offset * tmp.z));
         }
-        tmpMesh.vertices = tmp.ToArray();
-        tmpMesh.triangles = CreateTriangles(vertices.Count).ToArray();
-        tmpMesh.MarkDynamic();
-        tmpMesh.Optimize();
-        tmpMesh.OptimizeIndexBuffers();
-        tmpMesh.OptimizeReorderVertexBuffer();
-        
-        meshList.Add(tmpMesh);
-
-        GameObject tmpGo = new GameObject("Line", typeof(MeshFilter), typeof(MeshRenderer));
-        tmpGo.GetComponent<MeshRenderer>().material = meshMat;
-        tmpGo.GetComponent<MeshFilter>().mesh = tmpMesh;
-
-        //tmp_go.transform.localScale += new Vector3(0.2f, 0, 0.2f);
-
         goList.Add(tmpGo);
     }
 }

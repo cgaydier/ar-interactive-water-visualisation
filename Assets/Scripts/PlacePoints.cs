@@ -19,7 +19,7 @@ public class PlacePoints : MonoBehaviour
 
     private void Start()
     {
-        GR = GameObject.Find("UICanva").GetComponent<GraphicRaycaster>();
+        GR = GameObject.Find("UICanvas").GetComponent<GraphicRaycaster>();
     }
 
     public void clearAll()
