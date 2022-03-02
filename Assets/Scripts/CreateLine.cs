@@ -8,7 +8,8 @@ public class CreateLine : MonoBehaviour
     List<GameObject> goList = new List<GameObject>();
     public Material meshMat;
 
-    float thickness = 0.05f;
+    private float top = 0f;
+
     float offset = 0.2f;
 
     private void Update()
@@ -41,6 +42,7 @@ public class CreateLine : MonoBehaviour
             meshList[i].Clear();
             Destroy(goList[i]);
         }
+        top = 0f;
     }
 
     List<int> CreateTriangles(int nbTotal)
@@ -57,12 +59,20 @@ public class CreateLine : MonoBehaviour
         }
         return triangles;
     }
-    public void AddLine(float height, List<Vector3> vertices)
+
+    public void AddLine(float thickness, Color lineColor, List<Vector3> vertices)
+    {
+        Debug.Log(top);
+        AddLine(top, top == 0f ? thickness + 0.001f : thickness, lineColor, vertices);
+    }
+    public void AddLine(float height, float thickness, Color lineColor, List<Vector3> vertices)
     {
         Mesh tmpMesh = new Mesh();
         Vector3 middlePoint = GetMiddle(vertices);
 
-        height -= thickness / 2f;
+        height += thickness / 2f;
+        top += thickness;
+
         List<Vector3> tmp = new List<Vector3>();
         for (int i = 0; i < vertices.Count; i++)
         {
@@ -76,9 +86,10 @@ public class CreateLine : MonoBehaviour
             else
             {
                 tmp.Add(new Vector3(vertices[i].x + offset * tmpVector.x,
-                                    vertices[i].y + height + thickness,
+                                    vertices[i].y + top,
                                     vertices[i].z + offset * tmpVector.z));
             }
+
         }
         tmpMesh.vertices = tmp.ToArray();
         tmpMesh.triangles = CreateTriangles(vertices.Count).ToArray();
@@ -91,6 +102,9 @@ public class CreateLine : MonoBehaviour
 
         GameObject tmpGo = new GameObject("Line", typeof(MeshFilter), typeof(MeshRenderer));
         tmpGo.GetComponent<MeshRenderer>().material = meshMat;
+        Color color = lineColor;
+        color.a = 0.5f;
+        tmpGo.GetComponent<MeshRenderer>().material.color = color;
         tmpGo.GetComponent<MeshFilter>().mesh = tmpMesh;
 
         goList.Add(tmpGo);

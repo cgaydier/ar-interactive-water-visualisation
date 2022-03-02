@@ -4,17 +4,23 @@ public class MeshHandlerButtons : MonoBehaviour
 {
     public PlacePoints placePoints;
     public CreateMesh createMesh;
+    SceneDatas sceneDatas;
+
+    public void Start()
+    {
+        sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
+    }
 
     public void CreatePointsMesh()
     {
         placePoints.enumState.SetPlacePointsBefore();
-        createMesh.SetPointsPlaced(false);
+        sceneDatas.pointsPlaced = false;
     }
 
     public void ValidatePointsMesh()
     {
         placePoints.enumState.SetParamScene();
-        createMesh.SetPointsPlaced(true);
+        sceneDatas.pointsPlaced = true;
     }
 
     public void ClearPointsMesh()

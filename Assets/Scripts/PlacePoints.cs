@@ -7,23 +7,24 @@ using UnityEngine.UI;
 
 public class PlacePoints : MonoBehaviour
 {
-    [SerializeField]
-    ARRaycastManager m_RaycastManager;
-    static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
-    [SerializeField]
-    GameObject m_PointToPlace;
-    public EnumState enumState;
-    public List<GameObject> points = new List<GameObject>();
-    public List<Vector3> vertices = new List<Vector3>();
-    private List<Vector3> lines = new List<Vector3>();
+    SceneDatas sceneDatas;
     GraphicRaycaster GR;
+
+    public ARRaycastManager m_RaycastManager;
+    public GameObject m_PointToPlace;
+    public EnumState enumState;
+
+    static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
+    public List<GameObject> points = new List<GameObject>();
+    private List<Vector3> lines = new List<Vector3>();
+    
     private LineRenderer LR;
     private bool first;
-    
 
     private void Start()
     {
-        GR = GameObject.Find("UICanva").GetComponent<GraphicRaycaster>();
+        GR = GameObject.Find("UICanvas").GetComponent<GraphicRaycaster>();
+        sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
         first = true;
     }
 
@@ -35,7 +36,7 @@ public class PlacePoints : MonoBehaviour
         }
         first = true;
         lines.Clear();
-        vertices.Clear();
+        sceneDatas.vertices.Clear();
         points.Clear();
     }
 
@@ -56,8 +57,6 @@ public class PlacePoints : MonoBehaviour
                     List<RaycastResult> results = new List<RaycastResult>();
                     GR.Raycast(ped, results);
 
-                    Debug.Log(results);
-                    print(results.Count);
                     if (results.Count == 0)
                     {
                         Pose hitPose = s_Hits[0].pose;
@@ -72,9 +71,9 @@ public class PlacePoints : MonoBehaviour
                             first = false;
                         }
                         LR.positionCount = points.Count;
-                        vertices.Add(hitPose.position);
+                        sceneDatas.vertices.Add(hitPose.position);
                         lines.Add(hitPose.position);
-                        vertices.Add(hitPose.position);
+                        sceneDatas.vertices.Add(hitPose.position);
                         
                         LR.SetPositions(lines.ToArray());
                         LR.loop = true;
