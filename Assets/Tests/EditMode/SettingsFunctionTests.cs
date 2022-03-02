@@ -4,11 +4,11 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-public class EnumState
+public class SettingsFunctions
 {
     // A Test behaves as an ordinary method
     [Test]
-    public void EnumStateSimplePasses()
+    public void SettingsFunctionsSimplePasses()
     { 
         // Use the Assert class to test conditions
     }
