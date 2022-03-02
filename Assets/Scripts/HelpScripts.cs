@@ -5,28 +5,67 @@ using UnityEngine;
 public class HelpScripts : MonoBehaviour
 {
     public GameObject UIPanel;
-    public GameObject Page_1;
-    public GameObject Page_2;
+    public GameObject Page_1, Page_2, Page_3;
     public GameObject CurrentPage;
+    public GameObject Menu;
+    public GameObject PrevButton, NextButton;
 
     bool isPanelActive = true;
 
     public void OpenAndClosePanel()
     {
         if (isPanelActive == false) {
+            SwitchPage(CurrentPage, Page_1);
+            PrevButton.SetActive(false);
+            NextButton.SetActive(true);
+            Menu.SetActive(false);
+
             UIPanel.SetActive(!isPanelActive);
             isPanelActive = true;
         }else{
             UIPanel.SetActive(!isPanelActive);
             isPanelActive = false;
+            
+            Menu.SetActive(true);
         }
     }
 
-    public void ChangePage()
+    public void NextPage()
     {
         if(CurrentPage == Page_1){
-            Page_1.SetActive(false);
-            Page_2.SetActive(true);
+            
+            SwitchPage(Page_1, Page_2);
+            PrevButton.SetActive(true);
         }
+
+        else if(CurrentPage == Page_2){
+            SwitchPage(Page_2, Page_3);
+            
+            NextButton.SetActive(false);
+        }
+    }
+
+    public void PrevPage()
+    {
+        if(CurrentPage == Page_2){
+            SwitchPage(Page_2, Page_1);
+
+            
+            PrevButton.SetActive(false);
+        }
+
+        else if(CurrentPage == Page_3){
+            NextButton.SetActive(true);
+
+            
+            SwitchPage(Page_3, Page_2);
+        }
+    }
+
+    public void SwitchPage(GameObject PrevPage, GameObject NextPage)
+    {
+        PrevPage.SetActive(false);
+        NextPage.SetActive(true);
+        CurrentPage = NextPage;
     }
 }
