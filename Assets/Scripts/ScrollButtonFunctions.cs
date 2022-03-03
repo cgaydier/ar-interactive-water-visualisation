@@ -28,12 +28,10 @@ public class ScrollButtonFunctions : MonoBehaviour
     {
         foreach (int i in System.Enum.GetValues(typeof(SceneDatas.datasName)))
         {
-            float cptData = sceneDatas.GetData((SceneDatas.datasName)i);
+            float cptData = sceneDatas.GetDataCpt((SceneDatas.datasName)i);
             if (cptData > 0)
             {
-                Debug.Log("-----------");
-                Debug.Log(sceneDatas.dataConsumption[i]);
-                createLine.AddLine(cptData / sceneDatas.surfaceMesh / sceneDatas.GetScale() * sceneDatas.dataConsumption[i],
+                createLine.AddLine((sceneDatas.dataConsumption[i] / sceneDatas.surfaceMesh / sceneDatas.GetScale()) * cptData,
                                    sceneDatas.datasColors[i],
                                    sceneDatas.vertices);
             }

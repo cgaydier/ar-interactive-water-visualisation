@@ -10,7 +10,7 @@ public class CreateLine : MonoBehaviour
 
     private float top = 0f;
 
-    float offset = 0.2f;
+    float offset = 0.02f;
 
     private void Update()
     {
@@ -62,7 +62,6 @@ public class CreateLine : MonoBehaviour
 
     public void AddLine(float thickness, Color lineColor, List<Vector3> vertices)
     {
-        Debug.Log(top);
         AddLine(top, top == 0f ? thickness + 0.001f : thickness, lineColor, vertices);
     }
     public void AddLine(float height, float thickness, Color lineColor, List<Vector3> vertices)
@@ -70,7 +69,6 @@ public class CreateLine : MonoBehaviour
         Mesh tmpMesh = new Mesh();
         Vector3 middlePoint = GetMiddle(vertices);
 
-        height += thickness / 2f;
         top += thickness;
 
         List<Vector3> tmp = new List<Vector3>();
@@ -105,6 +103,7 @@ public class CreateLine : MonoBehaviour
         Color color = lineColor;
         color.a = 0.5f;
         tmpGo.GetComponent<MeshRenderer>().material.color = color;
+        tmpGo.GetComponent<MeshRenderer>().material.renderQueue= 3100;
         tmpGo.GetComponent<MeshFilter>().mesh = tmpMesh;
 
         goList.Add(tmpGo);

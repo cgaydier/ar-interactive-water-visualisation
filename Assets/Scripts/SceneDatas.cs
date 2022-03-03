@@ -58,7 +58,12 @@ public class SceneDatas : MonoBehaviour
         datas[(int)data]--;
     }
 
-    public int GetData(datasName data)
+    public float GetDataConsumption(datasName data)
+    {
+        return dataConsumption[(int)data];
+    }
+
+    public int GetDataCpt(datasName data)
     {
         return datas[(int)data];
     }

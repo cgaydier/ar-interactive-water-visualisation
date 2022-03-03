@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class SettingsFunctions : MonoBehaviour
 {
-    float waterCpt;
+    float waterConsumption;
     int counter = 0;
     CreateMesh createMesh;
     SceneDatas sceneDatas;
@@ -18,27 +18,27 @@ public class SettingsFunctions : MonoBehaviour
         {
             case "Shower":
                 scoreText = GameObject.Find("Shower/Score").GetComponent<Text>();
-                waterCpt = sceneDatas.dataConsumption[sceneDatas.GetData((SceneDatas.datasName)0)];
+                waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.datasName.Shower));
                 break;
             case "Bath":
                 scoreText = GameObject.Find("Bath/Score").GetComponent<Text>();
-                waterCpt = sceneDatas.dataConsumption[sceneDatas.GetData((SceneDatas.datasName)1)];
+                waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.datasName.Bath));
                 break;
             case "HandDish":
                 scoreText = GameObject.Find("HandDish/Score").GetComponent<Text>();
-                waterCpt = sceneDatas.dataConsumption[sceneDatas.GetData((SceneDatas.datasName)2)];
+                waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.datasName.HandDish));
                 break;
             case "DishWasher":
                 scoreText = GameObject.Find("DishWasher/Score").GetComponent<Text>();
-                waterCpt = sceneDatas.dataConsumption[sceneDatas.GetData((SceneDatas.datasName)3)];
+                waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.datasName.DishWasher));
                 break;
             case "WashingMachine":
                 scoreText = GameObject.Find("WashingMachine/Score").GetComponent<Text>();
-                waterCpt = sceneDatas.dataConsumption[sceneDatas.GetData((SceneDatas.datasName)4)];
+                waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.datasName.WashingMachine));
                 break;
             case "Bathroom":
                 scoreText = GameObject.Find("Bathroom/Score").GetComponent<Text>();
-                waterCpt = sceneDatas.dataConsumption[sceneDatas.GetData((SceneDatas.datasName)5)];
+                waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.datasName.Bathroom));
                 break;
             case "Scale":
                 counter = 1;
@@ -79,8 +79,7 @@ public class SettingsFunctions : MonoBehaviour
                 Debug.Log("Type not known for increment consumption !");
                 break;
         }
-
-        createMesh.AddWater(waterCpt);
+        createMesh.AddWater(waterConsumption);
         counter++;
         RefreshText();
     }
@@ -116,7 +115,7 @@ public class SettingsFunctions : MonoBehaviour
                     Debug.Log("Type not known for increment consumption !");
                     break;
             }
-            createMesh.RemoveWater(waterCpt);
+            createMesh.RemoveWater(waterConsumption);
             counter --;
             RefreshText();
         }        

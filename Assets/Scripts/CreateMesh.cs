@@ -11,8 +11,8 @@ public class CreateMesh : MonoBehaviour
     public PlacePoints placePoints;
     float volumeMesh = 0f;
     public CreateLine createLine;
-    float offset = 0.001f;
-    float currentOffset = 0.001f;
+    float offset = 0.00001f;
+    float currentOffset = 0.00001f;
 
     void Start()
     {
@@ -48,7 +48,12 @@ public class CreateMesh : MonoBehaviour
 
     public void AddWater(float volume)
     {
-        offset += volume / sceneDatas.surfaceMesh;
+        Debug.Log("--- Add Water ---");
+        Debug.Log("offset before : " + offset);
+        Debug.Log("Volume : " + volume);
+        Debug.Log("surfaceMesh : " + sceneDatas.surfaceMesh);
+        offset += (volume / sceneDatas.surfaceMesh);
+        Debug.Log("offset after : " + offset);
         SetWater(offset / sceneDatas.GetScale());
     }
 
@@ -78,8 +83,8 @@ public class CreateMesh : MonoBehaviour
     public void ClearAll()
     {
         RefreshMesh();
-        offset = 0.001f;
-        currentOffset = 0.001f;
+        offset = 0.00001f;
+        currentOffset = 0.00001f;
         sceneDatas.pointsPlaced = false;
         GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume :\n0 m3";
     }
@@ -159,7 +164,7 @@ public class CreateMesh : MonoBehaviour
             go.GetComponent<MeshFilter>().mesh = mesh;
 
             sceneDatas.meshCreated = true;
-            Debug.Log(currentOffset);
+            Debug.Log("current Offset : " + currentOffset);
         }
 
         else if(Checkpoints() && sceneDatas.meshCreated)
