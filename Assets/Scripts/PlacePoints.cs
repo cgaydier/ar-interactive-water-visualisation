@@ -40,14 +40,8 @@ public class PlacePoints : MonoBehaviour
     }
     public void ClearAll()
     {
-        for (int i = 0; i < points.Count; i++)
-        {
-            Destroy(points[i]);
-        }
-        first = true;
-        lines.Clear();
+        ClearValidate();
         sceneDatas.vertices.Clear();
-        points.Clear();
     }
 
     void Update()
@@ -58,7 +52,7 @@ public class PlacePoints : MonoBehaviour
             
             if(touch.phase == TouchPhase.Began)
             {
-                if (m_RaycastManager.Raycast(touch.position, s_Hits, TrackableType.PlaneWithinPolygon))
+                if (m_RaycastManager.Raycast(touch.position, s_Hits, TrackableType.PlaneWithinPolygon) && points.Count <= sceneDatas.maxPoints)
                 {
                     PointerEventData ped = new PointerEventData(null)
                     {
@@ -82,9 +76,9 @@ public class PlacePoints : MonoBehaviour
                         }
                         LR.positionCount = points.Count;
                         sceneDatas.vertices.Add(hitPose.position);
-                        lines.Add(hitPose.position);
                         sceneDatas.vertices.Add(hitPose.position);
-                        
+                        lines.Add(hitPose.position);
+
                         LR.SetPositions(lines.ToArray());
                         LR.loop = true;
                     }

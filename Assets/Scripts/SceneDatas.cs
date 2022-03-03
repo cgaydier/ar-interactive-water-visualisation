@@ -7,6 +7,9 @@ public class SceneDatas : MonoBehaviour
     private float scale = 1f;
     public bool meshCreated = false;
     public bool pointsPlaced = false;
+    public int minPoints = 3;
+    public int maxPoints = 10;
+    public float defaultOffset = 0.0001f;
     public float surfaceMesh = 0f;
     public List<Vector3> vertices = new List<Vector3>();
 
