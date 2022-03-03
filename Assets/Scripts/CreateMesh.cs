@@ -7,17 +7,18 @@ public class CreateMesh : MonoBehaviour
     GameObject go;
     SceneDatas sceneDatas;
     List<int> triangles = new List<int>();
-    public Material meshMat;
     public PlacePoints placePoints;
     float volumeMesh = 0f;
     public CreateLine createLine;
-    float offset = 0.00001f;
-    float currentOffset = 0.00001f;
+    float offset;
+    float currentOffset;
 
     void Start()
     {
         mesh = new Mesh();
         sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
+        offset = sceneDatas.defaultOffset;
+        currentOffset = sceneDatas.defaultOffset;
         //sceneDatas.vertices.Add(new Vector3(0, 0, 0));
         //sceneDatas.vertices.Add(new Vector3(0, 0, 0));
         //sceneDatas.vertices.Add(new Vector3(1, 0, 0));
@@ -83,8 +84,8 @@ public class CreateMesh : MonoBehaviour
     public void ClearAll()
     {
         RefreshMesh();
-        offset = 0.00001f;
-        currentOffset = 0.00001f;
+        offset = sceneDatas.defaultOffset;
+        currentOffset = sceneDatas.defaultOffset;
         sceneDatas.pointsPlaced = false;
         GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume :\n0 m3";
     }
@@ -123,8 +124,8 @@ public class CreateMesh : MonoBehaviour
 
     bool Checkpoints()
     {
-        int nb_total = (sceneDatas.vertices.Count)/2;
-        if (nb_total < 3 || nb_total > 10)
+        int nbTotal = (sceneDatas.vertices.Count)/2;
+        if (nbTotal < sceneDatas.minPoints || nbTotal > sceneDatas.maxPoints)
             return false;
         return true;
     }
@@ -154,13 +155,14 @@ public class CreateMesh : MonoBehaviour
             volumeMesh = CreateTriangles(tmp) * currentOffset; // volume (m3)
             GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume :\n" + volumeMesh.ToString("F2") + " m3";
             mesh.triangles = triangles.ToArray();
+
             mesh.MarkDynamic();
             mesh.Optimize();
             mesh.OptimizeIndexBuffers();
             mesh.OptimizeReorderVertexBuffer();
 
             go = new GameObject("Mesh", typeof(MeshFilter), typeof(MeshRenderer));
-            go.GetComponent<MeshRenderer>().material = meshMat;
+            go.GetComponent<MeshRenderer>().material = Resources.Load("WaterURP", typeof(Material)) as Material;
             go.GetComponent<MeshFilter>().mesh = mesh;
 
             sceneDatas.meshCreated = true;
