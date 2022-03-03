@@ -49,12 +49,7 @@ public class CreateMesh : MonoBehaviour
 
     public void AddWater(float volume)
     {
-        Debug.Log("--- Add Water ---");
-        Debug.Log("offset before : " + offset);
-        Debug.Log("Volume : " + volume);
-        Debug.Log("surfaceMesh : " + sceneDatas.surfaceMesh);
         offset += (volume / sceneDatas.surfaceMesh);
-        Debug.Log("offset after : " + offset);
         SetWater(offset / sceneDatas.GetScale());
     }
 
