@@ -7,6 +7,7 @@ public class SceneDatas : MonoBehaviour
     private float scale = 1f;
     public bool meshCreated = false;
     public bool pointsPlaced = false;
+    public bool linesShowned = false;
     public int minPoints = 3;
     public int maxPoints = 10;
     public float defaultOffset = 0.0001f;

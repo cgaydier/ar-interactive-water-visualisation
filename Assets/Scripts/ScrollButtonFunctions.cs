@@ -26,15 +26,24 @@ public class ScrollButtonFunctions : MonoBehaviour
 
     public void ShowConsumption()
     {
-        foreach (int i in System.Enum.GetValues(typeof(SceneDatas.datasName)))
+        if (!sceneDatas.linesShowned)
         {
-            float cptData = sceneDatas.GetDataCpt((SceneDatas.datasName)i);
-            if (cptData > 0)
+            foreach (int i in System.Enum.GetValues(typeof(SceneDatas.datasName)))
             {
-                createLine.AddLine((sceneDatas.dataConsumption[i] / sceneDatas.surfaceMesh / sceneDatas.GetScale()) * cptData,
-                                   sceneDatas.datasColors[i],
-                                   sceneDatas.vertices);
+                float cptData = sceneDatas.GetDataCpt((SceneDatas.datasName)i);
+                if (cptData > 0)
+                {
+                    createLine.AddLine((sceneDatas.dataConsumption[i] / sceneDatas.surfaceMesh / sceneDatas.GetScale()) * cptData,
+                                       sceneDatas.datasColors[i],
+                                       sceneDatas.vertices);
+                }
             }
+            sceneDatas.linesShowned = true;
+        }
+        else
+        {
+            createLine.ClearAll();
+            sceneDatas.linesShowned = false;
         }
     }
 }
