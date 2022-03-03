@@ -20,6 +20,7 @@ public class MeshHandlerButtons : MonoBehaviour
     public void ValidatePointsMesh()
     {
         placePoints.enumState.SetParamScene();
+        placePoints.ClearValidate();
         sceneDatas.pointsPlaced = true;
     }
 

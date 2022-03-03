@@ -28,6 +28,16 @@ public class PlacePoints : MonoBehaviour
         first = true;
     }
 
+    public void ClearValidate()
+    {
+        for (int i = 0; i < points.Count; i++)
+        {
+            Destroy(points[i]);
+        }
+        first = true;
+        lines.Clear();
+        points.Clear();
+    }
     public void ClearAll()
     {
         for (int i = 0; i < points.Count; i++)
