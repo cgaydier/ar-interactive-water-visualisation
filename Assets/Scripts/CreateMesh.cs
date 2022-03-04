@@ -8,7 +8,7 @@ public class CreateMesh : MonoBehaviour
     SceneDatas sceneDatas;
     List<int> triangles = new List<int>();
     public PlacePoints placePoints;
-    float volumeMesh = 0f;
+    float volumeMesh;
     public CreateLine createLine;
     float offset;
     float currentOffset;
@@ -17,6 +17,7 @@ public class CreateMesh : MonoBehaviour
     {
         mesh = new Mesh();
         sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
+        volumeMesh = 0f;
         offset = sceneDatas.defaultOffset;
         currentOffset = sceneDatas.defaultOffset;
         //sceneDatas.vertices.Add(new Vector3(0, 0, 0));

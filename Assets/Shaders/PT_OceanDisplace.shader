@@ -599,9 +599,9 @@ Shader "PolyToots/ASE_OceanDisplace"
 				float Metallic = 0;
 				float Smoothness = _Smoothness;
 				float Occlusion = 1;
-				float Alpha = 0.95;
-				float AlphaClipThreshold = 0.95;
-				float AlphaClipThresholdShadow = 0.95;
+				float Alpha = 0.8;
+				float AlphaClipThreshold = 1;
+				float AlphaClipThresholdShadow = 1;
 				float3 BakedGI = 0;
 				float3 RefractionColor = 1;
 				float RefractionIndex = 1;

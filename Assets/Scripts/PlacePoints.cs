@@ -52,7 +52,7 @@ public class PlacePoints : MonoBehaviour
             
             if(touch.phase == TouchPhase.Began)
             {
-                if (m_RaycastManager.Raycast(touch.position, s_Hits, TrackableType.PlaneWithinPolygon) && points.Count <= sceneDatas.maxPoints)
+                if (m_RaycastManager.Raycast(touch.position, s_Hits, TrackableType.PlaneWithinPolygon) && points.Count < sceneDatas.maxPoints)
                 {
                     PointerEventData ped = new PointerEventData(null)
                     {
