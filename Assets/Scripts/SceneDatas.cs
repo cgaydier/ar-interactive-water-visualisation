@@ -3,20 +3,10 @@ using UnityEngine;
 
 public class SceneDatas : MonoBehaviour
 {
-    private List<int> datas = new List<int>();
-    private float scale = 1f;
-    public bool meshCreated = false;
-    public bool pointsPlaced = false;
-    public bool linesShowned = false;
-    public int minPoints = 3;
-    public int maxPoints = 10;
-    public float defaultOffset = 0.0001f;
-    public float surfaceMesh = 0f;
-    public List<Vector3> vertices = new List<Vector3>();
-
-    public enum datasName 
+    public EnumState enumState;
+    public enum DataName
     {
-        Shower, 
+        Shower,
         Bath,
         HandDish,
         DishWasher,
@@ -24,7 +14,7 @@ public class SceneDatas : MonoBehaviour
         Bathroom
     }
 
-    public List<float> dataConsumption = new List<float>
+    private readonly List<float> dataConsumption = new List<float>
     {
         0.06f,
         0.15f,
@@ -34,7 +24,7 @@ public class SceneDatas : MonoBehaviour
         0.009f
     };
 
-    public List<Color> datasColors = new List<Color>
+    private readonly List<Color> dataColor = new List<Color>
     {
         Color.blue,
         Color.red,
@@ -44,30 +34,71 @@ public class SceneDatas : MonoBehaviour
         Color.yellow
     };
 
+    private List<int> datas = new List<int>();
+    private int scale = 1;
+    private bool meshCreated = false;
+    private bool pointsPlaced = false;
+    private bool linesShowned = false;
+    private readonly int minPoints = 3;
+    private readonly int maxPoints = 10;
+    private readonly float defaultOffset = 0.0001f;
+    private float surfaceMesh = 0f;
+    private List<Vector3> vertices = new List<Vector3>();
+
+
     public void Start()
     {
-        for (int i = 0; i < System.Enum.GetValues(typeof(datasName)).Length; i++)
+        for (int i = 0; i < System.Enum.GetValues(typeof(DataName)).Length; i++)
         {
             datas.Add(0);
         }
     }
 
-    public void IncrData(datasName data)
+    public void ClearAll()
     {
-        datas[(int)data]++;
-    }
-    
-    public void DecrData(datasName data)
-    {
-        datas[(int)data]--;
+        datas.Clear();
+        for (int i = 0; i < System.Enum.GetValues(typeof(DataName)).Length; i++)
+        {
+            datas.Add(0);
+        }
+
+        scale = 1;
+        meshCreated = false;
+        pointsPlaced = false;
+        linesShowned = false;
+        surfaceMesh = 0f;
+        ClearVertices();
     }
 
-    public float GetDataConsumption(datasName data)
+    public void ClearVertices()
+    {
+        vertices.Clear();
+    }
+
+    public float GetDataConsumption(DataName data)
     {
         return dataConsumption[(int)data];
     }
 
-    public int GetDataCpt(datasName data)
+    public Color GetDataColor(DataName data)
+    {
+        return dataColor[(int)data];
+    }
+
+    public void IncrDataCpt(DataName data)
+    {
+        datas[(int)data]++;
+    }
+
+    public bool DecrDataCpt(DataName data)
+    {
+        if (datas[(int)data] <= 0)
+            return false;
+        datas[(int)data]--;
+        return true;
+    }
+
+    public int GetDataCpt(DataName data)
     {
         return datas[(int)data];
     }
@@ -77,13 +108,85 @@ public class SceneDatas : MonoBehaviour
         scale++;
     }
 
-    public void DecrScale()
+    public bool DecrScale()
     {
-        scale = scale - 1f > 1f ? scale - 1f : 1f;
+        if (scale <= 1)
+            return false;
+        scale --;
+        return true;
     }
 
-    public float GetScale()
+    public int GetScale()
     {
         return scale;
+    }
+
+    public bool IsMeshCreated()
+    {
+        return meshCreated;
+    }
+
+    public void SetMeshCreated(bool tmp)
+    {
+        meshCreated = tmp;
+    }
+
+    public bool IsPointsPlaced()
+    {
+        return pointsPlaced;
+    }
+
+    public void SetPointsPlaced(bool tmp)
+    {
+        pointsPlaced = tmp;
+    }
+    public bool IsLinesShowned()
+    {
+        return linesShowned;
+    }
+
+    public void SetLinesShowned(bool tmp)
+    {
+        linesShowned = tmp;
+    }
+
+    public int GetMinPoints()
+    {
+        return minPoints;
+    }
+
+    public int GetMaxPoints()
+    {
+        return maxPoints;
+    }
+
+    public float GetDefaultOffset()
+    {
+        return defaultOffset;
+    }
+
+    public float GetSurfaceMesh()
+    {
+        return surfaceMesh;
+    }
+
+    public void SetSurfaceMesh(float tmp)
+    {
+        surfaceMesh = tmp;
+    }
+
+    public void AddVertice(Vector3 tmp)
+    {
+        vertices.Add(tmp);
+    }
+
+    public List<Vector3> GetVertices()
+    {
+        return new List<Vector3>(vertices);
+    }
+
+    public int GetVerticesSize()
+    {
+        return vertices.Count;
     }
 }

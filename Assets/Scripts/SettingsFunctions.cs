@@ -3,10 +3,9 @@ using UnityEngine.UI;
 
 public class SettingsFunctions : MonoBehaviour
 {
-    float waterConsumption;
-    int counter = 0;
-    CreateMesh createMesh;
-    SceneDatas sceneDatas;
+    private float waterConsumption;
+    private CreateMesh createMesh;
+    private SceneDatas sceneDatas;
     
     Text scoreText;
 
@@ -18,36 +17,36 @@ public class SettingsFunctions : MonoBehaviour
         {
             case "Shower":
                 scoreText = GameObject.Find("Shower/Score").GetComponent<Text>();
-                waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.datasName.Shower));
+                waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.DataName.Shower));
                 break;
             case "Bath":
                 scoreText = GameObject.Find("Bath/Score").GetComponent<Text>();
-                waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.datasName.Bath));
+                waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.DataName.Bath));
                 break;
             case "HandDish":
                 scoreText = GameObject.Find("HandDish/Score").GetComponent<Text>();
-                waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.datasName.HandDish));
+                waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.DataName.HandDish));
                 break;
             case "DishWasher":
                 scoreText = GameObject.Find("DishWasher/Score").GetComponent<Text>();
-                waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.datasName.DishWasher));
+                waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.DataName.DishWasher));
                 break;
             case "WashingMachine":
                 scoreText = GameObject.Find("WashingMachine/Score").GetComponent<Text>();
-                waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.datasName.WashingMachine));
+                waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.DataName.WashingMachine));
                 break;
             case "Bathroom":
                 scoreText = GameObject.Find("Bathroom/Score").GetComponent<Text>();
-                waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.datasName.Bathroom));
+                waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.DataName.Bathroom));
                 break;
             case "Scale":
-                counter = 1;
                 scoreText = GameObject.Find("Scale/Score").GetComponent<Text>();
                 break;
             default:
-                Debug.Log("Type not known for increment consumption !" + gameObject.name);
+                Debug.Log("Type not known !" + gameObject.name);
                 break;
         }
+        RefreshText();
     }
 
     public void AddConsumption()
@@ -55,91 +54,116 @@ public class SettingsFunctions : MonoBehaviour
         switch (gameObject.name)
         {
             case "Shower":
-                sceneDatas.IncrData(SceneDatas.datasName.Shower);
+                sceneDatas.IncrDataCpt(SceneDatas.DataName.Shower);
                 break;
             case "Bath":
-                sceneDatas.IncrData(SceneDatas.datasName.Bath);
+                sceneDatas.IncrDataCpt(SceneDatas.DataName.Bath);
                 break;
             case "HandDish":
-                sceneDatas.IncrData(SceneDatas.datasName.HandDish);
+                sceneDatas.IncrDataCpt(SceneDatas.DataName.HandDish);
                 break;
             case "DishWasher":
-                sceneDatas.IncrData(SceneDatas.datasName.DishWasher);
+                sceneDatas.IncrDataCpt(SceneDatas.DataName.DishWasher);
                 break;
             case "WashingMachine":
-                sceneDatas.IncrData(SceneDatas.datasName.WashingMachine);
+                sceneDatas.IncrDataCpt(SceneDatas.DataName.WashingMachine);
                 break;
             case "Bathroom":
-                sceneDatas.IncrData(SceneDatas.datasName.Bathroom);
+                sceneDatas.IncrDataCpt(SceneDatas.DataName.Bathroom);
                 break;
             case "Scale":
                 sceneDatas.IncrScale();
                 break;
             default:
-                Debug.Log("Type not known for increment consumption !");
+                Debug.Log("Type not known !");
                 break;
         }
         createMesh.AddWater(waterConsumption);
-        counter++;
         RefreshText();
     }
 
     public void RemoveConsumption()
     {
-        if (counter > 0)
+        bool passed = true;
+        switch (gameObject.name)
         {
-            switch (gameObject.name)
-            {
-                case "Shower":
-                    sceneDatas.DecrData(SceneDatas.datasName.Shower);
-                    break;
-                case "Bath":
-                    sceneDatas.DecrData(SceneDatas.datasName.Bath);
-                    break;
-                case "HandDish":
-                    sceneDatas.DecrData(SceneDatas.datasName.HandDish);
-                    break;
-                case "DishWasher":
-                    sceneDatas.DecrData(SceneDatas.datasName.DishWasher);
-                    break;
-                case "WashingMachine":
-                    sceneDatas.DecrData(SceneDatas.datasName.WashingMachine);
-                    break;
-                case "Bathroom":
-                    sceneDatas.DecrData(SceneDatas.datasName.Bathroom);
-                    break;
-                case "Scale":
-                    sceneDatas.DecrScale();
-                    break;
-                default:
-                    Debug.Log("Type not known for increment consumption !");
-                    break;
-            }
+            case "Shower":
+                passed = sceneDatas.DecrDataCpt(SceneDatas.DataName.Shower);
+                break;
+            case "Bath":
+                passed = sceneDatas.DecrDataCpt(SceneDatas.DataName.Bath);
+                break;
+            case "HandDish":
+                passed = sceneDatas.DecrDataCpt(SceneDatas.DataName.HandDish);
+                break;
+            case "DishWasher":
+                passed = sceneDatas.DecrDataCpt(SceneDatas.DataName.DishWasher);
+                break;
+            case "WashingMachine":
+                passed = sceneDatas.DecrDataCpt(SceneDatas.DataName.WashingMachine);
+                break;
+            case "Bathroom":
+                passed = sceneDatas.DecrDataCpt(SceneDatas.DataName.Bathroom);
+                break;
+            case "Scale":
+                break;
+            default:
+                Debug.Log("Type not known !");
+                break;
+        }
+        if (passed)
+        {
             createMesh.RemoveWater(waterConsumption);
-            counter --;
             RefreshText();
-        }        
+        }
     }
 
     public void AddScale()
     {
         createMesh.AddScale();
-        counter++;
         RefreshText();
     }
 
     public void RemoveScale()
     {
-        if (counter > 1)
+        if (sceneDatas.DecrScale())
         {
-            createMesh.RemoveScale();
-            counter--;
+            createMesh.DecrScale();
             RefreshText();
         }
     }
 
-    private void RefreshText()
+    public void RefreshText()
     {
-        scoreText.text = counter.ToString();
+        int cpt = 0;
+        
+        switch (gameObject.name)
+        {
+            case "Shower":
+                cpt = sceneDatas.GetDataCpt(SceneDatas.DataName.Shower);
+                break;
+            case "Bath":
+                cpt = sceneDatas.GetDataCpt(SceneDatas.DataName.Bath);
+                break;
+            case "HandDish":
+                cpt = sceneDatas.GetDataCpt(SceneDatas.DataName.HandDish);
+                break;
+            case "DishWasher":
+                cpt = sceneDatas.GetDataCpt(SceneDatas.DataName.DishWasher);
+                break;
+            case "WashingMachine":
+                cpt = sceneDatas.GetDataCpt(SceneDatas.DataName.WashingMachine);
+                break;
+            case "Bathroom":
+                cpt = sceneDatas.GetDataCpt(SceneDatas.DataName.Bathroom);
+                break;
+            case "Scale":
+                cpt = sceneDatas.GetScale();
+                break;
+            default:
+                Debug.Log("Type not known !" + gameObject.name);
+                break;
+        }
+        scoreText.text = cpt.ToString();
     }
 }

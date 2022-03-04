@@ -340,9 +340,9 @@ RectTransform:
   m_Father: {fileID: 1683650217}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 400, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &48139848
@@ -7577,8 +7577,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6411d9e5c4c43b48992ebbd9de43b10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placePoints: {fileID: 1516527981}
-  createLine: {fileID: 1269227055}
 --- !u!114 &1516527981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7593,8 +7591,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RaycastManager: {fileID: 1471520476}
   m_PointToPlace: {fileID: 7222759312059337119, guid: dd7f91ccdc4e56a4c84d70e9c08c7e40, type: 3}
-  enumState: {fileID: 144765961}
-  points: []
 --- !u!4 &1516527982
 Transform:
   m_ObjectHideFlags: 0
@@ -8236,9 +8232,9 @@ RectTransform:
   m_Father: {fileID: 1683650217}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 625, y: -75}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 400, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1805061781
@@ -8431,8 +8427,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a45a849d644f44a9112d1556c0170b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placePoints: {fileID: 1516527981}
-  createMesh: {fileID: 1516527980}
+  Shower: {fileID: 1995004299}
+  Bath: {fileID: 1024366578}
+  HandDish: {fileID: 1152708509}
+  DishWasher: {fileID: 636818235}
+  WashingMachine: {fileID: 764785145}
+  Bathroom: {fileID: 1507725554}
+  Scale: {fileID: 1923464552}
 --- !u!1 &1824128215
 GameObject:
   m_ObjectHideFlags: 0
@@ -9251,28 +9252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f144109c448abd4da1536d17e8afa53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshCreated: 0
-  pointsPlaced: 0
-  linesShowned: 0
-  minPoints: 3
-  maxPoints: 10
-  defaultOffset: 0.0001
-  surfaceMesh: 0
-  vertices: []
-  dataConsumption:
-  - 0.06
-  - 0.15
-  - 0.017
-  - 0.014
-  - 0.07
-  - 0.009
-  datasColors:
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 1, b: 1, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 1, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  enumState: {fileID: 144765961}
 --- !u!1 &2050411101
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class CreateLine : MonoBehaviour
 {
-    List<Mesh> meshList = new List<Mesh>();
-    List<GameObject> goList = new List<GameObject>();
     public Material meshMat;
 
+    private readonly List<Mesh> meshList = new List<Mesh>();
+    private readonly List<GameObject> goList = new List<GameObject>();
     private float top = 0f;
-
-    float offset = 0.02f;
+    private readonly float offset = 0.02f;
 
     private void Update()
     {
