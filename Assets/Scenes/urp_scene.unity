@@ -1164,7 +1164,6 @@ GameObject:
   - component: {fileID: 232298643}
   - component: {fileID: 232298642}
   - component: {fileID: 232298641}
-  - component: {fileID: 232298644}
   m_Layer: 5
   m_Name: Up
   m_TagString: Untagged
