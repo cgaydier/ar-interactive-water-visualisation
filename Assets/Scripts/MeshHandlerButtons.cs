@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MeshHandlerButtons : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class MeshHandlerButtons : MonoBehaviour
     public GameObject WashingMachine;
     public GameObject Bathroom;
     public GameObject Scale;
+    public GameObject textInput;
 
     private PlacePoints placePoints;
     private CreateMesh createMesh;
@@ -47,10 +49,16 @@ public class MeshHandlerButtons : MonoBehaviour
         Destroy(GameObject.Find("Mesh"));
     }
 
-    public void CreateArbitraryMesh(string textInField)
+    public void CreateArbitraryMesh()
     {
-        ClearSettings();
-        createMesh.SetCustomVolume(int.Parse(textInField));
+        if (sceneDatas.IsMeshCreated())
+        {
+            ClearSettings();
+            string textInField = textInput.GetComponent<Text>().text;
+            int tmp;
+            int.TryParse(textInField, out tmp);
+            createMesh.SetCustomVolume((float)tmp);
+        }
     }
 
     public void ClearSettings()
