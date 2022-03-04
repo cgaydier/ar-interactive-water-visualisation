@@ -157,10 +157,10 @@ public class CreateMesh : MonoBehaviour
             CreateTriangles(tmp);
 
             volumeMesh = sceneDatas.GetSurfaceMesh() * currentOffset;
-            if (sceneDatas.GetScale() > 1)
+            if(sceneDatas.GetScale() > 1)
             {
-                GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Visible volume with a " + sceneDatas.GetScale()
-                + " value :\n" + volumeMesh.ToString("F2") + " m3\nReal volume :\n" + (sceneDatas.GetScale() * volumeMesh).ToString("F2") + "m3";
+                GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Visible volume\ndivided by " + sceneDatas.GetScale()
+                + " :\n" + volumeMesh.ToString("F2") + " m3\nReal volume :\n" + (sceneDatas.GetScale() * volumeMesh).ToString("F2") + "m3";
             }
             else
             {
