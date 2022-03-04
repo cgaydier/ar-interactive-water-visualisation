@@ -8,10 +8,10 @@ public class CreateMesh : MonoBehaviour
     SceneDatas sceneDatas;
     List<int> triangles = new List<int>();
     public PlacePoints placePoints;
-    float volumeMesh;
+    private float volumeMesh;
     public CreateLine createLine;
-    float offset;
-    float currentOffset;
+    private float offset;
+    private float currentOffset;
 
     void Start()
     {
@@ -148,8 +148,17 @@ public class CreateMesh : MonoBehaviour
             }
 
             mesh.vertices = tmp.ToArray();
+        
             volumeMesh = CreateTriangles(tmp) * currentOffset; // volume (m3)
-            GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume :\n" + volumeMesh.ToString("F2") + " m3";
+            if(sceneDatas.GetScale() > 1)
+            {
+                GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Visible volume with a " + sceneDatas.GetScale()
+                + " value :\n" + volumeMesh.ToString("F2") + " m3\nReal volume :\n" + (sceneDatas.GetScale() * volumeMesh).ToString("F2") + "m3";
+            }
+            else
+            {
+                GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume :\n" + volumeMesh.ToString("F2") + " m3";
+            }
             mesh.triangles = triangles.ToArray();
 
             mesh.MarkDynamic();
