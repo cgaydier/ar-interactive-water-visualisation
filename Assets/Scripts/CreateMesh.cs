@@ -5,30 +5,29 @@ public class CreateMesh : MonoBehaviour
 {   
     Mesh mesh;
     GameObject go;
+    SceneDatas sceneDatas;
     List<int> triangles = new List<int>();
-    public Material meshMat;
     public PlacePoints placePoints;
-    float surfaceMesh = 0f;
     float volumeMesh = 0f;
     public CreateLine createLine;
-    bool meshCreated = false;
-    bool pointsPlaced = false;
-    private float offset = 0.001f;
-    private float currentOffset = 0.1f;
-    public float scale = 1f;
+    float offset;
+    float currentOffset;
 
     void Start()
     {
         mesh = new Mesh();
-        //placePoints.vertices.Add(new Vector3(0, 0, 0));
-        //placePoints.vertices.Add(new Vector3(0, 0, 0));
-        //placePoints.vertices.Add(new Vector3(1, 0, 0));
-        //placePoints.vertices.Add(new Vector3(1, 0, 0));
-        //placePoints.vertices.Add(new Vector3(1, 0, 1));
-        //placePoints.vertices.Add(new Vector3(1, 0, 1));
-        //placePoints.vertices.Add(new Vector3(0, 0, 1));
-        //placePoints.vertices.Add(new Vector3(0, 0, 1));
-        //pointsPlaced = true;
+        sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
+        offset = sceneDatas.defaultOffset;
+        currentOffset = sceneDatas.defaultOffset;
+        //sceneDatas.vertices.Add(new Vector3(0, 0, 0));
+        //sceneDatas.vertices.Add(new Vector3(0, 0, 0));
+        //sceneDatas.vertices.Add(new Vector3(1, 0, 0));
+        //sceneDatas.vertices.Add(new Vector3(1, 0, 0));
+        //sceneDatas.vertices.Add(new Vector3(1, 0, 1));
+        //sceneDatas.vertices.Add(new Vector3(1, 0, 1));
+        //sceneDatas.vertices.Add(new Vector3(0, 0, 1));
+        //sceneDatas.vertices.Add(new Vector3(0, 0, 1));
+        //sceneDatas.pointsPlaced = true;
     }
 
     void Update()
@@ -36,38 +35,28 @@ public class CreateMesh : MonoBehaviour
         MeshHandler();
     }
 
-    public void SetPointsPlaced(bool tmp)
-    {
-        pointsPlaced = tmp;
-    }
-
-    public void SetMeshCreated(bool tmp)
-    {
-        meshCreated = tmp;
-    }
-
     public void AddScale()
     {
-        scale ++;
-        SetWater(offset / scale);
+        sceneDatas.IncrScale();
+        SetWater(offset / sceneDatas.GetScale());
     }
 
     public void RemoveScale()
     {
-        scale = scale - 1f > 1f ? scale - 1f : 1f;
-        SetWater(offset / scale);
+        sceneDatas.DecrScale();
+        SetWater(offset / sceneDatas.GetScale());
     }
 
     public void AddWater(float volume)
     {
-        offset += volume / surfaceMesh;
-        SetWater(offset / scale);
+        offset += (volume / sceneDatas.surfaceMesh);
+        SetWater(offset / sceneDatas.GetScale());
     }
 
     public void RemoveWater(float volume)
     {
-        offset = offset - (volume / surfaceMesh) >= 0.00f ? offset - (volume / surfaceMesh) : 0.00f;
-        SetWater(offset / scale);
+        offset = offset - (volume / sceneDatas.surfaceMesh) >= 0.00f ? offset - (volume / sceneDatas.surfaceMesh) : 0.00f;
+        SetWater(offset / sceneDatas.GetScale());
     }
 
     public void SetWater(float tmp)
@@ -78,11 +67,11 @@ public class CreateMesh : MonoBehaviour
 
     void RefreshMesh()
     {
-        surfaceMesh = 0f;
+        sceneDatas.surfaceMesh = 0f;
         volumeMesh = 0f;
         triangles.Clear();
         mesh.Clear();
-        meshCreated = false;
+        sceneDatas.meshCreated = false;
         Destroy(go);
         createLine.ClearAll();
     }
@@ -90,9 +79,9 @@ public class CreateMesh : MonoBehaviour
     public void ClearAll()
     {
         RefreshMesh();
-        offset = 0.001f;
-        currentOffset = 0.001f;
-        pointsPlaced = false;
+        offset = sceneDatas.defaultOffset;
+        currentOffset = sceneDatas.defaultOffset;
+        sceneDatas.pointsPlaced = false;
         GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume :\n0 m3";
     }
 
@@ -107,7 +96,7 @@ public class CreateMesh : MonoBehaviour
             triangles.Add(0);
             triangles.Add(j + 4);
             triangles.Add(j + 2);
-            surfaceMesh = surfaceMesh + ((Vector3.Distance(vertices[0], vertices[j+2]) * Vector3.Distance(vertices[j+2], vertices[j+4])) / 2f);
+            sceneDatas.surfaceMesh += ((Vector3.Distance(vertices[0], vertices[j+2]) * Vector3.Distance(vertices[j+2], vertices[j+4])) / 2f);
 
             // Top
             triangles.Add(1);
@@ -125,35 +114,35 @@ public class CreateMesh : MonoBehaviour
             triangles.Add((j + 1) % nbTotal);
             triangles.Add((j + 3) % nbTotal);
         }
-        return surfaceMesh;
+        return sceneDatas.surfaceMesh;
     }
 
     bool Checkpoints()
     {
-        int nb_total = (placePoints.vertices.Count)/2;
-        if (nb_total < 3 || nb_total > 10)
+        int nbTotal = (sceneDatas.vertices.Count)/2;
+        if (nbTotal < sceneDatas.minPoints || nbTotal > sceneDatas.maxPoints)
             return false;
         return true;
     }
 
     void MeshHandler()
     {
-        if (Checkpoints() && !meshCreated && pointsPlaced)
+        if (Checkpoints() && !sceneDatas.meshCreated && sceneDatas.pointsPlaced)
         {
             List<Vector3> tmp = new List<Vector3>();
-            for (int i = 0; i < placePoints.vertices.Count; i ++)
+            for (int i = 0; i < sceneDatas.vertices.Count; i ++)
             {
                 if (i%2 == 0)
                 {
-                    tmp.Add(new Vector3(placePoints.vertices[i].x,
-                                        placePoints.vertices[i].y,
-                                        placePoints.vertices[i].z));
+                    tmp.Add(new Vector3(sceneDatas.vertices[i].x,
+                                        sceneDatas.vertices[i].y,
+                                        sceneDatas.vertices[i].z));
                 }
                 else
                 {
-                    tmp.Add(new Vector3(placePoints.vertices[i].x,
-                                        placePoints.vertices[i].y + currentOffset,
-                                        placePoints.vertices[i].z));
+                    tmp.Add(new Vector3(sceneDatas.vertices[i].x,
+                                        sceneDatas.vertices[i].y + currentOffset,
+                                        sceneDatas.vertices[i].z));
                 }
             }
 
@@ -161,21 +150,21 @@ public class CreateMesh : MonoBehaviour
             volumeMesh = CreateTriangles(tmp) * currentOffset; // volume (m3)
             GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume :\n" + volumeMesh.ToString("F2") + " m3";
             mesh.triangles = triangles.ToArray();
+
             mesh.MarkDynamic();
             mesh.Optimize();
             mesh.OptimizeIndexBuffers();
             mesh.OptimizeReorderVertexBuffer();
 
             go = new GameObject("Mesh", typeof(MeshFilter), typeof(MeshRenderer));
-            go.GetComponent<MeshRenderer>().material = meshMat;
+            go.GetComponent<MeshRenderer>().material = Resources.Load("WaterURP", typeof(Material)) as Material;
             go.GetComponent<MeshFilter>().mesh = mesh;
 
-            meshCreated = true;
-
-            //createLine.AddLine(currentOffset / 2, placePoints.vertices);
+            sceneDatas.meshCreated = true;
+            Debug.Log("current Offset : " + currentOffset);
         }
 
-        else if(Checkpoints() && meshCreated)
+        else if(Checkpoints() && sceneDatas.meshCreated)
         {
             mesh.RecalculateNormals();
             mesh.RecalculateTangents();

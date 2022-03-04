@@ -3,7 +3,14 @@ using UnityEngine;
 public class EnumState : MonoBehaviour
 {
     public GameObject Settings;
-    public enum State {MainView, ParamScene, PlacePoints, PlacePointsBefore, ConsumptionScene}
+    public enum State 
+    {
+        MainView,
+        ParamScene,
+        PlacePoints,
+        PlacePointsBefore,
+        ConsumptionScene
+    }
 
     public State currentState;
 

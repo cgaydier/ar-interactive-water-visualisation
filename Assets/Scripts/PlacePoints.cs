@@ -7,27 +7,28 @@ using UnityEngine.UI;
 
 public class PlacePoints : MonoBehaviour
 {
-    [SerializeField]
-    ARRaycastManager m_RaycastManager;
-    static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
-    [SerializeField]
-    GameObject m_PointToPlace;
-    public EnumState enumState;
-    public List<GameObject> points = new List<GameObject>();
-    public List<Vector3> vertices = new List<Vector3>();
-    private List<Vector3> lines = new List<Vector3>();
+    SceneDatas sceneDatas;
     GraphicRaycaster GR;
+
+    public ARRaycastManager m_RaycastManager;
+    public GameObject m_PointToPlace;
+    public EnumState enumState;
+
+    static List<ARRaycastHit> s_Hits = new List<ARRaycastHit>();
+    public List<GameObject> points = new List<GameObject>();
+    private List<Vector3> lines = new List<Vector3>();
+    
     private LineRenderer LR;
     private bool first;
-    
 
     private void Start()
     {
         GR = GameObject.Find("UICanvas").GetComponent<GraphicRaycaster>();
+        sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
         first = true;
     }
 
-    public void ClearAll()
+    public void ClearValidate()
     {
         for (int i = 0; i < points.Count; i++)
         {
@@ -35,8 +36,12 @@ public class PlacePoints : MonoBehaviour
         }
         first = true;
         lines.Clear();
-        vertices.Clear();
         points.Clear();
+    }
+    public void ClearAll()
+    {
+        ClearValidate();
+        sceneDatas.vertices.Clear();
     }
 
     void Update()
@@ -47,7 +52,7 @@ public class PlacePoints : MonoBehaviour
             
             if(touch.phase == TouchPhase.Began)
             {
-                if (m_RaycastManager.Raycast(touch.position, s_Hits, TrackableType.PlaneWithinPolygon))
+                if (m_RaycastManager.Raycast(touch.position, s_Hits, TrackableType.PlaneWithinPolygon) && points.Count <= sceneDatas.maxPoints)
                 {
                     PointerEventData ped = new PointerEventData(null)
                     {
@@ -56,8 +61,6 @@ public class PlacePoints : MonoBehaviour
                     List<RaycastResult> results = new List<RaycastResult>();
                     GR.Raycast(ped, results);
 
-                    Debug.Log(results);
-                    print(results.Count);
                     if (results.Count == 0)
                     {
                         Pose hitPose = s_Hits[0].pose;
@@ -72,10 +75,10 @@ public class PlacePoints : MonoBehaviour
                             first = false;
                         }
                         LR.positionCount = points.Count;
-                        vertices.Add(hitPose.position);
+                        sceneDatas.vertices.Add(hitPose.position);
+                        sceneDatas.vertices.Add(hitPose.position);
                         lines.Add(hitPose.position);
-                        vertices.Add(hitPose.position);
-                        
+
                         LR.SetPositions(lines.ToArray());
                         LR.loop = true;
                     }
