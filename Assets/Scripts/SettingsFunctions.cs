@@ -9,6 +9,8 @@ public class SettingsFunctions : MonoBehaviour
     SceneDatas sceneDatas;
     
     Text scoreText;
+    Color showerBackground, bathBackground, handDishBackground,
+        dishWasherBackground, washingMachineBackground, bathroomBackground;
 
     void Start()
     {
@@ -18,26 +20,32 @@ public class SettingsFunctions : MonoBehaviour
         {
             case "Shower":
                 scoreText = GameObject.Find("Shower/Score").GetComponent<Text>();
+                showerBackground = GameObject.Find("Shower").GetComponent<Image>().color = sceneDatas.datasColors[0];
                 waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.datasName.Shower));
                 break;
             case "Bath":
                 scoreText = GameObject.Find("Bath/Score").GetComponent<Text>();
+                bathBackground = GameObject.Find("Bath").GetComponent<Image>().color = sceneDatas.datasColors[1];
                 waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.datasName.Bath));
                 break;
             case "HandDish":
                 scoreText = GameObject.Find("HandDish/Score").GetComponent<Text>();
+                handDishBackground = GameObject.Find("HandDish").GetComponent<Image>().color = sceneDatas.datasColors[2];
                 waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.datasName.HandDish));
                 break;
             case "DishWasher":
                 scoreText = GameObject.Find("DishWasher/Score").GetComponent<Text>();
+                dishWasherBackground = GameObject.Find("DishWasher").GetComponent<Image>().color = sceneDatas.datasColors[3];
                 waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.datasName.DishWasher));
                 break;
             case "WashingMachine":
                 scoreText = GameObject.Find("WashingMachine/Score").GetComponent<Text>();
+                washingMachineBackground = GameObject.Find("WashingMachine").GetComponent<Image>().color = sceneDatas.datasColors[4];
                 waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.datasName.WashingMachine));
                 break;
             case "Bathroom":
                 scoreText = GameObject.Find("Bathroom/Score").GetComponent<Text>();
+                bathroomBackground = GameObject.Find("Bathroom").GetComponent<Image>().color = sceneDatas.datasColors[5];
                 waterConsumption = sceneDatas.GetDataConsumption((SceneDatas.datasName.Bathroom));
                 break;
             case "Scale":
