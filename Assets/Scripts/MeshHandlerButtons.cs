@@ -23,8 +23,11 @@ public class MeshHandlerButtons : MonoBehaviour
 
     public void CreatePointsMesh()
     {
-        sceneDatas.enumState.SetPlacePointsBefore();
-        sceneDatas.SetPointsPlaced(false);
+        if (!sceneDatas.IsMeshCreated())
+        {
+            sceneDatas.enumState.SetPlacePointsBefore();
+            sceneDatas.SetPointsPlaced(false);
+        } 
     }
 
     public void ValidatePointsMesh()
@@ -42,6 +45,12 @@ public class MeshHandlerButtons : MonoBehaviour
         createMesh.ClearAll();
         ClearSettings();
         Destroy(GameObject.Find("Mesh"));
+    }
+
+    public void CreateArbitraryMesh(string textInField)
+    {
+        ClearSettings();
+        createMesh.SetCustomVolume(int.Parse(textInField));
     }
 
     public void ClearSettings()
