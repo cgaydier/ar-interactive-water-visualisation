@@ -60,12 +60,19 @@ public class CreateMesh : MonoBehaviour
         SetWater(offset / sceneDatas.GetScale());
     }
 
+    public void SetCustomVolume(float volume){
+        if(volume >= 0f)
+        {
+            offset = (volume / sceneDatas.surfaceMesh);
+            SetWater(offset / sceneDatas.GetScale());
+        }
+    }
     public void SetWater(float tmp)
     {
         currentOffset = tmp;
         RefreshMesh();
     }
-
+    
     void RefreshMesh()
     {
         sceneDatas.surfaceMesh = 0f;
