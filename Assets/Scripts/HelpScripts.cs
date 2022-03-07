@@ -5,7 +5,7 @@ using UnityEngine;
 public class HelpScripts : MonoBehaviour
 {
     public GameObject UIPanel;
-    public GameObject Page_1, Page_2, Page_3, Page_4;
+    public GameObject Page_1, Page_2, Page_3, Page_4, Page_5;
     public GameObject CurrentPage;
     public GameObject Menu;
     public GameObject PrevButton, NextButton;
@@ -43,6 +43,10 @@ public class HelpScripts : MonoBehaviour
 
         else if(CurrentPage == Page_3){
             SwitchPage(Page_3, Page_4);
+        }
+
+        else if(CurrentPage == Page_4){
+            SwitchPage(Page_4, Page_5);
             NextButton.SetActive(false);
         }
     }
@@ -59,8 +63,12 @@ public class HelpScripts : MonoBehaviour
         }
 
         else if(CurrentPage == Page_4){
-            NextButton.SetActive(true);
             SwitchPage(Page_4, Page_3);
+        }
+
+        else if(CurrentPage == Page_5){
+            NextButton.SetActive(true);
+            SwitchPage(Page_5, Page_4);
         }
     }
 
