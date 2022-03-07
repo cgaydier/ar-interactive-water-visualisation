@@ -100,7 +100,7 @@ public class CreateLine : MonoBehaviour
         GameObject tmpGo = new GameObject("Line", typeof(MeshFilter), typeof(MeshRenderer));
         tmpGo.GetComponent<MeshRenderer>().material = meshMat;
         Color color = lineColor;
-        color.a = 0.5f;
+        color.a = 0.8f;
         tmpGo.GetComponent<MeshRenderer>().material.color = color;
         tmpGo.GetComponent<MeshRenderer>().material.renderQueue= 3100;
         tmpGo.GetComponent<MeshFilter>().mesh = tmpMesh;
