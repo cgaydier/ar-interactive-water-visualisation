@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static SceneDatas;
 
 public class CreateMesh : MonoBehaviour
 {   
@@ -72,19 +71,19 @@ public class CreateMesh : MonoBehaviour
     {
         switch (sceneDatas.currentTime)
         {
-            case TimeName.Day:
+            case SceneDatas.TimeName.Day:
                 currentOffset = offset / 7f;
                 break;
 
-            case TimeName.Week:
+            case SceneDatas.TimeName.Week:
                 currentOffset = offset;
                 break;
 
-            case TimeName.Month:
+            case SceneDatas.TimeName.Month:
                 currentOffset = offset * 4;
                 break;
 
-            case TimeName.Year:
+            case SceneDatas.TimeName.Year:
                 currentOffset = offset * 52;
                 break;
 
@@ -109,25 +108,25 @@ public class CreateMesh : MonoBehaviour
 
     public void ADayConsumption()
     {
-        sceneDatas.currentTime = TimeName.Day;
+        sceneDatas.currentTime = SceneDatas.TimeName.Day;
         SetWater();
     }
 
     public void AWeekConsumption()
     {
-        sceneDatas.currentTime = TimeName.Week;
+        sceneDatas.currentTime = SceneDatas.TimeName.Week;
         SetWater();
     }
 
     public void AMonthConsumption()
     {
-        sceneDatas.currentTime = TimeName.Month;
+        sceneDatas.currentTime = SceneDatas.TimeName.Month;
         SetWater();
     }
 
     public void AYearConsumption()
     {
-        sceneDatas.currentTime = TimeName.Year;
+        sceneDatas.currentTime = SceneDatas.TimeName.Year;
         SetWater();
     }
 
