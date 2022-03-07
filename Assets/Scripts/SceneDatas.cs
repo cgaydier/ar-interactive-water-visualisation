@@ -64,15 +64,20 @@ public class SceneDatas : MonoBehaviour
         }
     }
 
-    public void ClearAll()
+    public void ClearCpt()
     {
         datas.Clear();
         for (int i = 0; i < System.Enum.GetValues(typeof(DataName)).Length; i++)
         {
             datas.Add(0);
         }
-
         scale = 1;
+        currentTime = TimeName.Week;
+    }
+
+    public void ClearAll()
+    { 
+        ClearCpt();
         meshCreated = false;
         pointsPlaced = false;
         linesShowned = false;

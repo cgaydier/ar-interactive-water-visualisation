@@ -10,6 +10,7 @@ public class MeshHandlerButtons : MonoBehaviour
     public GameObject WashingMachine;
     public GameObject Bathroom;
     public GameObject Scale;
+    public GameObject TemporalScale;
     public InputField textInput;
 
     private PlacePoints placePoints;
@@ -52,9 +53,10 @@ public class MeshHandlerButtons : MonoBehaviour
 
     public void CreateArbitraryMesh()
     {
+        sceneDatas.ClearCpt();
+        ClearSettings();
         if (sceneDatas.IsMeshCreated())
         {
-            ClearSettings();
             string textInField = textInput.text;
             int tmp;
             int.TryParse(textInField, out tmp);
@@ -65,6 +67,7 @@ public class MeshHandlerButtons : MonoBehaviour
     public void ResetMeshSettings()
     {
         createMesh.Reset();
+        sceneDatas.ClearCpt();
         ClearSettings();
     }
     
@@ -77,5 +80,6 @@ public class MeshHandlerButtons : MonoBehaviour
         WashingMachine.GetComponent<SettingsFunctions>().RefreshText();
         Bathroom.GetComponent<SettingsFunctions>().RefreshText();
         Scale.GetComponent<SettingsFunctions>().RefreshText();
+        TemporalScale.GetComponent<SettingsFunctions>().RefreshText();
     }
 }
