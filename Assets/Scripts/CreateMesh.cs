@@ -21,7 +21,7 @@ public class CreateMesh : MonoBehaviour
         volumeMesh = 0f;
         offset = sceneDatas.GetDefaultOffset();
         currentOffset = sceneDatas.GetDefaultOffset();
-        sceneDatas.AddVertice(new Vector3(0, 0, 0));
+        /*sceneDatas.AddVertice(new Vector3(0, 0, 0));
         sceneDatas.AddVertice(new Vector3(0, 0, 0));
         sceneDatas.AddVertice(new Vector3(1, 0, 0));
         sceneDatas.AddVertice(new Vector3(1, 0, 0));
@@ -29,7 +29,7 @@ public class CreateMesh : MonoBehaviour
         sceneDatas.AddVertice(new Vector3(1, 0, 1));
         sceneDatas.AddVertice(new Vector3(0, 0, 1));
         sceneDatas.AddVertice(new Vector3(0, 0, 1));
-        sceneDatas.SetPointsPlaced(true);
+        sceneDatas.SetPointsPlaced(true);*/
     }
 
     void Update()
