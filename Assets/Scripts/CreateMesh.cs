@@ -94,8 +94,14 @@ public class CreateMesh : MonoBehaviour
         currentOffset /= (float)sceneDatas.GetScale();
         RefreshMesh();
     }
-    
-    void RefreshMesh()
+
+    public void Reset()
+    {
+        currentOffset = sceneDatas.GetDefaultOffset();
+        RefreshMesh();
+    }
+
+    private void RefreshMesh()
     {
         sceneDatas.SetSurfaceMesh(0f);
         volumeMesh = 0f;

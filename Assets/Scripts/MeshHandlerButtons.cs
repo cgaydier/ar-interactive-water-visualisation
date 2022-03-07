@@ -62,6 +62,12 @@ public class MeshHandlerButtons : MonoBehaviour
         }
     }
 
+    public void ResetMeshSettings()
+    {
+        createMesh.Reset();
+        ClearSettings();
+    }
+    
     public void ClearSettings()
     {
         Shower.GetComponent<SettingsFunctions>().RefreshText();
