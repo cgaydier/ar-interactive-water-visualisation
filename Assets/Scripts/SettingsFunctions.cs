@@ -145,6 +145,8 @@ public class SettingsFunctions : MonoBehaviour
                 Debug.Log("Type not known !" + gameObject.name);
                 break;
         }
+        createMesh.SetWater();
+        RefreshText();
     }
 
     public void PreviousTemporalScale()
@@ -166,6 +168,8 @@ public class SettingsFunctions : MonoBehaviour
                 Debug.Log("Type not known !" + gameObject.name);
                 break;
         }
+        createMesh.SetWater();
+        RefreshText();
     }
 
     public void AddScale()

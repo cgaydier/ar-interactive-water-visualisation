@@ -112,30 +112,6 @@ public class CreateMesh : MonoBehaviour
         createLine.ClearAll();
     }
 
-    public void ADayConsumption()
-    {
-        sceneDatas.currentTime = SceneDatas.TimeName.Day;
-        SetWater();
-    }
-
-    public void AWeekConsumption()
-    {
-        sceneDatas.currentTime = SceneDatas.TimeName.Week;
-        SetWater();
-    }
-
-    public void AMonthConsumption()
-    {
-        sceneDatas.currentTime = SceneDatas.TimeName.Month;
-        SetWater();
-    }
-
-    public void AYearConsumption()
-    {
-        sceneDatas.currentTime = SceneDatas.TimeName.Year;
-        SetWater();
-    }
-
     public void ClearAll()
     {
         RefreshMesh();
