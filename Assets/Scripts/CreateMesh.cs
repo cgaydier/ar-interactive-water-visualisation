@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using static SceneDatas;
 
 public class CreateMesh : MonoBehaviour
 {   
