@@ -5312,9 +5312,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1683650220}
-        m_TargetAssemblyTypeName: ScrollButtonFunctions, Assembly-CSharp
-        m_MethodName: ShowConsumption
+      - m_Target: {fileID: 1516527983}
+        m_TargetAssemblyTypeName: MeshHandlerButtons, Assembly-CSharp
+        m_MethodName: ResetMeshSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7632,7 +7632,8 @@ MonoBehaviour:
   WashingMachine: {fileID: 114393767}
   Bathroom: {fileID: 274503976}
   Scale: {fileID: 605839977}
-  textInput: {fileID: 25023794}
+  TemporalScale: {fileID: 2033003514}
+  textInput: {fileID: 405079814}
 --- !u!1 &1524380722
 GameObject:
   m_ObjectHideFlags: 0
@@ -9493,6 +9494,7 @@ MonoBehaviour:
   WashingMachine: {fileID: 0}
   Bathroom: {fileID: 0}
   Scale: {fileID: 0}
+  TemporalScale: {fileID: 0}
   textInput: {fileID: 0}
 --- !u!1 &1818031453
 GameObject:

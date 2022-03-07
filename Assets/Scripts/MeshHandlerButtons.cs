@@ -65,10 +65,11 @@ public class MeshHandlerButtons : MonoBehaviour
     }
 
     public void ResetMeshSettings()
-    {
-        createMesh.Reset();
+    { 
         sceneDatas.ClearCpt();
+        createMesh.Reset();
         ClearSettings();
+        textInput.text = "";
     }
     
     public void ClearSettings()
