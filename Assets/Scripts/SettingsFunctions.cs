@@ -48,7 +48,7 @@ public class SettingsFunctions : MonoBehaviour
                 scoreText = GameObject.Find("Scale/Score").GetComponent<Text>();
                 break;
             default:
-                Debug.Log("Type not known !" + gameObject.name);
+                Debug.Log("Unknown Type !" + gameObject.name);
                 break;
         }
         RefreshText();

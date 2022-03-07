@@ -4,6 +4,16 @@ using UnityEngine;
 public class SceneDatas : MonoBehaviour
 {
     public EnumState enumState;
+    public TimeName currentTime = TimeName.Week;
+
+    public enum TimeName
+    {
+        Day,
+        Week,
+        Month,
+        Year
+    }
+
     public enum DataName
     {
         Shower,

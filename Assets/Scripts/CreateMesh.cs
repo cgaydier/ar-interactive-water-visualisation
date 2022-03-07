@@ -40,36 +40,58 @@ public class CreateMesh : MonoBehaviour
     public void AddScale()
     {
         sceneDatas.IncrScale();
-        SetWater(offset / sceneDatas.GetScale());
+        SetWater();
     }
 
     public void DecrScale()
     {
-        SetWater(offset / sceneDatas.GetScale());
+        SetWater();
     }
 
     public void AddWater(float volume)
     {
         offset += (volume / sceneDatas.GetSurfaceMesh());
-        SetWater(offset / (float)sceneDatas.GetScale());
+        SetWater();
     }
 
     public void RemoveWater(float volume)
     {
         offset = offset - (volume / sceneDatas.GetSurfaceMesh()) >= 0.00f ? offset - (volume / sceneDatas.GetSurfaceMesh()) : 0.00f;
-        SetWater(offset / (float)sceneDatas.GetScale());
+        SetWater();
     }
 
     public void SetCustomVolume(float volume){
         if(volume >= 0f)
         {
             offset = (volume / sceneDatas.GetSurfaceMesh());
-            SetWater(offset / (float)sceneDatas.GetScale());
+            SetWater();
         }
     }
-    public void SetWater(float tmp)
+    public void SetWater()
     {
-        currentOffset = tmp;
+        switch (sceneDatas.currentTime)
+        {
+            case TimeName.Day:
+                currentOffset = offset / 7f;
+                break;
+
+            case TimeName.Week:
+                currentOffset = offset;
+                break;
+
+            case TimeName.Month:
+                currentOffset = offset * 4;
+                break;
+
+            case TimeName.Year:
+                currentOffset = offset * 52;
+                break;
+
+            default:
+                Debug.Log("Unknown Time type !" + sceneDatas.currentTime);
+                break;
+        }
+        currentOffset /= (float)sceneDatas.GetScale();
         RefreshMesh();
     }
     
@@ -82,6 +104,30 @@ public class CreateMesh : MonoBehaviour
         sceneDatas.SetMeshCreated(false);
         Destroy(go);
         createLine.ClearAll();
+    }
+
+    public void ADayConsumption()
+    {
+        sceneDatas.currentTime = TimeName.Day;
+        SetWater();
+    }
+
+    public void AWeekConsumption()
+    {
+        sceneDatas.currentTime = TimeName.Week;
+        SetWater();
+    }
+
+    public void AMonthConsumption()
+    {
+        sceneDatas.currentTime = TimeName.Month;
+        SetWater();
+    }
+
+    public void AYearConsumption()
+    {
+        sceneDatas.currentTime = TimeName.Year;
+        SetWater();
     }
 
     public void ClearAll()
@@ -123,8 +169,13 @@ public class CreateMesh : MonoBehaviour
             triangles.Add((j + 3) % nbTotal);
         }
     }
+    
+    private void VolumeMeshCalcul()
+    {
+        volumeMesh = sceneDatas.GetSurfaceMesh() * currentOffset;
+    }
 
-    bool Checkpoints()
+    private bool Checkpoints()
     {
         int nbTotal = (sceneDatas.GetVerticesSize())/2;
         if (nbTotal < sceneDatas.GetMinPoints() || nbTotal > sceneDatas.GetMaxPoints())
@@ -132,7 +183,7 @@ public class CreateMesh : MonoBehaviour
         return true;
     }
 
-    void MeshHandler()
+    private void MeshHandler()
     {
         if (Checkpoints() && !sceneDatas.IsMeshCreated() && sceneDatas.IsPointsPlaced())
         {
@@ -156,7 +207,8 @@ public class CreateMesh : MonoBehaviour
             mesh.vertices = tmp.ToArray();
             CreateTriangles(tmp);
 
-            volumeMesh = sceneDatas.GetSurfaceMesh() * currentOffset;
+            VolumeMeshCalcul();
+
             if(sceneDatas.GetScale() > 1)
             {
                 GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Visible volume\ndivided by " + sceneDatas.GetScale()
