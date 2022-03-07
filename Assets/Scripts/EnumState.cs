@@ -9,14 +9,15 @@ public class EnumState : MonoBehaviour
         ParamScene,
         PlacePoints,
         PlacePointsBefore,
-        ConsumptionScene
+        ConsumptionScene,
+        Tuto
     }
 
     public State currentState;
 
     private void Start()
     {
-        SetMainScene();
+        SetTuto();
     }
 
     public State GetState()
@@ -83,5 +84,10 @@ public class EnumState : MonoBehaviour
     public void SetConsumptionScene()
     {
         currentState = State.ConsumptionScene;
+    }
+
+    public void SetTuto()
+    {
+        currentState = State.Tuto;
     }
 }

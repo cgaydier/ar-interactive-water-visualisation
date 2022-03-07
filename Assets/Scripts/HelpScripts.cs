@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HelpScripts : MonoBehaviour
 {
+    public SceneDatas sceneDatas;
     public GameObject UIPanel;
     public GameObject Page_1, Page_2, Page_3, Page_4, Page_5;
     public GameObject CurrentPage;
@@ -14,7 +15,8 @@ public class HelpScripts : MonoBehaviour
 
     public void OpenAndClosePanel()
     {
-        if (isPanelActive == false) {
+        if (isPanelActive == false)
+        {
             SwitchPage(CurrentPage, Page_1);
             PrevButton.SetActive(false);
             NextButton.SetActive(true);
@@ -22,30 +24,38 @@ public class HelpScripts : MonoBehaviour
 
             UIPanel.SetActive(!isPanelActive);
             isPanelActive = true;
-        }else{
+            sceneDatas.enumState.SetTuto();
+        }
+        else
+        {
             UIPanel.SetActive(!isPanelActive);
             isPanelActive = false;
             
             Menu.SetActive(true);
+            sceneDatas.enumState.SetMainScene();
         }
     }
 
     public void NextPage()
     {
-        if(CurrentPage == Page_1){  
+        if(CurrentPage == Page_1)
+        {  
             SwitchPage(Page_1, Page_2);
             PrevButton.SetActive(true);
         }
 
-        else if(CurrentPage == Page_2){
+        else if(CurrentPage == Page_2)
+        {
             SwitchPage(Page_2, Page_3);
         }
 
-        else if(CurrentPage == Page_3){
+        else if(CurrentPage == Page_3)
+        {
             SwitchPage(Page_3, Page_4);
         }
 
-        else if(CurrentPage == Page_4){
+        else if(CurrentPage == Page_4)
+        {
             SwitchPage(Page_4, Page_5);
             NextButton.SetActive(false);
         }
@@ -53,20 +63,24 @@ public class HelpScripts : MonoBehaviour
 
     public void PrevPage()
     {
-        if(CurrentPage == Page_2){
+        if(CurrentPage == Page_2)
+        {
             SwitchPage(Page_2, Page_1);
             PrevButton.SetActive(false);
         }
 
-        else if(CurrentPage == Page_3){
+        else if(CurrentPage == Page_3)
+        {
             SwitchPage(Page_3, Page_2);
         }
 
-        else if(CurrentPage == Page_4){
+        else if(CurrentPage == Page_4)
+        {
             SwitchPage(Page_4, Page_3);
         }
 
-        else if(CurrentPage == Page_5){
+        else if(CurrentPage == Page_5)
+        {
             NextButton.SetActive(true);
             SwitchPage(Page_5, Page_4);
         }
