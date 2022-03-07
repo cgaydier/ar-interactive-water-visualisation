@@ -47,6 +47,9 @@ public class SettingsFunctions : MonoBehaviour
             case "Scale":
                 scoreText = GameObject.Find("Scale/Score").GetComponent<Text>();
                 break;
+            case "TemporalScale":
+                scoreText = GameObject.Find("TemporalScale/Score").GetComponent<Text>();
+                break;
             default:
                 Debug.Log("Unknown Type !" + gameObject.name);
                 break;
@@ -123,6 +126,48 @@ public class SettingsFunctions : MonoBehaviour
         }
     }
 
+    public void NextTemporalScale()
+    {
+        switch (sceneDatas.currentTime)
+        {
+            case SceneDatas.TimeName.Day:
+                sceneDatas.currentTime = SceneDatas.TimeName.Week;
+                break;
+            case SceneDatas.TimeName.Week:
+                sceneDatas.currentTime = SceneDatas.TimeName.Month;
+                break;
+            case SceneDatas.TimeName.Month:
+                sceneDatas.currentTime = SceneDatas.TimeName.Year;
+                break;
+            case SceneDatas.TimeName.Year:
+                break;
+            default:
+                Debug.Log("Type not known !" + gameObject.name);
+                break;
+        }
+    }
+
+    public void PreviousTemporalScale()
+    {
+        switch (sceneDatas.currentTime)
+        {
+            case SceneDatas.TimeName.Day:
+                break;
+            case SceneDatas.TimeName.Week:
+                sceneDatas.currentTime = SceneDatas.TimeName.Day;
+                break;
+            case SceneDatas.TimeName.Month:
+                sceneDatas.currentTime = SceneDatas.TimeName.Week;
+                break;
+            case SceneDatas.TimeName.Year:
+                sceneDatas.currentTime = SceneDatas.TimeName.Month;
+                break;
+            default:
+                Debug.Log("Type not known !" + gameObject.name);
+                break;
+        }
+    }
+
     public void AddScale()
     {
         createMesh.AddScale();
@@ -140,35 +185,38 @@ public class SettingsFunctions : MonoBehaviour
 
     public void RefreshText()
     {
-        int cpt = 0;
-        
+        string value = "";
+
         switch (gameObject.name)
         {
             case "Shower":
-                cpt = sceneDatas.GetDataCpt(SceneDatas.DataName.Shower);
+                value = sceneDatas.GetDataCpt(SceneDatas.DataName.Shower).ToString();
                 break;
             case "Bath":
-                cpt = sceneDatas.GetDataCpt(SceneDatas.DataName.Bath);
+                value = sceneDatas.GetDataCpt(SceneDatas.DataName.Bath).ToString();
                 break;
             case "HandDish":
-                cpt = sceneDatas.GetDataCpt(SceneDatas.DataName.HandDish);
+                value = sceneDatas.GetDataCpt(SceneDatas.DataName.HandDish).ToString();
                 break;
             case "DishWasher":
-                cpt = sceneDatas.GetDataCpt(SceneDatas.DataName.DishWasher);
+                value = sceneDatas.GetDataCpt(SceneDatas.DataName.DishWasher).ToString();
                 break;
             case "WashingMachine":
-                cpt = sceneDatas.GetDataCpt(SceneDatas.DataName.WashingMachine);
+                value = sceneDatas.GetDataCpt(SceneDatas.DataName.WashingMachine).ToString();
                 break;
             case "Bathroom":
-                cpt = sceneDatas.GetDataCpt(SceneDatas.DataName.Bathroom);
+                value = sceneDatas.GetDataCpt(SceneDatas.DataName.Bathroom).ToString();
                 break;
             case "Scale":
-                cpt = sceneDatas.GetScale();
+                value = sceneDatas.GetScale().ToString();
+                break;
+            case "TemporalScale":
+                value = sceneDatas.currentTime.ToString();
                 break;
             default:
                 Debug.Log("Type not known !" + gameObject.name);
                 break;
         }
-        scoreText.text = cpt.ToString();
+        scoreText.text = value;
     }
 }
