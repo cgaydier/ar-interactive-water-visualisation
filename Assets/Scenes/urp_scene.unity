@@ -4729,8 +4729,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 343.07687, y: -710}
-  m_SizeDelta: {x: 686.15375, y: 825.97}
+  m_AnchoredPosition: {x: 343.07684, y: -710}
+  m_SizeDelta: {x: 686.1537, y: 963.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &962190021
 MonoBehaviour:
@@ -4752,13 +4752,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Now, you can increase or decrease your volume just created. Click on the
-    "Settings" to open a new panel with many cases of water uses. Adjust the parameters
-    to see your water consumption.
-
-
-    You can see the value (in m<sup>3</sup>)
-    of the volume on the left Panel.'
+  m_text: "Now, you can increase or decrease your volume by clicking on \"Settings\"
+    to open a new panel with many cases of water uses. Adjust the parameters to see
+    your water consumption. \n\n\"Consumption\" button allows you to display the
+    consumption distribution and \"Reset\" button resets the consumption."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7632,6 +7629,7 @@ MonoBehaviour:
   WashingMachine: {fileID: 114393767}
   Bathroom: {fileID: 274503976}
   Scale: {fileID: 605839977}
+  TemporalScale: {fileID: 0}
   textInput: {fileID: 25023794}
 --- !u!1 &1524380722
 GameObject:
@@ -9493,6 +9491,7 @@ MonoBehaviour:
   WashingMachine: {fileID: 0}
   Bathroom: {fileID: 0}
   Scale: {fileID: 0}
+  TemporalScale: {fileID: 0}
   textInput: {fileID: 0}
 --- !u!1 &1818031453
 GameObject:
