@@ -2054,7 +2054,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 343.07687, y: -710}
-  m_SizeDelta: {x: 686.15375, y: 1177.94}
+  m_SizeDelta: {x: 686.15375, y: 1420}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &291383137
 MonoBehaviour:
@@ -2076,35 +2076,36 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '1 - Walk around the room looking at the floor to make a surface appear.
+  m_text: '1<color=#00000000>.</color>- Walk around the room looking at the floor
+    to make a surface appear.
 
 
-    2
-    - Press the "imageDuButtonMenu" and press "Create".
+    2<color=#00000000>.</color>- Press <sprite index=
+    0> and press "Create".
 
 
-    3 - Place points on
-    the map displayed on the ground by pressing the screen (max. 10 points).
+    3<color=#00000000>.</color>- Place points on the
+    map displayed on the ground by pressing the screen (max. 10 points).
 
 
-    4
-    - Press "Validate" to create a ground water level.
-
-    
-
-    5 - Press "Settings"
-    and enter your water consumption for the week.
+    4<color=#00000000>.</color>-
+    Press "Validate" to create a ground water level.
 
 
-    6 - Press "Consumption"
-    to view the details of your water consumption.
+    5<color=#00000000>.</color>-
+    Press <sprite index= 2> and enter your water consumption for the week.
 
 
-    7 - Press "Reset" to reset
-    the settings.
+    6<color=#00000000>.</color>-
+    Press <sprite index= 3> to view the details of your water consumption.
 
 
-    8 - Press "Clear" to clear the scene.'
+    7<color=#00000000>.</color>-
+    Press <sprite index= 1> to reset the settings.
+
+
+    8<color=#00000000>.</color>-
+    Press "Clear" to clear the scene.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2123,7 +2124,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 2d2a3ea551fedc34d83f06139b32f461, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -4901,10 +4902,10 @@ RectTransform:
   m_Father: {fileID: 1142728332}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 343.07684, y: -710}
+  m_SizeDelta: {x: 686.15375, y: 1239.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &962190021
 MonoBehaviour:
@@ -4926,13 +4927,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Now, you can increase or decrease your volume by clicking on "Settings"
-    to open a new panel with many cases of water uses. Adjust the parameters to see
-    your weekly water consumption.
+  m_text: 'Now, you can increase or decrease your volume by clicking on <sprite index=
+    2> button to open a new panel with many cases of water uses. Adjust the parameters
+    to see your weekly water consumption.
 
 
-    "Consumption" button allows you to display
-    the consumption distribution and "Reset" button resets the consumption.
+    <sprite index= 3> button allows you
+    to display the consumption distribution.
+
+
+    <sprite index=1> button resets
+    the consumption.
 
 
 
@@ -4955,7 +4960,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 2d2a3ea551fedc34d83f06139b32f461, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -5241,7 +5246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1014222180
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5294,7 +5299,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1026894099
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6087,7 +6092,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1142728330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6702,8 +6707,8 @@ MonoBehaviour:
 
 
     <align="justified">If
-    you want to reopen this tutorial, click on the menu on the left and then on the
-    button  " ? ".
+    you want to reopen this tutorial, click on the menu on the left and then on <sprite
+    index= 4>.
 
 
 
@@ -6726,7 +6731,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 2d2a3ea551fedc34d83f06139b32f461, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -6816,10 +6821,10 @@ RectTransform:
   m_Father: {fileID: 1026894099}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 343.07687, y: -710}
-  m_SizeDelta: {x: 686.15375, y: 1073.36}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1344153693
 MonoBehaviour:
@@ -6863,7 +6868,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 2d2a3ea551fedc34d83f06139b32f461, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -11760,7 +11765,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 2d2a3ea551fedc34d83f06139b32f461, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
