@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HelpScripts : MonoBehaviour
+public class HelpScript : MonoBehaviour
 {
     public SceneDatas sceneDatas;
     public GameObject UIPanel;
