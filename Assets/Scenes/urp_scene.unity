@@ -2076,10 +2076,35 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "First, walk around the room with your smartphone, looking at the floor,
-    to display planes. \n\nThen, open the left Menu, click on \"Create\". Place points
-    on a plane (max. 10 points) by touching the screen. Click on \"Validate\" to
-    display your water volume.\r\n\r\nIf you want to clean the scene, click on \"Clear\".\n\n\n"
+  m_text: '1 - Walk around the room looking at the floor to make a surface appear.
+
+
+    2
+    - Press the "imageDuButtonMenu" and press "Create".
+
+
+    3 - Place points on
+    the map displayed on the ground by pressing the screen (max. 10 points).
+
+
+    4
+    - Press "Validate" to create a ground water level.
+
+    
+
+    5 - Press "Settings"
+    and enter your water consumption for the week.
+
+
+    6 - Press "Consumption"
+    to view the details of your water consumption.
+
+
+    7 - Press "Reset" to reset
+    the settings.
+
+
+    8 - Press "Clear" to clear the scene.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6817,10 +6842,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "<align=\"center\">Welcome to this new app<color=#00000000>.</color>! \n\n<align=\"justified\">You
-    will discover your water consumption in Augmented Reality (AR).\n\nFollow the
-    steps and you will be able to use the application very easily. At the end, you
-    will see a volume that represents your water consumption with an associated value
-    in m<sup>3</sup> (visible on the left Menu).\n\n"
+    will discover your water consumption in Augmented Reality !\n\nBy following the
+    steps in this tutorial, you will obtain a volume of water representing your personal
+    consumption in m<sup>3</sup> on different time scales.\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
