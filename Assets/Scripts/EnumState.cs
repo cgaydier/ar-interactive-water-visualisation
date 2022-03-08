@@ -6,9 +6,7 @@ public class EnumState : MonoBehaviour
     public enum State 
     {
         MainView,
-        ParamScene,
         PlacePoints,
-        PlacePointsBefore,
         ConsumptionScene,
         Tuto
     }
@@ -25,30 +23,6 @@ public class EnumState : MonoBehaviour
         return currentState;
     }
 
-    public void ChangeParamScene()
-    {
-        if (Settings.activeSelf)
-        {
-            Settings.SetActive(false);
-        }
-        if (currentState != State.ParamScene && currentState != State.PlacePointsBefore && currentState != State.PlacePoints)
-        {
-            currentState = State.ParamScene;
-        }
-        else if (currentState == State.PlacePoints)
-        {
-            currentState = State.PlacePointsBefore;
-        }
-        else if (currentState == State.PlacePointsBefore)
-        {
-            currentState = State.PlacePoints;
-        }
-        else
-        {
-            currentState = State.MainView;
-        }
-    }
-
     public void ChangeSettingScene()
     {
         if (currentState != State.MainView && currentState != State.PlacePoints)
@@ -61,11 +35,6 @@ public class EnumState : MonoBehaviour
         }
     }
 
-    public void SetParamScene()
-    {
-        currentState = State.ParamScene;
-    }
-
     public void SetMainScene()
     {
         currentState = State.MainView;
@@ -74,11 +43,6 @@ public class EnumState : MonoBehaviour
     public void SetPlacePoints()
     {
         currentState = State.PlacePoints;
-    }
-
-    public void SetPlacePointsBefore()
-    {
-        currentState = State.PlacePointsBefore;
     }
 
     public void SetConsumptionScene()

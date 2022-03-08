@@ -119,7 +119,8 @@ public class CreateMesh : MonoBehaviour
         offset = sceneDatas.GetDefaultOffset();
         currentOffset = sceneDatas.GetDefaultOffset();
         sceneDatas.SetPointsPlaced(false);
-        GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume :\n0 m3";
+        if (GameObject.Find("WaterVolumeText"))
+            GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume :\n0 m3";
     }
 
     private void CreateTriangles(List<Vector3> vertices)

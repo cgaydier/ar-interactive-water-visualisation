@@ -21,21 +21,21 @@ public class MeshHandlerButtons : MonoBehaviour
     {
         if (!sceneDatas.IsMeshCreated())
         {
-            sceneDatas.enumState.SetPlacePointsBefore();
+            sceneDatas.enumState.SetPlacePoints();
             sceneDatas.SetPointsPlaced(false);
         } 
     }
 
     public void ValidatePointsMesh()
     {
-        sceneDatas.enumState.SetParamScene();
+        sceneDatas.enumState.SetMainScene();
         placePoints.ClearAll();
         sceneDatas.SetPointsPlaced(true);
     }
 
     public void ClearPointsMesh()
     {
-        sceneDatas.enumState.SetParamScene();
+        sceneDatas.enumState.SetMainScene();
         placePoints.ClearAll();
         sceneDatas.ClearAll();
         createMesh.ClearAll();
