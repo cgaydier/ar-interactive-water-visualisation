@@ -687,7 +687,6 @@ GameObject:
   - component: {fileID: 114393768}
   - component: {fileID: 114393771}
   - component: {fileID: 114393770}
-  - component: {fileID: 114393769}
   m_Layer: 5
   m_Name: WashingMachine
   m_TagString: Untagged
@@ -718,18 +717,6 @@ RectTransform:
   m_AnchoredPosition: {x: -3, y: -110}
   m_SizeDelta: {x: 539.50055, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &114393769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 114393767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114393770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1138,16 +1125,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1406480193}
+      - m_Target: {fileID: 1367310951}
         m_TargetAssemblyTypeName: SettingsFunctions, Assembly-CSharp
         m_MethodName: RemoveConsumption
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: HandDish
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &200117321
@@ -1271,16 +1258,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2129991564}
+      - m_Target: {fileID: 1367310951}
         m_TargetAssemblyTypeName: SettingsFunctions, Assembly-CSharp
         m_MethodName: AddConsumption
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Shower
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &232298642
@@ -1648,7 +1635,6 @@ GameObject:
   - component: {fileID: 274503977}
   - component: {fileID: 274503980}
   - component: {fileID: 274503979}
-  - component: {fileID: 274503978}
   m_Layer: 5
   m_Name: Bathroom
   m_TagString: Untagged
@@ -1679,18 +1665,6 @@ RectTransform:
   m_AnchoredPosition: {x: -3, y: -220}
   m_SizeDelta: {x: 539.50055, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &274503978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274503976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &274503979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2929,16 +2903,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1502441413}
+      - m_Target: {fileID: 1367310951}
         m_TargetAssemblyTypeName: SettingsFunctions, Assembly-CSharp
         m_MethodName: AddConsumption
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: DishWasher
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &489585989
@@ -3062,16 +3036,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 274503978}
+      - m_Target: {fileID: 1367310951}
         m_TargetAssemblyTypeName: SettingsFunctions, Assembly-CSharp
         m_MethodName: RemoveConsumption
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Bathroom
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &521330735
@@ -3195,16 +3169,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114393769}
+      - m_Target: {fileID: 1367310951}
         m_TargetAssemblyTypeName: SettingsFunctions, Assembly-CSharp
         m_MethodName: AddConsumption
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: WashingMachine
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &549657002
@@ -3335,7 +3309,6 @@ GameObject:
   - component: {fileID: 605839978}
   - component: {fileID: 605839981}
   - component: {fileID: 605839980}
-  - component: {fileID: 605839979}
   m_Layer: 5
   m_Name: Scale
   m_TagString: Untagged
@@ -3366,18 +3339,6 @@ RectTransform:
   m_AnchoredPosition: {x: -3, y: -330}
   m_SizeDelta: {x: 539.50055, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &605839979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 605839977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &605839980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3499,16 +3460,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1406480193}
+      - m_Target: {fileID: 1367310951}
         m_TargetAssemblyTypeName: SettingsFunctions, Assembly-CSharp
         m_MethodName: AddConsumption
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: HandDish
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &626951328
@@ -4228,16 +4189,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114393769}
+      - m_Target: {fileID: 1367310951}
         m_TargetAssemblyTypeName: SettingsFunctions, Assembly-CSharp
         m_MethodName: RemoveConsumption
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: WashingMachine
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &845909486
@@ -6170,7 +6131,6 @@ GameObject:
   - component: {fileID: 1252928638}
   - component: {fileID: 1252928641}
   - component: {fileID: 1252928640}
-  - component: {fileID: 1252928639}
   m_Layer: 5
   m_Name: Bath
   m_TagString: Untagged
@@ -6201,18 +6161,6 @@ RectTransform:
   m_AnchoredPosition: {x: -3, y: 220}
   m_SizeDelta: {x: 539.50055, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1252928639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252928637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1252928640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6378,16 +6326,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1252928639}
+      - m_Target: {fileID: 1367310951}
         m_TargetAssemblyTypeName: SettingsFunctions, Assembly-CSharp
         m_MethodName: AddConsumption
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Bath
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1302905572
@@ -6721,6 +6669,7 @@ GameObject:
   - component: {fileID: 1367310948}
   - component: {fileID: 1367310950}
   - component: {fileID: 1367310949}
+  - component: {fileID: 1367310951}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -6787,6 +6736,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1367310947}
   m_CullTransparentMesh: 1
+--- !u!114 &1367310951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367310947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1394007882
 GameObject:
   m_ObjectHideFlags: 0
@@ -6870,16 +6831,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2129991564}
+      - m_Target: {fileID: 1367310951}
         m_TargetAssemblyTypeName: SettingsFunctions, Assembly-CSharp
         m_MethodName: RemoveConsumption
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: down_shower
+          m_StringArgument: Shower
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1394007886
@@ -6931,7 +6892,6 @@ GameObject:
   - component: {fileID: 1406480192}
   - component: {fileID: 1406480195}
   - component: {fileID: 1406480194}
-  - component: {fileID: 1406480193}
   m_Layer: 5
   m_Name: HandDish
   m_TagString: Untagged
@@ -6962,18 +6922,6 @@ RectTransform:
   m_AnchoredPosition: {x: -3, y: 110}
   m_SizeDelta: {x: 539.50055, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1406480193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1406480191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1406480194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7389,7 +7337,6 @@ GameObject:
   - component: {fileID: 1502441412}
   - component: {fileID: 1502441415}
   - component: {fileID: 1502441414}
-  - component: {fileID: 1502441413}
   m_Layer: 5
   m_Name: DishWasher
   m_TagString: Untagged
@@ -7420,18 +7367,6 @@ RectTransform:
   m_AnchoredPosition: {x: -3, y: 0}
   m_SizeDelta: {x: 539.50055, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1502441413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1502441411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1502441414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7620,14 +7555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a45a849d644f44a9112d1556c0170b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shower: {fileID: 2129991560}
-  Bath: {fileID: 1252928637}
-  HandDish: {fileID: 1406480191}
-  DishWasher: {fileID: 1502441411}
-  WashingMachine: {fileID: 114393767}
-  Bathroom: {fileID: 274503976}
-  Scale: {fileID: 605839977}
-  TemporalScale: {fileID: 2033003514}
+  Settings: {fileID: 1367310947}
   textInput: {fileID: 405079814}
 --- !u!1 &1524380722
 GameObject:
@@ -8529,7 +8457,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 605839979}
+      - m_Target: {fileID: 1367310951}
         m_TargetAssemblyTypeName: SettingsFunctions, Assembly-CSharp
         m_MethodName: RemoveScale
         m_Mode: 1
@@ -8835,7 +8763,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2033003516}
+      - m_Target: {fileID: 1367310951}
         m_TargetAssemblyTypeName: SettingsFunctions, Assembly-CSharp
         m_MethodName: PreviousTemporalScale
         m_Mode: 1
@@ -9203,16 +9131,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1502441413}
+      - m_Target: {fileID: 1367310951}
         m_TargetAssemblyTypeName: SettingsFunctions, Assembly-CSharp
         m_MethodName: RemoveConsumption
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: DishWasher
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1797487322
@@ -9482,14 +9410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a45a849d644f44a9112d1556c0170b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shower: {fileID: 0}
-  Bath: {fileID: 0}
-  HandDish: {fileID: 0}
-  DishWasher: {fileID: 0}
-  WashingMachine: {fileID: 0}
-  Bathroom: {fileID: 0}
-  Scale: {fileID: 0}
-  TemporalScale: {fileID: 0}
+  Settings: {fileID: 0}
   textInput: {fileID: 0}
 --- !u!1 &1818031453
 GameObject:
@@ -9708,7 +9629,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2033003516}
+      - m_Target: {fileID: 1367310951}
         m_TargetAssemblyTypeName: SettingsFunctions, Assembly-CSharp
         m_MethodName: NextTemporalScale
         m_Mode: 1
@@ -10865,16 +10786,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 274503978}
+      - m_Target: {fileID: 1367310951}
         m_TargetAssemblyTypeName: SettingsFunctions, Assembly-CSharp
         m_MethodName: AddConsumption
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Bathroom
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2001645107
@@ -10998,16 +10919,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1252928639}
+      - m_Target: {fileID: 1367310951}
         m_TargetAssemblyTypeName: SettingsFunctions, Assembly-CSharp
         m_MethodName: RemoveConsumption
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Bath
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2013875957
@@ -11131,7 +11052,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 605839979}
+      - m_Target: {fileID: 1367310951}
         m_TargetAssemblyTypeName: SettingsFunctions, Assembly-CSharp
         m_MethodName: AddScale
         m_Mode: 1
@@ -11192,7 +11113,6 @@ GameObject:
   - component: {fileID: 2033003515}
   - component: {fileID: 2033003518}
   - component: {fileID: 2033003517}
-  - component: {fileID: 2033003516}
   m_Layer: 5
   m_Name: TemporalScale
   m_TagString: Untagged
@@ -11223,18 +11143,6 @@ RectTransform:
   m_AnchoredPosition: {x: -3, y: -440}
   m_SizeDelta: {x: 539.50055, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2033003516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2033003514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2033003517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11757,7 +11665,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 1
 --- !u!222 &2094122549
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11856,7 +11764,6 @@ GameObject:
   - component: {fileID: 2129991561}
   - component: {fileID: 2129991563}
   - component: {fileID: 2129991562}
-  - component: {fileID: 2129991564}
   m_Layer: 5
   m_Name: Shower
   m_TagString: Untagged
@@ -11925,15 +11832,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129991560}
   m_CullTransparentMesh: 1
---- !u!114 &2129991564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2129991560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17b9d3f4417d5004281837705461d646, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -3,14 +3,7 @@ using UnityEngine.UI;
 
 public class MeshHandlerButtons : MonoBehaviour
 {
-    public GameObject Shower;
-    public GameObject Bath;
-    public GameObject HandDish;
-    public GameObject DishWasher;
-    public GameObject WashingMachine;
-    public GameObject Bathroom;
-    public GameObject Scale;
-    public GameObject TemporalScale;
+    public GameObject Settings;
     public InputField textInput;
 
     private PlacePoints placePoints;
@@ -74,13 +67,6 @@ public class MeshHandlerButtons : MonoBehaviour
     
     public void ClearSettings()
     {
-        Shower.GetComponent<SettingsFunctions>().RefreshText();
-        Bath.GetComponent<SettingsFunctions>().RefreshText();
-        HandDish.GetComponent<SettingsFunctions>().RefreshText();
-        DishWasher.GetComponent<SettingsFunctions>().RefreshText();
-        WashingMachine.GetComponent<SettingsFunctions>().RefreshText();
-        Bathroom.GetComponent<SettingsFunctions>().RefreshText();
-        Scale.GetComponent<SettingsFunctions>().RefreshText();
-        TemporalScale.GetComponent<SettingsFunctions>().RefreshText();
+        Settings.GetComponent<SettingsFunctions>().RefreshAll();
     }
 }
