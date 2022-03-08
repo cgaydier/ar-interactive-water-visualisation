@@ -23,6 +23,7 @@ public class HelpScripts : MonoBehaviour
             CurrentButtonVisible(CurrentPage);
 
             TipsButton.SetActive(false);
+            Menu.SetActive(false);
             UIPanel.SetActive(!isPanelActive);
             isPanelActive = true;
 
@@ -32,6 +33,7 @@ public class HelpScripts : MonoBehaviour
         {
             UIPanel.SetActive(!isPanelActive);
             TipsButton.SetActive(true);
+            Menu.SetActive(true);
             isPanelActive = false;
 
             sceneDatas.enumState.SetMainScene();
