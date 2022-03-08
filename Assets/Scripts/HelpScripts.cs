@@ -9,7 +9,7 @@ public class HelpScripts : MonoBehaviour
     public GameObject Page_1, Page_2, Page_3, Page_4, Page_5;
     public GameObject CurrentPage;
     public GameObject Menu;
-    public GameObject PrevButton, NextButton;
+    public GameObject PrevButton, NextButton, TipsButton;
 
     bool isPanelActive = true;
 
@@ -17,21 +17,20 @@ public class HelpScripts : MonoBehaviour
     {
         if (isPanelActive == false)
         {
-            SwitchPage(CurrentPage, Page_1);
-            PrevButton.SetActive(false);
-            NextButton.SetActive(true);
-            Menu.SetActive(false);
+            CurrentButtonVisible(CurrentPage);
 
+            TipsButton.SetActive(false);
             UIPanel.SetActive(!isPanelActive);
             isPanelActive = true;
+
             sceneDatas.enumState.SetTuto();
         }
         else
         {
             UIPanel.SetActive(!isPanelActive);
+            TipsButton.SetActive(true);
             isPanelActive = false;
-            
-            Menu.SetActive(true);
+
             sceneDatas.enumState.SetMainScene();
         }
     }
@@ -91,5 +90,26 @@ public class HelpScripts : MonoBehaviour
         PrevPage.SetActive(false);
         NextPage.SetActive(true);
         CurrentPage = NextPage;
+    }
+
+    public void CurrentButtonVisible(GameObject CurrentPage)
+    {
+        if (CurrentPage == Page_1)
+        {
+            PrevButton.SetActive(false);
+            NextButton.SetActive(true);
+        }
+            
+        else if (CurrentPage == Page_5)
+        {
+            PrevButton.SetActive(true);
+            NextButton.SetActive(false); 
+        }
+
+        else 
+        {
+            PrevButton.SetActive(true);
+            NextButton.SetActive(true); 
+        }
     }
 }
