@@ -21,15 +21,15 @@ public class CreateMesh : MonoBehaviour
         volumeMesh = 0f;
         offset = sceneDatas.GetDefaultOffset();
         currentOffset = sceneDatas.GetDefaultOffset();
-        /*sceneDatas.AddVertice(new Vector3(0, 0, 0));
-        sceneDatas.AddVertice(new Vector3(0, 0, 0));
-        sceneDatas.AddVertice(new Vector3(1, 0, 0));
-        sceneDatas.AddVertice(new Vector3(1, 0, 0));
-        sceneDatas.AddVertice(new Vector3(1, 0, 1));
-        sceneDatas.AddVertice(new Vector3(1, 0, 1));
-        sceneDatas.AddVertice(new Vector3(0, 0, 1));
-        sceneDatas.AddVertice(new Vector3(0, 0, 1));
-        sceneDatas.SetPointsPlaced(true);*/
+        //sceneDatas.AddVertice(new Vector3(0, 0, 0));
+        //sceneDatas.AddVertice(new Vector3(0, 0, 0));
+        //sceneDatas.AddVertice(new Vector3(1, 0, 0));
+        //sceneDatas.AddVertice(new Vector3(1, 0, 0));
+        //sceneDatas.AddVertice(new Vector3(1, 0, 1));
+        //sceneDatas.AddVertice(new Vector3(1, 0, 1));
+        //sceneDatas.AddVertice(new Vector3(0, 0, 1));
+        //sceneDatas.AddVertice(new Vector3(0, 0, 1));
+        //sceneDatas.SetPointsPlaced(true);
     }
 
     void Update()
@@ -166,6 +166,19 @@ public class CreateMesh : MonoBehaviour
         return true;
     }
 
+    public void UpdateVolumeText()
+    {
+        if (sceneDatas.GetScale() > 1)
+        {
+            GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Visible volume\ndivided by " + sceneDatas.GetScale()
+            + " :\n" + volumeMesh.ToString("F2") + " m3\nReal volume :\n" + (sceneDatas.GetScale() * volumeMesh).ToString("F2") + "m3";
+        }
+        else
+        {
+            GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume :\n" + volumeMesh.ToString("F2") + " m3";
+        }
+    }
+
     private void MeshHandler()
     {
         if (Checkpoints() && !sceneDatas.IsMeshCreated() && sceneDatas.IsPointsPlaced())
@@ -191,15 +204,9 @@ public class CreateMesh : MonoBehaviour
             CreateTriangles(tmp);
 
             VolumeMeshCalcul();
-
-            if(sceneDatas.GetScale() > 1)
+            if (GameObject.Find("WaterVolumeText"))
             {
-                GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Visible volume\ndivided by " + sceneDatas.GetScale()
-                + " :\n" + volumeMesh.ToString("F2") + " m3\nReal volume :\n" + (sceneDatas.GetScale() * volumeMesh).ToString("F2") + "m3";
-            }
-            else
-            {
-                GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume :\n" + volumeMesh.ToString("F2") + " m3";
+                UpdateVolumeText();
             }
             mesh.triangles = triangles.ToArray();
 

@@ -5,6 +5,7 @@ public class UiUpdate : MonoBehaviour
     private GameObject scrollButtons;
     private GameObject volumePanel;
     private SceneDatas sceneData;
+    private CreateMesh createMesh;
 
 
     void Start()
@@ -12,6 +13,7 @@ public class UiUpdate : MonoBehaviour
         scrollButtons = GameObject.Find("BottomScroll");
         volumePanel = GameObject.Find("VolumePanel");
         sceneData = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
+        createMesh = GameObject.Find("MeshHandler").GetComponent<CreateMesh>();
         scrollButtons.SetActive(false);
         volumePanel.SetActive(false);
     }
@@ -20,6 +22,7 @@ public class UiUpdate : MonoBehaviour
         if(sceneData.IsMeshCreated()){
             scrollButtons.SetActive(true);
             volumePanel.SetActive(true);
+            createMesh.UpdateVolumeText();
         }
         else
         {

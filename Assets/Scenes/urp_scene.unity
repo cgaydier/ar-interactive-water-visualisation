@@ -624,7 +624,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1683650220}
         m_TargetAssemblyTypeName: ScrollButtonFunctions, Assembly-CSharp
-        m_MethodName: OpenModal
+        m_MethodName: OpenSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2785,7 +2785,7 @@ RectTransform:
   m_Children:
   - {fileID: 1008044881}
   m_Father: {fileID: 956106882}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -3923,7 +3923,7 @@ RectTransform:
   - {fileID: 1956645734}
   - {fileID: 1185047427}
   m_Father: {fileID: 956106882}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4685,11 +4685,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1888778010}
+  - {fileID: 1396393504}
   - {fileID: 1367310948}
   - {fileID: 1622979274}
   - {fileID: 475862172}
   - {fileID: 782254456}
-  - {fileID: 1396393504}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6282,7 +6282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23772e89fa2760c41a0c07e8ab5dd991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meshMat: {fileID: 2100000, guid: 2c93fab3ed73a36408c35f55d12ccf35, type: 2}
+  meshMat: {fileID: 2100000, guid: 77f08e2102054f341be761e15dd60080, type: 2}
 --- !u!4 &1269227056
 Transform:
   m_ObjectHideFlags: 0
@@ -6745,7 +6745,7 @@ RectTransform:
   - {fileID: 1818031454}
   - {fileID: 416379997}
   m_Father: {fileID: 956106882}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6966,7 +6966,7 @@ RectTransform:
   m_Children:
   - {fileID: 2101058919}
   m_Father: {fileID: 956106882}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -8225,7 +8225,7 @@ RectTransform:
   - {fileID: 751020397}
   - {fileID: 1809434748}
   m_Father: {fileID: 956106882}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}

@@ -49,7 +49,7 @@ public class EnumState : MonoBehaviour
         }
     }
 
-    public void ChangeModalScene()
+    public void ChangeSettingScene()
     {
         if (currentState != State.MainView && currentState != State.PlacePoints)
         {

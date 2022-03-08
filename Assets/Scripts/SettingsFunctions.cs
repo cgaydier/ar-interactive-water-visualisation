@@ -10,15 +10,14 @@ public class SettingsFunctions : MonoBehaviour
 
     public void Start()
     {
+        createMesh = GameObject.Find("MeshHandler").GetComponent<CreateMesh>();
+        sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
         if (first)
         {
-            createMesh = GameObject.Find("MeshHandler").GetComponent<CreateMesh>();
-            sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
             foreach (SceneDatas.DataName name in SceneDatas.DataName.GetValues(typeof(SceneDatas.DataName)))
             {
                 GameObject.Find(name.ToString()).GetComponent<Image>().color = sceneDatas.GetDataColor(name);
                 GameObject.Find(name.ToString() + "/Text").GetComponent<TextMeshProUGUI>().text += (" (" + sceneDatas.GetDataConsumption(name) + " m3)");
-                Debug.Log(name.ToString());
             }
             first = false;
         }
@@ -148,11 +147,14 @@ public class SettingsFunctions : MonoBehaviour
 
     public void RefreshAll()
     {
-        foreach (SceneDatas.DataName tmpName in SceneDatas.DataName.GetValues(typeof(SceneDatas.DataName)))
+        if (GameObject.Find("Settings"))
         {
-            RefreshText(tmpName.ToString());
-        }
-        RefreshText("Scale");
-        RefreshText("TemporalScale");
+            foreach (SceneDatas.DataName tmpName in SceneDatas.DataName.GetValues(typeof(SceneDatas.DataName)))
+            {
+                RefreshText(tmpName.ToString());
+            }
+            RefreshText("Scale");
+            RefreshText("TemporalScale");
+        } 
     }
 }

@@ -8,6 +8,7 @@ public class ScrollButtonFunctions : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("Here");
         sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
         createLine = GameObject.Find("LineHandler").GetComponent<CreateLine>();
         settings.SetActive(true);
@@ -15,13 +16,15 @@ public class ScrollButtonFunctions : MonoBehaviour
         settings.SetActive(false);
     }
 
-    public void OpenModal()
+    public void OpenSettings()
     {
         if (settings != null)
         {
             bool isActive = settings.activeSelf;
             settings.SetActive(!isActive);
-            sceneDatas.enumState.ChangeModalScene();
+            if (!isActive)
+                settings.GetComponent<SettingsFunctions>().RefreshAll();
+            sceneDatas.enumState.ChangeSettingScene();
         }
     }
 
