@@ -1,18 +1,26 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SettingsFunctions : MonoBehaviour
 {
     private CreateMesh createMesh;
     private SceneDatas sceneDatas;
+    private bool first = true;
 
     public void Start()
     {
-        createMesh = GameObject.Find("MeshHandler").GetComponent<CreateMesh>();
-        sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
-        foreach (SceneDatas.DataName name in SceneDatas.DataName.GetValues(typeof(SceneDatas.DataName)))
+        if (first)
         {
-            GameObject.Find(name.ToString()).GetComponent<Image>().color = sceneDatas.GetDataColor(name);
+            createMesh = GameObject.Find("MeshHandler").GetComponent<CreateMesh>();
+            sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
+            foreach (SceneDatas.DataName name in SceneDatas.DataName.GetValues(typeof(SceneDatas.DataName)))
+            {
+                GameObject.Find(name.ToString()).GetComponent<Image>().color = sceneDatas.GetDataColor(name);
+                GameObject.Find(name.ToString() + "/Text").GetComponent<TextMeshProUGUI>().text += (" (" + sceneDatas.GetDataConsumption(name) + " m3)");
+                Debug.Log(name.ToString());
+            }
+            first = false;
         }
     }
 
