@@ -13,6 +13,9 @@ public class HelpScripts : MonoBehaviour
 
     bool isPanelActive = true;
 
+    /* summary :
+    * permits to open and close the Tutorial panel
+    */
     public void OpenAndClosePanel()
     {
         if (isPanelActive == false)
@@ -35,6 +38,9 @@ public class HelpScripts : MonoBehaviour
         }
     }
 
+    /* summary :
+    * permits to switch from current page to the next one
+    */
     public void NextPage()
     {
         if(CurrentPage == Page_1)
@@ -60,6 +66,9 @@ public class HelpScripts : MonoBehaviour
         }
     }
 
+    /* summary :
+    * permits to switch from current page to the previous one
+    */
     public void PrevPage()
     {
         if(CurrentPage == Page_2)
@@ -85,6 +94,14 @@ public class HelpScripts : MonoBehaviour
         }
     }
 
+    /* summary :
+    * permits to change the current page, hide the previous one et show 
+    * the next one
+    *   
+    * param :
+    * PrevPage - page to hide
+    * NextPage - page to show
+    */
     public void SwitchPage(GameObject PrevPage, GameObject NextPage)
     {
         PrevPage.SetActive(false);
@@ -92,6 +109,14 @@ public class HelpScripts : MonoBehaviour
         CurrentPage = NextPage;
     }
 
+
+    /* summary :
+    * permits to show the previous and next buttons only if it's 
+    * necessary at the press of the tips button
+    *
+    * param :
+    * CurrentPage - active page
+    */
     public void CurrentButtonVisible(GameObject CurrentPage)
     {
         if (CurrentPage == Page_1)
