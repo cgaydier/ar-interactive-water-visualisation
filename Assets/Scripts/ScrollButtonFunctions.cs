@@ -10,6 +10,16 @@ public class ScrollButtonFunctions : MonoBehaviour
     {
         sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
         createLine = GameObject.Find("LineHandler").GetComponent<CreateLine>();
+        settings.SetActive(true);
+        GameObject.Find("Shower").GetComponent<SettingsFunctions>().Start();
+        GameObject.Find("Bath").GetComponent<SettingsFunctions>().Start();
+        GameObject.Find("HandDish").GetComponent<SettingsFunctions>().Start();
+        GameObject.Find("DishWasher").GetComponent<SettingsFunctions>().Start();
+        GameObject.Find("WashingMachine").GetComponent<SettingsFunctions>().Start();
+        GameObject.Find("Bathroom").GetComponent<SettingsFunctions>().Start();
+        GameObject.Find("Scale").GetComponent<SettingsFunctions>().Start();
+        GameObject.Find("TemporalScale").GetComponent<SettingsFunctions>().Start();
+        settings.SetActive(false);
     }
 
     public void OpenModal()

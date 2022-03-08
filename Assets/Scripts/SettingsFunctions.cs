@@ -8,7 +8,7 @@ public class SettingsFunctions : MonoBehaviour
     private SceneDatas sceneDatas;
     private Text scoreText;
 
-    void Start()
+    public void Start()
     {
         createMesh = GameObject.Find("MeshHandler").GetComponent<CreateMesh>();
         sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
@@ -54,7 +54,6 @@ public class SettingsFunctions : MonoBehaviour
                 Debug.Log("Unknown Type !" + gameObject.name);
                 break;
         }
-        RefreshText();
     }
 
     public void AddConsumption()
