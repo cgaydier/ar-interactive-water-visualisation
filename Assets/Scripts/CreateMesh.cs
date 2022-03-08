@@ -170,7 +170,7 @@ public class CreateMesh : MonoBehaviour
     {
         if (sceneDatas.GetScale() > 1)
         {
-            GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Visible volume\ndivided by " + sceneDatas.GetScale()
+            GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Visible volume divided by " + sceneDatas.GetScale()
             + " :\n" + volumeMesh.ToString("F2") + " m3\nReal volume :\n" + (sceneDatas.GetScale() * volumeMesh).ToString("F2") + "m3";
         }
         else
