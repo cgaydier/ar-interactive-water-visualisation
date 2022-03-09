@@ -1453,7 +1453,7 @@ RectTransform:
   m_Children:
   - {fileID: 291383136}
   m_Father: {fileID: 782254456}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1927,7 +1927,7 @@ RectTransform:
   m_Children:
   - {fileID: 1310911003}
   m_Father: {fileID: 782254456}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2054,7 +2054,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 343.07687, y: -710}
-  m_SizeDelta: {x: 686.15375, y: 1420}
+  m_SizeDelta: {x: 686.15375, y: 1046.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &291383137
 MonoBehaviour:
@@ -2089,23 +2089,10 @@ MonoBehaviour:
 
 
     4<color=#00000000>.</color>-
-    Press "Validate" to create a ground water level.
+    Press <sprite index= 0> and press "Validate" to create a ground water level.
 
 
-    5<color=#00000000>.</color>-
-    Press <sprite index= 2> and enter your water consumption for the week.
-
-
-    6<color=#00000000>.</color>-
-    Press <sprite index= 3> to view the details of your water consumption.
-
-
-    7<color=#00000000>.</color>-
-    Press <sprite index= 1> to reset the settings.
-
-
-    8<color=#00000000>.</color>-
-    Press "Clear" to clear the scene.'
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4074,8 +4061,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1026894099}
-  - {fileID: 261078440}
   - {fileID: 278446368}
+  - {fileID: 261078440}
   - {fileID: 1142728332}
   - {fileID: 1651344237}
   - {fileID: 118269211}
@@ -4905,7 +4892,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 343.07684, y: -710}
-  m_SizeDelta: {x: 686.15375, y: 1239.94}
+  m_SizeDelta: {x: 686.15375, y: 963.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &962190021
 MonoBehaviour:
@@ -4927,18 +4914,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Now, you can increase or decrease your volume by clicking on <sprite index=
-    2> button to open a new panel with many cases of water uses. Adjust the parameters
-    to see your weekly water consumption.
+  m_text: '5<color=#00000000>.</color>- Press <sprite index= 2> and enter your water
+    consumption for the week.
 
 
-    <sprite index= 3> button allows you
-    to display the consumption distribution.
+    6<color=#00000000>.</color>- Press <sprite index=
+    3> to view the details of your water consumption.
 
 
-    <sprite index=1> button resets
-    the consumption.
+    7<color=#00000000>.</color>-
+    Press <sprite index= 1> to reset the settings.
 
+
+    8<color=#00000000>.</color>-
+    Press <sprite index= 0> and press "Clear" to clear the scene.
 
 
 '
@@ -6087,7 +6076,7 @@ GameObject:
   - component: {fileID: 1142728330}
   - component: {fileID: 1142728333}
   m_Layer: 5
-  m_Name: SettingsPanel
+  m_Name: Menu2Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
