@@ -5,13 +5,14 @@ public class MeshHandlerButtons : MonoBehaviour
 {
     public GameObject Settings;
     public InputField textInput;
-
+    private ErrorHandler errorHandler;
     private PlacePoints placePoints;
     private CreateMesh createMesh;
     private SceneDatas sceneDatas;
 
     public void Start()
     {
+        errorHandler = GameObject.Find("ErrorHandler").GetComponent<ErrorHandler>();
         sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
         placePoints = GameObject.Find("MeshHandler").GetComponent<PlacePoints>();
         createMesh = GameObject.Find("MeshHandler").GetComponent<CreateMesh>();
@@ -19,29 +20,50 @@ public class MeshHandlerButtons : MonoBehaviour
 
     public void CreatePointsMesh()
     {
-        if (!sceneDatas.IsMeshCreated())
+        if (sceneDatas.IsMeshCreated())
+        {   
+            errorHandler.AlreadyCreatedError();
+        } 
+        else
         {
+            errorHandler.ErrorMessageReset();
             sceneDatas.enumState.SetPlacePoints();
             sceneDatas.SetPointsPlaced(false);
-        } 
+        }
     }
 
     public void ValidatePointsMesh()
     {
-        sceneDatas.enumState.SetMainScene();
-        placePoints.ClearAll();
-        sceneDatas.SetPointsPlaced(true);
+        if(!sceneDatas.IsMeshCreated())
+            errorHandler.NoSurfaceCreatedError();
+
+        else if(sceneDatas.IsPointsPlaced())
+            errorHandler.AlreadyValidatedError();
+
+        else
+        {
+            errorHandler.ErrorMessageReset();
+            sceneDatas.enumState.SetMainScene();
+            placePoints.ClearAll();
+            sceneDatas.SetPointsPlaced(true);
+        }
     }
 
     public void ClearPointsMesh()
     {
-        sceneDatas.enumState.SetMainScene();
-        placePoints.ClearAll();
-        sceneDatas.ClearAll();
-        createMesh.ClearAll();
-        ClearSettings();
-        Destroy(GameObject.Find("Mesh"));
-        textInput.text = "";
+        if(!sceneDatas.IsMeshCreated())
+            errorHandler.AlreadyClearedError();
+        else
+        {
+            errorHandler.ErrorMessageReset();
+            sceneDatas.enumState.SetMainScene();
+            placePoints.ClearAll();
+            sceneDatas.ClearAll();
+            createMesh.ClearAll();
+            ClearSettings();
+            Destroy(GameObject.Find("Mesh"));
+            textInput.text = "";
+        }
     }
 
     public void CreateArbitraryMesh()

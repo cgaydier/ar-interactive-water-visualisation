@@ -7,7 +7,7 @@ public class CreateMesh : MonoBehaviour
     private CreateLine createLine;
     private Mesh mesh;
     private GameObject go;
-
+    private ErrorHandler errorHandler;
     private readonly List<int> triangles = new List<int>();
     private float volumeMesh;
     private float offset;
@@ -18,18 +18,19 @@ public class CreateMesh : MonoBehaviour
         mesh = new Mesh();
         sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
         createLine = GameObject.Find("LineHandler").GetComponent<CreateLine>();
+        errorHandler = GameObject.Find("ErrorHandler").GetComponent<ErrorHandler>();
         volumeMesh = 0f;
         offset = sceneDatas.GetDefaultOffset();
         currentOffset = sceneDatas.GetDefaultOffset();
-        //sceneDatas.AddVertice(new Vector3(0, 0, 0));
-        //sceneDatas.AddVertice(new Vector3(0, 0, 0));
-        //sceneDatas.AddVertice(new Vector3(1, 0, 0));
-        //sceneDatas.AddVertice(new Vector3(1, 0, 0));
-        //sceneDatas.AddVertice(new Vector3(1, 0, 1));
-        //sceneDatas.AddVertice(new Vector3(1, 0, 1));
-        //sceneDatas.AddVertice(new Vector3(0, 0, 1));
-        //sceneDatas.AddVertice(new Vector3(0, 0, 1));
-        //sceneDatas.SetPointsPlaced(true);
+        // sceneDatas.AddVertice(new Vector3(0, 0, 0));
+        // sceneDatas.AddVertice(new Vector3(0, 0, 0));
+        // sceneDatas.AddVertice(new Vector3(1, 0, 0));
+        // sceneDatas.AddVertice(new Vector3(1, 0, 0));
+        // sceneDatas.AddVertice(new Vector3(1, 0, 1));
+        // sceneDatas.AddVertice(new Vector3(1, 0, 1));
+        // sceneDatas.AddVertice(new Vector3(0, 0, 1));
+        // sceneDatas.AddVertice(new Vector3(0, 0, 1));
+        // sceneDatas.SetPointsPlaced(true);
     }
 
     void Update()
@@ -97,9 +98,16 @@ public class CreateMesh : MonoBehaviour
 
     public void Reset()
     {
-        currentOffset = sceneDatas.GetDefaultOffset();
-        offset = sceneDatas.GetDefaultOffset();
-        RefreshMesh();
+        if(sceneDatas.IsMeshCreated())
+        {
+            currentOffset = sceneDatas.GetDefaultOffset();
+            offset = sceneDatas.GetDefaultOffset();
+            RefreshMesh();
+        }
+        else
+        {
+            errorHandler.NoVolumeError();
+        }
     }
 
     private void RefreshMesh()
