@@ -4,7 +4,7 @@ public class HelpScript : MonoBehaviour
 {
     public SceneDatas sceneDatas;
     public GameObject UIPanel;
-    public GameObject Page_1, Page_2, Page_3, Page_4, Page_5;
+    public GameObject Page_1, Page_2, Page_3, Page_4, Page_5, Page_6;
     public GameObject CurrentPage;
     public GameObject Menu;
     public GameObject PrevButton, NextButton, TipsButton;
@@ -61,7 +61,12 @@ public class HelpScript : MonoBehaviour
 
         else if(CurrentPage == Page_4)
         {
-            SwitchPage(Page_4, Page_5);
+           SwitchPage(Page_4, Page_5);
+        }
+
+        else if(CurrentPage == Page_5)
+        {
+            SwitchPage(Page_5, Page_6);
             NextButton.SetActive(false);
         }
     }
@@ -89,8 +94,13 @@ public class HelpScript : MonoBehaviour
 
         else if(CurrentPage == Page_5)
         {
-            NextButton.SetActive(true);
             SwitchPage(Page_5, Page_4);
+        }
+
+        else if(CurrentPage == Page_6)
+        {
+            Page_6.SetActive(true);
+            SwitchPage(Page_6, Page_5);
         }
     }
 
@@ -125,7 +135,7 @@ public class HelpScript : MonoBehaviour
             NextButton.SetActive(true);
         }
             
-        else if (CurrentPage == Page_5)
+        else if (CurrentPage == Page_6)
         {
             PrevButton.SetActive(true);
             NextButton.SetActive(false); 
