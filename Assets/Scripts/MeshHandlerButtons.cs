@@ -21,9 +21,8 @@ public class MeshHandlerButtons : MonoBehaviour
     public void CreatePointsMesh()
     {
         if (sceneDatas.IsMeshCreated())
-        {   
             errorHandler.AlreadyCreatedError();
-        } 
+
         else
         {
             errorHandler.ErrorMessageReset();
@@ -34,12 +33,9 @@ public class MeshHandlerButtons : MonoBehaviour
 
     public void ValidatePointsMesh()
     {
-        if(!sceneDatas.IsMeshCreated())
-            errorHandler.NoSurfaceCreatedError();
-
-        else if(sceneDatas.IsPointsPlaced())
+        if(sceneDatas.IsPointsPlaced())
             errorHandler.AlreadyValidatedError();
-
+        
         else
         {
             errorHandler.ErrorMessageReset();
@@ -53,6 +49,7 @@ public class MeshHandlerButtons : MonoBehaviour
     {
         if(!sceneDatas.IsMeshCreated())
             errorHandler.AlreadyClearedError();
+
         else
         {
             errorHandler.ErrorMessageReset();

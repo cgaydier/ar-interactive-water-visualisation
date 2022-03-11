@@ -22,11 +22,6 @@ public class ErrorHandler : MonoBehaviour
         debugMessage = "Max points reached (10).\nPlease validate or clear.\n";
     }
 
-    public void NoSurfaceCreatedError()
-    {
-        debugMessage = "Please place points.\n";
-    }
-
     public void AlreadyCreatedError()
     {
         debugMessage = "Points already placed.\nPlease validate or clear.\n";
