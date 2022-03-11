@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class MeshHandlerButtons : MonoBehaviour
 {
-    public GameObject Settings;
+    public GameObject settings;
     public InputField textInput;
     private ErrorHandler errorHandler;
     private PlacePoints placePoints;
@@ -33,9 +33,12 @@ public class MeshHandlerButtons : MonoBehaviour
 
     public void ValidatePointsMesh()
     {
-        if(sceneDatas.IsPointsPlaced())
+        if(!sceneDatas.IsPointsPlaced())
+            errorHandler.NoPointsError();
+
+        else if(sceneDatas.IsMeshCreated())
             errorHandler.AlreadyValidatedError();
-        
+            
         else
         {
             errorHandler.ErrorMessageReset();
@@ -54,6 +57,7 @@ public class MeshHandlerButtons : MonoBehaviour
         {
             errorHandler.ErrorMessageReset();
             sceneDatas.enumState.SetMainScene();
+            settings.SetActive(false);
             placePoints.ClearAll();
             sceneDatas.ClearAll();
             createMesh.ClearAll();
@@ -86,6 +90,6 @@ public class MeshHandlerButtons : MonoBehaviour
     
     public void ClearSettings()
     {
-        Settings.GetComponent<SettingsFunctions>().RefreshAll();
+        settings.GetComponent<SettingsFunctions>().RefreshAll();
     }
 }

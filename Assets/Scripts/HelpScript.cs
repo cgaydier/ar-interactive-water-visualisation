@@ -8,18 +8,24 @@ public class HelpScript : MonoBehaviour
     public GameObject CurrentPage;
     public GameObject Menu;
     public GameObject PrevButton, NextButton, TipsButton;
-
+    private ErrorHandler errorHandler;
     bool isPanelActive = true;
 
+
+    void Start()
+    {
+        errorHandler = GameObject.Find("ErrorHandler").GetComponent<ErrorHandler>();
+    }    
+    
     /* summary :
     * permits to open and close the Tutorial panel
     */
     public void OpenAndClosePanel()
     {
-        if (isPanelActive == false)
+        if (!isPanelActive)
         {
             CurrentButtonVisible(CurrentPage);
-
+            errorHandler.ErrorMessageReset();
             TipsButton.SetActive(false);
             Menu.SetActive(false);
             UIPanel.SetActive(!isPanelActive);
@@ -29,6 +35,7 @@ public class HelpScript : MonoBehaviour
         }
         else
         {
+            errorHandler.ErrorMessageReset();
             UIPanel.SetActive(!isPanelActive);
             TipsButton.SetActive(true);
             Menu.SetActive(true);

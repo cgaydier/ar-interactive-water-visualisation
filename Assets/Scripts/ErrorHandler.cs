@@ -36,6 +36,11 @@ public class ErrorHandler : MonoBehaviour
         debugMessage = "Nothing to clear.\n";
     }
 
+    public void NoPointsError()
+    {
+        debugMessage = "Please place some points.\n";
+    }
+
     public void NoVolumeError()
     {
         debugMessage = "Please create a water volume.\n";
