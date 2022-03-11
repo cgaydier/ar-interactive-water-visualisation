@@ -36,6 +36,11 @@ public class PlacePoints : MonoBehaviour
         points.Clear();
     }
 
+    public int PointsCount()
+    {
+        return points.Count;
+    }
+
     void Update()
     {
         if(Input.touchCount > 0 && sceneDatas.enumState.GetState() == EnumState.State.PlacePoints)

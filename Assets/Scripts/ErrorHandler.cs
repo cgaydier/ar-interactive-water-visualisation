@@ -38,7 +38,7 @@ public class ErrorHandler : MonoBehaviour
 
     public void NoPointsError()
     {
-        debugMessage = "Please place some points.\n";
+        debugMessage = "Not enough points.\nAt least 3 are needed.\n";
     }
 
     public void NoVolumeError()
