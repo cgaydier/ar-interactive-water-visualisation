@@ -4453,18 +4453,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e7c08d91931ed4199086b64c1377ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uIPanel: {fileID: 0}
-  page1: {fileID: 0}
-  page2: {fileID: 0}
-  page3: {fileID: 0}
-  page4: {fileID: 0}
-  page5: {fileID: 0}
-  page6: {fileID: 0}
-  currentPage: {fileID: 0}
-  menu: {fileID: 0}
-  prevButton: {fileID: 0}
-  nextButton: {fileID: 0}
-  tipsButton: {fileID: 0}
+  sceneDatas: {fileID: 0}
+  UIPanel: {fileID: 0}
+  Page_1: {fileID: 0}
+  Page_2: {fileID: 0}
+  Page_3: {fileID: 0}
+  Page_4: {fileID: 0}
+  Page_5: {fileID: 0}
+  Page_6: {fileID: 0}
+  CurrentPage: {fileID: 0}
+  Menu: {fileID: 0}
+  PrevButton: {fileID: 0}
+  NextButton: {fileID: 0}
+  TipsButton: {fileID: 0}
   createButton: {fileID: 1083424851}
 --- !u!1 &797352520
 GameObject:
@@ -11804,11 +11805,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2039085391}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f144109c448abd4da1536d17e8afa53, type: 3}
+  m_Script: {fileID: 11500000, guid: b67ba02f2c7069e42b6340b74d7f47aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enumState: {fileID: 144765961}
-  currentTime: 1
 --- !u!1 &2044446338
 GameObject:
   m_ObjectHideFlags: 0

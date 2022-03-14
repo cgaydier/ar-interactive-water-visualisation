@@ -4,7 +4,7 @@ using UnityEngine;
 public class CreateMesh : MonoBehaviour
 {
     public GameObject content;
-    private SceneDatas sceneDatas;
+    private SceneData sceneData;
     private Mesh mesh;
     private GameObject go;
     private ErrorHandler errorHandler;
@@ -17,31 +17,36 @@ public class CreateMesh : MonoBehaviour
     void Start()
     {
         mesh = new Mesh();
-        sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
+        sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
         errorHandler = GameObject.Find("ErrorHandler").GetComponent<ErrorHandler>();
         volumeMesh = 0f;
-        offset = sceneDatas.GetDefaultOffset();
-        currentOffset = sceneDatas.GetDefaultOffset();
-        //sceneDatas.AddVertice(new Vector3(0, 0, 0));
-        //sceneDatas.AddVertice(new Vector3(0, 0, 0));
-        //sceneDatas.AddVertice(new Vector3(1, 0, 0));
-        //sceneDatas.AddVertice(new Vector3(1, 0, 0));
-        //sceneDatas.AddVertice(new Vector3(1, 0, 1));
-        //sceneDatas.AddVertice(new Vector3(1, 0, 1));
-        //sceneDatas.AddVertice(new Vector3(0, 0, 1));
-        //sceneDatas.AddVertice(new Vector3(0, 0, 1));
-        //sceneDatas.SetPointsPlaced(true);
+        offset = sceneData.GetDefaultOffset();
+        currentOffset = sceneData.GetDefaultOffset();
+        //sceneData.AddVertice(new Vector3(0, 0, 0));
+        //sceneData.AddVertice(new Vector3(0, 0, 0));
+        //sceneData.AddVertice(new Vector3(1, 0, 0));
+        //sceneData.AddVertice(new Vector3(1, 0, 0));
+        //sceneData.AddVertice(new Vector3(1, 0, 1));
+        //sceneData.AddVertice(new Vector3(1, 0, 1));
+        //sceneData.AddVertice(new Vector3(0, 0, 1));
+        //sceneData.AddVertice(new Vector3(0, 0, 1));
+        //sceneData.SetPointsPlaced(true);
     }
 
-    // Updates the mesh at each frame
+    /* summary :
+    * Updates the mesh at each frame
+    */
     void Update()
     {
         MeshHandler();
     }
 
+    /* summary :
+    * Increases the value with which the volume will be divided
+    */
     public void AddScale()
     {
-        sceneDatas.IncrScale();
+        sceneData.IncrScale();
         SetWater();
     }
 
@@ -50,63 +55,69 @@ public class CreateMesh : MonoBehaviour
         SetWater();
     }
 
-    // Calculates a height value depending on the surface
+    /* summary :
+    * Calculates a height value depending on the surface
+    */
     public void AddWater(float volume)
     {
-        offset += (volume / sceneDatas.GetSurfaceMesh());
+        offset += (volume / sceneData.GetSurfaceMesh());
         SetWater();
     }
 
     public void RemoveWater(float volume)
     {
-        offset = offset - (volume / sceneDatas.GetSurfaceMesh()) >= 0.00f ? offset - (volume / sceneDatas.GetSurfaceMesh()) : 0.00f;
+        offset = offset - (volume / sceneData.GetSurfaceMesh()) >= 0.00f ? offset - (volume / sceneData.GetSurfaceMesh()) : 0.00f;
         SetWater();
     }
 
     public void SetCustomVolume(float volume){
         if(volume >= 0f)
         {
-            offset = (volume / sceneDatas.GetSurfaceMesh());
+            offset = (volume / sceneData.GetSurfaceMesh());
             SetWater();
         }
     }
 
-    // Changes the current value of the volume height depending on the time scale
+    /* summary :
+    * Changes the current value of the volume height depending on the time scale
+    */
     public void SetWater()
     {
-        switch (sceneDatas.currentTime)
+        switch (sceneData.currentTime)
         {
-            case SceneDatas.TimeName.Day:
+            case SceneData.TimeName.Day:
                 currentOffset = offset / 7f;
                 break;
 
-            case SceneDatas.TimeName.Week:
+            case SceneData.TimeName.Week:
                 currentOffset = offset;
                 break;
 
-            case SceneDatas.TimeName.Month:
+            case SceneData.TimeName.Month:
                 currentOffset = offset * 4;
                 break;
 
-            case SceneDatas.TimeName.Year:
+            case SceneData.TimeName.Year:
                 currentOffset = offset * 52;
                 break;
 
             default:
-                Debug.Log("Unknown Time type !" + sceneDatas.currentTime);
+                Debug.Log("Unknown Time type !" + sceneData.currentTime);
                 break;
         }
-        currentOffset /= (float)sceneDatas.GetScale();
+        currentOffset /= (float)sceneData.GetScale();
         RefreshMesh();
     }
 
-    // Resets the height of the volume while keeping the surface intact
+    /* summary :
+    * Resets the height of the volume while keeping the surface intact
+    */
     public void Reset()
     {
-        if(sceneDatas.IsMeshCreated())
+        if(sceneData.IsMeshCreated())
         {
-            currentOffset = sceneDatas.GetDefaultOffset();
-            offset = sceneDatas.GetDefaultOffset();
+            currentOffset = sceneData.GetDefaultOffset();
+            offset = sceneData.GetDefaultOffset();
             RefreshMesh();
         }
         else
@@ -115,14 +126,16 @@ public class CreateMesh : MonoBehaviour
         }
     }
 
-    // Recalculates the volume mesh with a different height's value
+    /* summary :
+    * Recalculates the volume mesh with a different height's value
+    */
     private void RefreshMesh()
     {
-        sceneDatas.SetSurfaceMesh(0f);
+        sceneData.SetSurfaceMesh(0f);
         volumeMesh = 0f;
         triangles.Clear();
         mesh.Clear();
-        sceneDatas.SetMeshCreated(false);
+        sceneData.SetMeshCreated(false);
         Destroy(go);
         lineToReset = true;
     }
@@ -130,14 +143,16 @@ public class CreateMesh : MonoBehaviour
     public void ClearAll()
     {
         RefreshMesh();
-        offset = sceneDatas.GetDefaultOffset();
-        currentOffset = sceneDatas.GetDefaultOffset();
-        sceneDatas.SetPointsPlaced(false);
+        offset = sceneData.GetDefaultOffset();
+        currentOffset = sceneData.GetDefaultOffset();
+        sceneData.SetPointsPlaced(false);
         if (GameObject.Find("WaterVolumeText"))
             GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume :\n0 L";
     }
 
-    // Creates a triangular mesh by extruding the user-made surface
+    /* summary :
+    * Creates a triangular mesh by extruding the user-made surface
+    */
     private void CreateTriangles(List<Vector3> vertices)
     {
         int nbTotal = vertices.Count;
@@ -149,7 +164,7 @@ public class CreateMesh : MonoBehaviour
             triangles.Add(0);
             triangles.Add(j + 4);
             triangles.Add(j + 2);
-            sceneDatas.SetSurfaceMesh(sceneDatas.GetSurfaceMesh() + ((Vector3.Distance(vertices[0], vertices[j+2]) * Vector3.Distance(vertices[j+2], vertices[j+4])) / 2f));
+            sceneData.SetSurfaceMesh(sceneData.GetSurfaceMesh() + ((Vector3.Distance(vertices[0], vertices[j+2]) * Vector3.Distance(vertices[j+2], vertices[j+4])) / 2f));
 
             // Top
             triangles.Add(1);
@@ -169,28 +184,34 @@ public class CreateMesh : MonoBehaviour
         }
     }
     
-    // Calculates a volume value in liter
+    /* summary :
+    * Calculates a volume value in liter
+    */
     private void VolumeMeshCalcul()
     {
-        volumeMesh = sceneDatas.GetSurfaceMesh() * currentOffset * 1000;
+        volumeMesh = sceneData.GetSurfaceMesh() * currentOffset * 1000;
     }
 
-    // Checks if the number of placed points is valide
+    /* summary :
+    * Checks if the number of placed points is valide
+    */
     private bool Checkpoints()
     {
-        int nbTotal = (sceneDatas.GetVerticesSize()) / 2;
-        if (nbTotal < sceneDatas.GetMinPoints() || nbTotal > sceneDatas.GetMaxPoints())
+        int nbTotal = (sceneData.GetVerticesSize()) / 2;
+        if (nbTotal < sceneData.GetMinPoints() || nbTotal > sceneData.GetMaxPoints())
             return false;
         return true;
     }
 
-    // Updates the volume value shown
+    /* summary :
+    * Updates the volume value shown
+    */
     public void UpdateVolumeText()
     {
-        if (sceneDatas.GetScale() > 1)
+        if (sceneData.GetScale() > 1)
         {
-            GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Visible volume divided by " + sceneDatas.GetScale()
-            + " :\n" + volumeMesh.ToString("F0") + " L\nReal volume :\n" + (sceneDatas.GetScale() * volumeMesh).ToString("F0") + "L";
+            GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Visible volume divided by " + sceneData.GetScale()
+            + " :\n" + volumeMesh.ToString("F0") + " L\nReal volume :\n" + (sceneData.GetScale() * volumeMesh).ToString("F0") + "L";
         }
         else
         {
@@ -198,25 +219,28 @@ public class CreateMesh : MonoBehaviour
         }
     }
 
-    // Updates the mesh, the volume value and apply the calculated height to it if a change has been made by the user
+    /* summary :
+    * Updates the mesh, the volume value and apply the calculated height to it if a change has been made by the user
+    */
     private void MeshHandler()
     {
-        if (Checkpoints() && !sceneDatas.IsMeshCreated() && sceneDatas.IsPointsPlaced())
+        if (Checkpoints() && !sceneData.IsMeshCreated() && sceneData.IsPointsPlaced())
         {
             List<Vector3> tmp = new List<Vector3>();
-            for (int i = 0; i < sceneDatas.GetVerticesSize(); i ++)
+            // Recalculates the dupplicated vertices to a custom height to create a volume
+            for (int i = 0; i < sceneData.GetVerticesSize(); i ++)
             {
                 if (i%2 == 0)
                 {
-                    tmp.Add(new Vector3(sceneDatas.GetVertices()[i].x,
-                                        sceneDatas.GetVertices()[i].y,
-                                        sceneDatas.GetVertices()[i].z));
+                    tmp.Add(new Vector3(sceneData.GetVertices()[i].x,
+                                        sceneData.GetVertices()[i].y,
+                                        sceneData.GetVertices()[i].z));
                 }
                 else
                 {
-                    tmp.Add(new Vector3(sceneDatas.GetVertices()[i].x,
-                                        sceneDatas.GetVertices()[i].y + currentOffset,
-                                        sceneDatas.GetVertices()[i].z));
+                    tmp.Add(new Vector3(sceneData.GetVertices()[i].x,
+                                        sceneData.GetVertices()[i].y + currentOffset,
+                                        sceneData.GetVertices()[i].z));
                 }
             }
 
@@ -235,11 +259,12 @@ public class CreateMesh : MonoBehaviour
             mesh.OptimizeIndexBuffers();
             mesh.OptimizeReorderVertexBuffer();
 
+            // Reapplies the water material to the updated mesh
             go = new GameObject("Mesh", typeof(MeshFilter), typeof(MeshRenderer));
             go.GetComponent<MeshRenderer>().material = Resources.Load("WaterURP", typeof(Material)) as Material;
             go.GetComponent<MeshFilter>().mesh = mesh;
 
-            sceneDatas.SetMeshCreated(true);
+            sceneData.SetMeshCreated(true);
 
             if (lineToReset)
             {
@@ -247,8 +272,8 @@ public class CreateMesh : MonoBehaviour
                 lineToReset = false;
             }
         }
-
-        else if(Checkpoints() && sceneDatas.IsMeshCreated())
+        // Updates the lighting on the volume if there isn't any changes impacting its size
+        else if(Checkpoints() && sceneData.IsMeshCreated())
         {
             mesh.RecalculateNormals();
             mesh.RecalculateTangents();

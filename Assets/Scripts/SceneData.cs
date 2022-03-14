@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SceneDatas : MonoBehaviour
+public class SceneData : MonoBehaviour
 {
     public EnumState enumState;
     public TimeName currentTime = TimeName.Week;
@@ -64,7 +64,9 @@ public class SceneDatas : MonoBehaviour
         }
     }
 
-    // Clears all the counters in the settings interface 
+    /* summary :
+    * Clears all the counters in the settings interface
+    */
     public void ClearCpt()
     {
         datas.Clear();

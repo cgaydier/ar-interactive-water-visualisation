@@ -3,12 +3,12 @@ using UnityEngine;
 public class ScrollButtonFunctions : MonoBehaviour
 {
     public GameObject settings;
-    private SceneDatas sceneData;
+    private SceneData sceneData;
     private CreateLine createLine;
 
     private void Start()
     {
-        sceneData = GameObject.Find("SceneData").GetComponent<SceneDatas>();
+        sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
         createLine = GameObject.Find("LineHandler").GetComponent<CreateLine>();
         settings.SetActive(true);
         GameObject.Find("Settings").GetComponent<SettingsFunctions>().Start();
@@ -40,24 +40,24 @@ public class ScrollButtonFunctions : MonoBehaviour
     {
         if (!sceneData.IsLinesShowned())
         {
-            foreach (int i in System.Enum.GetValues(typeof(SceneDatas.DataName)))
+            foreach (int i in System.Enum.GetValues(typeof(SceneData.DataName)))
             {
-                SceneDatas.DataName dataName = (SceneDatas.DataName)i;
+                SceneData.DataName dataName = (SceneData.DataName)i;
                 float cptData = sceneData.GetDataCpt(dataName);
                 if (cptData > 0)
                 {
                     float tmp = sceneData.GetDataConsumption(dataName);
                     switch (sceneData.currentTime)
                     {
-                        case SceneDatas.TimeName.Day:
+                        case SceneData.TimeName.Day:
                             tmp /= 7f;
                             break;
-                        case SceneDatas.TimeName.Week:
+                        case SceneData.TimeName.Week:
                             break;
-                        case SceneDatas.TimeName.Month:
+                        case SceneData.TimeName.Month:
                             tmp *= 4;
                             break;
-                        case SceneDatas.TimeName.Year:
+                        case SceneData.TimeName.Year:
                             tmp *= 52;
                             break;
                         default:

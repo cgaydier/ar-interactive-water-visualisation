@@ -10,7 +10,7 @@ public class PlacePoints : MonoBehaviour
     public ARRaycastManager m_RaycastManager;
     public GameObject m_PointToPlace;
     private ErrorHandler errorHandler;
-    private SceneDatas sceneDatas;
+    private SceneData sceneData;
     private GraphicRaycaster GR;
     private static readonly List<ARRaycastHit> hits = new List<ARRaycastHit>();
     private readonly List<GameObject> points = new List<GameObject>();
@@ -21,7 +21,7 @@ public class PlacePoints : MonoBehaviour
     private void Start()
     {
         GR = GameObject.Find("UICanvas").GetComponent<GraphicRaycaster>();
-        sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
+        sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
         errorHandler = GameObject.Find("ErrorHandler").GetComponent<ErrorHandler>();
     }
 
@@ -36,6 +36,9 @@ public class PlacePoints : MonoBehaviour
         points.Clear();
     }
 
+    /* summary :
+    * Returns the number of placed points
+    */
     public int PointsCount()
     {
         return points.Count;
@@ -43,14 +46,14 @@ public class PlacePoints : MonoBehaviour
 
     void Update()
     {
-        if(Input.touchCount > 0 && sceneDatas.enumState.GetState() == EnumState.State.PlacePoints)
+        if(Input.touchCount > 0 && sceneData.enumState.GetState() == EnumState.State.PlacePoints)
         {
             Touch touch = Input.GetTouch(0);
             
             if(touch.phase == TouchPhase.Began)
             {
                 // Launches a ray to detect a surface plane
-                if(m_RaycastManager.Raycast(touch.position, hits, TrackableType.PlaneWithinPolygon) && points.Count < sceneDatas.GetMaxPoints())
+                if(m_RaycastManager.Raycast(touch.position, hits, TrackableType.PlaneWithinPolygon) && points.Count < sceneData.GetMaxPoints())
                 {
                     errorHandler.ErrorMessageReset();
                     PointerEventData ped = new PointerEventData(null)
@@ -77,15 +80,15 @@ public class PlacePoints : MonoBehaviour
                         }
                         // Updates the number of lines and add 2 vertices with the hit coordinates
                         LR.positionCount = points.Count;
-                        sceneDatas.AddVertice(hitPose.position);
-                        sceneDatas.AddVertice(hitPose.position);
+                        sceneData.AddVertice(hitPose.position);
+                        sceneData.AddVertice(hitPose.position);
                         lines.Add(hitPose.position);
 
                         LR.SetPositions(lines.ToArray());
                         LR.loop = true;
                     }
                 }
-                else if(points.Count >= sceneDatas.GetMaxPoints())
+                else if(points.Count >= sceneData.GetMaxPoints())
                 {
                     errorHandler.PlacePointsError();
                 }
