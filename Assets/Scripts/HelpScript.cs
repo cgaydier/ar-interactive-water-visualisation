@@ -106,8 +106,8 @@ public class HelpScript : MonoBehaviour
 
         else if(CurrentPage == Page_6)
         {
-            Page_6.SetActive(true);
             SwitchPage(Page_6, Page_5);
+            NextButton.SetActive(true);
         }
     }
 
