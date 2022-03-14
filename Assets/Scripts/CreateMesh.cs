@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CreateMesh : MonoBehaviour
-{   
+{
+    public GameObject content;
     private SceneDatas sceneDatas;
-    private CreateLine createLine;
     private Mesh mesh;
     private GameObject go;
     private ErrorHandler errorHandler;
@@ -12,25 +12,25 @@ public class CreateMesh : MonoBehaviour
     private float volumeMesh;
     private float offset;
     private float currentOffset;
+    private bool lineToReset = false;
 
     void Start()
     {
         mesh = new Mesh();
         sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
-        createLine = GameObject.Find("LineHandler").GetComponent<CreateLine>();
         errorHandler = GameObject.Find("ErrorHandler").GetComponent<ErrorHandler>();
         volumeMesh = 0f;
         offset = sceneDatas.GetDefaultOffset();
         currentOffset = sceneDatas.GetDefaultOffset();
-        // sceneDatas.AddVertice(new Vector3(0, 0, 0));
-        // sceneDatas.AddVertice(new Vector3(0, 0, 0));
-        // sceneDatas.AddVertice(new Vector3(1, 0, 0));
-        // sceneDatas.AddVertice(new Vector3(1, 0, 0));
-        // sceneDatas.AddVertice(new Vector3(1, 0, 1));
-        // sceneDatas.AddVertice(new Vector3(1, 0, 1));
-        // sceneDatas.AddVertice(new Vector3(0, 0, 1));
-        // sceneDatas.AddVertice(new Vector3(0, 0, 1));
-        // sceneDatas.SetPointsPlaced(true);
+        //sceneDatas.AddVertice(new Vector3(0, 0, 0));
+        //sceneDatas.AddVertice(new Vector3(0, 0, 0));
+        //sceneDatas.AddVertice(new Vector3(1, 0, 0));
+        //sceneDatas.AddVertice(new Vector3(1, 0, 0));
+        //sceneDatas.AddVertice(new Vector3(1, 0, 1));
+        //sceneDatas.AddVertice(new Vector3(1, 0, 1));
+        //sceneDatas.AddVertice(new Vector3(0, 0, 1));
+        //sceneDatas.AddVertice(new Vector3(0, 0, 1));
+        //sceneDatas.SetPointsPlaced(true);
     }
 
     void Update()
@@ -118,7 +118,7 @@ public class CreateMesh : MonoBehaviour
         mesh.Clear();
         sceneDatas.SetMeshCreated(false);
         Destroy(go);
-        createLine.ClearAll();
+        lineToReset = true;
     }
 
     public void ClearAll()
@@ -229,6 +229,12 @@ public class CreateMesh : MonoBehaviour
             go.GetComponent<MeshFilter>().mesh = mesh;
 
             sceneDatas.SetMeshCreated(true);
+
+            if (lineToReset)
+            {
+                content.GetComponent<ScrollButtonFunctions>().ResetConsumption();
+                lineToReset = false;
+            }
         }
 
         else if(Checkpoints() && sceneDatas.IsMeshCreated())

@@ -8,7 +8,6 @@ public class ScrollButtonFunctions : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Here");
         sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
         createLine = GameObject.Find("LineHandler").GetComponent<CreateLine>();
         settings.SetActive(true);
@@ -67,6 +66,15 @@ public class ScrollButtonFunctions : MonoBehaviour
         {
             createLine.ClearAll();
             sceneDatas.SetLinesShowned(false);
+        }
+    }
+
+    public void ResetConsumption()
+    {
+        if (sceneDatas.IsLinesShowned())
+        {
+            ShowConsumption();
+            ShowConsumption();
         }
     }
 }
