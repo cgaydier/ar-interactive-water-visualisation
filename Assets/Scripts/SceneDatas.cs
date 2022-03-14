@@ -64,6 +64,7 @@ public class SceneDatas : MonoBehaviour
         }
     }
 
+    // Clears all the counters in the settings interface 
     public void ClearCpt()
     {
         datas.Clear();

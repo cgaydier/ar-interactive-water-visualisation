@@ -22,6 +22,8 @@ public class MeshHandlerButtons : MonoBehaviour
         createButtonOff = Resources.LoadAll<Sprite>("create")[0];
     }
 
+    // Called on touch of the Create button
+    // Let the user place points
     public void CreatePointsMesh()
     {
         if (sceneDatas.IsMeshCreated())
@@ -36,6 +38,8 @@ public class MeshHandlerButtons : MonoBehaviour
         }
     }
 
+    // Called on touch of the Validate button
+    // Creates a surface depending on the placed points
     public void ValidatePointsMesh()
     {
         if(sceneDatas.IsMeshCreated())
@@ -54,6 +58,8 @@ public class MeshHandlerButtons : MonoBehaviour
         }
     }
 
+    // Called on touch of the Clear button
+    // Clears everything
     public void ClearPointsMesh()
     {
         if(sceneDatas.IsMeshCreated() || sceneDatas.enumState.currentState != EnumState.State.MainView)
@@ -78,6 +84,8 @@ public class MeshHandlerButtons : MonoBehaviour
         GameObject.Find("CreateButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = createButtonOff;
     }
 
+    // Called when an arbitrary value is entered in the settings' section
+    // Creates a volume depending on the surface already created and the custom value entered
     public void CreateArbitraryMesh()
     {
         sceneDatas.ClearCpt();
@@ -91,6 +99,8 @@ public class MeshHandlerButtons : MonoBehaviour
         }
     }
 
+    // Called on touch of the Reset button
+    // Reset the settings and the mesh to display the starting surface
     public void ResetMeshSettings()
     { 
         sceneDatas.ClearCpt();

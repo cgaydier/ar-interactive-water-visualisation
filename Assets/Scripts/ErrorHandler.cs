@@ -5,16 +5,10 @@ public class ErrorHandler : MonoBehaviour
     public GameObject userDebugPanel;
     private string debugMessage;
 
-    // Start is called before the first frame update
     private void Start()
     {
         debugMessage = "";
         userDebugPanel.SetActive(true);
-    }
-
-    public void ErrorMessageReset()
-    {
-        debugMessage = "";
     }
 
     public void PlacePointsError()
@@ -46,7 +40,12 @@ public class ErrorHandler : MonoBehaviour
         debugMessage = "Please create a water volume.\n";
     }
 
-    // Update is called once per frame
+    public void ErrorMessageReset()
+    {
+        debugMessage = "";
+    }
+
+    // Updates the debug message at each frame
     void Update()
     {
         userDebugPanel.GetComponent<UnityEngine.UI.Text>().text = debugMessage;

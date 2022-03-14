@@ -49,6 +49,7 @@ public class PlacePoints : MonoBehaviour
             
             if(touch.phase == TouchPhase.Began)
             {
+                // Launches a ray to detect a surface plane
                 if(m_RaycastManager.Raycast(touch.position, hits, TrackableType.PlaneWithinPolygon) && points.Count < sceneDatas.GetMaxPoints())
                 {
                     errorHandler.ErrorMessageReset();
@@ -56,14 +57,16 @@ public class PlacePoints : MonoBehaviour
                     {
                         position = touch.position
                     };
+
                     List<RaycastResult> results = new List<RaycastResult>();
                     GR.Raycast(ped, results);
 
                     if(results.Count == 0)
                     {
                         Pose hitPose = hits[0].pose;
-
+                        // Creates a point on the detected surface
                         points.Add(Instantiate(m_PointToPlace, hitPose.position, hitPose.rotation));
+                        // If it's the first intersection Ray/Surface, initialise the lines
                         if(first){
                             LR = points[0].AddComponent<LineRenderer>();
                             Material lineMat = Resources.Load("Line", typeof(Material)) as Material;
@@ -72,6 +75,7 @@ public class PlacePoints : MonoBehaviour
                             LR.positionCount = 0;
                             first = false;
                         }
+                        // Updates the number of lines and add 2 vertices with the hit coordinates
                         LR.positionCount = points.Count;
                         sceneDatas.AddVertice(hitPose.position);
                         sceneDatas.AddVertice(hitPose.position);
