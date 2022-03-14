@@ -4453,19 +4453,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18e7c08d91931ed4199086b64c1377ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneDatas: {fileID: 2039085393}
-  UIPanel: {fileID: 782254455}
-  Page_1: {fileID: 1026894098}
-  Page_2: {fileID: 278446365}
-  Page_3: {fileID: 261078437}
-  Page_4: {fileID: 1142728329}
-  Page_5: {fileID: 683327920}
-  Page_6: {fileID: 1651344236}
-  CurrentPage: {fileID: 1026894098}
-  Menu: {fileID: 1014222179}
-  PrevButton: {fileID: 118269210}
-  NextButton: {fileID: 1956645733}
-  TipsButton: {fileID: 1008044880}
+  uIPanel: {fileID: 0}
+  page1: {fileID: 0}
+  page2: {fileID: 0}
+  page3: {fileID: 0}
+  page4: {fileID: 0}
+  page5: {fileID: 0}
+  page6: {fileID: 0}
+  currentPage: {fileID: 0}
+  menu: {fileID: 0}
+  prevButton: {fileID: 0}
+  nextButton: {fileID: 0}
+  tipsButton: {fileID: 0}
   createButton: {fileID: 1083424851}
 --- !u!1 &797352520
 GameObject:
@@ -11776,7 +11775,7 @@ GameObject:
   - component: {fileID: 2039085392}
   - component: {fileID: 2039085393}
   m_Layer: 0
-  m_Name: SceneDatas
+  m_Name: SceneData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

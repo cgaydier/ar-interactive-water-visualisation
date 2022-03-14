@@ -7,7 +7,7 @@ public class MenuScript : MonoBehaviour
     bool isActive = false;
 
     /* summary :
-    * permits to open and close the Menu
+    * Open and close the Menu
     */
     public void OpenAndCloseMenu()
     {

@@ -21,6 +21,15 @@ public class CreateLine : MonoBehaviour
         }
     }
 
+    /* summary :
+     * Return the middle of the geometric form created by vertices
+     * 
+     * parameter :
+     * vertices - List of points on space
+     * 
+     * return :
+     * Middle point represented by a Vector3
+     */
     private Vector3 GetMiddle(List<Vector3> vertices)
     {
         Vector3 middlePoint = new Vector3(0, 0, 0);
@@ -34,6 +43,9 @@ public class CreateLine : MonoBehaviour
         return middlePoint;
     }
 
+    /* summary :
+     * Clear meshList, destroy all the gameObject and set the top of the lines to 0
+     */
     public void ClearAll()
     {
         for (int i = 0; i < meshList.Count; i++)
@@ -44,7 +56,16 @@ public class CreateLine : MonoBehaviour
         top = 0f;
     }
 
-    List<int> CreateTriangles(int nbTotal)
+    /* summary :
+     * Create all the triangles for a mesh
+     * 
+     * parameter :
+     * nbTotal - numbers of triangles to create
+     * 
+     * return :
+     * List of the new triangles
+     */
+    private List<int> CreateTriangles(int nbTotal)
     {
         List<int> triangles = new List<int>();
         for (int i = 0, j = 0; i < nbTotal / 2; i++, j += 2)
@@ -59,10 +80,28 @@ public class CreateLine : MonoBehaviour
         return triangles;
     }
 
+    /* summary :
+     * Create a line on top of the others (or 0 if it's the first one)
+     * 
+     * parameters :
+     * thickness - thickness of the new line
+     * lineColor - color of the new line
+     * vertices - list of vertices for the base of the mesh
+     */
     public void AddLine(float thickness, Color lineColor, List<Vector3> vertices)
     {
         AddLine(top, top == 0f ? thickness + 0.001f : thickness, lineColor, vertices);
     }
+
+    /* summary :
+     * Create a new line with the parameters given
+     * 
+     * parameters :
+     * height - height of the base of the mesh
+     * thickness - thickness of the new line
+     * lineColor - color of the new line
+     * vertices - list of vertices for the base of the mesh
+     */
     public void AddLine(float height, float thickness, Color lineColor, List<Vector3> vertices)
     {
         Mesh tmpMesh = new Mesh();

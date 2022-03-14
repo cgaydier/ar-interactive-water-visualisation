@@ -5,23 +5,32 @@ using TMPro;
 public class SettingsFunctions : MonoBehaviour
 {
     private CreateMesh createMesh;
-    private SceneDatas sceneDatas;
+    private SceneDatas sceneData;
     private bool first = true;
 
     public void Start()
     {
         createMesh = GameObject.Find("MeshHandler").GetComponent<CreateMesh>();
-        sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
+        sceneData = GameObject.Find("SceneData").GetComponent<SceneDatas>();
         if (first)
         {
             foreach (SceneDatas.DataName name in SceneDatas.DataName.GetValues(typeof(SceneDatas.DataName)))
             {
-                GameObject.Find(name.ToString()).GetComponent<Image>().color = sceneDatas.GetDataColor(name);
-                GameObject.Find(name.ToString() + "/Text").GetComponent<TextMeshProUGUI>().text += (" (" + sceneDatas.GetDataConsumption(name) * 1000 + " L)");
+                GameObject.Find(name.ToString()).GetComponent<Image>().color = sceneData.GetDataColor(name);
+                GameObject.Find(name.ToString() + "/Text").GetComponent<TextMeshProUGUI>().text += (" (" + sceneData.GetDataConsumption(name) * 1000 + " L)");
             }
             first = false;
         }
     }
+
+    /* summary :
+     * Add a consumtion for name parameter.
+     * Update mesh with new value
+     * Refresh text on setting panel
+     * 
+     * parameter : 
+     * name - name of the data increased
+    */
 
     public void AddConsumption(string name)
     {
@@ -30,8 +39,8 @@ public class SettingsFunctions : MonoBehaviour
         {
             if (name.Equals(tmpName.ToString()))
             {
-                sceneDatas.IncrDataCpt(tmpName);
-                waterConsumption = sceneDatas.GetDataConsumption(tmpName);
+                sceneData.IncrDataCpt(tmpName);
+                waterConsumption = sceneData.GetDataConsumption(tmpName);
                 break;
 
             }
@@ -40,16 +49,25 @@ public class SettingsFunctions : MonoBehaviour
         RefreshText(name);
     }
 
+    /* summary :
+     * Remove a consumption for name parameter if possible 
+     * Update mesh with new value
+     * Refresh text on setting panel
+     * 
+     * parameter :
+     * name - name of the data decreased
+     */
+
     public void RemoveConsumption(string name)
     {
         foreach (SceneDatas.DataName tmpName in SceneDatas.DataName.GetValues(typeof(SceneDatas.DataName)))
         {
             if (name.Equals(tmpName.ToString()))
             {
-                bool passed = sceneDatas.DecrDataCpt(tmpName);
+                bool passed = sceneData.DecrDataCpt(tmpName);
                 if (passed)
                 {
-                    float waterConsumption = sceneDatas.GetDataConsumption(tmpName);
+                    float waterConsumption = sceneData.GetDataConsumption(tmpName);
                     createMesh.RemoveWater(waterConsumption);
                     RefreshText(name);
                 }
@@ -59,18 +77,22 @@ public class SettingsFunctions : MonoBehaviour
         }
     }
 
+    /* summary :
+     * Change the temporal scale in sceneData for the next one
+     * Refresh text on setting panel
+     */
     public void NextTemporalScale()
     {
-        switch (sceneDatas.currentTime)
+        switch (sceneData.currentTime)
         {
             case SceneDatas.TimeName.Day:
-                sceneDatas.currentTime = SceneDatas.TimeName.Week;
+                sceneData.currentTime = SceneDatas.TimeName.Week;
                 break;
             case SceneDatas.TimeName.Week:
-                sceneDatas.currentTime = SceneDatas.TimeName.Month;
+                sceneData.currentTime = SceneDatas.TimeName.Month;
                 break;
             case SceneDatas.TimeName.Month:
-                sceneDatas.currentTime = SceneDatas.TimeName.Year;
+                sceneData.currentTime = SceneDatas.TimeName.Year;
                 break;
             case SceneDatas.TimeName.Year:
                 break;
@@ -82,20 +104,24 @@ public class SettingsFunctions : MonoBehaviour
         RefreshText("TemporalScale");
     }
 
+    /* summary :
+     * Change the temporal scale in sceneData for the previous one
+     * Refresh text on setting panel
+     */
     public void PreviousTemporalScale()
     {
-        switch (sceneDatas.currentTime)
+        switch (sceneData.currentTime)
         {
             case SceneDatas.TimeName.Day:
                 break;
             case SceneDatas.TimeName.Week:
-                sceneDatas.currentTime = SceneDatas.TimeName.Day;
+                sceneData.currentTime = SceneDatas.TimeName.Day;
                 break;
             case SceneDatas.TimeName.Month:
-                sceneDatas.currentTime = SceneDatas.TimeName.Week;
+                sceneData.currentTime = SceneDatas.TimeName.Week;
                 break;
             case SceneDatas.TimeName.Year:
-                sceneDatas.currentTime = SceneDatas.TimeName.Month;
+                sceneData.currentTime = SceneDatas.TimeName.Month;
                 break;
             default:
                 Debug.Log("Type not known !" + gameObject.name);
@@ -104,6 +130,11 @@ public class SettingsFunctions : MonoBehaviour
         createMesh.SetWater();
         RefreshText("TemporalScale");
     }
+
+    /* summary :
+     * Add one to the current scale
+     * Refresh text on setting panel
+     */
 
     public void AddScale()
     {
@@ -111,24 +142,34 @@ public class SettingsFunctions : MonoBehaviour
         RefreshText("Scale");
     }
 
+    /* summary :
+     * Remove one to the current scale
+     * Refresh text on setting panel
+     */
     public void RemoveScale()
     {
-        if (sceneDatas.DecrScale())
+        if (sceneData.DecrScale())
         {
             createMesh.DecrScale();
             RefreshText("Scale");
         }
     }
 
+    /* summary :
+     * Refresh the name text on the setting panel
+     * 
+     * parameter :
+     * name - name of the data to changed
+     */
     public void RefreshText(string name)
     {
         if (name.Equals("Scale"))
         {
-            GameObject.Find("Scale/Score").GetComponent<Text>().text = sceneDatas.GetScale().ToString();
+            GameObject.Find("Scale/Score").GetComponent<Text>().text = sceneData.GetScale().ToString();
         }
         else if (name.Equals("TemporalScale"))
         {
-            GameObject.Find("TemporalScale/Score").GetComponent<Text>().text = sceneDatas.currentTime.ToString();
+            GameObject.Find("TemporalScale/Score").GetComponent<Text>().text = sceneData.currentTime.ToString();
         }
         else
         {
@@ -137,7 +178,7 @@ public class SettingsFunctions : MonoBehaviour
             {
                 if (name.Equals(tmpName.ToString()))
                 {
-                    GameObject.Find(name+"/Score").GetComponent<Text>().text = sceneDatas.GetDataCpt(tmpName).ToString();
+                    GameObject.Find(name+"/Score").GetComponent<Text>().text = sceneData.GetDataCpt(tmpName).ToString();
                     break;
 
                 }
@@ -145,6 +186,9 @@ public class SettingsFunctions : MonoBehaviour
         }
     }
 
+    /* summary :
+     * Call RefreshText() for every data's name on the setting panel
+     */
     public void RefreshAll()
     {
         if (GameObject.Find("Settings"))

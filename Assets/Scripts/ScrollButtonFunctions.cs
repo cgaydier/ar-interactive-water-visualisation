@@ -3,19 +3,23 @@ using UnityEngine;
 public class ScrollButtonFunctions : MonoBehaviour
 {
     public GameObject settings;
-    private SceneDatas sceneDatas;
+    private SceneDatas sceneData;
     private CreateLine createLine;
 
     private void Start()
     {
-        sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
+        sceneData = GameObject.Find("SceneData").GetComponent<SceneDatas>();
         createLine = GameObject.Find("LineHandler").GetComponent<CreateLine>();
         settings.SetActive(true);
         GameObject.Find("Settings").GetComponent<SettingsFunctions>().Start();
         settings.SetActive(false);
     }
 
-    public void OpenSettings()
+    /* summary :
+     * Called on touch of the OpenCloseSettingButton
+     * Change visibility of the setting panel
+     */
+    public void OpenCloseSettings()
     {
         if (settings != null)
         {
@@ -23,22 +27,27 @@ public class ScrollButtonFunctions : MonoBehaviour
             settings.SetActive(!isActive);
             if (!isActive)
                 settings.GetComponent<SettingsFunctions>().RefreshAll();
-            sceneDatas.enumState.ChangeSettingScene();
+            sceneData.enumState.ChangeSettingScene();
         }
     }
 
+    /* summary :
+     * Called on touch of the ShowConsumptionButton
+     * Display lines for the different setting's data.
+     * Calculate the thickness for every line and call createLine
+     */
     public void ShowConsumption()
     {
-        if (!sceneDatas.IsLinesShowned())
+        if (!sceneData.IsLinesShowned())
         {
             foreach (int i in System.Enum.GetValues(typeof(SceneDatas.DataName)))
             {
                 SceneDatas.DataName dataName = (SceneDatas.DataName)i;
-                float cptData = sceneDatas.GetDataCpt(dataName);
+                float cptData = sceneData.GetDataCpt(dataName);
                 if (cptData > 0)
                 {
-                    float tmp = sceneDatas.GetDataConsumption(dataName);
-                    switch (sceneDatas.currentTime)
+                    float tmp = sceneData.GetDataConsumption(dataName);
+                    switch (sceneData.currentTime)
                     {
                         case SceneDatas.TimeName.Day:
                             tmp /= 7f;
@@ -52,26 +61,29 @@ public class ScrollButtonFunctions : MonoBehaviour
                             tmp *= 52;
                             break;
                         default:
-                            Debug.Log("Unknown Time type !" + sceneDatas.currentTime);
+                            Debug.Log("Unknown Time type !" + sceneData.currentTime);
                             break;
                     }
-                    createLine.AddLine((tmp / sceneDatas.GetSurfaceMesh() / sceneDatas.GetScale()) * cptData,
-                                       sceneDatas.GetDataColor(dataName),
-                                       sceneDatas.GetVertices());
+                    createLine.AddLine((tmp / sceneData.GetSurfaceMesh() / sceneData.GetScale()) * cptData,
+                                       sceneData.GetDataColor(dataName),
+                                       sceneData.GetVertices());
                 }
             }
-            sceneDatas.SetLinesShowned(true);
+            sceneData.SetLinesShowned(true);
         }
         else
         {
             createLine.ClearAll();
-            sceneDatas.SetLinesShowned(false);
+            sceneData.SetLinesShowned(false);
         }
     }
 
+    /* summary :
+     * Reset the lines to show the consumption
+     */
     public void ResetConsumption()
     {
-        if (sceneDatas.IsLinesShowned())
+        if (sceneData.IsLinesShowned())
         {
             ShowConsumption();
             ShowConsumption();

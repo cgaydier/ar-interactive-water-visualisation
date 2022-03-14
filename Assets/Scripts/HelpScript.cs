@@ -3,13 +3,13 @@ using UnityEngine.UI;
 
 public class HelpScript : MonoBehaviour
 {
-    public SceneDatas sceneDatas;
-    public GameObject UIPanel;
-    public GameObject Page_1, Page_2, Page_3, Page_4, Page_5, Page_6;
-    public GameObject CurrentPage;
-    public GameObject Menu;
-    public GameObject PrevButton, NextButton, TipsButton;
+    public GameObject uIPanel;
+    public GameObject page1, page2, page3, page4, page5, page6;
+    public GameObject currentPage;
+    public GameObject menu;
+    public GameObject prevButton, nextButton, tipsButton;
     public GameObject createButton;
+    private SceneDatas sceneData;
     private ErrorHandler errorHandler;
     bool isPanelActive = true;
 
@@ -17,144 +17,142 @@ public class HelpScript : MonoBehaviour
     void Start()
     {
         errorHandler = GameObject.Find("ErrorHandler").GetComponent<ErrorHandler>();
+        sceneData = GameObject.Find("SceneData").GetComponent<SceneDatas>();
     }    
     
     /* summary :
-    * permits to open and close the Tutorial panel
+    * Open and close the Tutorial panel
     */
     public void OpenAndClosePanel()
     {
         if (!isPanelActive)
         {
-            CurrentButtonVisible(CurrentPage);
+            CurrentButtonVisible();
             errorHandler.ErrorMessageReset();
-            TipsButton.SetActive(false);
-            Menu.SetActive(false);
-            UIPanel.SetActive(!isPanelActive);
+            tipsButton.SetActive(false);
+            menu.SetActive(false);
+            uIPanel.SetActive(!isPanelActive);
             isPanelActive = true;
 
-            sceneDatas.enumState.SetTuto();
+            sceneData.enumState.SetTuto();
         }
         else
         {
             errorHandler.ErrorMessageReset();
-            UIPanel.SetActive(!isPanelActive);
-            TipsButton.SetActive(true);
-            Menu.SetActive(true);
+            uIPanel.SetActive(!isPanelActive);
+            tipsButton.SetActive(true);
+            menu.SetActive(true);
             isPanelActive = false;
 
-            sceneDatas.enumState.SetMainScene();
+            sceneData.enumState.SetMainScene();
             createButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("create")[0];
         }
     }
 
     /* summary :
-    * permits to switch from current page to the next one
+    * Switch from current page to the next one
     */
     public void NextPage()
     {
-        if(CurrentPage == Page_1)
+        if(currentPage == page1)
         {  
-            SwitchPage(Page_1, Page_2);
-            PrevButton.SetActive(true);
+            SwitchPage(page1, page2);
+            prevButton.SetActive(true);
         }
 
-        else if(CurrentPage == Page_2)
+        else if(currentPage == page2)
         {
-            SwitchPage(Page_2, Page_3);
+            SwitchPage(page2, page3);
         }
 
-        else if(CurrentPage == Page_3)
+        else if(currentPage == page3)
         {
-            SwitchPage(Page_3, Page_4);
+            SwitchPage(page3, page4);
         }
 
-        else if(CurrentPage == Page_4)
+        else if(currentPage == page4)
         {
-           SwitchPage(Page_4, Page_5);
+           SwitchPage(page4, page5);
         }
 
-        else if(CurrentPage == Page_5)
+        else if(currentPage == page5)
         {
-            SwitchPage(Page_5, Page_6);
-            NextButton.SetActive(false);
+            SwitchPage(page5, page6);
+            nextButton.SetActive(false);
         }
     }
 
     /* summary :
-    * permits to switch from current page to the previous one
+    * Switch from current page to the previous one
     */
     public void PrevPage()
     {
-        if(CurrentPage == Page_2)
+        if(currentPage == page2)
         {
-            SwitchPage(Page_2, Page_1);
-            PrevButton.SetActive(false);
+            SwitchPage(page2, page1);
+            prevButton.SetActive(false);
         }
 
-        else if(CurrentPage == Page_3)
+        else if(currentPage == page3)
         {
-            SwitchPage(Page_3, Page_2);
+            SwitchPage(page3, page2);
         }
 
-        else if(CurrentPage == Page_4)
+        else if(currentPage == page4)
         {
-            SwitchPage(Page_4, Page_3);
+            SwitchPage(page4, page3);
         }
 
-        else if(CurrentPage == Page_5)
+        else if(currentPage == page5)
         {
-            SwitchPage(Page_5, Page_4);
+            SwitchPage(page5, page4);
         }
 
-        else if(CurrentPage == Page_6)
+        else if(currentPage == page6)
         {
-            SwitchPage(Page_6, Page_5);
-            NextButton.SetActive(true);
+            SwitchPage(page6, page5);
+            nextButton.SetActive(true);
         }
     }
 
     /* summary :
-    * permits to change the current page, hide the previous one et show 
+    * Change the current page, hide the previous one et show 
     * the next one
     *   
     * param :
-    * PrevPage - page to hide
-    * NextPage - page to show
+    * prevPage - page to hide
+    * nextPage - page to show
     */
     public void SwitchPage(GameObject PrevPage, GameObject NextPage)
     {
         PrevPage.SetActive(false);
         NextPage.SetActive(true);
-        CurrentPage = NextPage;
+        currentPage = NextPage;
     }
 
 
     /* summary :
-    * permits to show the previous and next buttons only if it's 
+    * Show the previous and next buttons only if it's 
     * necessary at the press of the tips button
-    *
-    * param :
-    * CurrentPage - active page
     */
-    public void CurrentButtonVisible(GameObject CurrentPage)
+    public void CurrentButtonVisible()
     {
-        if (CurrentPage == Page_1)
+        if (currentPage == page1)
         {
-            PrevButton.SetActive(false);
-            NextButton.SetActive(true);
+            prevButton.SetActive(false);
+            nextButton.SetActive(true);
         }
             
-        else if (CurrentPage == Page_6)
+        else if (currentPage == page6)
         {
-            PrevButton.SetActive(true);
-            NextButton.SetActive(false); 
+            prevButton.SetActive(true);
+            nextButton.SetActive(false); 
         }
 
         else 
         {
-            PrevButton.SetActive(true);
-            NextButton.SetActive(true); 
+            prevButton.SetActive(true);
+            nextButton.SetActive(true); 
         }
     }
 }
