@@ -33,11 +33,11 @@ public class MeshHandlerButtons : MonoBehaviour
 
     public void ValidatePointsMesh()
     {
-        if(placePoints.PointsCount() < sceneDatas.GetMinPoints())
-            errorHandler.NoPointsError();
-
-        else if(sceneDatas.IsMeshCreated())
+        if(sceneDatas.IsMeshCreated())
             errorHandler.AlreadyValidatedError();
+
+        else if(placePoints.PointsCount() < sceneDatas.GetMinPoints())
+            errorHandler.NoPointsError();
 
         else
         {
