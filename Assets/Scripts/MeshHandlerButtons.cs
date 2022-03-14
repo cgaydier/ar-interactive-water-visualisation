@@ -5,6 +5,8 @@ public class MeshHandlerButtons : MonoBehaviour
 {
     public GameObject settings;
     public InputField textInput;
+    private Sprite createButtonOn;
+    private Sprite createButtonOff;
     private ErrorHandler errorHandler;
     private PlacePoints placePoints;
     private CreateMesh createMesh;
@@ -16,6 +18,8 @@ public class MeshHandlerButtons : MonoBehaviour
         sceneDatas = GameObject.Find("SceneDatas").GetComponent<SceneDatas>();
         placePoints = GameObject.Find("MeshHandler").GetComponent<PlacePoints>();
         createMesh = GameObject.Find("MeshHandler").GetComponent<CreateMesh>();
+        createButtonOn = Resources.LoadAll<Sprite>("create_click")[0];
+        createButtonOff = Resources.LoadAll<Sprite>("create")[0];
     }
 
     public void CreatePointsMesh()
@@ -25,6 +29,7 @@ public class MeshHandlerButtons : MonoBehaviour
 
         else
         {
+            GameObject.Find("CreateButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = createButtonOn;
             errorHandler.ErrorMessageReset();
             sceneDatas.enumState.SetPlacePoints();
             sceneDatas.SetPointsPlaced(false);
@@ -41,6 +46,7 @@ public class MeshHandlerButtons : MonoBehaviour
 
         else
         {
+            GameObject.Find("CreateButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = createButtonOn;
             errorHandler.ErrorMessageReset();
             sceneDatas.enumState.SetMainScene();
             placePoints.ClearAll();
@@ -63,12 +69,13 @@ public class MeshHandlerButtons : MonoBehaviour
             ClearSettings();
             Destroy(GameObject.Find("Mesh"));
             textInput.text = "";
-            
+            GameObject.Find("CreateButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = createButtonOff;
         }
         else
         {
             errorHandler.AlreadyClearedError();
         }
+        GameObject.Find("CreateButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = createButtonOff;
     }
 
     public void CreateArbitraryMesh()

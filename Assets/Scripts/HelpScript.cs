@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HelpScript : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class HelpScript : MonoBehaviour
             isPanelActive = false;
 
             sceneDatas.enumState.SetMainScene();
+            GameObject.Find("CreateButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("create")[0];
         }
     }
 
