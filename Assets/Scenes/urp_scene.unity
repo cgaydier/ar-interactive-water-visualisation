@@ -5178,7 +5178,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 343.07684, y: -710}
-  m_SizeDelta: {x: 686.15375, y: 1136.61}
+  m_SizeDelta: {x: 686.15375, y: 883.63}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &962190021
 MonoBehaviour:
@@ -5213,10 +5213,6 @@ MonoBehaviour:
 
 
     8<color=#00000000>.</color>-
-    Press <sprite index= 7> to show an average household consumption.
-
-
-    9<color=#00000000>.</color>-
     Press <sprite index= 0> and press <sprite index= 3> to clear the scene.
 
 
@@ -7136,8 +7132,8 @@ MonoBehaviour:
 
 
     <align="justified">If
-    you want to reopen this tutorial, click on the menu on the left and then on <sprite
-    index= 8>.
+    you want to reopen this tutorial, click on <sprite index= 8> on the top right
+    of your screen .
 
 
 
@@ -7278,7 +7274,7 @@ MonoBehaviour:
   m_text: "<align=\"center\">Welcome to this new app<color=#00000000>.</color>! \n\n<align=\"justified\">You
     will discover your water consumption in Augmented Reality !\n\nBy following the
     steps in this tutorial, you will obtain a volume of water representing your personal
-    consumption in m<sup>3</sup> on different time scales.\n\n"
+    consumption in liter (L) on different time scales.\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
