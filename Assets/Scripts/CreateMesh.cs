@@ -22,17 +22,18 @@ public class CreateMesh : MonoBehaviour
         volumeMesh = 0f;
         offset = sceneDatas.GetDefaultOffset();
         currentOffset = sceneDatas.GetDefaultOffset();
-        //sceneDatas.AddVertice(new Vector3(0, 0, 0));
-        //sceneDatas.AddVertice(new Vector3(0, 0, 0));
-        //sceneDatas.AddVertice(new Vector3(1, 0, 0));
-        //sceneDatas.AddVertice(new Vector3(1, 0, 0));
-        //sceneDatas.AddVertice(new Vector3(1, 0, 1));
-        //sceneDatas.AddVertice(new Vector3(1, 0, 1));
-        //sceneDatas.AddVertice(new Vector3(0, 0, 1));
-        //sceneDatas.AddVertice(new Vector3(0, 0, 1));
-        //sceneDatas.SetPointsPlaced(true);
+        // sceneDatas.AddVertice(new Vector3(0, 0, 0));
+        // sceneDatas.AddVertice(new Vector3(0, 0, 0));
+        // sceneDatas.AddVertice(new Vector3(1, 0, 0));
+        // sceneDatas.AddVertice(new Vector3(1, 0, 0));
+        // sceneDatas.AddVertice(new Vector3(1, 0, 1));
+        // sceneDatas.AddVertice(new Vector3(1, 0, 1));
+        // sceneDatas.AddVertice(new Vector3(0, 0, 1));
+        // sceneDatas.AddVertice(new Vector3(0, 0, 1));
+        // sceneDatas.SetPointsPlaced(true);
     }
 
+    // Updates the mesh at each frame
     void Update()
     {
         MeshHandler();
@@ -49,6 +50,7 @@ public class CreateMesh : MonoBehaviour
         SetWater();
     }
 
+    // Calculates a height value depending on the surface
     public void AddWater(float volume)
     {
         offset += (volume / sceneDatas.GetSurfaceMesh());
@@ -68,6 +70,8 @@ public class CreateMesh : MonoBehaviour
             SetWater();
         }
     }
+
+    // Changes the current value of the volume height depending on the time scale
     public void SetWater()
     {
         switch (sceneDatas.currentTime)
@@ -96,6 +100,7 @@ public class CreateMesh : MonoBehaviour
         RefreshMesh();
     }
 
+    // Resets the height of the volume while keeping the surface intact
     public void Reset()
     {
         if(sceneDatas.IsMeshCreated())
@@ -110,6 +115,7 @@ public class CreateMesh : MonoBehaviour
         }
     }
 
+    // Recalculates the volume mesh with a different height's value
     private void RefreshMesh()
     {
         sceneDatas.SetSurfaceMesh(0f);
@@ -128,14 +134,15 @@ public class CreateMesh : MonoBehaviour
         currentOffset = sceneDatas.GetDefaultOffset();
         sceneDatas.SetPointsPlaced(false);
         if (GameObject.Find("WaterVolumeText"))
-            GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume :\n0 m3";
+            GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume :\n0 L";
     }
 
+    // Creates a triangular mesh by extruding the user-made surface
     private void CreateTriangles(List<Vector3> vertices)
     {
-        // nb_faces global : (placePoints.nb_vertices/2) + 2
         int nbTotal = vertices.Count;
-        //Horizontal
+
+        // Horizontal
         for (int i = 0, j = 0; i < (nbTotal - 4) / 2; i++, j += 2)
         {
             // Bottom
@@ -162,32 +169,36 @@ public class CreateMesh : MonoBehaviour
         }
     }
     
+    // Calculates a volume value in liter
     private void VolumeMeshCalcul()
     {
-        volumeMesh = sceneDatas.GetSurfaceMesh() * currentOffset;
+        volumeMesh = sceneDatas.GetSurfaceMesh() * currentOffset * 1000;
     }
 
+    // Checks if the number of placed points is valide
     private bool Checkpoints()
     {
-        int nbTotal = (sceneDatas.GetVerticesSize())/2;
+        int nbTotal = (sceneDatas.GetVerticesSize()) / 2;
         if (nbTotal < sceneDatas.GetMinPoints() || nbTotal > sceneDatas.GetMaxPoints())
             return false;
         return true;
     }
 
+    // Updates the volume value shown
     public void UpdateVolumeText()
     {
         if (sceneDatas.GetScale() > 1)
         {
             GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Visible volume divided by " + sceneDatas.GetScale()
-            + " :\n" + volumeMesh.ToString("F2") + " m3\nReal volume :\n" + (sceneDatas.GetScale() * volumeMesh).ToString("F2") + "m3";
+            + " :\n" + volumeMesh.ToString("F0") + " L\nReal volume :\n" + (sceneDatas.GetScale() * volumeMesh).ToString("F0") + "L";
         }
         else
         {
-            GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume :\n" + volumeMesh.ToString("F2") + " m3";
+            GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text = "Volume :\n" + volumeMesh.ToString("F0") + " L";
         }
     }
 
+    // Updates the mesh, the volume value and apply the calculated height to it if a change has been made by the user
     private void MeshHandler()
     {
         if (Checkpoints() && !sceneDatas.IsMeshCreated() && sceneDatas.IsPointsPlaced())

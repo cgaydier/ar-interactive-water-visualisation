@@ -17,7 +17,7 @@ public class SettingsFunctions : MonoBehaviour
             foreach (SceneDatas.DataName name in SceneDatas.DataName.GetValues(typeof(SceneDatas.DataName)))
             {
                 GameObject.Find(name.ToString()).GetComponent<Image>().color = sceneDatas.GetDataColor(name);
-                GameObject.Find(name.ToString() + "/Text").GetComponent<TextMeshProUGUI>().text += (" (" + sceneDatas.GetDataConsumption(name) + " m3)");
+                GameObject.Find(name.ToString() + "/Text").GetComponent<TextMeshProUGUI>().text += (" (" + sceneDatas.GetDataConsumption(name) * 1000 + " L)");
             }
             first = false;
         }
