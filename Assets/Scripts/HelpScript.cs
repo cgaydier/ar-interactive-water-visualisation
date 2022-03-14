@@ -54,28 +54,28 @@ public class HelpScript : MonoBehaviour
     */
     public void NextPage()
     {
-        if(currentPage == page1)
+        if (currentPage == page1)
         {  
             SwitchPage(page1, page2);
             prevButton.SetActive(true);
         }
 
-        else if(currentPage == page2)
+        else if (currentPage == page2)
         {
             SwitchPage(page2, page3);
         }
 
-        else if(currentPage == page3)
+        else if (currentPage == page3)
         {
             SwitchPage(page3, page4);
         }
 
-        else if(currentPage == page4)
+        else if (currentPage == page4)
         {
            SwitchPage(page4, page5);
         }
 
-        else if(currentPage == page5)
+        else if (currentPage == page5)
         {
             SwitchPage(page5, page6);
             nextButton.SetActive(false);
@@ -87,28 +87,28 @@ public class HelpScript : MonoBehaviour
     */
     public void PrevPage()
     {
-        if(currentPage == page2)
+        if (currentPage == page2)
         {
             SwitchPage(page2, page1);
             prevButton.SetActive(false);
         }
 
-        else if(currentPage == page3)
+        else if (currentPage == page3)
         {
             SwitchPage(page3, page2);
         }
 
-        else if(currentPage == page4)
+        else if (currentPage == page4)
         {
             SwitchPage(page4, page3);
         }
 
-        else if(currentPage == page5)
+        else if (currentPage == page5)
         {
             SwitchPage(page5, page4);
         }
 
-        else if(currentPage == page6)
+        else if (currentPage == page6)
         {
             SwitchPage(page6, page5);
             nextButton.SetActive(true);
@@ -129,7 +129,6 @@ public class HelpScript : MonoBehaviour
         NextPage.SetActive(true);
         currentPage = NextPage;
     }
-
 
     /* summary :
     * Showes the previous and next buttons only if it's 

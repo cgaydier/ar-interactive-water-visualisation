@@ -71,7 +71,7 @@ public class CreateMesh : MonoBehaviour
     }
 
     public void SetCustomVolume(float volume){
-        if(volume >= 0f)
+        if (volume >= 0f)
         {
             offset = (volume / sceneData.GetSurfaceMesh());
             SetWater();
@@ -114,7 +114,7 @@ public class CreateMesh : MonoBehaviour
     */
     public void Reset()
     {
-        if(sceneData.IsMeshCreated())
+        if (sceneData.IsMeshCreated())
         {
             currentOffset = sceneData.GetDefaultOffset();
             offset = sceneData.GetDefaultOffset();
@@ -273,7 +273,7 @@ public class CreateMesh : MonoBehaviour
             }
         }
         // Updates the lighting on the volume if there isn't any changes impacting its size
-        else if(Checkpoints() && sceneData.IsMeshCreated())
+        else if (Checkpoints() && sceneData.IsMeshCreated())
         {
             mesh.RecalculateNormals();
             mesh.RecalculateTangents();

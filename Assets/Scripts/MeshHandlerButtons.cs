@@ -46,10 +46,10 @@ public class MeshHandlerButtons : MonoBehaviour
     */
     public void ValidatePointsMesh()
     {
-        if(sceneData.IsMeshCreated())
+        if (sceneData.IsMeshCreated())
             errorHandler.AlreadyValidatedError();
 
-        else if(placePoints.PointsCount() < sceneData.GetMinPoints())
+        else if (placePoints.PointsCount() < sceneData.GetMinPoints())
             errorHandler.NoPointsError();
 
         else
@@ -68,7 +68,7 @@ public class MeshHandlerButtons : MonoBehaviour
     */
     public void ClearPointsMesh()
     {
-        if(sceneData.IsMeshCreated() || sceneData.enumState.currentState != EnumState.State.MainView)
+        if (sceneData.IsMeshCreated() || sceneData.enumState.currentState != EnumState.State.MainView)
         {
             errorHandler.ErrorMessageReset();
             sceneData.SetPointsPlaced(false);

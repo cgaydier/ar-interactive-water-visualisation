@@ -23,7 +23,7 @@ public class UiUpdate : MonoBehaviour
     */
     void Update()
     {
-        if(sceneData.IsMeshCreated()){
+        if (sceneData.IsMeshCreated()){
             scrollButtons.SetActive(true);
             volumePanel.SetActive(true);
             createMesh.UpdateVolumeText();
