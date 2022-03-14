@@ -9,6 +9,7 @@ public class HelpScript : MonoBehaviour
     public GameObject CurrentPage;
     public GameObject Menu;
     public GameObject PrevButton, NextButton, TipsButton;
+    public GameObject createButton;
     private ErrorHandler errorHandler;
     bool isPanelActive = true;
 
@@ -43,7 +44,7 @@ public class HelpScript : MonoBehaviour
             isPanelActive = false;
 
             sceneDatas.enumState.SetMainScene();
-            GameObject.Find("CreateButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("create")[0];
+            createButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("create")[0];
         }
     }
 
