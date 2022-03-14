@@ -5,10 +5,10 @@ public class HelpScript : MonoBehaviour
 {
     public GameObject uIPanel;
     public GameObject page1, page2, page3, page4, page5, page6;
-    public GameObject currentPage;
     public GameObject menu;
     public GameObject prevButton, nextButton, tipsButton;
     public GameObject createButton;
+    private GameObject currentPage;
     private SceneData sceneData;
     private ErrorHandler errorHandler;
     bool isPanelActive = true;
@@ -18,6 +18,7 @@ public class HelpScript : MonoBehaviour
     {
         errorHandler = GameObject.Find("ErrorHandler").GetComponent<ErrorHandler>();
         sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
+        currentPage = page1;
     }    
     
     /* summary :
@@ -43,7 +44,6 @@ public class HelpScript : MonoBehaviour
             tipsButton.SetActive(true);
             menu.SetActive(true);
             isPanelActive = false;
-
             sceneData.enumState.SetMainScene();
             createButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("create")[0];
         }
