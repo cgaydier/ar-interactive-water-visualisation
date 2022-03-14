@@ -15,7 +15,7 @@ public class MeshHandlerButtons : MonoBehaviour
     public void Start()
     {
         errorHandler = GameObject.Find("ErrorHandler").GetComponent<ErrorHandler>();
-        sceneData = GameObject.Find("SceneDatas").GetComponent<SceneData>();
+        sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
         placePoints = GameObject.Find("MeshHandler").GetComponent<PlacePoints>();
         createMesh = GameObject.Find("MeshHandler").GetComponent<CreateMesh>();
         createButtonOn = Resources.LoadAll<Sprite>("create_click")[0];

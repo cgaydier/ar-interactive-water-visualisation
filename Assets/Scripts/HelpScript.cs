@@ -9,7 +9,7 @@ public class HelpScript : MonoBehaviour
     public GameObject menu;
     public GameObject prevButton, nextButton, tipsButton;
     public GameObject createButton;
-    private SceneDatas sceneData;
+    private SceneData sceneData;
     private ErrorHandler errorHandler;
     bool isPanelActive = true;
 
@@ -17,11 +17,11 @@ public class HelpScript : MonoBehaviour
     void Start()
     {
         errorHandler = GameObject.Find("ErrorHandler").GetComponent<ErrorHandler>();
-        sceneData = GameObject.Find("SceneData").GetComponent<SceneDatas>();
+        sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
     }    
     
     /* summary :
-    * Open and close the Tutorial panel
+    * Opens and close the Tutorial panel
     */
     public void OpenAndClosePanel()
     {
@@ -50,7 +50,7 @@ public class HelpScript : MonoBehaviour
     }
 
     /* summary :
-    * Switch from current page to the next one
+    * Switches from current page to the next one
     */
     public void NextPage()
     {
@@ -83,7 +83,7 @@ public class HelpScript : MonoBehaviour
     }
 
     /* summary :
-    * Switch from current page to the previous one
+    * Switches from current page to the previous one
     */
     public void PrevPage()
     {
@@ -116,7 +116,7 @@ public class HelpScript : MonoBehaviour
     }
 
     /* summary :
-    * Change the current page, hide the previous one et show 
+    * Changes the current page, hide the previous one et show 
     * the next one
     *   
     * param :
@@ -132,7 +132,7 @@ public class HelpScript : MonoBehaviour
 
 
     /* summary :
-    * Show the previous and next buttons only if it's 
+    * Showes the previous and next buttons only if it's 
     * necessary at the press of the tips button
     */
     public void CurrentButtonVisible()

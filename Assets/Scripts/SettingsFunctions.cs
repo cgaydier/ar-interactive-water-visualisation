@@ -5,16 +5,16 @@ using TMPro;
 public class SettingsFunctions : MonoBehaviour
 {
     private CreateMesh createMesh;
-    private SceneDatas sceneData;
+    private SceneData sceneData;
     private bool first = true;
 
     public void Start()
     {
         createMesh = GameObject.Find("MeshHandler").GetComponent<CreateMesh>();
-        sceneData = GameObject.Find("SceneData").GetComponent<SceneDatas>();
+        sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
         if (first)
         {
-            foreach (SceneDatas.DataName name in SceneDatas.DataName.GetValues(typeof(SceneDatas.DataName)))
+            foreach (SceneData.DataName name in SceneData.DataName.GetValues(typeof(SceneData.DataName)))
             {
                 GameObject.Find(name.ToString()).GetComponent<Image>().color = sceneData.GetDataColor(name);
                 GameObject.Find(name.ToString() + "/Text").GetComponent<TextMeshProUGUI>().text += (" (" + sceneData.GetDataConsumption(name) * 1000 + " L)");
@@ -24,9 +24,9 @@ public class SettingsFunctions : MonoBehaviour
     }
 
     /* summary :
-     * Add a consumtion for name parameter.
-     * Update mesh with new value
-     * Refresh text on setting panel
+     * Adds a consumption for name parameter.
+     * Updates mesh with new value
+     * Refreshes text on setting panel
      * 
      * parameter : 
      * name - name of the data increased
@@ -35,7 +35,7 @@ public class SettingsFunctions : MonoBehaviour
     public void AddConsumption(string name)
     {
         float waterConsumption = 0f;
-        foreach (SceneDatas.DataName tmpName in SceneDatas.DataName.GetValues(typeof(SceneDatas.DataName)))
+        foreach (SceneData.DataName tmpName in SceneData.DataName.GetValues(typeof(SceneData.DataName)))
         {
             if (name.Equals(tmpName.ToString()))
             {
@@ -50,9 +50,9 @@ public class SettingsFunctions : MonoBehaviour
     }
 
     /* summary :
-     * Remove a consumption for name parameter if possible 
-     * Update mesh with new value
-     * Refresh text on setting panel
+     * Removes a consumption for name parameter if possible 
+     * Updates mesh with new value
+     * Refreshes text on setting panel
      * 
      * parameter :
      * name - name of the data decreased
@@ -60,7 +60,7 @@ public class SettingsFunctions : MonoBehaviour
 
     public void RemoveConsumption(string name)
     {
-        foreach (SceneDatas.DataName tmpName in SceneDatas.DataName.GetValues(typeof(SceneDatas.DataName)))
+        foreach (SceneData.DataName tmpName in SceneData.DataName.GetValues(typeof(SceneData.DataName)))
         {
             if (name.Equals(tmpName.ToString()))
             {
@@ -78,23 +78,23 @@ public class SettingsFunctions : MonoBehaviour
     }
 
     /* summary :
-     * Change the temporal scale in sceneData for the next one
-     * Refresh text on setting panel
+     * Changes the temporal scale in sceneData for the next one
+     * Refreshes text on setting panel
      */
     public void NextTemporalScale()
     {
         switch (sceneData.currentTime)
         {
-            case SceneDatas.TimeName.Day:
-                sceneData.currentTime = SceneDatas.TimeName.Week;
+            case SceneData.TimeName.Day:
+                sceneData.currentTime = SceneData.TimeName.Week;
                 break;
-            case SceneDatas.TimeName.Week:
-                sceneData.currentTime = SceneDatas.TimeName.Month;
+            case SceneData.TimeName.Week:
+                sceneData.currentTime = SceneData.TimeName.Month;
                 break;
-            case SceneDatas.TimeName.Month:
-                sceneData.currentTime = SceneDatas.TimeName.Year;
+            case SceneData.TimeName.Month:
+                sceneData.currentTime = SceneData.TimeName.Year;
                 break;
-            case SceneDatas.TimeName.Year:
+            case SceneData.TimeName.Year:
                 break;
             default:
                 Debug.Log("Type not known !" + gameObject.name);
@@ -105,23 +105,23 @@ public class SettingsFunctions : MonoBehaviour
     }
 
     /* summary :
-     * Change the temporal scale in sceneData for the previous one
-     * Refresh text on setting panel
+     * Changes the temporal scale in sceneData for the previous one
+     * Refreshes text on setting panel
      */
     public void PreviousTemporalScale()
     {
         switch (sceneData.currentTime)
         {
-            case SceneDatas.TimeName.Day:
+            case SceneData.TimeName.Day:
                 break;
-            case SceneDatas.TimeName.Week:
-                sceneData.currentTime = SceneDatas.TimeName.Day;
+            case SceneData.TimeName.Week:
+                sceneData.currentTime = SceneData.TimeName.Day;
                 break;
-            case SceneDatas.TimeName.Month:
-                sceneData.currentTime = SceneDatas.TimeName.Week;
+            case SceneData.TimeName.Month:
+                sceneData.currentTime = SceneData.TimeName.Week;
                 break;
-            case SceneDatas.TimeName.Year:
-                sceneData.currentTime = SceneDatas.TimeName.Month;
+            case SceneData.TimeName.Year:
+                sceneData.currentTime = SceneData.TimeName.Month;
                 break;
             default:
                 Debug.Log("Type not known !" + gameObject.name);
@@ -132,8 +132,8 @@ public class SettingsFunctions : MonoBehaviour
     }
 
     /* summary :
-     * Add one to the current scale
-     * Refresh text on setting panel
+     * Adds one to the current scale
+     * Refreshes text on setting panel
      */
 
     public void AddScale()
@@ -143,8 +143,8 @@ public class SettingsFunctions : MonoBehaviour
     }
 
     /* summary :
-     * Remove one to the current scale
-     * Refresh text on setting panel
+     * Removes one to the current scale
+     * Refreshes text on setting panel
      */
     public void RemoveScale()
     {
@@ -156,7 +156,7 @@ public class SettingsFunctions : MonoBehaviour
     }
 
     /* summary :
-     * Refresh the name text on the setting panel
+     * Refreshes the name text on the setting panel
      * 
      * parameter :
      * name - name of the data to changed
@@ -174,7 +174,7 @@ public class SettingsFunctions : MonoBehaviour
         else
         {
 
-            foreach (SceneDatas.DataName tmpName in SceneDatas.DataName.GetValues(typeof(SceneDatas.DataName)))
+            foreach (SceneData.DataName tmpName in SceneData.DataName.GetValues(typeof(SceneData.DataName)))
             {
                 if (name.Equals(tmpName.ToString()))
                 {
@@ -187,13 +187,13 @@ public class SettingsFunctions : MonoBehaviour
     }
 
     /* summary :
-     * Call RefreshText() for every data's name on the setting panel
+     * Calls RefreshText() for every data's name on the setting panel
      */
     public void RefreshAll()
     {
         if (GameObject.Find("Settings"))
         {
-            foreach (SceneDatas.DataName tmpName in SceneDatas.DataName.GetValues(typeof(SceneDatas.DataName)))
+            foreach (SceneData.DataName tmpName in SceneData.DataName.GetValues(typeof(SceneData.DataName)))
             {
                 RefreshText(tmpName.ToString());
             }
