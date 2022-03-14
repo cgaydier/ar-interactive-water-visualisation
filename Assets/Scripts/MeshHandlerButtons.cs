@@ -54,7 +54,7 @@ public class MeshHandlerButtons : MonoBehaviour
 
         else
         {
-            GameObject.Find("CreateButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = createButtonOn;
+            GameObject.Find("CreateButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = createButtonOff;
             errorHandler.ErrorMessageReset();
             sceneData.enumState.SetMainScene();
             placePoints.ClearAll();

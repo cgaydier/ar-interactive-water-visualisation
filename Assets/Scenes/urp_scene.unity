@@ -624,7 +624,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1683650220}
         m_TargetAssemblyTypeName: ScrollButtonFunctions, Assembly-CSharp
-        m_MethodName: OpenSettings
+        m_MethodName: OpenCloseSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
