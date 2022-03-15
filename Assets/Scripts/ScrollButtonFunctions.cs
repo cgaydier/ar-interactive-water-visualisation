@@ -3,6 +3,7 @@ using UnityEngine;
 public class ScrollButtonFunctions : MonoBehaviour
 {
     public GameObject settings;
+
     private SceneData sceneData;
     private CreateLine createLine;
 
@@ -27,7 +28,7 @@ public class ScrollButtonFunctions : MonoBehaviour
             settings.SetActive(!isActive);
             if (!isActive)
                 settings.GetComponent<SettingsFunctions>().RefreshAll();
-            sceneData.enumState.ChangeSettingScene();
+            sceneData.GetEnumState().ChangeSettingScene();
         }
     }
 
@@ -47,7 +48,7 @@ public class ScrollButtonFunctions : MonoBehaviour
                 if (cptData > 0)
                 {
                     float tmp = sceneData.GetDataConsumption(dataName);
-                    switch (sceneData.currentTime)
+                    switch (sceneData.GetCurrentTime())
                     {
                         case SceneData.TimeName.Day:
                             tmp /= 7f;
@@ -61,7 +62,7 @@ public class ScrollButtonFunctions : MonoBehaviour
                             tmp *= 52;
                             break;
                         default:
-                            Debug.Log("Unknown Time type !" + sceneData.currentTime);
+                            Debug.Log("Unknown Time type !" + sceneData.GetCurrentTime());
                             break;
                     }
                     createLine.AddLine((tmp / sceneData.GetSurfaceMesh() / sceneData.GetScale()) * cptData,

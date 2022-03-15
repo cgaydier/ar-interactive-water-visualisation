@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class SceneData : MonoBehaviour
 {
-    public EnumState enumState;
-    public TimeName currentTime = TimeName.Week;
-
     public enum TimeName
     {
         Day,
@@ -44,6 +41,8 @@ public class SceneData : MonoBehaviour
         Color.yellow
     };
 
+    private EnumState enumState;
+    private TimeName currentTime = TimeName.Week;
     private List<int> datas = new List<int>();
     private int scale = 1;
     private bool meshCreated = false;
@@ -58,6 +57,7 @@ public class SceneData : MonoBehaviour
 
     public void Start()
     {
+        enumState = GameObject.Find("SceneState").GetComponent<EnumState>();
         for (int i = 0; i < System.Enum.GetValues(typeof(DataName)).Length; i++)
         {
             datas.Add(0);
@@ -78,6 +78,12 @@ public class SceneData : MonoBehaviour
         currentTime = TimeName.Week;
     }
 
+    /* summary :
+     * Clears the boolean
+     * Calls ClearCpt()
+     * Sets surface to 0
+     * Calls ClearVertices()
+     */
     public void ClearAll()
     { 
         ClearCpt();
@@ -88,9 +94,27 @@ public class SceneData : MonoBehaviour
         ClearVertices();
     }
 
+    /* summary :
+     * Clears all the vertices
+     */
     public void ClearVertices()
     {
         vertices.Clear();
+    }
+
+    public EnumState GetEnumState()
+    {
+        return enumState;
+    }
+
+    public TimeName GetCurrentTime()
+    {
+        return currentTime;
+    }
+
+    public void SetCurrentTime(TimeName tmp)
+    {
+        currentTime = tmp;
     }
 
     public float GetDataConsumption(DataName data)

@@ -45,9 +45,6 @@ public class ErrorHandler : MonoBehaviour
         debugMessage = "";
     }
 
-    /* summary :
-    * Updates the debug message shown on the UI at each frame
-    */
     void Update()
     {
         userDebugPanel.GetComponent<UnityEngine.UI.Text>().text = debugMessage;

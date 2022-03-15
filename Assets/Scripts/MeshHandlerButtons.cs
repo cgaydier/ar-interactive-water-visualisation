@@ -5,6 +5,7 @@ public class MeshHandlerButtons : MonoBehaviour
 {
     public GameObject settings;
     public InputField textInput;
+
     private Sprite createButtonOn;
     private Sprite createButtonOff;
     private ErrorHandler errorHandler;
@@ -35,7 +36,7 @@ public class MeshHandlerButtons : MonoBehaviour
         {
             GameObject.Find("CreateButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = createButtonOn;
             errorHandler.ErrorMessageReset();
-            sceneData.enumState.SetPlacePoints();
+            sceneData.GetEnumState().SetPlacePoints();
             sceneData.SetPointsPlaced(false);
         }
     }
@@ -56,7 +57,7 @@ public class MeshHandlerButtons : MonoBehaviour
         {
             GameObject.Find("CreateButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = createButtonOff;
             errorHandler.ErrorMessageReset();
-            sceneData.enumState.SetMainScene();
+            sceneData.GetEnumState().SetMainScene();
             placePoints.ClearAll();
             sceneData.SetPointsPlaced(true);
         }
@@ -68,12 +69,12 @@ public class MeshHandlerButtons : MonoBehaviour
     */
     public void ClearPointsMesh()
     {
-        if (sceneData.IsMeshCreated() || sceneData.enumState.currentState != EnumState.State.MainView)
+        if (sceneData.IsMeshCreated() || sceneData.GetEnumState().currentState != EnumState.State.MainView)
         {
             errorHandler.ErrorMessageReset();
             sceneData.SetPointsPlaced(false);
             sceneData.SetMeshCreated(false);
-            sceneData.enumState.SetMainScene();
+            sceneData.GetEnumState().SetMainScene();
             settings.SetActive(false);
             placePoints.ClearAll();
             sceneData.ClearAll();

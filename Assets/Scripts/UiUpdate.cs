@@ -7,7 +7,6 @@ public class UiUpdate : MonoBehaviour
     private SceneData sceneData;
     private CreateMesh createMesh;
 
-
     void Start()
     {
         scrollButtons = GameObject.Find("BottomScroll");

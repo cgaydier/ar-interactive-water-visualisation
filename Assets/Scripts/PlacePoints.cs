@@ -9,6 +9,7 @@ public class PlacePoints : MonoBehaviour
 {
     public ARRaycastManager m_RaycastManager;
     public GameObject m_PointToPlace;
+
     private ErrorHandler errorHandler;
     private SceneData sceneData;
     private GraphicRaycaster GR;
@@ -25,6 +26,9 @@ public class PlacePoints : MonoBehaviour
         errorHandler = GameObject.Find("ErrorHandler").GetComponent<ErrorHandler>();
     }
 
+    /* summary :
+     * Destroys all the points and clear lines and points
+     */
     public void ClearAll()
     {
         for (int i = 0; i < points.Count; i++)
@@ -46,7 +50,7 @@ public class PlacePoints : MonoBehaviour
 
     void Update()
     {
-        if (Input.touchCount > 0 && sceneData.enumState.GetState() == EnumState.State.PlacePoints)
+        if (Input.touchCount > 0 && sceneData.GetEnumState().GetState() == EnumState.State.PlacePoints)
         {
             Touch touch = Input.GetTouch(0);
             
@@ -64,11 +68,14 @@ public class PlacePoints : MonoBehaviour
                     List<RaycastResult> results = new List<RaycastResult>();
                     GR.Raycast(ped, results);
 
+                    // Check if user doesn't touch ui
                     if (results.Count == 0)
                     {
                         Pose hitPose = hits[0].pose;
+
                         // Creates a point on the detected surface
                         points.Add(Instantiate(m_PointToPlace, hitPose.position, hitPose.rotation));
+
                         // If it's the first intersection Ray/Surface, initialise the lines
                         if (first){
                             LR = points[0].AddComponent<LineRenderer>();
@@ -78,6 +85,7 @@ public class PlacePoints : MonoBehaviour
                             LR.positionCount = 0;
                             first = false;
                         }
+
                         // Updates the number of lines and add 2 vertices with the hit coordinates
                         LR.positionCount = points.Count;
                         sceneData.AddVertice(hitPose.position);

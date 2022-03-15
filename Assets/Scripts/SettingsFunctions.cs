@@ -31,7 +31,6 @@ public class SettingsFunctions : MonoBehaviour
      * parameter : 
      * name - name of the data increased
     */
-
     public void AddConsumption(string name)
     {
         float waterConsumption = 0f;
@@ -83,16 +82,16 @@ public class SettingsFunctions : MonoBehaviour
      */
     public void NextTemporalScale()
     {
-        switch (sceneData.currentTime)
+        switch (sceneData.GetCurrentTime())
         {
             case SceneData.TimeName.Day:
-                sceneData.currentTime = SceneData.TimeName.Week;
+                sceneData.SetCurrentTime(SceneData.TimeName.Week);
                 break;
             case SceneData.TimeName.Week:
-                sceneData.currentTime = SceneData.TimeName.Month;
+                sceneData.SetCurrentTime(SceneData.TimeName.Month);
                 break;
             case SceneData.TimeName.Month:
-                sceneData.currentTime = SceneData.TimeName.Year;
+                sceneData.SetCurrentTime(SceneData.TimeName.Year);
                 break;
             case SceneData.TimeName.Year:
                 break;
@@ -110,18 +109,18 @@ public class SettingsFunctions : MonoBehaviour
      */
     public void PreviousTemporalScale()
     {
-        switch (sceneData.currentTime)
+        switch (sceneData.GetCurrentTime())
         {
             case SceneData.TimeName.Day:
                 break;
             case SceneData.TimeName.Week:
-                sceneData.currentTime = SceneData.TimeName.Day;
+                sceneData.SetCurrentTime(SceneData.TimeName.Day);
                 break;
             case SceneData.TimeName.Month:
-                sceneData.currentTime = SceneData.TimeName.Week;
+                sceneData.SetCurrentTime(SceneData.TimeName.Week);
                 break;
             case SceneData.TimeName.Year:
-                sceneData.currentTime = SceneData.TimeName.Month;
+                sceneData.SetCurrentTime(SceneData.TimeName.Month);
                 break;
             default:
                 Debug.Log("Type not known !" + gameObject.name);
@@ -138,7 +137,8 @@ public class SettingsFunctions : MonoBehaviour
 
     public void AddScale()
     {
-        createMesh.AddScale();
+        sceneData.IncrScale();
+        createMesh.SetWater();
         RefreshText("Scale");
     }
 
@@ -150,7 +150,7 @@ public class SettingsFunctions : MonoBehaviour
     {
         if (sceneData.DecrScale())
         {
-            createMesh.DecrScale();
+            createMesh.SetWater();
             RefreshText("Scale");
         }
     }
@@ -169,7 +169,7 @@ public class SettingsFunctions : MonoBehaviour
         }
         else if (name.Equals("TemporalScale"))
         {
-            GameObject.Find("TemporalScale/Score").GetComponent<Text>().text = sceneData.currentTime.ToString();
+            GameObject.Find("TemporalScale/Score").GetComponent<Text>().text = sceneData.GetCurrentTime().ToString();
         }
         else
         {

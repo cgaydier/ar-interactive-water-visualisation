@@ -4,10 +4,10 @@ public class MenuScript : MonoBehaviour
 {
     public GameObject SubMenu;
 
-    bool isActive = false;
+    private bool isActive = false;
 
     /* summary :
-    * Open and close the Menu
+    * Opens and closes the Menu
     */
     public void OpenAndCloseMenu()
     {

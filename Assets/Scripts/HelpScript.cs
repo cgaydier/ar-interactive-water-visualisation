@@ -8,6 +8,7 @@ public class HelpScript : MonoBehaviour
     public GameObject menu;
     public GameObject prevButton, nextButton, tipsButton;
     public GameObject createButton;
+
     private GameObject currentPage;
     private SceneData sceneData;
     private ErrorHandler errorHandler;
@@ -36,7 +37,7 @@ public class HelpScript : MonoBehaviour
             uIPanel.SetActive(!isPanelActive);
             isPanelActive = true;
 
-            sceneData.enumState.SetTuto();
+            sceneData.GetEnumState().SetTuto();
         }
         else
         {
@@ -45,7 +46,7 @@ public class HelpScript : MonoBehaviour
             tipsButton.SetActive(true);
             menu.SetActive(true);
             isPanelActive = false;
-            sceneData.enumState.SetMainScene();
+            sceneData.GetEnumState().SetMainScene();
             createButton.transform.GetChild(0).gameObject.GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("create")[0];
         }
     }

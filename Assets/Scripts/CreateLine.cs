@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CreateLine : MonoBehaviour
 {
-    public Material meshMat;
-
     private readonly List<Mesh> meshList = new List<Mesh>();
     private readonly List<GameObject> goList = new List<GameObject>();
     private float top = 0f;
@@ -22,7 +20,7 @@ public class CreateLine : MonoBehaviour
     }
 
     /* summary :
-     * Return the middle of the geometric form created by vertices
+     * Returns the middle of the geometric form created by vertices
      * 
      * parameter :
      * vertices - List of points on space
@@ -44,7 +42,7 @@ public class CreateLine : MonoBehaviour
     }
 
     /* summary :
-     * Clear meshList, destroy all the gameObject and set the top of the lines to 0
+     * Clears meshList, destroy all the gameObject and set the top of the lines to 0
      */
     public void ClearAll()
     {
@@ -57,7 +55,7 @@ public class CreateLine : MonoBehaviour
     }
 
     /* summary :
-     * Create all the triangles for a mesh
+     * Creates all the triangles for a mesh
      * 
      * parameter :
      * nbTotal - numbers of triangles to create
@@ -81,7 +79,7 @@ public class CreateLine : MonoBehaviour
     }
 
     /* summary :
-     * Create a line on top of the others (or 0 if it's the first one)
+     * Creates a line on top of the others (or 0 if it's the first one)
      * 
      * parameters :
      * thickness - thickness of the new line
@@ -94,7 +92,7 @@ public class CreateLine : MonoBehaviour
     }
 
     /* summary :
-     * Create a new line with the parameters given
+     * Creates a new line with the parameters given
      * 
      * parameters :
      * height - height of the base of the mesh
@@ -137,7 +135,7 @@ public class CreateLine : MonoBehaviour
         meshList.Add(tmpMesh);
 
         GameObject tmpGo = new GameObject("Line", typeof(MeshFilter), typeof(MeshRenderer));
-        tmpGo.GetComponent<MeshRenderer>().material = meshMat;
+        tmpGo.GetComponent<MeshRenderer>().material = Resources.Load("ConsumptionLines", typeof(Material)) as Material; ;
         Color color = lineColor;
         color.a = 0.8f;
         tmpGo.GetComponent<MeshRenderer>().material.color = color;

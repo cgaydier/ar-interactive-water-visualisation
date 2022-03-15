@@ -4,6 +4,7 @@ using UnityEngine;
 public class CreateMesh : MonoBehaviour
 {
     public GameObject content;
+
     private SceneData sceneData;
     private Mesh mesh;
     private GameObject go;
@@ -33,43 +34,41 @@ public class CreateMesh : MonoBehaviour
         //sceneData.SetPointsPlaced(true);
     }
 
-    /* summary :
-    * Updates the mesh at each frame
-    */
     void Update()
     {
         MeshHandler();
     }
 
     /* summary :
-    * Increases the value with which the volume will be divided
-    */
-    public void AddScale()
-    {
-        sceneData.IncrScale();
-        SetWater();
-    }
-
-    public void DecrScale()
-    {
-        SetWater();
-    }
-
-    /* summary :
-    * Calculates a height value depending on the surface
-    */
+     * Adds volume to water
+     * 
+     * parameter :
+     * volume - quantity of water (m3) to add
+     */
     public void AddWater(float volume)
     {
         offset += (volume / sceneData.GetSurfaceMesh());
         SetWater();
     }
 
+    /* summary :
+     * Removes volume to water
+     * 
+     * parameter :
+     * volume - quantity of water (m3) to remove
+     */
     public void RemoveWater(float volume)
     {
         offset = offset - (volume / sceneData.GetSurfaceMesh()) >= 0.00f ? offset - (volume / sceneData.GetSurfaceMesh()) : 0.00f;
         SetWater();
     }
 
+    /* summary :
+     * Sets current volume of water as volume parameter
+     * 
+     * parameter :
+     * volume - quantity of water for the mesh
+     */
     public void SetCustomVolume(float volume){
         if (volume >= 0f)
         {
@@ -83,7 +82,7 @@ public class CreateMesh : MonoBehaviour
     */
     public void SetWater()
     {
-        switch (sceneData.currentTime)
+        switch (sceneData.GetCurrentTime())
         {
             case SceneData.TimeName.Day:
                 currentOffset = offset / 7f;
@@ -102,7 +101,7 @@ public class CreateMesh : MonoBehaviour
                 break;
 
             default:
-                Debug.Log("Unknown Time type !" + sceneData.currentTime);
+                Debug.Log("Unknown Time type !" + sceneData.GetCurrentTime());
                 break;
         }
         currentOffset /= (float)sceneData.GetScale();
@@ -140,6 +139,11 @@ public class CreateMesh : MonoBehaviour
         lineToReset = true;
     }
 
+    /* summary :
+     * Clears all the data
+     * Call RefreshMesh()
+     * Reset text volume on UI
+     */
     public void ClearAll()
     {
         RefreshMesh();
@@ -194,6 +198,10 @@ public class CreateMesh : MonoBehaviour
 
     /* summary :
     * Checks if the number of placed points is valide
+    * 
+    * return :
+    * true - if the quantity of points is good
+    * false - otherwise
     */
     private bool Checkpoints()
     {
@@ -227,7 +235,7 @@ public class CreateMesh : MonoBehaviour
         if (Checkpoints() && !sceneData.IsMeshCreated() && sceneData.IsPointsPlaced())
         {
             List<Vector3> tmp = new List<Vector3>();
-            // Recalculates the dupplicated vertices to a custom height to create a volume
+            // Recalculates the duplicated vertices to a custom height to create a volume
             for (int i = 0; i < sceneData.GetVerticesSize(); i ++)
             {
                 if (i%2 == 0)
@@ -266,6 +274,7 @@ public class CreateMesh : MonoBehaviour
 
             sceneData.SetMeshCreated(true);
 
+            // Check if there is lines to reset
             if (lineToReset)
             {
                 content.GetComponent<ScrollButtonFunctions>().ResetConsumption();
