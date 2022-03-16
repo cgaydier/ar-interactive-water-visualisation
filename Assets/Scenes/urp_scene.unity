@@ -11758,7 +11758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AutomaticPlacement: 1
-  m_EnvironmentTextureFilterMode: 2
+  m_EnvironmentTextureFilterMode: 1
   m_EnvironmentTextureHDR: 1
   m_DebugPrefab: {fileID: 0}
 --- !u!114 &1471520476
