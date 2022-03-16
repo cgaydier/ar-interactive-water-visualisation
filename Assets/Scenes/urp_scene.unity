@@ -650,9 +650,9 @@ RectTransform:
   m_Father: {fileID: 1683650217}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 100, y: -100}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &48139848
@@ -783,9 +783,9 @@ RectTransform:
   m_Father: {fileID: 1683650217}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 775, y: -100}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &69320575
@@ -1325,7 +1325,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 343.07687, y: -710}
-  m_SizeDelta: {x: 686.15375, y: 820.39}
+  m_SizeDelta: {x: 686.15375, y: 963.96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &191444969
 MonoBehaviour:
@@ -1347,7 +1347,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '10<color=#00000000>.</color>- Press <sprite index= 4> and put an arbitrary
+  m_text: '10<color=#00000000>.</color>- Press <sprite index= 9> and put an arbitrary
     value.
 
 
@@ -1355,7 +1355,7 @@ MonoBehaviour:
     of your block.
 
 
-    12<color=#00000000>.</color>- Press <sprite index= 4>, put
+    12<color=#00000000>.</color>- Press <sprite index= 9>, put
     a typical weekly consumption and change the scale to month or year to show your
     monthly or annual consumption.'
   m_isRightToLeft: 0
@@ -1376,7 +1376,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 493f5ee5ad94fe74692143ef87faa9d3, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 6669f8847556d1f46b88d031eaee7ea1, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -1384,8 +1384,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55
-  m_fontSizeBase: 55
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2658,7 +2658,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 343.07687, y: -710}
-  m_SizeDelta: {x: 686.15375, y: 1046.85}
+  m_SizeDelta: {x: 686.15375, y: 1074.61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &291383137
 MonoBehaviour:
@@ -2697,6 +2697,9 @@ MonoBehaviour:
     level.
 
 
+    5<color=#00000000>.</color>- Press <sprite index= 8> and enter your
+    water consumption for the week.
+
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2716,7 +2719,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 493f5ee5ad94fe74692143ef87faa9d3, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 6669f8847556d1f46b88d031eaee7ea1, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -2724,8 +2727,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 57
-  m_fontSizeBase: 57
+  m_fontSize: 52
+  m_fontSizeBase: 52
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7383,7 +7386,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 343.07684, y: -710}
-  m_SizeDelta: {x: 686.15375, y: 883.63}
+  m_SizeDelta: {x: 686.15375, y: 1136.61}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &962190021
 MonoBehaviour:
@@ -7405,19 +7408,23 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '5<color=#00000000>.</color>- Press <sprite index= 4> and enter your water
-    consumption for the week.
+  m_text: '6<color=#00000000>.</color>- Press <sprite index= 9> to view the details
+    of your water consumption.
 
 
-    6<color=#00000000>.</color>- Press <sprite index=
-    5> to view the details of your water consumption.
-
-
-    7<color=#00000000>.</color>-
-    Press <sprite index= 6> to reset the settings.
+    7<color=#00000000>.</color>- Press <sprite index=
+    13> to the legend of the details of your water consumption.
 
 
     8<color=#00000000>.</color>-
+    Press <sprite index= 10> to reset the settings.
+
+
+    9<color=#00000000>.</color>-
+    Press <sprite index= 11> to view some examples of water consumption.
+
+
+    10<color=#00000000>.</color>-
     Press <sprite index= 0> and press <sprite index= 3> to clear the scene.
 
 
@@ -7440,7 +7447,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 493f5ee5ad94fe74692143ef87faa9d3, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 6669f8847556d1f46b88d031eaee7ea1, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -7978,9 +7985,9 @@ RectTransform:
   m_Father: {fileID: 1683650217}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 550, y: -100}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1054059083
@@ -9183,7 +9190,7 @@ RectTransform:
   m_GameObject: {fileID: 1207644068}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.8, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 920900998}
   m_RootOrder: 0
@@ -10272,7 +10279,7 @@ MonoBehaviour:
 
 
     <align="justified">If
-    you want to reopen this tutorial, click on <sprite index= 8> on the top right
+    you want to reopen this tutorial, click on <sprite index= 12> on the top right
     of your screen .
 
 
@@ -10296,7 +10303,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 493f5ee5ad94fe74692143ef87faa9d3, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 6669f8847556d1f46b88d031eaee7ea1, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -10433,7 +10440,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 493f5ee5ad94fe74692143ef87faa9d3, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 6669f8847556d1f46b88d031eaee7ea1, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -10441,8 +10448,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55
-  m_fontSizeBase: 55
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -13679,9 +13686,9 @@ RectTransform:
   m_Father: {fileID: 1683650217}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 325, y: -100}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1805061781
@@ -15865,7 +15872,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 493f5ee5ad94fe74692143ef87faa9d3, type: 2}
+  m_spriteAsset: {fileID: 11400000, guid: 6669f8847556d1f46b88d031eaee7ea1, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
