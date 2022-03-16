@@ -18,6 +18,8 @@ public class UiUpdate : MonoBehaviour
     private Sprite settingsOff;
     private Sprite homeOn;
     private Sprite homeOff;
+    private Sprite menuOn;
+    private Sprite menuOff;
 
     void Start()
     {
@@ -37,7 +39,9 @@ public class UiUpdate : MonoBehaviour
         settingsOn = Resources.LoadAll<Sprite>("settings_click")[0];
         settingsOff = Resources.LoadAll<Sprite>("settings")[0];
         homeOn = Resources.LoadAll<Sprite>("home_click")[0];
-        homeOff= Resources.LoadAll<Sprite>("home")[0];
+        homeOff = Resources.LoadAll<Sprite>("home")[0];
+        menuOn = Resources.LoadAll<Sprite>("menu_click")[0];
+        menuOff = Resources.LoadAll<Sprite>("menu")[0];
     }
 
     /* summary :
@@ -102,5 +106,15 @@ public class UiUpdate : MonoBehaviour
         }
         else if (GameObject.Find("HomeRefButton"))
             GameObject.Find("HomeRefButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = homeOff;
+
+        if (GameObject.Find("MenuButton") && GameObject.Find("SubMenuPanel"))
+        {
+            if (GameObject.Find("SubMenuPanel").activeSelf && GameObject.Find("MenuButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite != menuOn)
+                GameObject.Find("MenuButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = menuOn;
+            else if (!GameObject.Find("SubMenuPanel").activeSelf && GameObject.Find("MenuButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite != menuOff)
+                GameObject.Find("MenuButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = menuOff;
+        }
+        else if (GameObject.Find("MenuButton"))
+            GameObject.Find("MenuButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = menuOff;
     }
 }
