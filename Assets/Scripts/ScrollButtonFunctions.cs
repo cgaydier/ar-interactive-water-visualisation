@@ -93,6 +93,9 @@ public class ScrollButtonFunctions : MonoBehaviour
         }
     }
 
+    /* summary :
+    * Gets the state of settings (active or not)
+    */
     public bool GetIsActive()
     {
         return settings.activeSelf;

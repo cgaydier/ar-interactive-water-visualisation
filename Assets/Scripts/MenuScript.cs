@@ -27,10 +27,7 @@ public class MenuScript : MonoBehaviour
     }
 
     /* summary :
-    * Sets the state of isActive
-    *
-    * parameter :
-    * state - defines if the isActive variable is true or false
+    * Gets the state of isActive
     */
     public bool GetIsActive()
     {
