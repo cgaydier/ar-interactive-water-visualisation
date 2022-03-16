@@ -54,6 +54,12 @@ public class SceneData : MonoBehaviour
     private float surfaceMesh = 0f;
     private List<Vector3> vertices = new List<Vector3>();
 
+    private readonly float average1P1W = 1.03f;
+    private readonly float autoWash = 0.2f;
+    private readonly float toiletFlushLeak1W = 4.2f;
+    private readonly float dripTap1W = 0.67f;
+    private readonly float garden1W = 0.38f;
+
 
     public void Start()
     {
@@ -230,5 +236,30 @@ public class SceneData : MonoBehaviour
     public int GetVerticesSize()
     {
         return vertices.Count;
+    }
+
+    public float GetAverage1P1W ()
+    {
+        return average1P1W;
+    }
+
+    public float GetAutoWash()
+    {
+        return autoWash;
+    }
+
+    public float GetToiletFlushLeak1W()
+    {
+        return toiletFlushLeak1W;
+    }
+
+    public float GetDripTap1W()
+    {
+        return dripTap1W;
+    }
+
+    public float getGarden1W()
+    {
+        return garden1W;
     }
 }
