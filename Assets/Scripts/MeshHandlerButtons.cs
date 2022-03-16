@@ -83,6 +83,8 @@ public class MeshHandlerButtons : MonoBehaviour
             Destroy(GameObject.Find("Mesh"));
             textInput.text = "";
             GameObject.Find("CreateButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = createButtonOff;
+            if (GameObject.Find("AverageConso"))
+                GameObject.Find("AverageConso").SetActive(false);
         }
         else
         {

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ScrollButtonFunctions : MonoBehaviour
 {
+    public GameObject examplePanel;
     public GameObject settings;
     public MenuScript MenuPanel;
     private SceneData sceneData;
@@ -99,5 +100,10 @@ public class ScrollButtonFunctions : MonoBehaviour
     public bool GetIsActive()
     {
         return settings.activeSelf;
+    }
+
+    public void OpenCloseExamplePanel()
+    {
+        examplePanel.SetActive(!examplePanel.activeSelf);
     }
 }

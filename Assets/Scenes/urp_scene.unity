@@ -831,7 +831,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 69320576}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1683650220}
+        m_TargetAssemblyTypeName: ScrollButtonFunctions, Assembly-CSharp
+        m_MethodName: OpenCloseExamplePanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &69320576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4746,7 +4758,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 601724636}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1291511272}
+        m_TargetAssemblyTypeName: ExampleConsumption, Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ToiletFlushLeak1W
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &601724636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5757,7 +5781,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 780715254}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1291511272}
+        m_TargetAssemblyTypeName: ExampleConsumption, Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: DripTap1W
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &780715254
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6638,7 +6674,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 890436920}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1291511272}
+        m_TargetAssemblyTypeName: ExampleConsumption, Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Garden1W
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &890436920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9399,7 +9447,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1221244855}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1291511272}
+        m_TargetAssemblyTypeName: ExampleConsumption, Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: AutoWash
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1221244855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9804,6 +9864,7 @@ GameObject:
   - component: {fileID: 1291511269}
   - component: {fileID: 1291511271}
   - component: {fileID: 1291511270}
+  - component: {fileID: 1291511272}
   m_Layer: 5
   m_Name: AverageConso
   m_TagString: Untagged
@@ -9870,6 +9931,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1291511268}
   m_CullTransparentMesh: 1
+--- !u!114 &1291511272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1291511268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be64d8a00adc4ff469c62dec8bece685, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1302629794
 GameObject:
   m_ObjectHideFlags: 0
@@ -11552,7 +11625,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1448728633}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1291511272}
+        m_TargetAssemblyTypeName: ExampleConsumption, Assembly-CSharp
+        m_MethodName: SetValue
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Average1P1W
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1448728633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12841,6 +12926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14943183d86ae7645a34885256aebda6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  examplePanel: {fileID: 1291511268}
   settings: {fileID: 1367310947}
   MenuPanel: {fileID: 1014222181}
 --- !u!1 &1686679870

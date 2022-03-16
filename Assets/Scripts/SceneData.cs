@@ -31,6 +31,24 @@ public class SceneData : MonoBehaviour
         0.009f
     };
 
+    public enum ExampleName
+    {
+        Average1P1W,
+        AutoWash,
+        ToiletFlushLeak1W,
+        DripTap1W,
+        Garden1W
+    }
+
+    private readonly List<float> exampleConsumption = new List<float>
+    {
+        1.03f,
+        0.2f,
+        4.2f,
+        0.67f,
+        0.38f
+    };
+
     private readonly List<Color> dataColor = new List<Color>
     {
         Color.blue,
@@ -53,13 +71,6 @@ public class SceneData : MonoBehaviour
     private readonly float defaultOffset = 0.0001f;
     private float surfaceMesh = 0f;
     private List<Vector3> vertices = new List<Vector3>();
-
-    private readonly float average1P1W = 1.03f;
-    private readonly float autoWash = 0.2f;
-    private readonly float toiletFlushLeak1W = 4.2f;
-    private readonly float dripTap1W = 0.67f;
-    private readonly float garden1W = 0.38f;
-
 
     public void Start()
     {
@@ -91,7 +102,7 @@ public class SceneData : MonoBehaviour
      * Calls ClearVertices()
      */
     public void ClearAll()
-    { 
+    {
         ClearCpt();
         meshCreated = false;
         pointsPlaced = false;
@@ -128,6 +139,11 @@ public class SceneData : MonoBehaviour
         return dataConsumption[(int)data];
     }
 
+    public float GetExampleConsumption(ExampleName tmp)
+    {
+        return exampleConsumption[(int)tmp];
+    }
+
     public Color GetDataColor(DataName data)
     {
         return dataColor[(int)data];
@@ -160,7 +176,7 @@ public class SceneData : MonoBehaviour
     {
         if (scale <= 1)
             return false;
-        scale --;
+        scale--;
         return true;
     }
 
@@ -236,30 +252,5 @@ public class SceneData : MonoBehaviour
     public int GetVerticesSize()
     {
         return vertices.Count;
-    }
-
-    public float GetAverage1P1W ()
-    {
-        return average1P1W;
-    }
-
-    public float GetAutoWash()
-    {
-        return autoWash;
-    }
-
-    public float GetToiletFlushLeak1W()
-    {
-        return toiletFlushLeak1W;
-    }
-
-    public float GetDripTap1W()
-    {
-        return dripTap1W;
-    }
-
-    public float getGarden1W()
-    {
-        return garden1W;
     }
 }
