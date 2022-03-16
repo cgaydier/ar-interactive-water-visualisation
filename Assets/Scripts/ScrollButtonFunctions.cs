@@ -3,7 +3,7 @@ using UnityEngine;
 public class ScrollButtonFunctions : MonoBehaviour
 {
     public GameObject settings;
-
+    public MenuScript MenuPanel;
     private SceneData sceneData;
     private CreateLine createLine;
 
@@ -24,6 +24,8 @@ public class ScrollButtonFunctions : MonoBehaviour
     {
         if (settings != null)
         {
+            if(MenuPanel.GetIsActive())
+                MenuPanel.OpenAndCloseMenu();
             bool isActive = settings.activeSelf;
             settings.SetActive(!isActive);
             if (!isActive)
@@ -89,5 +91,10 @@ public class ScrollButtonFunctions : MonoBehaviour
             ShowConsumption();
             ShowConsumption();
         }
+    }
+
+    public bool GetIsActive()
+    {
+        return settings.activeSelf;
     }
 }

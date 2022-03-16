@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class MenuScript : MonoBehaviour
 {
-    public GameObject SubMenu;
+    public GameObject subMenu;
+    public ScrollButtonFunctions scrollButtonFunctions;
 
     private bool isActive = false;
 
@@ -13,13 +14,26 @@ public class MenuScript : MonoBehaviour
     {
         if (isActive == false)
         {
-            SubMenu.SetActive(true);
+            if(scrollButtonFunctions.GetIsActive())
+                scrollButtonFunctions.OpenCloseSettings();
+            subMenu.SetActive(true);
             isActive = true;
         }
         else
         {
-            SubMenu.SetActive(false);
+            subMenu.SetActive(false);
             isActive = false;
         }
+    }
+
+    /* summary :
+    * Sets the state of isActive
+    *
+    * parameter :
+    * state - defines if the isActive variable is true or false
+    */
+    public bool GetIsActive()
+    {
+        return isActive;
     }
 }

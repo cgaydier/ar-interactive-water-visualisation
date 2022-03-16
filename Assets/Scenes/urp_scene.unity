@@ -7712,7 +7712,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50be494031822d498271561d1fa31a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SubMenu: {fileID: 1819709618}
+  subMenu: {fileID: 1819709618}
+  scrollButtonFunctions: {fileID: 1683650220}
 --- !u!1 &1026894098
 GameObject:
   m_ObjectHideFlags: 0
@@ -12841,6 +12842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settings: {fileID: 1367310947}
+  MenuPanel: {fileID: 1014222181}
 --- !u!1 &1686679870
 GameObject:
   m_ObjectHideFlags: 0
