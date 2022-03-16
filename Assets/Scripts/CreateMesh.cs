@@ -23,15 +23,15 @@ public class CreateMesh : MonoBehaviour
         volumeMesh = 0f;
         offset = sceneData.GetDefaultOffset();
         currentOffset = sceneData.GetDefaultOffset();
-        //sceneData.AddVertice(new Vector3(0, 0, 0));
-        //sceneData.AddVertice(new Vector3(0, 0, 0));
-        //sceneData.AddVertice(new Vector3(1, 0, 0));
-        //sceneData.AddVertice(new Vector3(1, 0, 0));
-        //sceneData.AddVertice(new Vector3(1, 0, 1));
-        //sceneData.AddVertice(new Vector3(1, 0, 1));
-        //sceneData.AddVertice(new Vector3(0, 0, 1));
-        //sceneData.AddVertice(new Vector3(0, 0, 1));
-        //sceneData.SetPointsPlaced(true);
+        // sceneData.AddVertice(new Vector3(0, 0, 0));
+        // sceneData.AddVertice(new Vector3(0, 0, 0));
+        // sceneData.AddVertice(new Vector3(1, 0, 0));
+        // sceneData.AddVertice(new Vector3(1, 0, 0));
+        // sceneData.AddVertice(new Vector3(1, 0, 1));
+        // sceneData.AddVertice(new Vector3(1, 0, 1));
+        // sceneData.AddVertice(new Vector3(0, 0, 1));
+        // sceneData.AddVertice(new Vector3(0, 0, 1));
+        // sceneData.SetPointsPlaced(true);
     }
 
     void Update()
@@ -64,12 +64,14 @@ public class CreateMesh : MonoBehaviour
     }
 
     /* summary :
-     * Sets current volume of water as volume parameter
-     * 
-     * parameter :
-     * volume - quantity of water for the mesh
-     */
+    * Calculates a height value depending on the surface and the volume value entered by the user
+    *
+    * parameter :
+    * volume - quantity of water in liter
+    */
     public void SetCustomVolume(float volume){
+        // Converts the volume from liter to m3 for calculation
+        volume /= 1000;
         if (volume >= 0f)
         {
             offset = (volume / sceneData.GetSurfaceMesh());
@@ -156,6 +158,9 @@ public class CreateMesh : MonoBehaviour
 
     /* summary :
     * Creates a triangular mesh by extruding the user-made surface
+    *
+    * parameter :
+    * vertices - the list of vertices coordinates organized for mesh creation
     */
     private void CreateTriangles(List<Vector3> vertices)
     {
