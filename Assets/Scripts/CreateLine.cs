@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 public class CreateLine : MonoBehaviour
 {
-    public GameObject legendButton;
     private readonly List<Mesh> meshList = new List<Mesh>();
     private readonly List<GameObject> goList = new List<GameObject>();
     private float top = 0f;
@@ -51,7 +50,6 @@ public class CreateLine : MonoBehaviour
             Destroy(goList[i]);
         }
         top = 0f;
-        legendButton.SetActive(false);
     }
 
     /* summary :
@@ -102,9 +100,6 @@ public class CreateLine : MonoBehaviour
      */
     public void AddLine(float height, float thickness, Color lineColor, List<Vector3> vertices)
     {
-        if (!legendButton.activeSelf)
-            legendButton.SetActive(true);
-
         Mesh tmpMesh = new Mesh();
         Vector3 middlePoint = GetMiddle(vertices);
 

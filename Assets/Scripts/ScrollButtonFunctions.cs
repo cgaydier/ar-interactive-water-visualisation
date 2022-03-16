@@ -1,8 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
-
 public class ScrollButtonFunctions : MonoBehaviour
 {
+    public GameObject legendPanel;
     public GameObject examplePanel;
     public GameObject settings;
     public MenuScript MenuPanel;
@@ -34,13 +33,6 @@ public class ScrollButtonFunctions : MonoBehaviour
             if (!isActive)
             {
                 settings.GetComponent<SettingsFunctions>().RefreshAll();
-                GameObject.Find("OpenCloseSettingsButton").transform.GetChild(0).
-                    GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("settings_click")[0];
-            }
-            else
-            {
-                GameObject.Find("OpenCloseSettingsButton").transform.GetChild(0).
-                    GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("settings")[0];
             }
             sceneData.GetEnumState().ChangeSettingScene();
         }
@@ -85,11 +77,13 @@ public class ScrollButtonFunctions : MonoBehaviour
                 }
             }
             sceneData.SetLinesShowned(true);
+            legendPanel.SetActive(true);
         }
         else
         {
             createLine.ClearAll();
             sceneData.SetLinesShowned(false);
+            legendPanel.SetActive(false);
         }
     }
 

@@ -16,6 +16,8 @@ public class UiUpdate : MonoBehaviour
     private Sprite legendOff;
     private Sprite settingsOn;
     private Sprite settingsOff;
+    private Sprite homeOn;
+    private Sprite homeOff;
 
     void Start()
     {
@@ -34,6 +36,8 @@ public class UiUpdate : MonoBehaviour
         legendOff = Resources.LoadAll<Sprite>("legend")[0];
         settingsOn = Resources.LoadAll<Sprite>("settings_click")[0];
         settingsOff = Resources.LoadAll<Sprite>("settings")[0];
+        homeOn = Resources.LoadAll<Sprite>("home_click")[0];
+        homeOff= Resources.LoadAll<Sprite>("home")[0];
     }
 
     /* summary :
@@ -88,5 +92,15 @@ public class UiUpdate : MonoBehaviour
         }
         else if (GameObject.Find("OpenCloseSettingsButton"))
             GameObject.Find("OpenCloseSettingsButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = settingsOff;
+
+        if (GameObject.Find("AverageConso") && GameObject.Find("HomeRefButton"))
+        {
+            if (GameObject.Find("AverageConso").activeSelf && GameObject.Find("HomeRefButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite != homeOn)
+                GameObject.Find("HomeRefButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = homeOn;
+            else if (!GameObject.Find("AverageConso").activeSelf && GameObject.Find("HomeRefButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite != homeOff)
+                GameObject.Find("HomeRefButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = homeOff;
+        }
+        else if (GameObject.Find("HomeRefButton"))
+            GameObject.Find("HomeRefButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = homeOff;
     }
 }
