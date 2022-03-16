@@ -6,7 +6,7 @@ public class HelpScript : MonoBehaviour
     public GameObject uIPanel;
     public GameObject page1, page2, page3, page4, page5, page6;
     public GameObject menu;
-    public GameObject prevButton, nextButton, tipsButton, legendButton;
+    public GameObject prevButton, nextButton, tipsButton;
     public GameObject createButton;
 
     private GameObject currentPage;
@@ -33,7 +33,6 @@ public class HelpScript : MonoBehaviour
             CurrentButtonVisible();
             errorHandler.ErrorMessageReset();
             tipsButton.SetActive(false);
-            legendButton.SetActive(false);
             menu.SetActive(false);
             uIPanel.SetActive(!isPanelActive);
             isPanelActive = true;
@@ -45,7 +44,6 @@ public class HelpScript : MonoBehaviour
             errorHandler.ErrorMessageReset();
             uIPanel.SetActive(!isPanelActive);
             tipsButton.SetActive(true);
-            legendButton.SetActive(true);
             menu.SetActive(true);
             isPanelActive = false;
             sceneData.GetEnumState().SetMainScene();

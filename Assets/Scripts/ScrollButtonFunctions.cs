@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ScrollButtonFunctions : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class ScrollButtonFunctions : MonoBehaviour
     public MenuScript MenuPanel;
     private SceneData sceneData;
     private CreateLine createLine;
+
 
     private void Start()
     {
@@ -30,7 +32,16 @@ public class ScrollButtonFunctions : MonoBehaviour
             bool isActive = settings.activeSelf;
             settings.SetActive(!isActive);
             if (!isActive)
+            {
                 settings.GetComponent<SettingsFunctions>().RefreshAll();
+                GameObject.Find("OpenCloseSettingsButton").transform.GetChild(0).
+                    GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("settings_click")[0];
+            }
+            else
+            {
+                GameObject.Find("OpenCloseSettingsButton").transform.GetChild(0).
+                    GetComponent<Image>().sprite = Resources.LoadAll<Sprite>("settings")[0];
+            }
             sceneData.GetEnumState().ChangeSettingScene();
         }
     }

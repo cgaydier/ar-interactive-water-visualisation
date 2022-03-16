@@ -6,8 +6,6 @@ public class MeshHandlerButtons : MonoBehaviour
     public GameObject settings;
     public InputField textInput;
 
-    private Sprite createButtonOn;
-    private Sprite createButtonOff;
     private ErrorHandler errorHandler;
     private PlacePoints placePoints;
     private CreateMesh createMesh;
@@ -19,8 +17,6 @@ public class MeshHandlerButtons : MonoBehaviour
         sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
         placePoints = GameObject.Find("MeshHandler").GetComponent<PlacePoints>();
         createMesh = GameObject.Find("MeshHandler").GetComponent<CreateMesh>();
-        createButtonOn = Resources.LoadAll<Sprite>("create_click")[0];
-        createButtonOff = Resources.LoadAll<Sprite>("create")[0];
     }
 
     /* summary :
@@ -34,7 +30,6 @@ public class MeshHandlerButtons : MonoBehaviour
 
         else
         {
-            GameObject.Find("CreateButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = createButtonOn;
             errorHandler.ErrorMessageReset();
             sceneData.GetEnumState().SetPlacePoints();
             sceneData.SetPointsPlaced(false);
@@ -55,7 +50,6 @@ public class MeshHandlerButtons : MonoBehaviour
 
         else
         {
-            GameObject.Find("CreateButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = createButtonOff;
             errorHandler.ErrorMessageReset();
             sceneData.GetEnumState().SetMainScene();
             placePoints.ClearAll();
@@ -82,7 +76,6 @@ public class MeshHandlerButtons : MonoBehaviour
             ClearSettings();
             Destroy(GameObject.Find("Mesh"));
             textInput.text = "";
-            GameObject.Find("CreateButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = createButtonOff;
             if (GameObject.Find("AverageConso"))
                 GameObject.Find("AverageConso").SetActive(false);
         }
@@ -90,7 +83,6 @@ public class MeshHandlerButtons : MonoBehaviour
         {
             errorHandler.AlreadyClearedError();
         }
-        GameObject.Find("CreateButton").transform.GetChild(0).gameObject.GetComponent<Image>().sprite = createButtonOff;
     }
 
     /* summary :
