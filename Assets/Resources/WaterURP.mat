@@ -92,7 +92,7 @@ Material:
     - _AlphaCutoff: 0.186
     - _Blend: 0
     - _BumpScale: 1
-    - _CausticsScale: 5
+    - _CausticsScale: 10
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cull: 2
@@ -109,12 +109,12 @@ Material:
     - _GlossyReflections: 0
     - _MaskStrength: 1
     - _Metallic: 0
-    - _NormalPower: 0.8
+    - _NormalPower: 0.55
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Smoothness: 0.85
+    - _Smoothness: 0.65
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -122,8 +122,8 @@ Material:
     - _TessMax: 25
     - _TessMin: 10
     - _TessPhongStrength: 0.5
-    - _TessValue: 11.6
-    - _Tiling: 0.5
+    - _TessValue: 32
+    - _Tiling: 0.3
     - _TransStrength: 1
     - _WaveHeight: 0
     - _WaveSpeed: 0.06
