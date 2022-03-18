@@ -1,6 +1,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/* summary : 
+ * Linked to MeshHandler
+ * Handles the mesh creation
+ * 
+ * variables :
+ * - public - 
+ * content - Content GameObject
+ * 
+ * - private -
+ * sceneData - Link to SceneData's script
+ * mesh - Mesh to save the current mesh created
+ * go - GameObject to save the current GameObject created
+ * errorHandler - Link to ErrorHandler's script 
+ * triangles - List of mesh's triangles
+ * volumeMesh - Current volume of the mesh
+ * offset - Maximal height for a week for the mesh
+ * current offset - Current height of the mesh
+ * lineToReset - Used to know if the lines have to be reset or no
+ */
 public class CreateMesh : MonoBehaviour
 {
     public GameObject content;

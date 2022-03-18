@@ -1,5 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
+
+/* summary :
+ * Linked to LineHandler
+ * Handles the lines for the consumption view
+ * 
+ * variables :
+ * - private - 
+ * meshLish - List of lines'meshes
+ * goList - List of lines'GameObjects
+ * top - Top of the lines 
+ * offset - Offset to space out the lines from the mesh
+ */
 public class CreateLine : MonoBehaviour
 {
     private readonly List<Mesh> meshList = new List<Mesh>();

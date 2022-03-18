@@ -1165,7 +1165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbe0e6d1f280c4641ac8e96abfaabca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Settings: {fileID: 1367310947}
   currentState: 0
 --- !u!4 &144765962
 Transform:
@@ -3825,7 +3824,7 @@ RectTransform:
   - {fileID: 1008044881}
   - {fileID: 1987418406}
   m_Father: {fileID: 956106882}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -5800,7 +5799,7 @@ RectTransform:
   - {fileID: 1956645734}
   - {fileID: 1185047427}
   m_Father: {fileID: 956106882}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7394,11 +7393,11 @@ RectTransform:
   - {fileID: 512420572}
   - {fileID: 1888778010}
   - {fileID: 1396393504}
-  - {fileID: 1014222180}
   - {fileID: 475862172}
   - {fileID: 782254456}
   - {fileID: 1367310948}
   - {fileID: 1291511269}
+  - {fileID: 1014222180}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7737,7 +7736,7 @@ RectTransform:
   - {fileID: 422041908}
   - {fileID: 1819709619}
   m_Father: {fileID: 956106882}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -9487,7 +9486,7 @@ RectTransform:
   - {fileID: 319736696}
   - {fileID: 1445668232}
   m_Father: {fileID: 956106882}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10275,7 +10274,7 @@ RectTransform:
   - {fileID: 1818031454}
   - {fileID: 416379997}
   m_Father: {fileID: 956106882}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11487,8 +11486,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff0f5a109fcead4c8fa38f83f834993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RaycastManager: {fileID: 1471520476}
-  m_PointToPlace: {fileID: 7222759312059337119, guid: dd7f91ccdc4e56a4c84d70e9c08c7e40, type: 3}
+  raycastManager: {fileID: 1471520476}
+  pointToPlace: {fileID: 7222759312059337119, guid: dd7f91ccdc4e56a4c84d70e9c08c7e40, type: 3}
 --- !u!4 &1516527982
 Transform:
   m_ObjectHideFlags: 0
@@ -12519,7 +12518,7 @@ MonoBehaviour:
   legendPanel: {fileID: 1987418405}
   examplePanel: {fileID: 1291511268}
   settings: {fileID: 1367310947}
-  MenuPanel: {fileID: 1014222181}
+  menuPanel: {fileID: 1014222181}
 --- !u!1 &1686679870
 GameObject:
   m_ObjectHideFlags: 0

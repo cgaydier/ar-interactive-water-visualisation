@@ -1,6 +1,31 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/* summary :
+ * Linked to UICanvas/TipsPanel
+ * Handles the tuto
+ * 
+ * variables :
+ * - public -
+ * uIPanel - TipsPanel GameObject
+ * page1 - IntroPanel GameObject
+ * page 2 - QuitPanel GameObject
+ * page 3 - MenuPanel GameObject
+ * page 4 - Menu2Panel GameObject
+ * page 5 - Menu3Panel GameObject
+ * page 6 - CreditPanel GameObject
+ * menu - MenuPanel GameObject
+ * prevButton - PrevButton GameObject
+ * nextButton - NextButton GameObject
+ * tipsButton - TipsButton GameObject
+ * createButton - CreateButton GameObject
+ * 
+ * - private -
+ * currentPage - Hold the last page opened
+ * sceneData - Link to SceneData's script
+ * errorHandler - Link to ErrorHandler's script
+ * isPanelActive - Used to know if the panel is active
+ */
 public class HelpScript : MonoBehaviour
 {
     public GameObject uIPanel;

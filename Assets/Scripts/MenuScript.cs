@@ -1,5 +1,17 @@
 using UnityEngine;
 
+/* summary :
+ * Linked to MenuPanel
+ * Handles the AverageConso panel
+ * 
+ * variables : 
+ * - public -
+ * subMenu - SubMenuPanel GameObject
+ * scrollButtonFonctions - Link to Content's script
+ * 
+ * - private - 
+ * isActive - Used to know if the panel is active
+ */
 public class MenuScript : MonoBehaviour
 {
     public GameObject subMenu;

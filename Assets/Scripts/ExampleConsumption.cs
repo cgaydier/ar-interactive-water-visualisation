@@ -1,6 +1,15 @@
 using UnityEngine;
 using TMPro;
 
+/* summary :
+ * Linked to UICanvas/AverageConso
+ * Handles the buttons on the AverageConso panel to display water examples
+ * 
+ * variables : 
+ * - private -
+ * sceneData - Link to SceneData's script
+ * createMesh - Link to MeshHandler's script
+ */
 public class ExampleConsumption : MonoBehaviour
 {
     private SceneData sceneData;
@@ -16,6 +25,12 @@ public class ExampleConsumption : MonoBehaviour
         }
     }
 
+    /* summary :
+     * Call createMesh to set a new water value
+     * 
+     * parameter :
+     * whichOne - String to know wich button was clicked
+     */
     public void SetValue(string whichOne)
     {
         float volume = 0f;

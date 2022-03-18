@@ -1,10 +1,26 @@
 using UnityEngine;
+
+/* summary : 
+ * Linked to UICanvas/BottomScroll/Viewport/Content
+ * Handles the scroll buttons
+ * 
+ * variables :
+ * - public - 
+ * legendPanel - Legend GameObject
+ * examplePanel - AverageConso GameObject
+ * settings - Settings GameObject
+ * menuPanel - MenuPanel GameObject
+ * 
+ * - private -
+ * sceneData - Link to SceneData's script
+ * createLine - Link to LineHandler's script
+ */
 public class ScrollButtonFunctions : MonoBehaviour
 {
     public GameObject legendPanel;
     public GameObject examplePanel;
     public GameObject settings;
-    public MenuScript MenuPanel;
+    public MenuScript menuPanel;
     private SceneData sceneData;
     private CreateLine createLine;
 
@@ -26,8 +42,8 @@ public class ScrollButtonFunctions : MonoBehaviour
     {
         if (settings != null)
         {
-            if(MenuPanel.GetIsActive())
-                MenuPanel.OpenAndCloseMenu();
+            if(menuPanel.GetIsActive())
+                menuPanel.OpenAndCloseMenu();
             bool isActive = settings.activeSelf;
             settings.SetActive(!isActive);
             if (!isActive)

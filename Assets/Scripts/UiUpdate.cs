@@ -1,6 +1,30 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/* summary : 
+ * Linked to UiCanvas
+ * Handles the changing sprites and volume panel text
+ * 
+ * variables :
+ * - private - 
+ * scrollButtons - BottomScroll GameObject
+ * volumePanel - VolumePanel GameObject
+ * sceneData - Link to SceneData's script
+ * createMesh - Link to MeshHandler's script
+ * chartsOn - Sprite for the chart button when used
+ * chartsOff - Sprite for the chart button when not used
+ * createOn - Sprite for the create button when used
+ * createOff - Sprite for the create button when not used
+ * legendOn - Sprite for the legend button when used
+ * legendOff - Sprite for the legend button when not used
+ * settingsOn - Sprite for the settings button when used
+ * settingsOff - Sprite for the settings button when not used
+ * homeOn - Sprite for the home button when used
+ * homeOff - Sprite for the home button when not used
+ * menuOn - Sprite for the home button when used
+ * menuOff - Sprite for the home button when not used
+ */
+
 public class UiUpdate : MonoBehaviour
 {
     private GameObject scrollButtons;

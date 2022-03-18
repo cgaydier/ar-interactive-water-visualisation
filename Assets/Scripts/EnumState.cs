@@ -1,8 +1,15 @@
 using UnityEngine;
 
+/* summary :
+ * Linked to SceneState
+ * Handles the current state of the scene for the inputs
+ * 
+ * variables :
+ * - public -
+ * State - enum for the differents states
+ */
 public class EnumState : MonoBehaviour
 {
-    public GameObject Settings;
     public enum State 
     {
         MainView,

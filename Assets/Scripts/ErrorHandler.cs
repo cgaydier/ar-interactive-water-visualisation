@@ -1,5 +1,16 @@
 using UnityEngine;
 
+/* summary : 
+ * Linked to ErrorHandler
+ * Handles the errors messages displayed to the user
+ * 
+ * variables :
+ * - public -
+ * userDebugPanel - UserDebugPanel GameObject
+ * 
+ * - private - 
+ * debugMessage - String to save the message to display
+ */
 public class ErrorHandler : MonoBehaviour
 {
     public GameObject userDebugPanel;

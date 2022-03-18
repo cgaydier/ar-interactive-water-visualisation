@@ -1,6 +1,22 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/* summary :
+ * Linked to MeshHandler
+ * Handles the create/validate/clear parts of the mesh
+ * 
+ * variables :
+ * - public - 
+ * settings - Settings GameObject
+ * textInput - InputField
+ * 
+ * - private - 
+ * errorHandler - Link to ErrorHandler's script
+ * placePoints - Link to MeshHandler's script
+ * createMesh - Link to MeshHandler's script
+ * sceneData - Link to SceneData's script
+ * createLine - Link to LineHandler's script
+ */
 public class MeshHandlerButtons : MonoBehaviour
 {
     public GameObject settings;
@@ -120,6 +136,9 @@ public class MeshHandlerButtons : MonoBehaviour
         textInput.text = "";
     }
     
+    /* summary : 
+     * Clears all the settings
+     */
     public void ClearSettings()
     {
         settings.GetComponent<SettingsFunctions>().RefreshAll();

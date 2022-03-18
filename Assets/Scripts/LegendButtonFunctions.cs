@@ -2,7 +2,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /* summary :
- * Handle the legend panel
+ * Linked to UICanvas/TopRightPanel/Legend/LegendPanel
+ * Handles the legend panel for consumption lines
+ * 
+ * variable :
+ * - public -
+ * SubMenu - LegendPanel GameObject
+ * 
+ * - private -
+ * sceneData - Link to SceneData's script
+ * first - Used to know if it was the first start called
+ * isActive - Used to know if the panel is active
  */
 public class LegendButtonFunctions : MonoBehaviour
 {

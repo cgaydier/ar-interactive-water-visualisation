@@ -2,6 +2,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/* summary :
+ * Linked to UICanvas/Settings
+ * Handles the settings panel and buttons inside
+ * 
+ * variables :
+ * - private - 
+ * createMesh - Link to MeshHandler's script
+ * sceneData - Link to SceneData's script
+ * first - Used to know if it was the first call of Start() or no
+ */
 public class SettingsFunctions : MonoBehaviour
 {
     private CreateMesh createMesh;

@@ -5,10 +5,29 @@ using UnityEngine.XR.ARSubsystems;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/* summary : 
+ * Linked to MeshHandler
+ * Handles the points that are placed for the mesh creation
+ * 
+ * variables : 
+ * - public - 
+ * raycastManager - Link to AR Session Origin's script
+ * pointsToPlace - Prefab for the points to display
+ * 
+ * - private - 
+ * errorHandler - Link to ErrorHandler's script
+ * sceneData - Link to SceneData's script
+ * GR - GraphicRaycaster to check the user inputs
+ * hits - List of ray hits for inputs
+ * points - List of points placed
+ * lines - List of lines between points
+ * LR - LineRenderer for lines between points
+ * first - Used to know if it's the first Start call
+ */
 public class PlacePoints : MonoBehaviour
 {
-    public ARRaycastManager m_RaycastManager;
-    public GameObject m_PointToPlace;
+    public ARRaycastManager raycastManager;
+    public GameObject pointToPlace;
 
     private ErrorHandler errorHandler;
     private SceneData sceneData;
@@ -57,7 +76,7 @@ public class PlacePoints : MonoBehaviour
             if (touch.phase == TouchPhase.Began)
             {
                 // Launches a ray to detect a surface plane
-                if (m_RaycastManager.Raycast(touch.position, hits, TrackableType.PlaneWithinPolygon) && points.Count < sceneData.GetMaxPoints())
+                if (raycastManager.Raycast(touch.position, hits, TrackableType.PlaneWithinPolygon) && points.Count < sceneData.GetMaxPoints())
                 {
                     errorHandler.ErrorMessageReset();
                     PointerEventData ped = new PointerEventData(null)
@@ -74,7 +93,7 @@ public class PlacePoints : MonoBehaviour
                         Pose hitPose = hits[0].pose;
 
                         // Creates a point on the detected surface
-                        points.Add(Instantiate(m_PointToPlace, hitPose.position, hitPose.rotation));
+                        points.Add(Instantiate(pointToPlace, hitPose.position, hitPose.rotation));
 
                         // If it's the first intersection Ray/Surface, initialise the lines
                         if (first){
