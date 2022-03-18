@@ -10,6 +10,7 @@ public class MeshHandlerButtons : MonoBehaviour
     private PlacePoints placePoints;
     private CreateMesh createMesh;
     private SceneData sceneData;
+    private CreateLine createLine;
 
     public void Start()
     {
@@ -17,6 +18,7 @@ public class MeshHandlerButtons : MonoBehaviour
         sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
         placePoints = GameObject.Find("MeshHandler").GetComponent<PlacePoints>();
         createMesh = GameObject.Find("MeshHandler").GetComponent<CreateMesh>();
+        createLine = GameObject.Find("LineHandler").GetComponent<CreateLine>();
     }
 
     /* summary :
@@ -71,13 +73,17 @@ public class MeshHandlerButtons : MonoBehaviour
             sceneData.GetEnumState().SetMainScene();
             settings.SetActive(false);
             placePoints.ClearAll();
-            sceneData.ClearAll();
             createMesh.ClearAll();
             ClearSettings();
             Destroy(GameObject.Find("Mesh"));
             textInput.text = "";
             if (GameObject.Find("AverageConso"))
                 GameObject.Find("AverageConso").SetActive(false);
+            if (sceneData.IsLinesShowned())
+                createLine.ClearAll();
+            if (GameObject.Find("Legend"))
+                GameObject.Find("Legend").SetActive(false);
+            sceneData.ClearAll();
         }
         else
         {
