@@ -33,6 +33,8 @@ public class ScrollButtonFunctions : MonoBehaviour
             if (!isActive)
             {
                 settings.GetComponent<SettingsFunctions>().RefreshAll();
+                if (GameObject.Find("AverageConso"))
+                    GameObject.Find("AverageConso").SetActive(false);
             }
             sceneData.GetEnumState().ChangeSettingScene();
         }
@@ -110,5 +112,7 @@ public class ScrollButtonFunctions : MonoBehaviour
     public void OpenCloseExamplePanel()
     {
         examplePanel.SetActive(!examplePanel.activeSelf);
+        if (examplePanel.activeSelf && GameObject.Find("Settings"))
+            GameObject.Find("Settings").SetActive(false);
     }
 }
