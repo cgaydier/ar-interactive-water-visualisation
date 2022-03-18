@@ -14,8 +14,11 @@ public class MenuScript : MonoBehaviour
     {
         if (isActive == false)
         {
-            if(scrollButtonFunctions.GetIsActive())
-                scrollButtonFunctions.OpenCloseSettings();
+            if (GameObject.Find("AverageConso"))
+                GameObject.Find("AverageConso").SetActive(false);
+            if (GameObject.Find("Settings"))
+                GameObject.Find("Settings").SetActive(false);
+
             subMenu.SetActive(true);
             isActive = true;
         }

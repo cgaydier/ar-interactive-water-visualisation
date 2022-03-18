@@ -1,12 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/* summary :
+ * Handle the legend panel
+ */
 public class LegendButtonFunctions : MonoBehaviour
 {
-    private SceneData sceneData;
-
     public GameObject SubMenu;
 
+    private SceneData sceneData;
     private bool first = true;
     private bool isActive = false;
 
