@@ -6,20 +6,41 @@ using UnityEngine.TestTools;
 
 public class MeshHandlerButtonsTests
 {
-    // A Test behaves as an ordinary method
-    [Test]
-    public void MeshHandlerButtonsTestsSimplePasses()
+    private MeshHandlerButtons meshHandlerButtons;
+
+    private void StartFunction()
     {
-        // Use the Assert class to test conditions
+        meshHandlerButtons = GameObject.Find("MeshHandler").GetComponent<MeshHandlerButtons>();
+        meshHandlerButtons.Start();
     }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator MeshHandlerButtonsTestsWithEnumeratorPasses()
+    [Test]
+    public void CreatePointsMeshTest()
     {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
+    }
+
+    [Test]
+    public void ValidatePointsMeshTest()
+    {
+    }
+
+    [Test]
+    public void ClearPointsMeshTest()
+    {
+    }
+
+    [Test]
+    public void CreateArbitraryMeshTest()
+    {
+    }
+
+    [Test]
+    public void ResetMeshSettingsTest()
+    {
+    }
+
+    [Test]
+    public void ClearSettingsTest()
+    {
     }
 }
