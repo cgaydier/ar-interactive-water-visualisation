@@ -6,20 +6,32 @@ using UnityEngine.TestTools;
 
 public class LegendButtonFonctionsTests
 {
-    // A Test behaves as an ordinary method
-    [Test]
-    public void LegendButtonFonctionsTestsSimplePasses()
+    private LegendButtonFunctions legendButtonFunctions;
+    private ScrollButtonFunctions scrollButtonFunctions;
+    private GameObject legend;
+    private bool isActive;
+
+    public void StartFunction()
     {
-        // Use the Assert class to test conditions
+        scrollButtonFunctions = GameObject.Find("Content").GetComponent<ScrollButtonFunctions>();
+        legend = scrollButtonFunctions.legendPanel;
+        legend.SetActive(true);
+        legendButtonFunctions = GameObject.Find("LegendPanel").GetComponent<LegendButtonFunctions>(); 
     }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator LegendButtonFonctionsTestsWithEnumeratorPasses()
+    [Test]
+    public void OpenAndCloseLegendTest()
     {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
+        StartFunction();
+        Assert.IsTrue(legendButtonFunctions != null);
+
+        isActive = legendButtonFunctions.GetIsActive();
+        Assert.IsTrue(legendButtonFunctions == true);
+        Assert.IsTrue(legendButtonFunctions.SubMenu.activeSelf == true);
+
+        if (!legendButtonFunctions)
+        {
+            Assert.IsTrue(legendButtonFunctions == null);
+        }
     }
 }

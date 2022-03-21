@@ -40,7 +40,7 @@ public class HelpScript : MonoBehaviour
     private bool isPanelActive;
 
 
-    void Start()
+    public void Start()
     {
         errorHandler = GameObject.Find("ErrorHandler").GetComponent<ErrorHandler>();
         sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
@@ -180,5 +180,15 @@ public class HelpScript : MonoBehaviour
             prevButton.SetActive(true);
             nextButton.SetActive(true); 
         }
+    }
+
+    public GameObject GetCurrentPage()
+    {
+        return currentPage;
+    }
+
+    public bool GetIsPanelActive()
+    {
+        return isPanelActive;
     }
 }

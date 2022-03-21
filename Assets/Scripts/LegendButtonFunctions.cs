@@ -51,4 +51,9 @@ public class LegendButtonFunctions : MonoBehaviour
             isActive = false;
         }
     }
+
+    public bool GetIsActive()
+    {
+        return isActive;
+    }
 }

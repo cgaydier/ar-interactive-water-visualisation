@@ -6,20 +6,121 @@ using UnityEngine.TestTools;
 
 public class HelpScriptTests
 {
-    // A Test behaves as an ordinary method
-    [Test]
-    public void HelpScriptTestsSimplePasses()
+    private HelpScript helpScript;
+    private GameObject currentPage;
+    private bool isPanelActive;
+
+    public void StartFunction()
     {
-        // Use the Assert class to test conditions
+        helpScript = GameObject.Find("TipsPanel").GetComponent<HelpScript>(); 
+        helpScript.Start();
     }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator HelpScriptTestsWithEnumeratorPasses()
+    [Test]
+    public void OpenAndClosePanelTest()
     {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
+        StartFunction();
+
+        isPanelActive = helpScript.GetIsPanelActive();
+        Assert.IsTrue(isPanelActive == true);
+        Assert.IsTrue(helpScript.tipsButton.activeSelf == false);
+        Assert.IsTrue(helpScript.menu.activeSelf == false);
+        Assert.IsTrue(helpScript.uIPanel.activeSelf == true);
+
+        if (!helpScript)
+        {
+            Assert.IsTrue(helpScript == null);
+        }
+    }
+
+    [Test]
+    public void NextPageTest()
+    {
+        StartFunction();
+
+        helpScript.NextPage();
+        currentPage = helpScript.GetCurrentPage();
+        Assert.AreEqual(helpScript.page2, currentPage);
+
+        helpScript.NextPage();
+        currentPage = helpScript.GetCurrentPage();
+        Assert.AreEqual(helpScript.page3, currentPage);
+
+        helpScript.NextPage();
+        currentPage = helpScript.GetCurrentPage();
+        Assert.AreEqual(helpScript.page4, currentPage);
+
+        helpScript.NextPage();
+        currentPage = helpScript.GetCurrentPage();
+        Assert.AreEqual(helpScript.page5, currentPage);
+
+        helpScript.NextPage();
+        currentPage = helpScript.GetCurrentPage();
+        Assert.AreEqual(helpScript.page6, currentPage);
+    }
+
+    [Test]
+    public void PrevPageTest()
+    {
+        StartFunction();
+
+        helpScript.SwitchPage(helpScript.page1, helpScript.page6);
+        currentPage = helpScript.GetCurrentPage();
+        Assert.AreEqual(helpScript.page6, currentPage);
+
+        helpScript.PrevPage();
+        currentPage = helpScript.GetCurrentPage();
+        Assert.AreEqual(helpScript.page5, currentPage);
+
+        helpScript.PrevPage();
+        currentPage = helpScript.GetCurrentPage();
+        Assert.AreEqual(helpScript.page4, currentPage);
+
+        helpScript.PrevPage();
+        currentPage = helpScript.GetCurrentPage();
+        Assert.AreEqual(helpScript.page3, currentPage);
+
+        helpScript.PrevPage();
+        currentPage = helpScript.GetCurrentPage();
+        Assert.AreEqual(helpScript.page2, currentPage);
+
+        helpScript.PrevPage();
+        currentPage = helpScript.GetCurrentPage();
+        Assert.AreEqual(helpScript.page1, currentPage);
+    }
+
+    [Test]
+    public void SwitchPageTest()
+    {
+        StartFunction();
+
+        helpScript.SwitchPage(helpScript.page1, helpScript.page2);
+        currentPage = helpScript.GetCurrentPage();
+
+        Assert.AreEqual(helpScript.page2, currentPage);
+        Assert.IsTrue(helpScript.page1.activeSelf == false);
+        Assert.IsTrue(helpScript.page2.activeSelf == true);
+    }
+
+    [Test]
+    public void CurrentButtonVisibleTest()
+    {
+        StartFunction();
+
+        Assert.IsTrue(helpScript.prevButton.activeSelf == false);
+        Assert.IsTrue(helpScript.nextButton.activeSelf == true);
+
+        helpScript.NextPage();
+
+        Assert.IsTrue(helpScript.prevButton.activeSelf == true);
+        Assert.IsTrue(helpScript.nextButton.activeSelf == true);
+
+        helpScript.SwitchPage(helpScript.page1, helpScript.page5);
+        currentPage = helpScript.GetCurrentPage();
+        Assert.AreEqual(helpScript.page5, currentPage);
+        helpScript.NextPage();
+
+        Assert.IsTrue(helpScript.prevButton.activeSelf == true);
+        Assert.IsTrue(helpScript.nextButton.activeSelf == false);
     }
 }
