@@ -66,33 +66,6 @@ public class PlacePoints : MonoBehaviour
         return points.Count;
     }
 
-    public void IncrPoints()
-    {
-        GameObject goTest = new GameObject("test");
-        points.Add(Instantiate(goTest, new Vector3(0f,0f,0f), new Quaternion(0f,0f,0f,0f)));
-    }
-
-    public int LinesCount()
-    {
-        return lines.Count;
-    }
-
-    public void IncrLines()
-    {
-        lines.Add(new Vector3(0f,0f,0f));
-    }
-
-    public bool SetFirst(bool state)
-    {
-        first = state;
-        return first;
-    }
-
-    public bool GetFirst()
-    {
-        return first;
-    }
-
     /* summary :
     * Handles the raycast to place points and get vertices coordinates
     * Creates lines between points when creating a surface
@@ -157,5 +130,34 @@ public class PlacePoints : MonoBehaviour
     {
         PlacePointsHandler();
     }
-        
+
+    /* 
+    * Test purposes
+    */
+    public void IncrPoints()
+    {
+        GameObject goTest = new GameObject("test");
+        points.Add(Instantiate(goTest, new Vector3(0f,0f,0f), new Quaternion(0f,0f,0f,0f)));
+    }
+
+    public void IncrLines()
+    {
+        lines.Add(new Vector3(0f,0f,0f));
+    }
+
+    public int LinesCount()
+    {
+        return lines.Count;
+    }
+
+    public bool SetFirst(bool state)
+    {
+        first = state;
+        return first;
+    }
+
+    public bool GetFirst()
+    {
+        return first;
+    }
 }

@@ -23,7 +23,6 @@ using UnityEngine;
 public class CreateMesh : MonoBehaviour
 {
     public GameObject content;
-
     private SceneData sceneData;
     private Mesh mesh;
     private GameObject go;
@@ -34,7 +33,7 @@ public class CreateMesh : MonoBehaviour
     private float currentOffset;
     private bool lineToReset = false;
 
-    void Start()
+    public void Start()
     {
         mesh = new Mesh();
         sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
@@ -42,15 +41,15 @@ public class CreateMesh : MonoBehaviour
         volumeMesh = 0f;
         offset = sceneData.GetDefaultOffset();
         currentOffset = sceneData.GetDefaultOffset();
-        //sceneData.AddVertice(new Vector3(0, 0, 0));
-        //sceneData.AddVertice(new Vector3(0, 0, 0));
-        //sceneData.AddVertice(new Vector3(1, 0, 0));
-        //sceneData.AddVertice(new Vector3(1, 0, 0));
-        //sceneData.AddVertice(new Vector3(1, 0, 1));
-        //sceneData.AddVertice(new Vector3(1, 0, 1));
-        //sceneData.AddVertice(new Vector3(0, 0, 1));
-        //sceneData.AddVertice(new Vector3(0, 0, 1));
-        //sceneData.SetPointsPlaced(true);
+        sceneData.AddVertice(new Vector3(0, 0, 0));
+        sceneData.AddVertice(new Vector3(0, 0, 0));
+        sceneData.AddVertice(new Vector3(1, 0, 0));
+        sceneData.AddVertice(new Vector3(1, 0, 0));
+        sceneData.AddVertice(new Vector3(1, 0, 1));
+        sceneData.AddVertice(new Vector3(1, 0, 1));
+        sceneData.AddVertice(new Vector3(0, 0, 1));
+        sceneData.AddVertice(new Vector3(0, 0, 1));
+        sceneData.SetPointsPlaced(true);
     }
 
     void Update()
@@ -156,7 +155,7 @@ public class CreateMesh : MonoBehaviour
         triangles.Clear();
         mesh.Clear();
         sceneData.SetMeshCreated(false);
-        Destroy(go);
+        DestroyImmediate(go);
         lineToReset = true;
     }
 
@@ -312,5 +311,38 @@ public class CreateMesh : MonoBehaviour
             mesh.RecalculateTangents();
             mesh.RecalculateBounds();
         }
+    }
+
+    /*
+    * Test purposes
+    */
+    public float GetOffset()
+    {
+        return offset;
+    }
+
+    public void SetOffset(float newOffset)
+    {
+        offset = newOffset;
+    }
+
+    public float GetCurrentOffset()
+    {
+        return currentOffset;
+    }
+
+    public void SetCurrentOffset(float newCurrentOffset)
+    {
+        offset = newCurrentOffset;
+    }
+
+    public float GetVolumeMesh()
+    {
+        return volumeMesh;
+    }
+
+    public void SetVolumeMesh(float volume)
+    {
+        volumeMesh = volume;
     }
 }

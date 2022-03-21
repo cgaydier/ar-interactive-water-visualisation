@@ -21,7 +21,6 @@ public class MeshHandlerButtons : MonoBehaviour
 {
     public GameObject settings;
     public InputField textInput;
-
     private ErrorHandler errorHandler;
     private PlacePoints placePoints;
     private CreateMesh createMesh;
