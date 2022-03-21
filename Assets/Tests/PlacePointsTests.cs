@@ -1,25 +1,63 @@
 using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
+using UnityEngine.UI;
 
 public class PlacePointsTests
 {
-    // A Test behaves as an ordinary method
-    [Test]
-    public void PlacePointsTestsSimplePasses()
+    private GraphicRaycaster GR;
+    private ErrorHandler errorHandler;
+    private SceneData sceneData;
+    private PlacePoints placePoints;
+
+
+    private void StartFunction()
     {
-        // Use the Assert class to test conditions
+        GR = GameObject.Find("UICanvas").GetComponent<GraphicRaycaster>();
+        sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
+        errorHandler = GameObject.Find("ErrorHandler").GetComponent<ErrorHandler>();
+        placePoints = GameObject.Find("MeshHandler").GetComponent<PlacePoints>();
     }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator PlacePointsTestsWithEnumeratorPasses()
+    // A Test behaves as an ordinary method
+    [Test]
+    public void ClearAllTest()
     {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
+        StartFunction();
+
+        int nbIncr = 16;
+        for(int i = 0; i < nbIncr; i++)
+        {
+            placePoints.IncrPoints();
+            placePoints.IncrLines();
+        }
+        placePoints.SetFirst(false);
+        
+        placePoints.ClearAll();
+
+        Assert.AreEqual(placePoints.GetFirst(), true);
+        Assert.AreEqual(placePoints.PointsCount(), 0);
+        Assert.AreEqual(placePoints.LinesCount(), 0);
+    }
+
+    [Test]
+    public void PointsCountTest()
+    {
+        StartFunction();
+
+        int nbIncr = 16;
+        for(int i = 0; i < nbIncr; i++)
+        {
+            placePoints.IncrPoints();
+        }
+        
+        Assert.AreEqual(placePoints.PointsCount(), nbIncr);
+    }
+
+    [Test]
+    public void PlacePointsHandlerTest()
+    {
+        
     }
 }
