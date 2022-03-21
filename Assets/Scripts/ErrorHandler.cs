@@ -56,6 +56,10 @@ public class ErrorHandler : MonoBehaviour
         debugMessage = "";
     }
 
+    public string GetDebugMessage()
+    {
+        return debugMessage;
+    }
     void Update()
     {
         userDebugPanel.GetComponent<UnityEngine.UI.Text>().text = debugMessage;
