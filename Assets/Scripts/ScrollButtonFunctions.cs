@@ -25,9 +25,10 @@ public class ScrollButtonFunctions : MonoBehaviour
     private CreateLine createLine;
 
 
-    private void Start()
+    public void Start()
     {
         sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
+        sceneData.Start();
         createLine = GameObject.Find("LineHandler").GetComponent<CreateLine>();
         settings.SetActive(true);
         GameObject.Find("Settings").GetComponent<SettingsFunctions>().Start();
@@ -125,6 +126,9 @@ public class ScrollButtonFunctions : MonoBehaviour
         return settings.activeSelf;
     }
 
+    /* summary :
+     * Change visibility of the example panel
+     */
     public void OpenCloseExamplePanel()
     {
         examplePanel.SetActive(!examplePanel.activeSelf);

@@ -1,25 +1,54 @@
-using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
 using UnityEngine;
-using UnityEngine.TestTools;
 
 public class ScrollButtonsFunctionsTests
 {
-    // A Test behaves as an ordinary method
-    [Test]
-    public void ScrollButtonsFunctionsTestsSimplePasses()
+    private ScrollButtonFunctions scrollButtonFunctions;
+
+    private void StartFunction()
     {
-        // Use the Assert class to test conditions
+        scrollButtonFunctions = GameObject.Find("Content").GetComponent<ScrollButtonFunctions>();
+        scrollButtonFunctions.Start();
     }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator ScrollButtonsFunctionsTestsWithEnumeratorPasses()
+    [Test]
+    public void OpenCloseSettingsTest()
     {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
+        StartFunction();
+
+        Assert.IsTrue(!scrollButtonFunctions.settings.activeSelf);
+        scrollButtonFunctions.OpenCloseSettings();
+        Assert.IsTrue(scrollButtonFunctions.settings.activeSelf);
+        scrollButtonFunctions.OpenCloseSettings();
+        Assert.IsTrue(!scrollButtonFunctions.settings.activeSelf);
+    }
+
+    [Test]
+    public void ShowConsumptionTest()
+    {
+    }
+
+    [Test]
+    public void ResetConsumptionTest()
+    {
+    }
+
+    [Test]
+    public void GetIsActiveTest()
+    {
+        StartFunction();
+        Assert.AreEqual(scrollButtonFunctions.GetIsActive(), scrollButtonFunctions.settings.activeSelf);
+    }
+
+    [Test]
+    public void OpenCloseExamplePanelTest()
+    {
+        StartFunction();
+
+        Assert.IsTrue(!scrollButtonFunctions.examplePanel.activeSelf);
+        scrollButtonFunctions.OpenCloseExamplePanel();
+        Assert.IsTrue(scrollButtonFunctions.examplePanel.activeSelf);
+        scrollButtonFunctions.OpenCloseExamplePanel();
+        Assert.IsTrue(!scrollButtonFunctions.examplePanel.activeSelf);
     }
 }
