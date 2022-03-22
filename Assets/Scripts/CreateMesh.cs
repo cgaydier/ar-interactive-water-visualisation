@@ -41,15 +41,6 @@ public class CreateMesh : MonoBehaviour
         volumeMesh = 0f;
         offset = sceneData.GetDefaultOffset();
         currentOffset = sceneData.GetDefaultOffset();
-        //sceneData.AddVertice(new Vector3(0, 0, 0));
-        //sceneData.AddVertice(new Vector3(0, 0, 0));
-        //sceneData.AddVertice(new Vector3(1, 0, 0));
-        //sceneData.AddVertice(new Vector3(1, 0, 0));
-        //sceneData.AddVertice(new Vector3(1, 0, 1));
-        //sceneData.AddVertice(new Vector3(1, 0, 1));
-        //sceneData.AddVertice(new Vector3(0, 0, 1));
-        //sceneData.AddVertice(new Vector3(0, 0, 1));
-        //sceneData.SetPointsPlaced(true);
     }
 
     void Update()
@@ -286,10 +277,10 @@ public class CreateMesh : MonoBehaviour
             mesh.triangles = triangles.ToArray();
 
             mesh.MarkDynamic();
-            mesh.Optimize();
-            mesh.OptimizeIndexBuffers();
-            mesh.OptimizeReorderVertexBuffer();
-
+            // mesh.OptimizeReorderVertexBuffer();
+            // mesh.Optimize();
+            // mesh.OptimizeIndexBuffers();
+            
             // Reapplies the water material to the updated mesh
             go = new GameObject("Mesh", typeof(MeshFilter), typeof(MeshRenderer));
             go.GetComponent<MeshRenderer>().material = Resources.Load("WaterURP", typeof(Material)) as Material;
@@ -316,6 +307,22 @@ public class CreateMesh : MonoBehaviour
     /*
     * Test purposes
     */
+
+    public void TestMeshHandler()
+    {
+        MeshHandler();
+    }
+
+    public void SetLineToReset(bool state)
+    {
+        lineToReset = state;
+    }
+
+    public GameObject GetGameObject()
+    {
+        return go;
+    }
+
     public float GetOffset()
     {
         return offset;
@@ -344,5 +351,15 @@ public class CreateMesh : MonoBehaviour
     public void SetVolumeMesh(float volume)
     {
         volumeMesh = volume;
+    }
+
+    public Mesh GetMesh()
+    {
+        return mesh;
+    }
+
+    public List<int> GetTriangles()
+    {
+        return triangles;
     }
 }

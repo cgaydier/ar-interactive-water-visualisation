@@ -8,6 +8,7 @@ public class CreateMeshTests
 {
     private CreateMesh createMesh;
     private SceneData sceneData;
+    List<Vector3> testVertices = new List<Vector3>();
 
     private void StartFunction()
     {
@@ -30,6 +31,7 @@ public class CreateMeshTests
         postOffset = createMesh.GetOffset();
 
         Assert.AreEqual(postOffset, prevOffset + (volume / sceneData.GetSurfaceMesh()));
+        sceneData.ClearAll();
     }
 
     [Test]
@@ -45,6 +47,7 @@ public class CreateMeshTests
         postOffset = createMesh.GetOffset();
 
         Assert.AreEqual(postOffset, prevOffset - (volume / sceneData.GetSurfaceMesh()) >= 0.00f ? prevOffset - (volume / sceneData.GetSurfaceMesh()) : 0.00f);
+        sceneData.ClearAll();
     }
 
     [Test]
@@ -59,6 +62,7 @@ public class CreateMeshTests
         postOffset = createMesh.GetOffset();
 
         Assert.AreEqual(postOffset, volume / sceneData.GetSurfaceMesh());
+        sceneData.ClearAll();
     }
 
     [Test]
@@ -95,6 +99,7 @@ public class CreateMeshTests
         currentOffset = createMesh.GetCurrentOffset();
         
         Assert.AreEqual(currentOffset, (offset*52f) / (float)sceneData.GetScale());
+        sceneData.ClearAll();
     }
 
     [Test]
@@ -110,6 +115,7 @@ public class CreateMeshTests
 
         Assert.AreEqual(sceneData.GetDefaultOffset(), createMesh.GetCurrentOffset());
         Assert.AreEqual(sceneData.GetDefaultOffset(), createMesh.GetOffset());
+        sceneData.ClearAll();
     }
 
     [Test]
@@ -129,7 +135,55 @@ public class CreateMeshTests
         Assert.AreEqual(GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text, "Volume :\n0 L");
         Assert.IsFalse(sceneData.IsPointsPlaced());
     }
-    
+
+    [Test]
+    public void MeshHandlerTest()
+    {
+        StartFunction();
+
+        sceneData.AddVertice(new Vector3(0f, 0f, 0f));
+        sceneData.AddVertice(new Vector3(0f, 0f, 1f));
+        sceneData.AddVertice(new Vector3(0f, 1f, 0f));
+        sceneData.AddVertice(new Vector3(0f, 1f, 1f));
+        sceneData.AddVertice(new Vector3(1f, 0f, 0f));
+        sceneData.AddVertice(new Vector3(1f, 0f, 1f));
+        sceneData.AddVertice(new Vector3(1f, 1f, 0f));
+        sceneData.AddVertice(new Vector3(1f, 1f, 1f));
+        sceneData.SetPointsPlaced(true);
+        sceneData.SetMeshCreated(false);
+        createMesh.SetLineToReset(false);
+
+        createMesh.TestMeshHandler();
+        Mesh mesh = createMesh.GetMesh();
+
+        // Test vertices
+        Vector3[] vertices = mesh.vertices;
+        List<Vector3> tmp = new List<Vector3>();
+        for (int i = 0; i < sceneData.GetVerticesSize(); i ++)
+        {
+            if (i%2 == 0)
+            {
+                Assert.AreEqual(vertices[i], sceneData.GetVertices()[i]);
+            }
+            else
+            {
+                Assert.AreEqual(vertices[i].x, sceneData.GetVertices()[i].x);
+                Assert.AreEqual(vertices[i].y, sceneData.GetVertices()[i].y + createMesh.GetCurrentOffset());
+                Assert.AreEqual(vertices[i].z, sceneData.GetVertices()[i].z);
+            }
+        }
+
+        // Test triangles
+        int[] triangles = mesh.triangles;
+        int[] tmpTriangles = { 0, 4, 2, 1, 5, 3, 0, 6, 4, 1, 7, 5, 0, 1, 2, 2, 1, 3, 2, 3, 4, 4, 3, 5, 4, 5, 6, 6, 5, 7, 6, 7, 0, 0, 7, 1 };
+        Assert.AreEqual(triangles, tmpTriangles);
+
+        // Test volume mesh
+        float volumeMesh = createMesh.GetVolumeMesh();
+        float testVolumeMesh = sceneData.GetSurfaceMesh() * createMesh.GetCurrentOffset() * 1000;
+        Assert.AreEqual(volumeMesh,testVolumeMesh);
+    }
+
     [Test]
     public void UpdateVolumeTextTest()
     {
@@ -140,7 +194,9 @@ public class CreateMeshTests
 
         createMesh.UpdateVolumeText();
 
+
         Assert.AreEqual(GameObject.Find("WaterVolumeText").GetComponent<UnityEngine.UI.Text>().text, "Visible volume divided by " + sceneData.GetScale()
             + " :\n" + createMesh.GetVolumeMesh().ToString("F0") + " L\nReal volume :\n" + (sceneData.GetScale() * createMesh.GetVolumeMesh()).ToString("F0") + "L");
+        sceneData.ClearAll();
     }
 }
