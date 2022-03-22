@@ -25,11 +25,15 @@ public class LegendButtonFonctionsTests
         StartFunction();
         Assert.IsTrue(legendButtonFunctions != null);
 
+        legendButtonFunctions.OpenAndCloseLegend();
+
         isActive = legendButtonFunctions.GetIsActive();
-        Assert.IsTrue(legendButtonFunctions == true);
+        Assert.IsTrue(isActive == true);
         Assert.IsTrue(legendButtonFunctions.SubMenu.activeSelf == true);
 
-        if (!legendButtonFunctions)
+        legendButtonFunctions.OpenAndCloseLegend();
+
+        if (!isActive)
         {
             Assert.IsTrue(legendButtonFunctions == null);
         }

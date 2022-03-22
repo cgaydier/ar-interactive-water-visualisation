@@ -8,11 +8,14 @@ public class HelpScriptTests
 {
     private HelpScript helpScript;
     private GameObject currentPage;
+    private GameObject button;
     private bool isPanelActive;
 
     public void StartFunction()
     {
-        helpScript = GameObject.Find("TipsPanel").GetComponent<HelpScript>(); 
+        helpScript = GameObject.Find("TipsPanel").GetComponent<HelpScript>();
+        button = helpScript.tipsButton;
+        button.SetActive(true); 
         helpScript.Start();
     }
 
@@ -20,17 +23,22 @@ public class HelpScriptTests
     public void OpenAndClosePanelTest()
     {
         StartFunction();
-
+        Assert.IsTrue(helpScript != null);
         isPanelActive = helpScript.GetIsPanelActive();
         Assert.IsTrue(isPanelActive == true);
-        Assert.IsTrue(helpScript.tipsButton.activeSelf == false);
-        Assert.IsTrue(helpScript.menu.activeSelf == false);
-        Assert.IsTrue(helpScript.uIPanel.activeSelf == true);
+
+        helpScript.OpenAndClosePanel();
 
         if (!helpScript)
         {
             Assert.IsTrue(helpScript == null);
         }
+
+        helpScript.OpenAndClosePanel();
+        
+        Assert.IsTrue(helpScript.tipsButton.activeSelf == false);
+        Assert.IsTrue(helpScript.menu.activeSelf == false);
+        Assert.IsTrue(helpScript.uIPanel.activeSelf == true);
     }
 
     [Test]
@@ -107,10 +115,14 @@ public class HelpScriptTests
     {
         StartFunction();
 
+        helpScript.CurrentButtonVisible();
+
         Assert.IsTrue(helpScript.prevButton.activeSelf == false);
         Assert.IsTrue(helpScript.nextButton.activeSelf == true);
 
         helpScript.NextPage();
+
+        helpScript.CurrentButtonVisible();
 
         Assert.IsTrue(helpScript.prevButton.activeSelf == true);
         Assert.IsTrue(helpScript.nextButton.activeSelf == true);
@@ -119,6 +131,8 @@ public class HelpScriptTests
         currentPage = helpScript.GetCurrentPage();
         Assert.AreEqual(helpScript.page5, currentPage);
         helpScript.NextPage();
+
+        helpScript.CurrentButtonVisible();
 
         Assert.IsTrue(helpScript.prevButton.activeSelf == true);
         Assert.IsTrue(helpScript.nextButton.activeSelf == false);

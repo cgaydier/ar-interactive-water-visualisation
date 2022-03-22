@@ -52,6 +52,9 @@ public class LegendButtonFunctions : MonoBehaviour
         }
     }
 
+    /* summary :
+    * Gets the state of isActive
+    */
     public bool GetIsActive()
     {
         return isActive;

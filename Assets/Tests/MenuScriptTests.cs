@@ -6,20 +6,41 @@ using UnityEngine.TestTools;
 
 public class MenuScriptTests
 {
-    // A Test behaves as an ordinary method
-    [Test]
-    public void MenuScriptTestsSimplePasses()
+    private MenuScript menuScript;
+    private HelpScript helpScript;
+    private bool isActive;
+
+    public void StartFunction()
     {
-        // Use the Assert class to test conditions
+        helpScript = GameObject.Find("TipsPanel").GetComponent<HelpScript>();
+        helpScript.OpenAndClosePanel();
+        menuScript = GameObject.Find("MenuPanel").GetComponent<MenuScript>();
     }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
-    [UnityTest]
-    public IEnumerator MenuScriptTestsWithEnumeratorPasses()
+
+    [Test]
+    public void OpenAndCloseMenuTest()
     {
-        // Use the Assert class to test conditions.
-        // Use yield to skip a frame.
-        yield return null;
+        StartFunction();
+        Assert.IsTrue(menuScript != null);
+        isActive = menuScript.GetIsActive();
+        Assert.IsTrue(isActive == false);
+
+        menuScript.OpenAndCloseMenu();
+    
+        isActive = menuScript.GetIsActive();
+        Assert.IsTrue(isActive == true);
+        Assert.IsTrue(menuScript.subMenu.activeSelf == true);
+
+        menuScript.OpenAndCloseMenu();
+        
+        if (!helpScript)
+        {
+            Assert.IsTrue(helpScript == null);
+        }
+
+        isActive = menuScript.GetIsActive();
+        Assert.IsTrue(isActive == false);
+        Assert.IsTrue(menuScript.subMenu.activeSelf == false);
     }
 }
