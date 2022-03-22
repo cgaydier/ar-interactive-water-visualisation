@@ -31,6 +31,7 @@ public class SettingsFunctions : MonoBehaviour
             }
             first = false;
         }
+        RefreshAll();
     }
 
     /* summary :
