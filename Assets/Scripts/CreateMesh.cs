@@ -318,11 +318,6 @@ public class CreateMesh : MonoBehaviour
         lineToReset = state;
     }
 
-    public GameObject GetGameObject()
-    {
-        return go;
-    }
-
     public float GetOffset()
     {
         return offset;
@@ -348,18 +343,8 @@ public class CreateMesh : MonoBehaviour
         return volumeMesh;
     }
 
-    public void SetVolumeMesh(float volume)
-    {
-        volumeMesh = volume;
-    }
-
     public Mesh GetMesh()
     {
         return mesh;
-    }
-
-    public List<int> GetTriangles()
-    {
-        return triangles;
     }
 }
