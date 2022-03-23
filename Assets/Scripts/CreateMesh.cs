@@ -23,6 +23,7 @@ using UnityEngine;
 public class CreateMesh : MonoBehaviour
 {
     public GameObject content;
+    public Material arPlane;
     private SceneData sceneData;
     private Mesh mesh;
     private GameObject go;
@@ -242,6 +243,21 @@ public class CreateMesh : MonoBehaviour
     }
 
     /* summary :
+    * Sets the planes on the ground transparent or visible
+    */
+    public void ArPlaneTransparency(bool state)
+    {
+        Color tmp = Color.black;
+        if (state)
+            tmp.a = 0f;
+        
+        else
+            tmp.a = 0.4f;
+        
+        arPlane.color = tmp;
+    }
+
+    /* summary :
     * Updates the mesh, the volume value and apply the calculated height to it if a change has been made by the user
     */
     private void MeshHandler()
@@ -285,7 +301,6 @@ public class CreateMesh : MonoBehaviour
             go = new GameObject("Mesh", typeof(MeshFilter), typeof(MeshRenderer));
             go.GetComponent<MeshRenderer>().material = Resources.Load("WaterURP", typeof(Material)) as Material;
             go.GetComponent<MeshFilter>().mesh = mesh;
-
             sceneData.SetMeshCreated(true);
 
             // Check if there is lines to reset

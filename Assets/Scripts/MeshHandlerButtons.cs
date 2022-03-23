@@ -68,6 +68,7 @@ public class MeshHandlerButtons : MonoBehaviour
         else
         {
             errorHandler.ErrorMessageReset();
+            createMesh.ArPlaneTransparency(true);
             sceneData.GetEnumState().SetMainScene();
             placePoints.ClearAll();
             sceneData.SetPointsPlaced(true);
@@ -83,6 +84,7 @@ public class MeshHandlerButtons : MonoBehaviour
         if (sceneData.IsMeshCreated() || sceneData.GetEnumState().currentState != EnumState.State.MainView)
         {
             errorHandler.ErrorMessageReset();
+            createMesh.ArPlaneTransparency(false);
             sceneData.SetPointsPlaced(false);
             sceneData.SetMeshCreated(false);
             sceneData.GetEnumState().SetMainScene();

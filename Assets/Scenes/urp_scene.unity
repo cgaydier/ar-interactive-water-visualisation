@@ -11474,6 +11474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 1683650216}
+  arPlane: {fileID: 2100000, guid: 25fafa065217d574bbbf410fb875d388, type: 2}
 --- !u!114 &1516527981
 MonoBehaviour:
   m_ObjectHideFlags: 0
