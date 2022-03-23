@@ -59,8 +59,10 @@ public class CreateLine : MonoBehaviour
         for (int i = 0; i < meshList.Count; i++)
         {
             meshList[i].Clear();
-            Destroy(goList[i]);
+            DestroyImmediate(goList[i]);
         }
+        meshList.Clear();
+        goList.Clear();
         top = 0f;
     }
 
@@ -119,7 +121,7 @@ public class CreateLine : MonoBehaviour
 
         List<Vector3> tmp = new List<Vector3>();
         for (int i = 0; i < vertices.Count; i++)
-        {
+        { 
             Vector3 tmpVector = vertices[i] - middlePoint;
             if (i % 2 == 0)
             {
@@ -133,25 +135,48 @@ public class CreateLine : MonoBehaviour
                                     vertices[i].y + top,
                                     vertices[i].z + offset * tmpVector.z));
             }
-
         }
         tmpMesh.vertices = tmp.ToArray();
         tmpMesh.triangles = CreateTriangles(vertices.Count).ToArray();
         tmpMesh.MarkDynamic();
-        tmpMesh.Optimize();
-        tmpMesh.OptimizeIndexBuffers();
+        //tmpMesh.Optimize();
+        //tmpMesh.OptimizeIndexBuffers();
         tmpMesh.OptimizeReorderVertexBuffer();
 
         meshList.Add(tmpMesh);
 
         GameObject tmpGo = new GameObject("Line", typeof(MeshFilter), typeof(MeshRenderer));
-        tmpGo.GetComponent<MeshRenderer>().material = Resources.Load("ConsumptionLines", typeof(Material)) as Material; ;
+        tmpGo.GetComponent<MeshRenderer>().sharedMaterial = new Material(Resources.Load("ConsumptionLines", typeof(Material)) as Material);
         Color color = lineColor;
         color.a = 0.8f;
-        tmpGo.GetComponent<MeshRenderer>().material.color = color;
-        tmpGo.GetComponent<MeshRenderer>().material.renderQueue= 3100;
+        tmpGo.GetComponent<MeshRenderer>().sharedMaterial.color = color;
+        tmpGo.GetComponent<MeshRenderer>().sharedMaterial.renderQueue= 3100;
         tmpGo.GetComponent<MeshFilter>().mesh = tmpMesh;
 
         goList.Add(tmpGo);
+    }
+
+    /*
+     * Test purposes
+     */
+    public List<Mesh> GetMeshes()
+    {
+        return meshList;
+    }
+
+    /*
+     * Test purposes
+     */
+    public List<GameObject> GetGO()
+    {
+        return goList;
+    }
+
+    /*
+     * Test purposes
+     */
+    public float GetTop()
+    {
+        return top;
     }
 }

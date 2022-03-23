@@ -23,7 +23,7 @@ using UnityEngine;
 public class CreateMesh : MonoBehaviour
 {
     public GameObject content;
-
+    public Material arPlane;
     private SceneData sceneData;
     private Mesh mesh;
     private GameObject go;
@@ -34,7 +34,7 @@ public class CreateMesh : MonoBehaviour
     private float currentOffset;
     private bool lineToReset = false;
 
-    void Start()
+    public void Start()
     {
         mesh = new Mesh();
         sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
@@ -42,15 +42,6 @@ public class CreateMesh : MonoBehaviour
         volumeMesh = 0f;
         offset = sceneData.GetDefaultOffset();
         currentOffset = sceneData.GetDefaultOffset();
-        //sceneData.AddVertice(new Vector3(0, 0, 0));
-        //sceneData.AddVertice(new Vector3(0, 0, 0));
-        //sceneData.AddVertice(new Vector3(1, 0, 0));
-        //sceneData.AddVertice(new Vector3(1, 0, 0));
-        //sceneData.AddVertice(new Vector3(1, 0, 1));
-        //sceneData.AddVertice(new Vector3(1, 0, 1));
-        //sceneData.AddVertice(new Vector3(0, 0, 1));
-        //sceneData.AddVertice(new Vector3(0, 0, 1));
-        //sceneData.SetPointsPlaced(true);
     }
 
     void Update()
@@ -156,7 +147,7 @@ public class CreateMesh : MonoBehaviour
         triangles.Clear();
         mesh.Clear();
         sceneData.SetMeshCreated(false);
-        Destroy(go);
+        DestroyImmediate(go);
         lineToReset = true;
     }
 
@@ -252,6 +243,21 @@ public class CreateMesh : MonoBehaviour
     }
 
     /* summary :
+    * Sets the planes on the ground transparent or visible
+    */
+    public void ArPlaneTransparency(bool state)
+    {
+        Color tmp = new Color(0.3f, 0.3f, 0.3f);
+        if (state)
+            tmp.a = 0f;
+        
+        else
+            tmp.a = 0.6f;
+        
+        arPlane.color = tmp;
+    }
+
+    /* summary :
     * Updates the mesh, the volume value and apply the calculated height to it if a change has been made by the user
     */
     private void MeshHandler()
@@ -287,15 +293,11 @@ public class CreateMesh : MonoBehaviour
             mesh.triangles = triangles.ToArray();
 
             mesh.MarkDynamic();
-            mesh.Optimize();
-            mesh.OptimizeIndexBuffers();
-            mesh.OptimizeReorderVertexBuffer();
-
+            
             // Reapplies the water material to the updated mesh
             go = new GameObject("Mesh", typeof(MeshFilter), typeof(MeshRenderer));
             go.GetComponent<MeshRenderer>().material = Resources.Load("WaterURP", typeof(Material)) as Material;
             go.GetComponent<MeshFilter>().mesh = mesh;
-
             sceneData.SetMeshCreated(true);
 
             // Check if there is lines to reset
@@ -312,5 +314,49 @@ public class CreateMesh : MonoBehaviour
             mesh.RecalculateTangents();
             mesh.RecalculateBounds();
         }
+    }
+
+    /*
+    * Test purposes
+    */
+
+    public void TestMeshHandler()
+    {
+        MeshHandler();
+    }
+
+    public void SetLineToReset(bool state)
+    {
+        lineToReset = state;
+    }
+
+    public float GetOffset()
+    {
+        return offset;
+    }
+
+    public void SetOffset(float newOffset)
+    {
+        offset = newOffset;
+    }
+
+    public float GetCurrentOffset()
+    {
+        return currentOffset;
+    }
+
+    public void SetCurrentOffset(float newCurrentOffset)
+    {
+        offset = newCurrentOffset;
+    }
+
+    public float GetVolumeMesh()
+    {
+        return volumeMesh;
+    }
+
+    public Mesh GetMesh()
+    {
+        return mesh;
     }
 }

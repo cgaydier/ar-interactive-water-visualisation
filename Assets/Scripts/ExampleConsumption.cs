@@ -15,7 +15,7 @@ public class ExampleConsumption : MonoBehaviour
     private SceneData sceneData;
     private CreateMesh createMesh;
 
-    void Start()
+    public void Start()
     {
         sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
         createMesh = GameObject.Find("MeshHandler").GetComponent<CreateMesh>();
@@ -26,10 +26,10 @@ public class ExampleConsumption : MonoBehaviour
     }
 
     /* summary :
-     * Call createMesh to set a new water value
+     * Calls createMesh to set a new water value
      * 
      * parameter :
-     * whichOne - String to know wich button was clicked
+     * whichOne - String to know wich button is clicked
      */
     public void SetValue(string whichOne)
     {

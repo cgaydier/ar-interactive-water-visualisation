@@ -40,22 +40,22 @@ public class SceneData : MonoBehaviour
 
     public enum DataName
     {
-        Shower,
-        Bath,
-        HandDish,
-        DishWasher,
+        Bathroom,
         WashingMachine,
-        Bathroom
+        DishWasher,
+        HandDish,
+        Bath,
+        Shower
     }
 
     private readonly List<float> dataConsumption = new List<float>
     {
-        0.06f,
-        0.15f,
-        0.017f,
-        0.014f,
+        0.009f,
         0.07f,
-        0.009f
+        0.014f,
+        0.017f,
+        0.15f,
+        0.06f
     };
 
     public enum ExampleName
@@ -78,34 +78,42 @@ public class SceneData : MonoBehaviour
 
     private readonly List<Color> dataColor = new List<Color>
     {
-        Color.blue,
-        Color.red,
-        Color.cyan,
-        Color.green,
+        Color.yellow,
         Color.magenta,
-        Color.yellow
+        Color.green,
+        Color.cyan,
+        Color.red,
+        Color.blue
     };
 
     private EnumState enumState;
-    private TimeName currentTime = TimeName.Week;
+    private TimeName currentTime;
     private List<int> datas = new List<int>();
-    private int scale = 1;
-    private bool meshCreated = false;
-    private bool pointsPlaced = false;
-    private bool linesShowned = false;
+    private int scale;
+    private bool meshCreated;
+    private bool pointsPlaced;
+    private bool linesShowned;
     private readonly int minPoints = 3;
     private readonly int maxPoints = 10;
     private readonly float defaultOffset = 0.0001f;
-    private float surfaceMesh = 0f;
+    private float surfaceMesh;
     private List<Vector3> vertices = new List<Vector3>();
 
     public void Start()
     {
         enumState = GameObject.Find("SceneState").GetComponent<EnumState>();
+        datas.Clear();
         for (int i = 0; i < System.Enum.GetValues(typeof(DataName)).Length; i++)
         {
             datas.Add(0);
         }
+        scale = 1;
+        currentTime = TimeName.Week;
+        meshCreated = false;
+        pointsPlaced = false;
+        linesShowned = false;
+        surfaceMesh = 0f;
+        vertices.Clear();
     }
 
     /* summary :

@@ -28,7 +28,6 @@ public class PlacePoints : MonoBehaviour
 {
     public ARRaycastManager raycastManager;
     public GameObject pointToPlace;
-
     private ErrorHandler errorHandler;
     private SceneData sceneData;
     private GraphicRaycaster GR;
@@ -52,7 +51,7 @@ public class PlacePoints : MonoBehaviour
     {
         for (int i = 0; i < points.Count; i++)
         {
-            Destroy(points[i]);
+            DestroyImmediate(points[i]);
         }
         first = true;
         lines.Clear();
@@ -67,7 +66,11 @@ public class PlacePoints : MonoBehaviour
         return points.Count;
     }
 
-    void Update()
+    /* summary :
+    * Handles the raycast to place points and get vertices coordinates
+    * Creates lines between points when creating a surface
+    */
+    private void PlacePointsHandler()
     {
         if (Input.touchCount > 0 && sceneData.GetEnumState().GetState() == EnumState.State.PlacePoints)
         {
@@ -121,5 +124,46 @@ public class PlacePoints : MonoBehaviour
                 }
             }
         }
+    }
+
+    void Update()
+    {
+        PlacePointsHandler();
+    }
+
+    /* 
+    * Test purposes
+    */
+    public void IncrPoints()
+    {
+        GameObject goTest = new GameObject("test");
+        points.Add(Instantiate(goTest, new Vector3(0f,0f,0f), new Quaternion(0f,0f,0f,0f)));
+    }
+
+    public void IncrLines()
+    {
+        lines.Add(new Vector3(0f,0f,0f));
+    }
+
+    public int LinesCount()
+    {
+        return lines.Count;
+    }
+
+    public bool SetFirst(bool state)
+    {
+        first = state;
+        return first;
+    }
+
+    public bool GetFirst()
+    {
+        return first;
+    }
+
+    public void SetPoints(int nbPoints)
+    {
+        for (int i = 0; i < nbPoints; i++)
+            points.Add(Instantiate(pointToPlace, new Vector3(0,0,0), new Quaternion(0,0,0,0)));
     }
 }
