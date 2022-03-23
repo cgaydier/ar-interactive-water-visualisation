@@ -36,7 +36,7 @@ public class ScrollButtonFunctions : MonoBehaviour
 
     /* summary :
      * Called on touch of the OpenCloseSettingButton
-     * Change visibility of the setting panel
+     * Changes visibility of the settings panel
      */
     public void OpenCloseSettings()
     {
@@ -58,8 +58,8 @@ public class ScrollButtonFunctions : MonoBehaviour
 
     /* summary :
      * Called on touch of the ShowConsumptionButton
-     * Display lines for the different setting's data.
-     * Calculate the thickness for every line and call createLine
+     * Displays lines for the different settings data.
+     * Calculates the thickness for every line and calls createLine
      */
     public void ShowConsumption()
     {
@@ -106,7 +106,7 @@ public class ScrollButtonFunctions : MonoBehaviour
     }
 
     /* summary :
-     * Reset the lines to show the consumption
+     * Resets the lines to show the consumption
      */
     public void ResetConsumption()
     {
@@ -126,7 +126,7 @@ public class ScrollButtonFunctions : MonoBehaviour
     }
 
     /* summary :
-     * Change visibility of the example panel
+     * Changes visibility of the example panel
      */
     public void OpenCloseExamplePanel()
     {

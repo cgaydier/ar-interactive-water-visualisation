@@ -26,10 +26,10 @@ public class ExampleConsumption : MonoBehaviour
     }
 
     /* summary :
-     * Calls createMesh to set a new water value
+     * Calls createMesh to set a new water volume value
      * 
      * parameter :
-     * whichOne - String to know wich button is clicked
+     * whichOne - String to know which button is clicked
      */
     public void SetValue(string whichOne)
     {

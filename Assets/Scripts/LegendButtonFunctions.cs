@@ -11,13 +11,12 @@ using UnityEngine.UI;
  * 
  * - private -
  * sceneData - Link to SceneData's script
- * first - Used to know if it was the first start called
- * isActive - Used to know if the panel is active
+ * first - Used to know if it was the first start call
+ * isActive - Used to know if the legend panel is active
  */
 public class LegendButtonFunctions : MonoBehaviour
 {
     public GameObject subMenu;
-
     private SceneData sceneData;
     private bool first = true;
     private bool isActive = false;
@@ -38,7 +37,7 @@ public class LegendButtonFunctions : MonoBehaviour
     }
 
     /* summary :
-    * Opens and closes the Legend
+    * Opens and closes the legend
     */
     public void OpenAndCloseLegend()
     {

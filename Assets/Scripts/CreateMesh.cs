@@ -8,6 +8,7 @@ using UnityEngine;
  * variables :
  * - public - 
  * content - Content GameObject
+ * arPlane - ar_plane Material - used to make the planes invisible after creating the mesh
  * 
  * - private -
  * sceneData - Link to SceneData's script
@@ -18,7 +19,7 @@ using UnityEngine;
  * volumeMesh - Current volume of the mesh
  * offset - Maximal height for a week for the mesh
  * current offset - Current height of the mesh
- * lineToReset - Used to know if the lines have to be reset or no
+ * lineToReset - Used to know if the lines for water consumption have to be reset or no
  */
 public class CreateMesh : MonoBehaviour
 {
@@ -138,7 +139,7 @@ public class CreateMesh : MonoBehaviour
     }
 
     /* summary :
-    * Recalculates the volume mesh with a different height's value
+    * Recalculates the volume mesh with a different height value
     */
     private void RefreshMesh()
     {

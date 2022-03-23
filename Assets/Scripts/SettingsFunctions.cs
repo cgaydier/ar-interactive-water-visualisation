@@ -67,7 +67,7 @@ public class SettingsFunctions : MonoBehaviour
      * Refreshes text on setting panel
      * 
      * parameter :
-     * name - name of the data decreased
+     * name - name of the data to decrease
      */
 
     public void RemoveConsumption(string name)
@@ -91,7 +91,7 @@ public class SettingsFunctions : MonoBehaviour
 
     /* summary :
      * Changes the temporal scale in sceneData for the next one
-     * Refreshes text on setting panel
+     * Refreshes text on settings panel
      */
     public void NextTemporalScale()
     {
@@ -118,7 +118,7 @@ public class SettingsFunctions : MonoBehaviour
 
     /* summary :
      * Changes the temporal scale in sceneData for the previous one
-     * Refreshes text on setting panel
+     * Refreshes text on settings panel
      */
     public void PreviousTemporalScale()
     {
@@ -145,7 +145,7 @@ public class SettingsFunctions : MonoBehaviour
 
     /* summary :
      * Adds one to the current scale
-     * Refreshes text on setting panel
+     * Refreshes text on settings panel
      */
 
     public void AddScale()
@@ -172,7 +172,7 @@ public class SettingsFunctions : MonoBehaviour
      * Refreshes the name text on the setting panel
      * 
      * parameter :
-     * name - name of the data to changed
+     * name - name of the data to change
      */
     public void RefreshText(string name)
     {
@@ -200,7 +200,7 @@ public class SettingsFunctions : MonoBehaviour
     }
 
     /* summary :
-     * Calls RefreshText() for every data's name on the setting panel
+     * Calls RefreshText() for every data name on the settings panel
      */
     public void RefreshAll()
     {

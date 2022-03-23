@@ -6,7 +6,7 @@ using UnityEngine;
  * 
  * variables :
  * - public -
- * userDebugPanel - UserDebugPanel GameObject
+ * userDebugPanel - UserDebugPanel GameObject - Panel on which debug messages are displayed
  * 
  * - private - 
  * debugMessage - String to save the message to display

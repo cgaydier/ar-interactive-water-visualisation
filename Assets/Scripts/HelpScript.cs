@@ -7,18 +7,18 @@ using UnityEngine.UI;
  * 
  * variables :
  * - public -
- * uIPanel - TipsPanel GameObject
- * page1 - IntroPanel GameObject
- * page 2 - QuitPanel GameObject
- * page 3 - MenuPanel GameObject
- * page 4 - Menu2Panel GameObject
- * page 5 - Menu3Panel GameObject
- * page 6 - CreditPanel GameObject
- * menu - MenuPanel GameObject
- * prevButton - PrevButton GameObject
- * nextButton - NextButton GameObject
- * tipsButton - TipsButton GameObject
- * createButton - CreateButton GameObject
+ * uIPanel - TipsPanel GameObject - Show tuto
+ * page 1 - IntroPanel GameObject | Different pages of the tuto
+ * page 2 - QuitPanel GameObject  |
+ * page 3 - MenuPanel GameObject  |
+ * page 4 - Menu2Panel GameObject |
+ * page 5 - Menu3Panel GameObject |
+ * page 6 - CreditPanel GameObject|
+ * menu - MenuPanel GameObject - Top left button
+ * prevButton - PrevButton GameObject | Changes page of the tuto
+ * nextButton - NextButton GameObject |
+ * tipsButton - TipsButton GameObject - Top right button
+ * createButton - CreateButton GameObject - For creating points
  * 
  * - private -
  * currentPage - Hold the last page opened
@@ -33,7 +33,6 @@ public class HelpScript : MonoBehaviour
     public GameObject menu;
     public GameObject prevButton, nextButton, tipsButton;
     public GameObject createButton;
-
     private GameObject currentPage;
     private SceneData sceneData;
     private ErrorHandler errorHandler;
@@ -159,8 +158,8 @@ public class HelpScript : MonoBehaviour
     }
 
     /* summary :
-    * Showes the previous and next buttons only if it's 
-    * necessary at the press of the tips button
+    * Shows the previous and next buttons when the tips button
+    * is pushed if it's necessary
     */
     public void CurrentButtonVisible()
     {

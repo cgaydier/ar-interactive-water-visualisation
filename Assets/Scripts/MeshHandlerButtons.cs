@@ -77,7 +77,7 @@ public class MeshHandlerButtons : MonoBehaviour
 
     /* summary :
     * Called on touch of the Clear button
-    * Clears everything
+    * Clears the mesh parameters (vertices, triangles...)
     */
     public void ClearPointsMesh()
     {

@@ -9,7 +9,7 @@ using UnityEngine;
  * subMenu - SubMenuPanel GameObject
  * 
  * - private - 
- * isActive - Used to know if the panel is active
+ * isActive - Used to know if the menu panel is active
  */
 public class MenuScript : MonoBehaviour
 {

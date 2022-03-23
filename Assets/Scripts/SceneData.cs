@@ -7,13 +7,13 @@ using UnityEngine;
  * 
  * variables : 
  * - public -
- * TimeName - Enum to set the differents timelines for the display
- * DataName - Enum to set the differents data's names
+ * TimeName - Enum to set the different timelines for the display
+ * DataName - Enum to set the different data's names
  * ExampleName - Enum to set the differents example's names
  * 
  * - private -
- * dataConsumption - List of the consumptions for each data
- * exampleConsumption - List of the consumptions for each example
+ * dataConsumption - List of the average water consumptions for each data in m3
+ * exampleConsumption - List of the average water consumptions for each example in m3
  * dataColor - List of the colors for each data
  * enumState - Link to SceneState's script
  * currentTime - Current time for the scale
@@ -25,7 +25,7 @@ using UnityEngine;
  * minPoints - Minimum of points to place
  * maxPoints - Maximum of points to place
  * defaultOffset - Default offset for reset
- * surfaceMesh - Current surface of the mesh
+ * surfaceMesh - Current surface of the mesh in m2
  * vertices - List of current mesh vertices
  */
 public class SceneData : MonoBehaviour

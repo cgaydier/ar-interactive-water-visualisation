@@ -45,7 +45,7 @@ public class PlacePoints : MonoBehaviour
     }
 
     /* summary :
-     * Destroys all the points and clear lines and points
+     * Destroys all the points and clears lines and points
      */
     public void ClearAll()
     {

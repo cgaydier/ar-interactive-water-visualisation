@@ -7,8 +7,8 @@ using UnityEngine;
  * 
  * variables :
  * - private - 
- * meshLish - List of lines'meshes
- * goList - List of lines'GameObjects
+ * meshLish - List of lines' meshes
+ * goList - List of lines' GameObjects
  * top - Top of the lines 
  * offset - Offset to space out the lines from the mesh
  */
@@ -52,7 +52,7 @@ public class CreateLine : MonoBehaviour
     }
 
     /* summary :
-     * Clears meshList, destroy all the gameObject and set the top of the lines to 0
+     * Clears meshList, destroy all the gameObjects and sets the top of the lines to 0
      */
     public void ClearAll()
     {
@@ -139,8 +139,6 @@ public class CreateLine : MonoBehaviour
         tmpMesh.vertices = tmp.ToArray();
         tmpMesh.triangles = CreateTriangles(vertices.Count).ToArray();
         tmpMesh.MarkDynamic();
-        //tmpMesh.Optimize();
-        //tmpMesh.OptimizeIndexBuffers();
         tmpMesh.OptimizeReorderVertexBuffer();
 
         meshList.Add(tmpMesh);
@@ -164,17 +162,11 @@ public class CreateLine : MonoBehaviour
         return meshList;
     }
 
-    /*
-     * Test purposes
-     */
     public List<GameObject> GetGO()
     {
         return goList;
     }
 
-    /*
-     * Test purposes
-     */
     public float GetTop()
     {
         return top;
