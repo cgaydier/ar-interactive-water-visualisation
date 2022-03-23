@@ -40,12 +40,12 @@ public class SceneData : MonoBehaviour
 
     public enum DataName
     {
-        Shower,
-        Bath,
-        HandDish,
-        DishWasher,
+        Bathroom,
         WashingMachine,
-        Bathroom
+        DishWasher,
+        HandDish,
+        Bath,
+        Shower
     }
 
     private readonly List<float> dataConsumption = new List<float>
@@ -110,10 +110,10 @@ public class SceneData : MonoBehaviour
         scale = 1;
         currentTime = TimeName.Week;
         meshCreated = false;
-        pointsPlaced = false;
+        //pointsPlaced = false;
         linesShowned = false;
         surfaceMesh = 0f;
-        vertices.Clear();
+        //vertices.Clear();
     }
 
     /* summary :
