@@ -4,11 +4,14 @@ using UnityEngine;
 public class ScrollButtonsFunctionsTests
 {
     private ScrollButtonFunctions scrollButtonFunctions;
+    private SceneData sceneData;
 
     private void StartFunction()
     {
         scrollButtonFunctions = GameObject.Find("Content").GetComponent<ScrollButtonFunctions>();
         scrollButtonFunctions.Start();
+        sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
+        sceneData.Start();
     }
 
     [Test]
@@ -26,11 +29,15 @@ public class ScrollButtonsFunctionsTests
     [Test]
     public void ShowConsumptionTest()
     {
-    }
+        Assert.IsFalse(sceneData.IsLinesShowned());
+        scrollButtonFunctions.ShowConsumption();
+        Assert.IsTrue(sceneData.IsLinesShowned());
+        Assert.IsTrue(scrollButtonFunctions.legendPanel.activeSelf);
 
-    [Test]
-    public void ResetConsumptionTest()
-    {
+        scrollButtonFunctions.ShowConsumption();
+        Assert.IsFalse(sceneData.IsLinesShowned());
+        Assert.IsFalse(scrollButtonFunctions.legendPanel.activeSelf);
+
     }
 
     [Test]
