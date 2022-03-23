@@ -160,4 +160,10 @@ public class PlacePoints : MonoBehaviour
     {
         return first;
     }
+
+    public void SetPoints(int nbPoints)
+    {
+        for (int i = 0; i < nbPoints; i++)
+            points.Add(Instantiate(pointToPlace, new Vector3(0,0,0), new Quaternion(0,0,0,0)));
+    }
 }

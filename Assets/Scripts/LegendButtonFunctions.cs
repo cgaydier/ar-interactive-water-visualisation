@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /* summary :
- * Linked to UICanvas/TopRightPanel/Legend/LegendPanel
+ * Linked to UICanvas/TopRightPanel/Legend
  * Handles the legend panel for consumption lines
  * 
  * variable :
@@ -16,7 +16,7 @@ using UnityEngine.UI;
  */
 public class LegendButtonFunctions : MonoBehaviour
 {
-    public GameObject SubMenu;
+    public GameObject subMenu;
 
     private SceneData sceneData;
     private bool first = true;
@@ -27,11 +27,13 @@ public class LegendButtonFunctions : MonoBehaviour
         sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
         if (first)
         {
+            subMenu.SetActive(true);
             foreach (SceneData.DataName name in SceneData.DataName.GetValues(typeof(SceneData.DataName)))
             {
                 GameObject.Find(name.ToString()).GetComponent<Image>().color = sceneData.GetDataColor(name);
             }
             first = false;
+            subMenu.SetActive(false);
         }
     }
 
@@ -42,12 +44,12 @@ public class LegendButtonFunctions : MonoBehaviour
     {
         if (isActive == false)
         {
-            SubMenu.SetActive(true);
+            subMenu.SetActive(true);
             isActive = true;
         }
         else
         {
-            SubMenu.SetActive(false);
+            subMenu.SetActive(false);
             isActive = false;
         }
     }

@@ -13,7 +13,8 @@ public class LegendButtonFonctionsTests
         scrollButtonFunctions = GameObject.Find("Content").GetComponent<ScrollButtonFunctions>();
         legend = scrollButtonFunctions.legendPanel;
         legend.SetActive(true);
-        legendButtonFunctions = GameObject.Find("LegendPanel").GetComponent<LegendButtonFunctions>(); 
+        legendButtonFunctions = legend.GetComponent<LegendButtonFunctions>();
+        legendButtonFunctions.Start();
     }
 
     [Test]
@@ -26,7 +27,7 @@ public class LegendButtonFonctionsTests
 
         isActive = legendButtonFunctions.GetIsActive();
         Assert.IsTrue(isActive == true);
-        Assert.IsTrue(legendButtonFunctions.SubMenu.activeSelf == true);
+        Assert.IsTrue(legendButtonFunctions.subMenu.activeSelf == true);
 
         legendButtonFunctions.OpenAndCloseLegend();
 

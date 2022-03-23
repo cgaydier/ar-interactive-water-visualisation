@@ -90,7 +90,7 @@ public class MeshHandlerButtons : MonoBehaviour
             placePoints.ClearAll();
             createMesh.ClearAll();
             ClearSettings();
-            Destroy(GameObject.Find("Mesh"));
+            DestroyImmediate(GameObject.Find("Mesh"));
             textInput.text = "";
             if (GameObject.Find("AverageConso"))
                 GameObject.Find("AverageConso").SetActive(false);
