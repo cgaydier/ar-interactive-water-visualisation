@@ -252,7 +252,7 @@ public class CreateMesh : MonoBehaviour
             tmp.a = 0f;
         
         else
-            tmp.a = 0.5f;
+            tmp.a = 0.6f;
         
         arPlane.color = tmp;
     }
