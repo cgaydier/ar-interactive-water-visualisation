@@ -14,6 +14,7 @@ public class HelpScriptTests
         button = helpScript.tipsButton;
         button.SetActive(true); 
         helpScript.Start();
+        helpScript.StartSceneData();
     }
 
     [Test]

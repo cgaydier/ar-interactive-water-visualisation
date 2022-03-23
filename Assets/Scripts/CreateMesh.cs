@@ -293,9 +293,6 @@ public class CreateMesh : MonoBehaviour
             mesh.triangles = triangles.ToArray();
 
             mesh.MarkDynamic();
-            // mesh.OptimizeReorderVertexBuffer();
-            // mesh.Optimize();
-            // mesh.OptimizeIndexBuffers();
             
             // Reapplies the water material to the updated mesh
             go = new GameObject("Mesh", typeof(MeshFilter), typeof(MeshRenderer));
