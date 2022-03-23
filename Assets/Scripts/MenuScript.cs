@@ -7,7 +7,6 @@ using UnityEngine;
  * variables : 
  * - public -
  * subMenu - SubMenuPanel GameObject
- * scrollButtonFonctions - Link to Content's script
  * 
  * - private - 
  * isActive - Used to know if the panel is active
@@ -15,7 +14,6 @@ using UnityEngine;
 public class MenuScript : MonoBehaviour
 {
     public GameObject subMenu;
-    public ScrollButtonFunctions scrollButtonFunctions;
 
     private bool isActive = false;
 

@@ -247,12 +247,12 @@ public class CreateMesh : MonoBehaviour
     */
     public void ArPlaneTransparency(bool state)
     {
-        Color tmp = Color.black;
+        Color tmp = new Color(0.3f, 0.3f, 0.3f);
         if (state)
             tmp.a = 0f;
         
         else
-            tmp.a = 0.4f;
+            tmp.a = 0.5f;
         
         arPlane.color = tmp;
     }
