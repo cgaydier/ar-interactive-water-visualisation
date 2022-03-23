@@ -24,12 +24,14 @@ public class SettingsFunctions : MonoBehaviour
         sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
         if (first)
         {
+            this.gameObject.SetActive(true);
             foreach (SceneData.DataName name in SceneData.DataName.GetValues(typeof(SceneData.DataName)))
             {
                 GameObject.Find(name.ToString()).GetComponent<Image>().color = sceneData.GetDataColor(name);
                 GameObject.Find(name.ToString() + "/Text").GetComponent<TextMeshProUGUI>().text += (" (" + sceneData.GetDataConsumption(name) * 1000 + " L)");
             }
             first = false;
+            this.gameObject.SetActive(false);
         }
         RefreshAll();
     }

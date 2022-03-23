@@ -20,7 +20,7 @@ public class ScrollButtonFunctions : MonoBehaviour
     public GameObject legendPanel;
     public GameObject examplePanel;
     public GameObject settings;
-    private MenuScript menuPanel;
+    public MenuScript menuPanel;
     private SceneData sceneData;
     private CreateLine createLine;
 
@@ -29,7 +29,6 @@ public class ScrollButtonFunctions : MonoBehaviour
     {
         sceneData = GameObject.Find("SceneData").GetComponent<SceneData>();
         createLine = GameObject.Find("LineHandler").GetComponent<CreateLine>();
-        menuPanel = GameObject.Find("TipsPanel").GetComponent<HelpScript>().menu.GetComponent<MenuScript>();
         settings.SetActive(true);
         GameObject.Find("Settings").GetComponent<SettingsFunctions>().Start();
         settings.SetActive(false);

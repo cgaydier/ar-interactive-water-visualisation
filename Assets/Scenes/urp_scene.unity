@@ -7756,7 +7756,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subMenu: {fileID: 1819709618}
-  scrollButtonFunctions: {fileID: 1683650220}
 --- !u!1 &1026894098
 GameObject:
   m_ObjectHideFlags: 0

@@ -50,12 +50,12 @@ public class SceneData : MonoBehaviour
 
     private readonly List<float> dataConsumption = new List<float>
     {
-        0.06f,
-        0.15f,
-        0.017f,
-        0.014f,
+        0.009f,
         0.07f,
-        0.009f
+        0.014f,
+        0.017f,
+        0.15f,
+        0.06f
     };
 
     public enum ExampleName
@@ -78,12 +78,12 @@ public class SceneData : MonoBehaviour
 
     private readonly List<Color> dataColor = new List<Color>
     {
-        Color.blue,
-        Color.red,
-        Color.cyan,
-        Color.green,
+        Color.yellow,
         Color.magenta,
-        Color.yellow
+        Color.green,
+        Color.cyan,
+        Color.red,
+        Color.blue
     };
 
     private EnumState enumState;
@@ -110,10 +110,10 @@ public class SceneData : MonoBehaviour
         scale = 1;
         currentTime = TimeName.Week;
         meshCreated = false;
-        //pointsPlaced = false;
+        pointsPlaced = false;
         linesShowned = false;
         surfaceMesh = 0f;
-        //vertices.Clear();
+        vertices.Clear();
     }
 
     /* summary :
