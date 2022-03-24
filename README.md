@@ -5,7 +5,6 @@
 2. [Technologies](#technologies)
 3. [Installation](#installation)
 4. [Credits](#credits)
-5. [FAQs](#faqs)
 
 ***
 
@@ -30,18 +29,25 @@ A list of technologies and packages used within the project:
 
 # Installation
 
-coucou
+## Android version
+
+To install the APK on your application, follow these steps :
+* Find the APK on [Github](https://github.com/cgaydier/ar-interactive-water-visualisation/releases/tag/production_ready)
+* Download the APK in your smartphone
+* Install it by following the steps on your smartphone
+* Accept the request for access to the camera
+
+***
+
+## iOS version
+
 
 ***
 
 # Credits
 
-coucou
+Students : Zoé DEBATY - Antoine DEYNOUX - Christophe GAYDIER - Lucas MIREMONT
 
-***
-
-# FAQs
-
-coucou
+Custumers : Martin HACHET - Ambre ASSOR
 
 ***
