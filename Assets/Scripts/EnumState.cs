@@ -30,6 +30,9 @@ public class EnumState : MonoBehaviour
         return currentState;
     }
 
+    /* summary : 
+     * Change currentState when the settings panel is opened or closed
+     */
     public void ChangeSettingScene()
     {
         if (currentState != State.MainView && currentState != State.PlacePoints)
