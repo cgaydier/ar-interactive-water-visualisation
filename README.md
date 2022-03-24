@@ -31,9 +31,9 @@ A list of technologies and packages used within the project:
 
 ## Android version
 
-To install the APK on your application, follow these steps :
-* Find the APK on [Github](https://github.com/cgaydier/ar-interactive-water-visualisation/releases/tag/production_ready)
-* Download the APK in your smartphone
+To install the Android APK on your application, please follow these steps :
+* Download the APK at [Github](https://github.com/cgaydier/ar-interactive-water-visualisation/releases/tag/production_ready)
+* Get the APK on your smartphone
 * Install it by following the steps on your smartphone
 * Accept the request for access to the camera
 
@@ -41,7 +41,24 @@ To install the APK on your application, follow these steps :
 
 ## iOS version
 
-
+To install the application on your iPhone, please follow these steps :
+* Download the iOS archive at [Github](https://github.com/cgaydier/ar-interactive-water-visualisation/releases/tag/production_ready)
+* Get the archive on a Mac and extract it
+* Open Terminal and use this command : chmod +x /Users/username/folder_with_the_archive/pfe_project_ios/MapFileParser.sh
+* Open XCode, select "Open a project or file"
+* Find the pfe_project_ios folder and open its "Unity-iPhone.xcodeproj" file
+* Select "Unity-iPhone" on the left
+* Select the "Signing & Capabilities" tab in the middle
+* Select "Automatically manage signing"
+* Select a Team, it can be your Apple ID. If you didn't have already configured it, follow the next steps
+* Open the Xcode tab on the top left of the screen
+* Select "Preferences"
+* In the "Account" tab, select the "+" symbol on the bottom left of the window and add your Apple ID
+* Get back to XCode and select your Apple ID as a Team name
+* Plug your iPhone onto your computer and make sure your smartphone is the selected iOS device on the top barre of the XCode window
+* Press the play button on the top left to start building the app on your smartphone
+* Enter your password twice when it's necessary, unlock your iPhone and the app should start running
+* Installation complete !
 ***
 
 # Credits
