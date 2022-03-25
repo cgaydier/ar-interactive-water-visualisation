@@ -65,6 +65,6 @@ To install the application on your iPhone, please follow these steps :
 
 Students : Zoé DEBATY - Antoine DEYNOUX - Christophe GAYDIER - Lucas MIREMONT
 
-Custumers : Martin HACHET - Ambre ASSOR
+Customers : Martin HACHET - Ambre ASSOR
 
 ***
