@@ -1267,7 +1267,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '10<color=#00000000>.</color>- Press <sprite index= 9> and put an arbitrary
+  m_text: '10<color=#00000000>.</color>- Press <sprite index= 8> and put an arbitrary
     value.
 
 
@@ -1275,7 +1275,7 @@ MonoBehaviour:
     of your block.
 
 
-    12<color=#00000000>.</color>- Press <sprite index= 9>, put
+    12<color=#00000000>.</color>- Press <sprite index= 8>, put
     a typical weekly consumption and change the scale to month or year to show your
     monthly or annual consumption.'
   m_isRightToLeft: 0
